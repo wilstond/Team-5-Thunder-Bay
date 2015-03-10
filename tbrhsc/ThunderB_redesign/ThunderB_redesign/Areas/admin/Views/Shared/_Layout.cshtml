@@ -1,0 +1,74 @@
+﻿@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>@ViewBag.Title</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+
+   
+
+    <!-- Fonts & Icons -->
+    @Styles.Render("~/Content/fontawesome")
+    @Styles.Render("~/Content/AdminCss")
+  
+
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+
+    <header>
+        <div id="smlogo">
+            LOGO
+        </div>
+        <div id="secondnav">
+            <ul>
+                <li>@Html.RouteLink("Back to Website", "Home")</li>
+                <li><a href="#"><i class="fa fa-sign-out fa-lg"></i><span>&nbspLogout</span></a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div id="spacer"></div>
+
+    <div id="nav">
+        <span class="nav-btn"><i class="fa fa-navicon fa-lg"></i></span>
+        <ul>
+            <li><a href="#"><i class="fa fa-home fa-lg"></i> <span>Dashboard</span></a></li>
+            <li><a href="#"><i class="fa fa-pencil-square-o fa-lg"></i> <span>New Page</span></a></li>
+            <li><a href="#"><i class="fa fa-pencil-square-o fa-lg"></i> <span>Donations</span></a></li>
+            <li><a href="#"><i class="fa fa-calendar-o fa-lg"></i> <span>Jobs</span></a></li>
+            <li><a href="#"><i class="fa fa-briefcase fa-lg"></i> <span>News</span></a></li>
+            <li><a href="#"><i class="fa fa-comments-o fa-lg"></i> <span>Alerts</span></a></li>
+            <li><a href="#"><i class="fa fa-envelope-o fa-lg"></i> <span>Image Slider</span></a></li>
+            <li><a href="#"><i class="fa fa-calendar fa-lg"></i> <span>Volunteers</span></a></li>
+            <li><a href="#"><i class="fa fa-cart-plus fa-lg"></i> <span>ER wait times</span></a></li>
+            <li><a href="#"><i class="fa fa-cart-plus fa-lg"></i> <span>Products</span></a></li>
+            <li><a href="#"><i class="fa fa-user-md fa-lg"></i> <span>Doctors</span></a></li>
+            <li><a href="#"><i class="fa fa-user-md fa-lg"></i> <span>Alert</span></a></li>
+            <li><a href="#"><i class="fa fa-user-md fa-lg"></i> <span>Locations</span></a></li>
+            <li><a href="#"><i class="fa fa-user-md fa-lg"></i> <span>Bookings</span></a></li>
+            <li><a href="#"><i class="fa fa-user-md fa-lg"></i> <span>Feedback</span></a></li>
+            <li><a href="#"><i class="fa fa-user-md fa-lg"></i> <span>Subscriptions</span></a></li>
+            <li><a href="#"><i class="fa fa-user-md fa-lg"></i> <span>FAQ</span></a></li>
+        </ul>
+    </div>
+
+<div id="main">
+    @RenderBody()
+
+</div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/Content/AdminJS")
+
+</body>
+</html>
