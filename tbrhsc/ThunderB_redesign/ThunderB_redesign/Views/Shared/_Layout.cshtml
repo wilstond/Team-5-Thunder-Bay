@@ -45,22 +45,9 @@
                     <li>@Html.ActionLink("Staff login", "Login","Account")</li>
                 </ul>
             </nav>
-            <nav class="main_nav clearfix">
-                <ul>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">Patients</a></li>
-                    <li><a href="">Visitors</a></li>
-                    <li><a href="">Programs & Services</a></li>
-                    <li><a href="">Directory</a></li>
-                    <li><a href="">Careers</a></li>
-                </ul>
-                <div class="search-box">
+            
+            @Html.Partial("_Menu");
 
-                    <input placeholder="Search term" />
-                    <button><span class="fa fa-search"></span></button>
-
-                </div>
-            </nav>
         </header>
 
         @RenderBody()
