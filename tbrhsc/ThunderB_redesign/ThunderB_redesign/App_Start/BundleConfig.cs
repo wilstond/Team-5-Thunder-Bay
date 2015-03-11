@@ -60,9 +60,9 @@ namespace ThunderB_redesign
                         "~/Content/themes/base/jquery.ui.theme.css"));
 
 
-            bundles.Add(new StyleBundle("~/Content/AdminCss").Include("~/Content/AdminCss/style.css"));
+            bundles.Add(new StyleBundle("~/Areas/admin/Content/AdminCss").Include("~/Areas/admin/Content/AdminCss/style.css"));
 
-            bundles.Add(new ScriptBundle("~/Content/AdminJS").Include("~/Content/AdminJS/admin.js"));
+            bundles.Add(new ScriptBundle("~/Areas/admin/Content/AdminJS").Include("~/Areas/admin/Content/AdminJS/admin.js"));
 
 
         }
