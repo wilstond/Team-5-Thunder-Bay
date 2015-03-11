@@ -8,7 +8,6 @@ namespace ThunderB_redesign.Areas.admin.Controllers
 {
     public class DashboardController : Controller
     {
-        
 
         public ActionResult Dashboard()
         {

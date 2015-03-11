@@ -37,7 +37,7 @@ namespace ThunderB_redesign.Controllers
         {
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
-                return RedirectToLocal(returnUrl);
+                return RedirectToAction("Dashboard", "Admin");
             }
 
             // If we got this far, something failed, redisplay form
@@ -81,7 +81,7 @@ namespace ThunderB_redesign.Controllers
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
                     WebSecurity.Login(model.UserName, model.Password);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Dashboard", "Admin");
                 }
                 catch (MembershipCreateUserException e)
                 {
