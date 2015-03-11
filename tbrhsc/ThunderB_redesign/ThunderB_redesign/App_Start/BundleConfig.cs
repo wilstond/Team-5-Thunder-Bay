@@ -26,7 +26,8 @@ namespace ThunderB_redesign
             bundles.Add(new ScriptBundle("~/Scripts").Include("~/Scripts/main.js", "~/Scripts/plugins.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css")
-                        .Include("~/Content/normalize.css"));
+                        .Include("~/Content/normalize.css")
+                        .Include("~/Content/css/font-awesome.min.css"));
 
             
             bundles.Add(new StyleBundle("~/Fonts").Include(
@@ -44,7 +45,6 @@ namespace ThunderB_redesign
                 "~/Fonts/SourceSansPro-SemiboldItalic.ttf"
                 ));
 
-
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",
                         "~/Content/themes/base/jquery.ui.resizable.css",
@@ -60,9 +60,14 @@ namespace ThunderB_redesign
                         "~/Content/themes/base/jquery.ui.theme.css"));
 
 
-            bundles.Add(new StyleBundle("~/Areas/admin/Content/AdminCss").Include("~/Areas/admin/Content/AdminCss/style.css"));
+            bundles.Add(new StyleBundle("~/Areas/admin/Content/AdminCss").Include("~/Areas/admin/Content/AdminCss/style.css")
+                .Include("~/Content/css/font-awesome.min.css")
+                );
 
             bundles.Add(new ScriptBundle("~/Areas/admin/Content/AdminJS").Include("~/Areas/admin/Content/AdminJS/admin.js"));
+
+            
+         
 
 
         }
