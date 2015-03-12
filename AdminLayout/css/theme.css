@@ -1,0 +1,240 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+   RESET SHEET ------------
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* ------------- MAIN LAYOUT
+*/
+
+body {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    background-color: #fff;
+    width: 100%;
+}
+
+#nav {
+    background-color: #535353;
+    background-image: url("img/noise.png");
+    color: #ebebeb;
+    width: 160px;
+    position:absolute;
+    height: 100%;
+    text-shadow: 1px 1px 1px #1c1c1c;
+    line-height: 1.5;
+}
+
+#main {
+    color: #1c1c1c;
+    padding: 25px;
+    margin: auto;
+    position: relative;
+    left: 160px;
+}
+
+header {
+    color: #ebebeb;
+    background-color: #535353;
+    padding: 10px;
+    float: left;
+    position:fixed;
+    z-index: 1;
+    width: 100%;
+    text-shadow: 1px 1px 1px #000;
+}
+
+#spacer {
+    height: 56px;
+}
+
+/* ------------- HEADER DETAILS
+*/
+
+#smlogo {
+    font-size: 1.8em;
+    float: left;
+}
+
+#logout {
+    float:right;
+    padding: 10px 30px 10px;
+}
+
+header a {
+    text-decoration: none;
+    color: #ebebeb;
+    padding: 18px;
+}
+header a:hover {
+    background-color: #717171;
+    color:#fff;
+}
+
+/* ------------- VERTICAL NAVIGATION AND DETAILS
+*/
+
+#nav h1 {
+    font-size: 1.2em;
+    padding-top: 30px;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    letter-spacing: 1px;
+}
+
+#nav ul {
+    background-color: #535353;
+    background-image: url("img/noise.png");
+}
+
+#nav li:first-child {
+    border-top: 1px solid #3c3c3c;
+}
+
+#nav li {
+    border-bottom: 1px solid #3c3c3c;
+    font-size: .9em;
+}
+
+#nav a:hover {
+    background-color:#717171;
+    color:#fff;
+    transition: all 0.2s ease-in-out;
+}
+
+#nav a {
+    text-decoration: none;
+    color: #ebebeb;
+    padding:8px 11px;
+    display: block;
+}
+
+#nav a:active {
+    background-color:#717171;
+}
+
+/* ------------- CONTENT AREA
+*/
+
+.placeholder h4 {
+    width: 80%;
+    padding: 10px 60px 10px 5px;
+    border-bottom: 1px solid #535353;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.placeholder p {
+    padding: 10px 50px 10px 5px;
+    width: 90%;
+}
+
+/* ------------- Table Styling
+*/
+
+
+table {
+    margin-top: 20px;
+}
+
+tr {
+    border-top: 1px solid #b0b0b0;
+}
+
+tr:first-child {
+    border-top: none;
+}
+
+tr:hover {
+    background-color:#adadad;
+}
+
+th, td {
+    padding: 10px 20px 10px 3px;
+}
+
+th {
+    font-weight: bold;
+    text-align: left;
+    overflow:hidden;
+    border-bottom: 1px solid #535353;
+}
+
+td {
+    color:#000000;
+    overflow:hidden;
+    word-break:normal;
+}
+
+tr:nth-child(even) {
+    background-color:#d8d8d8;
+}
+
+tr:nth-child(even):hover{
+    background-color:#adadad;
+}
+
+tr:first-child:hover {
+    background-color: #fff;
+}
+
+
+/* ------------- Button Styling
+*/
+
+input[type=submit] {
+    background-color: #535353;
+    border: 1px solid #484848;
+    border-radius: 3px;
+    padding: 5px 10px;
+    color: #ebebeb;
+}
+
+input[type=submit]:hover {
+    background-color: #717171;
+    border: 1px solid #393838;
+    color:#fff;
+}
