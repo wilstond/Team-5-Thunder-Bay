@@ -1,13 +1,16 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace ThunderB_redesign
 {
     public class BundleConfig
     {
-        // For more information on Bundling, visit http://go.microsoft.com/fwlink/?LinkId=254725
+        
         public static void RegisterBundles(BundleCollection bundles)
         {
+
+            //turning off minification and optimization until we find a better solution
+            BundleTable.EnableOptimizations = false;
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
@@ -25,9 +28,10 @@ namespace ThunderB_redesign
 
             bundles.Add(new ScriptBundle("~/Scripts").Include("~/Scripts/main.js", "~/Scripts/plugins.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css")
-                        .Include("~/Content/normalize.css")
-                        .Include("~/Content/css/font-awesome.min.css"));
+            bundles.Add(new StyleBundle("~/Content/css")
+                        .Include("~/Content/css/normalize.css")
+                        .Include("~/Content/css/site.css")
+                        .Include("~/Content/css/font-awesome.css"));
 
             
             bundles.Add(new StyleBundle("~/Fonts").Include(
@@ -42,9 +46,8 @@ namespace ThunderB_redesign
                 "~/Fonts/SourceSansPro-LightItalic.ttf",
                 "~/Fonts/SourceSansPro-Regular.ttf",
                 "~/Fonts/SourceSansPro-Semibold.ttf",
-                "~/Fonts/SourceSansPro-SemiboldItalic.ttf"
-                ));
-
+                "~/Fonts/SourceSansPro-SemiboldItalic.ttf"));
+/*
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",
                         "~/Content/themes/base/jquery.ui.resizable.css",
@@ -57,18 +60,16 @@ namespace ThunderB_redesign
                         "~/Content/themes/base/jquery.ui.tabs.css",
                         "~/Content/themes/base/jquery.ui.datepicker.css",
                         "~/Content/themes/base/jquery.ui.progressbar.css",
-                        "~/Content/themes/base/jquery.ui.theme.css"));
+                        "~/Content/themes/base/jquery.ui.theme.css"));*/
 
 
             bundles.Add(new StyleBundle("~/Areas/admin/Content/AdminCss").Include("~/Areas/admin/Content/AdminCss/style.css")
-                .Include("~/Content/css/font-awesome.min.css")
+                .Include("~/Content/css/font-awesome.css")
                 );
 
             bundles.Add(new ScriptBundle("~/Areas/admin/Content/AdminJS").Include("~/Areas/admin/Content/AdminJS/admin.js"));
 
-            
-         
-
+       
 
         }
     }
