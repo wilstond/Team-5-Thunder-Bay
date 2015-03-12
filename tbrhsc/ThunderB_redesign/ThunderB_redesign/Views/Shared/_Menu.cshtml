@@ -1,12 +1,16 @@
-﻿<nav class="main_nav clearfix">
+﻿@{
+    IEnumerable<ThunderB_redesign.Models.menu_category> menuItems = (IEnumerable<ThunderB_redesign.Models.menu_category>)ViewData["MenuItems"];
+}
+
+<nav class="main_nav clearfix">
+   
     <ul>
-        <li><a href="">Home</a></li>
-        <li><a href="">Patients</a></li>
-        <li><a href="">Visitors</a></li>
-        <li><a href="">Programs & Services</a></li>
-        <li><a href="">Directory</a></li>
-        <li><a href="">Careers</a></li>
+        @foreach (var menuItem in menuItems)
+        {
+            <li>@Html.ActionLink(menuItem.menu_text, menuItem.menu_slug)</li>
+        }
     </ul>
+
     <div class="search-box">
 
         <input placeholder="Search term" />
