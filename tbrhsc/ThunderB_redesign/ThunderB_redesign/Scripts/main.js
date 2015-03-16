@@ -4,7 +4,6 @@ $(document).ready(function () {
         $(".sec_nav").slideUp("slow");
 
         if ($(this).find(".sec_nav").hasClass("display-menu")) {
-            //$(this).find(".sec_nav").slideUp("slow");
             $(".sec_nav").slideUp("slow");
             $(".sec_nav").removeClass("display-menu");
         }
@@ -14,6 +13,5 @@ $(document).ready(function () {
             $(this).find(".sec_nav").addClass("display-menu");
         }
 
-        //$(this).find(".sec_nav").slideToggle("slow");
     })
 })

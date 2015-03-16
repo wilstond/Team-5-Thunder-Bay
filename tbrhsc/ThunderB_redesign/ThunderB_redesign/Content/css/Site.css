@@ -411,7 +411,7 @@ footer {
 /* Secondary Navigation */
 
 .sec_nav {
-        background-color: #1f5e79;
+        background-color: #f68b22;
         position: absolute;
         display: none;
         /*width: 100%;*/
@@ -592,6 +592,7 @@ footer {
    Modify as content requires.
    ========================================================================== */
 @media only screen and (max-width: 38em) {
+
 .main_nav ul li {
     width: 100%; margin: 10px 0; display: block; float: none;
 }
@@ -646,13 +647,13 @@ footer .one-sixth, footer .one-third, footer .one-half {width: 47%;}
 footer {width: 100%;}
 #main_header, .main_nav {width: 100%; margin-left: 0; margin-right: 0;}
 .main_content {margin-right: 0;}
-.main_nav ul {width: 70%; display: block; padding: 0; margin: 0 auto; clear: both; float: none;}
-.main_nav ul li {word-wrap:break-word ; width: 32%;  margin: 10px 0 10px 0; display: inline-block; float: none; text-align: center;}
+.main_nav ul {width: 100%; display: block; padding: 0; margin: 0 auto; clear: both; float: none;}
+.main_nav ul li {word-wrap:break-word ; width: 28%;  margin: 10px 0 10px 0; display: inline-block; float: none; text-align: center;}
 .main_nav ul li:first-child{margin: 10px 1% !important;}
 .one-sixth, .one-third {width: 32%; }
 footer.one-half {width: 46%;}
 .one-half {width: 98%;}
-.search-box {display: block; float: left; margin: 10px 10px 10px 10px;}
+.search-box {display: block; float: none; margin: 0 auto; width: 50%;}
 #top-logo {width: 100%;}
 #title , #title h1 { width: 100%;}
 }
