@@ -123,13 +123,13 @@ header {
   z-index: 1;
   width: 100%;
   color: #333;
-  background-color: #f8f8f8;
+  background-color: #ffffff;
   background-image: url("img/noise.png");
   position: fixed;
   border-bottom: 1px solid #d3d3d3;
 }
 #spacer {
-  height: 48px;
+  height: 83px;
 }
 #smlogo {
   float: left;
@@ -366,4 +366,22 @@ li a > span {
 
 #main table {
   margin-top: 1rem;
+}
+
+#blue {
+    clear: both;
+    min-height: 26px;
+    width:100%;
+    background-color: #1a2f38;
+    z-index: -1;
+    position: absolute;
+    margin-top: 57px;
+}
+
+#nav ul {
+    background-color: #1a2f38;
+}
+
+#nav ul li a{
+    color: #fff;
 }
