@@ -7,7 +7,31 @@
     <ul>
         @foreach (var menuItem in menuItems)
         {
-            <li>@Html.ActionLink(menuItem.menu_text, menuItem.menu_slug)</li>
+            if (menuItem.menu_id == 0)
+            {
+                <li>@Html.ActionLink(menuItem.menu_text, menuItem.menu_slug)</li>
+            }
+            else
+            {
+                //Get the sub menu items
+                IEnumerable<ThunderB_redesign.Models.menu_category> subMenuItems = (IEnumerable<ThunderB_redesign.Models.menu_category>)ViewData["SubMenuItems for " + menuItem.menu_id.ToString()];
+                
+                
+                
+                <li>
+                    <div>@menuItem.menu_text</div>
+                    <nav class="sec_nav">
+                        <ul>
+                            @foreach (var subMenuItem in subMenuItems)
+                            {
+                                <li>@Html.ActionLink(subMenuItem.menu_text, subMenuItem.menu_slug)</li>
+                            }
+                        </ul>
+                    </nav>
+                </li>
+            }
+
+
         }
     </ul>
 
@@ -18,3 +42,4 @@
 
     </div>
 </nav>
+

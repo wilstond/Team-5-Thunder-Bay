@@ -11,8 +11,14 @@ namespace ThunderB_redesign.Models
 
         public IEnumerable<menu_category> getMenuItems()
         {
-            var allMenuItems = menuObj.menu_categories.Select(x => x);
+            var allMenuItems = menuObj.menu_categories.Where(x => x.parent_id == 0);
             return allMenuItems;
+        }
+
+        public IEnumerable<menu_category> getSubMenuItemsByParentId(int parentId)
+        {
+            var subMenuItems = menuObj.menu_categories.Where(x => x.parent_id == parentId);
+            return subMenuItems;
         }
 
     }

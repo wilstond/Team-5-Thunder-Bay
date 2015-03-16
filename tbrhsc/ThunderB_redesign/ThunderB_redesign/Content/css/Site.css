@@ -168,6 +168,7 @@ body {
         background-color: #fff;
         width: 100%;
         box-sizing:border-box;
+        position: relative;
 
 
     }
@@ -366,12 +367,13 @@ footer {
         .main_nav ul li:last-child {margin-right: 0;} */
 
     
-            .main_nav ul li a {
+            .main_nav ul li a, .main_nav ul li div {
             text-decoration: none;
             display: block;
             font-size: 1.125rem;
             color: #fff;
             font-weight: 700;
+            cursor: pointer;
     }
     
     .search-box {
@@ -404,6 +406,49 @@ footer {
       
       
     }
+
+
+/* Secondary Navigation */
+
+.sec_nav {
+        background-color: #1f5e79;
+        position: absolute;
+        display: none;
+        /*width: 100%;*/
+        z-index: 100;
+        margin-top: 13px;
+        left: 0;
+        width: 100%;
+}
+    
+    .sec_nav ul {
+        width: 100%; 
+        /*float: left;*/
+        display: inline;
+    }
+    
+        .sec_nav ul li {
+        display: inline;
+        padding: 0 15px;
+        /*float: left;*/
+    }
+      /*  .main_nav ul li:first-child {margin-left: 0;}
+        .main_nav ul li:last-child {margin-right: 0;} */
+
+    
+            .sec_nav ul li a {
+            text-decoration: none;
+            display: block;
+            font-size: 1.125rem;
+            color: #fff;
+            font-weight: 700;
+    }
+
+            .display-menu {
+                display: inline;
+            }
+
+
     
 #top_nav {
        width: 415px;
@@ -423,9 +468,6 @@ footer {
             color: #1a2f38;
             font-size: 16px;
     }
-
-
-
 
 
 
