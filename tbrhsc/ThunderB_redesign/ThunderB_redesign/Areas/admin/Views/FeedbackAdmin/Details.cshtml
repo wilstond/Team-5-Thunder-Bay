@@ -1,0 +1,18 @@
+﻿@model ThunderB_redesign.Models.feedback
+
+@{
+    ViewBag.Title = "Feedback Details: " + @Model.topic;
+}
+
+<h2>Feedback Details</h2>
+
+<p><strong>Topic: </strong>@Html.DisplayFor(x => x.topic)</p>
+<p><strong>Feedback: </strong>@Html.DisplayFor(x => x.fbcontent)</p>
+<p><strong>Name: </strong>@Html.DisplayFor(x => x.name)</p>
+<p><strong>Email: </strong>@Html.DisplayFor(x => x.email)</p>
+
+
+<p>
+    @Html.ActionLink("Back", "Index", "feedback") |
+    @Html.ActionLink("Delete", "Delete", new { id = Model.Id })
+</p>
