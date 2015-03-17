@@ -1,0 +1,34 @@
+﻿@model ThunderB_redesign.Models.feedback
+@{
+    ViewBag.Title = "Feedback";
+}
+
+<h2>Submit feedback</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+
+    @Html.LabelFor(model => model.name)
+    @Html.TextBoxFor(model => model.name)
+    @Html.ValidationMessageFor(model => model.name, "*")
+    <br />
+    <br />
+    @Html.LabelFor(model => model.email)
+    @Html.TextBoxFor(model => model.email)
+    @Html.ValidationMessageFor(model => model.email, "*")
+    <br />
+    <br />
+    @Html.LabelFor(model => model.topic)
+    @Html.TextBoxFor(model => model.topic)
+    @Html.ValidationMessageFor(model => model.topic, "*")
+    <br />
+    <br />
+    @Html.LabelFor(model => model.fbcontent)
+    @Html.TextAreaFor(model => model.fbcontent, new { maxlength = "250" })
+    @Html.ValidationMessageFor(model => model.fbcontent, "*")
+    <br />
+    <br />
+    <input type="submit" value="Submit" />
+
+}
