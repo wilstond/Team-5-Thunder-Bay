@@ -57,7 +57,7 @@
             <li><a href="#"><i class="fa fa-book fa-lg"></i> <span>Bookings</span></a></li>
             <li><a href="@Url.Action("Index","FeedbackAdmin")"><i class="fa fa-comment fa-lg"></i> <span>Feedback</span></a></li>
             <li><a href="#"><i class="fa fa-check-square-o fa-lg"></i> <span>Subscriptions</span></a></li>
-            <li><a href="@Url.Action("Index", "Faq")"><i class="fa fa-question fa-lg"></i> <span>FAQ</span></a></li>
+            <li><a href="@Url.Action("Index", "FaqAdmin")"><i class="fa fa-question fa-lg"></i> <span>FAQ</span></a></li>
         </ul>
     </div>
 
@@ -66,9 +66,9 @@
     @RenderBody()
 
 </div>
-
+   
     @Scripts.Render("~/bundles/jquery")
-
+    @RenderSection("scripts", required: false)
     @Scripts.Render("~/Areas/admin/Content/AdminJS")
 
 </body>

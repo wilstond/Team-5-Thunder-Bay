@@ -358,7 +358,7 @@ li a > span {
   margin-bottom: 20px;
 }
 
-/* ------------- Table Styling*/
+
 
 @-moz-document url-prefix() {
   fieldset { display: table-cell; }
@@ -385,3 +385,26 @@ li a > span {
 #nav ul li a{
     color: #fff;
 }
+
+/* ------------- Table Styling*/
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+table {
+  width: 100%;
+  margin-bottom: 20px;
+}
+table > thead > tr > th,
+table > tbody > tr > th,
+table > tbody > tr > td
+ {
+  padding: 8px;
+  line-height: 1.4;
+  border-top: 1px solid #ddd;
+}
+
+
+
