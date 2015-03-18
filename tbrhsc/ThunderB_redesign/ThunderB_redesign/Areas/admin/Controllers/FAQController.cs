@@ -8,13 +8,14 @@ using ThunderB_redesign.Models;
 
 namespace ThunderB_redesign.Areas.admin.Controllers
 {
-    public class DashboardController : Controller
+    public class FaqController : Controller
     {
 
         public ActionResult Index()
         {
             return View();
         }
+
 
     }
 }

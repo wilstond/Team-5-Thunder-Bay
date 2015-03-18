@@ -17,7 +17,7 @@ namespace ThunderB_redesign.Areas.admin
             context.MapRoute(
                 "admin_default",
                 "admin/{controller}/{action}/{id}",
-                new { action = "Dashboard", id = UrlParameter.Optional }
+                new { action = "Index", id = UrlParameter.Optional }
             );
         }
     }

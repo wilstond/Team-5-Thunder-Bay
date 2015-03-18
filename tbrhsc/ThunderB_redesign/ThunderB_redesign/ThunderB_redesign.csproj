@@ -196,6 +196,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
+    <Compile Include="Areas\admin\Controllers\FAQController.cs" />
     <Compile Include="Areas\admin\Controllers\FeedbackAdminController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Areas\admin\Controllers\AdminController.cs" />
@@ -281,7 +282,7 @@
     <Content Include="Areas\admin\Views\Web.config" />
     <Content Include="Areas\admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\admin\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\admin\Views\Dashboard\Dashboard.cshtml" />
+    <Content Include="Areas\admin\Views\Dashboard\Index.cshtml" />
     <Content Include="img\donation.jpg" />
     <Content Include="img\logo-top.png" />
     <Content Include="img\main.png" />
@@ -302,6 +303,7 @@
     </Content>
     <Content Include="Areas\admin\Views\FeedbackAdmin\Index.cshtml" />
     <Content Include="Areas\admin\Views\FeedbackAdmin\Details.cshtml" />
+    <Content Include="Areas\admin\Views\Faq\Index.cshtml" />
     <None Include="Properties\PublishProfiles\TBRHSC-redesign.pubxml" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.3.js" />
