@@ -19,7 +19,7 @@ namespace ThunderB_redesign.Models
     }
 
     [Table("UserProfile")]
-    public partial class UserProfile
+    public class UserProfile
     {
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
