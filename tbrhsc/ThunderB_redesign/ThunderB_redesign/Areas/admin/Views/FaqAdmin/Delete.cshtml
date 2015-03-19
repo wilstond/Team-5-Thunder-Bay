@@ -1,0 +1,18 @@
+﻿@model ThunderB_redesign.Areas.admin.Models.Faq
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>
+    Are you sure you want to delete <em>@Model.question</em>
+</h2>
+@*form that deletes a record from the database after clicking on the delete button*@
+@using (Html.BeginForm())
+{
+    <div>
+        <input class="btn btn-primary btn-danger" type="submit" value="Delete" />
+    </div>
+}
+<div class="back">
+    @Html.ActionLink("Back to List", "Index")
+</div>
