@@ -7,7 +7,7 @@ namespace ThunderB_redesign.Models
 {
     public class MenuLinqClass
     {
-        MenuLinqDataContext menuObj = new MenuLinqDataContext();
+        LinqDataContext menuObj = new LinqDataContext();
 
         public IEnumerable<menu_category> getMenuItems()
         {

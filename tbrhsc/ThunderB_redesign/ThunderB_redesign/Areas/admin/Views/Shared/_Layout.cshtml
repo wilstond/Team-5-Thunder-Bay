@@ -42,7 +42,7 @@
         <span class="nav-btn"><i class="fa fa-navicon fa-lg"></i></span>
         <ul>
             <li><a href="#"><i class="fa fa-home fa-lg"></i> <span>Dashboard</span></a></li>
-            <li><a href="#"><i class="fa fa-pencil-square-o fa-lg"></i> <span>New Page</span></a></li>
+            <li><a href="~/admin/Page/"><i class="fa fa-pencil-square-o fa-lg"></i> <span>New Page</span></a></li>
             <li><a href="#"><i class="fa fa-credit-card fa-lg"></i> <span>Donations</span></a></li>
             <li><a href="#"><i class="fa fa-briefcase fa-lg"></i> <span>Jobs</span></a></li>
             <li><a href="#"><i class="fa fa-newspaper-o fa-lg"></i> <span>News</span></a></li>
@@ -57,7 +57,7 @@
             <li><a href="#"><i class="fa fa-book fa-lg"></i> <span>Bookings</span></a></li>
             <li><a href="@Url.Action("Index","FeedbackAdmin")"><i class="fa fa-comment fa-lg"></i> <span>Feedback</span></a></li>
             <li><a href="#"><i class="fa fa-check-square-o fa-lg"></i> <span>Subscriptions</span></a></li>
-            <li><a href="@Url.Action("Index", "FaqAdmin")"><i class="fa fa-question fa-lg"></i> <span>FAQ</span></a></li>
+            <li><a href="@Url.Action("Index", "Faq")"><i class="fa fa-question fa-lg"></i> <span>FAQ</span></a></li>
         </ul>
     </div>
 
@@ -66,9 +66,9 @@
     @RenderBody()
 
 </div>
-   
+
     @Scripts.Render("~/bundles/jquery")
-    @RenderSection("scripts", required: false)
+
     @Scripts.Render("~/Areas/admin/Content/AdminJS")
 
 </body>

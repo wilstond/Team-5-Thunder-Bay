@@ -7,7 +7,7 @@ namespace ThunderB_redesign.Models
 {
     public class FeedbackLinqClass
     {
-        FeedbackLinqDataContext objFeedback = new FeedbackLinqDataContext();
+        LinqDataContext objFeedback = new LinqDataContext();
 
         public IQueryable<feedback> getfeedback()
         {
