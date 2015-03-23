@@ -32,15 +32,24 @@ namespace ThunderB_redesign.Areas.admin.Controllers
 
         public ActionResult Delete(int id)
         {
-            var feedback = objFeedback.getFeedbackbyID(id);
-            if (feedback == null)
+            try
             {
-                return View("NotFound");
+                objFeedback.commitDelete(id);
+                return RedirectToAction("Index");
             }
-            else
+            catch
             {
-                return View(feedback);
+                return RedirectToAction("Index");
             }
+            //var feedback = objFeedback.getFeedbackbyID(id);
+            //if (feedback == null)
+            //{
+            //    return View("NotFound");
+            //}
+            //else
+            //{
+            //    return View(feedback);
+            //}
         }
 
         [HttpPost]
