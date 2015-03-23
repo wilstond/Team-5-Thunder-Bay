@@ -4,14 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-using ThunderB_redesign.Areas.admin.Models;
+//using ThunderB_redesign.Areas.admin.Models;
 using ThunderB_redesign.Models;
 
 namespace ThunderB_redesign.Controllers
 {
     public class PageController : Controller
     {
-        PublicDisplayPage objPage = new PublicDisplayPage();
+        PageLinqClass objPage = new PageLinqClass();
 
         PublicDisplayMenu objMenu = new PublicDisplayMenu();
 
@@ -81,6 +81,21 @@ namespace ThunderB_redesign.Controllers
 
             var selectPage = objPage.getPageByID(id);
 
+
+            //Display Details of the Page
+            return View(selectPage);
+
+        }
+
+        public ActionResult Detail(string page_slug)
+        {
+
+            var selectPage = objPage.getPageBySlug(page_slug);
+            if(selectPage == null)
+            {
+                // Redirect the user to the main page
+                return RedirectToAction("Index", "Home");
+            }
 
             //Display Details of the Page
             return View(selectPage);

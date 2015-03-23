@@ -5,3 +5,13 @@ tbrhsc/nbproject/project.xml
 tbrhsc/public_html/.htaccess
 tbrhsc/public_html/404.html
 tbrhsc/public_html/crossdomain.xml
+*.dll
+*.xml
+*.sln
+*.nupkg
+*._
+*.ps1
+tbrhsc/ThunderB_redesign/packages/*
+tbrhsc/ThunderB_redesign/packages/repositories.config
+tbrhsc/ThunderB_redesign/packages/repositories.config
+*.config

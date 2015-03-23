@@ -205,6 +205,7 @@
       <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Areas\admin\Models\PageLinqClass.cs" />
+    <Compile Include="Areas\admin\Models\PageValidation.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Areas\admin\Controllers\AdminController.cs" />
     <Compile Include="Controllers\DonationController.cs" />
@@ -227,8 +228,8 @@
     </Compile>
     <Compile Include="Models\MenuLinqClass.cs" />
     <Compile Include="Models\MenuModel.cs" />
+    <Compile Include="Models\PageLinqClass.cs" />
     <Compile Include="Models\PublicDisplayMenu.cs" />
-    <Compile Include="Models\PublicDisplayPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -464,6 +465,8 @@
     <Content Include="Views\Feedback\Index.cshtml" />
     <Content Include="Views\Donation\Index.cshtml" />
     <Content Include="Views\Page\Index.cshtml" />
+    <Content Include="Views\Page\Content.cshtml" />
+    <Content Include="Views\Page\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

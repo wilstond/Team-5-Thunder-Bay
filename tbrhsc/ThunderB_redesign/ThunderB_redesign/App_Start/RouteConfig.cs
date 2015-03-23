@@ -14,12 +14,38 @@ namespace ThunderB_redesign
                 routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
                 routes.MapRoute(
+                     name: "AccountRoute",
+                     url: "Account",
+                     defaults: new { controller = "Account", action = "Login" }
+                 );
+                
+               routes.MapRoute(
+                     name: "DonationRoute",
+                     url: "Donation",
+                     defaults: new { controller = "Donation", action = "Index"}
+                 );
+
+                routes.MapRoute(
+                      name: "FeedbackRoute",
+                      url: "Feedback",
+                      defaults: new { controller = "Feedback", action = "Index"}
+                  );
+
+                routes.MapRoute(
+                      name: "GetPageBySlug",
+                      url: "{page_slug}",
+                      defaults: new { controller = "Page", action = "Detail" }
+                  );
+
+                routes.MapRoute(
                     name: "Default",
                     url: "{controller}/{action}/{id}",
                     defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
                 );
 
-                routes.MapRoute("Home","", new { controller = "Home", action = "index", id = UrlParameter.Optional }
+                
+
+                routes.MapRoute("Home", "", new { controller = "Home", action = "index", id = UrlParameter.Optional }
                 );
 
 

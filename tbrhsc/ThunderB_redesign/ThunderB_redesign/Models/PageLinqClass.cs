@@ -7,7 +7,7 @@ using ThunderB_redesign.Models;
 
 namespace ThunderB_redesign.Models
 {
-    public class PublicDisplayPage
+    public class PageLinqClass
     {
         LinqDataContext objPage = new LinqDataContext(); //see line 26 in linq.designer.cs
 
@@ -22,7 +22,7 @@ namespace ThunderB_redesign.Models
         }
 
         //returns list of all Pages from selected menu_id
-        public IQueryable<page> getPagesByMenu(int _menu_id = 1)
+        public IQueryable<page> getPagesByMenu(int _menu_id = 0)
         {
             var AllPages = from x in objPage.pages where (x.menu_id == _menu_id && x.page_visibility.ToString() == "Y") select x;
 
@@ -34,6 +34,13 @@ namespace ThunderB_redesign.Models
         public page getPageByID(int _id)
         {
             var selPage = objPage.pages.SingleOrDefault(x => x.page_id == _id);
+            //select only row with page_id = _id
+            return selPage;
+        }
+
+        public page getPageBySlug(string _slug)
+        {
+            var selPage = objPage.pages.SingleOrDefault(x => x.page_slug == _slug);
             //select only row with page_id = _id
             return selPage;
         }

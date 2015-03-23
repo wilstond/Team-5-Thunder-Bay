@@ -13,12 +13,29 @@ using ThunderB_redesign.Models;
 
 namespace ThunderB_redesign.Controllers
 {
+
     [Authorize]
     [InitializeSimpleMembership]
     public class AccountController : Controller
     {
+        MenuLinqClass menuObj = new MenuLinqClass();
+
+        public AccountController(){
+            ViewData["MenuItems"] = menuObj.getMenuItems();
+
+            var menuItems = (IEnumerable<ThunderB_redesign.Models.menu_category>)ViewData["MenuItems"];
+
+            foreach (var menuItem in menuItems)
+            {
+                ViewData["SubMenuItems for " + menuItem.menu_id.ToString()] = menuObj.getSubMenuItemsByParentId(menuItem.menu_id);
+            }
+
+      }
+
+        
         //
         // GET: /Account/Login
+
 
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)

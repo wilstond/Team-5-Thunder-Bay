@@ -71,9 +71,7 @@
             @Html.DisplayFor(modelItem => item.meta_desc)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.page_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.page_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.page_id })
+            @Html.ActionLink("View", "Detail", new { item.page_slug }) |
         </td>
     </tr>
 }
