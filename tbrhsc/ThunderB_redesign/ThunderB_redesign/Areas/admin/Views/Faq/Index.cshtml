@@ -1,9 +1,37 @@
-﻿@{
-    ViewBag.Title = "Faq";
+﻿@model IEnumerable<ThunderB_redesign.Models.faq>
+
+@{
+    ViewBag.Title = "Index";
 }
 
+<h2>FAQs</h2>
 
-<article class="placeholder">
-    <h4>Some test content</h4>
-    <input type="submit" value="+ Add user" />
-</article>
+<a href="@Url.Action("Create")">Add Faq</a>
+
+<table>
+    <thead>
+    <th>Id</th>
+    <th>Question</th>
+    <th>Answer</th>
+    <th>Category</th>
+    <th>Action</th>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.id</td>
+                <td>@x.question</td>
+                <td>@x.answer</td>
+                <td>@x.category</td>
+                @*edit and delete actions, both take you to different forms*@
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = x.id }) &nbsp;&nbsp;
+                    @Html.ActionLink("Delete", "Delete", new { id = x.id })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+
+</table>

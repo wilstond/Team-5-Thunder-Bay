@@ -11,7 +11,7 @@ namespace ThunderB_redesign
 {
     public class SlugToIdAttribute : ActionFilterAttribute
     {
-        PageLinqClass objPage = new PageLinqClass();
+        PageClass objPage = new PageClass();
 
 
         //static readonly IDictionary<string, int> SlugIds = new Dictionary<string, int>

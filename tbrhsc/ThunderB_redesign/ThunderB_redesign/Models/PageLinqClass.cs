@@ -7,7 +7,7 @@ using ThunderB_redesign.Models;
 
 namespace ThunderB_redesign.Models
 {
-    public class PageLinqClass
+    public class PageClass
     {
         LinqDataContext objPage = new LinqDataContext(); //see line 26 in linq.designer.cs
 
