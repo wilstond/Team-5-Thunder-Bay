@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-//using ThunderB_redesign.Areas.admin.Models;
+using System.Web.Security;
 using ThunderB_redesign.Models;
 
 namespace ThunderB_redesign.Controllers
@@ -72,20 +72,20 @@ namespace ThunderB_redesign.Controllers
             }
         }
 
-        [SlugToId]
-        public ActionResult Content(int id)
-        {
-            var slug = RouteData.Values["slug"] as string;
-            ViewData["slug"] = slug;
-            ViewData["id"] = id;
+        //[SlugToId]
+        //public ActionResult Content(int id)
+        //{
+        //    var slug = RouteData.Values["slug"] as string;
+        //    ViewData["slug"] = slug;
+        //    ViewData["id"] = id;
 
-            var selectPage = objPage.getPageByID(id);
+        //    var selectPage = objPage.getPageByID(id);
 
 
-            //Display Details of the Page
-            return View(selectPage);
+        //    //Display Details of the Page
+        //    return View(selectPage);
 
-        }
+        //}
 
         public ActionResult Detail(string page_slug)
         {
@@ -96,8 +96,12 @@ namespace ThunderB_redesign.Controllers
                 // Redirect the user to the main page
                 return RedirectToAction("Index", "Home");
             }
-
+            int user_id = selectPage.user_id;
             //Display Details of the Page
+
+            //ViewData["author"] = user_id;
+
+            
             return View(selectPage);
 
         }

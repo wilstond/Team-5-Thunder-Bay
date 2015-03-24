@@ -4,83 +4,78 @@
 ViewBag.Title = @Model.page_title;
 ViewBag.MetaDescription = @Model.page_title;
 }
-<h2>Detail</h2>
 
-<div>
-    <h4>page</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
+    @*<dt>
             @Html.DisplayNameFor(model => model.user_id)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.user_id)
-        </dd>
+        </dd>*@
 
-        <dt>
+    @*<dt>
             @Html.DisplayNameFor(model => model.page_title)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.page_title)
-        </dd>
+        </dd>*@
+<div class="middle clearfix">
+    <div class="sidebar_right clearfix">
+        <div class="donate clearfix">
+            <h2>Help Make a Difference Donate to TBRHSC</h2>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.page_content)
-        </dt>
+        <section class="news_feed clearfix">
+            <header>Recent News</header>
+            <div class="news_title">
+                New Website for Thunder Bay Regional Health Sciences Centre
+            </div>
+            <div class="news_title">
+                New Website for Thunder Bay Regional Health Sciences Centre
+            </div>
+            <div class="news_title">
+                New Website for Thunder Bay Regional Health Sciences Centre
+            </div>
+            <div class="news_title bottom">
+                New Website for Thunder Bay Regional Health Sciences Centre
+            </div>
 
-        <dd>
+        </section>
+
+        <section class="emergency_info">
+            <h2>Emergency</h2>
+            <div class="emergency_content">
+                <ul>
+                    <li>Who to call</li>
+                    <li>Directions</li>
+                    <li>Maps</li>
+                    <li>Wait Times</li>
+                </ul>
+            </div>
+        </section>
+
+    </div>
+
+    <div class="main_content clearfix">
+        <section class="top_section clearfix top">
+            <header class="section-header">
+                <h1>@Model.page_title</h1>
+            </header>
+            <span class="date">@Model.page_created.DayOfWeek, @Model.page_created.Date.ToLongDateString() - by @ViewData["author"]</span>
+            <article>
             @Html.Raw(Model.page_content)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.page_created)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.page_created)
-        </dd>
+            @*<dt>
+                    @Html.DisplayNameFor(model => model.menu_id)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.menu_id)
-        </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.menu_id)
+                </dd>*@
+            </article>
+        </section>
 
-        <dd>
-            @Html.DisplayFor(model => model.menu_id)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.page_visibility)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.page_visibility)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.page_slug)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.page_slug)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.meta_title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.meta_title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.meta_desc)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.meta_desc)
-        </dd>
-
-    </dl>
-</div>
+    </div>
+ </div>

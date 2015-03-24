@@ -19,6 +19,7 @@
     @Styles.Render("~/Areas/admin/Content/AdminCss")
 
     @Scripts.Render("~/bundles/modernizr")
+    <script src="~/ckeditor/ckeditor.js" type="text/javascript"></script>
 
 </head>
 <body>
@@ -42,7 +43,7 @@
         <span class="nav-btn"><i class="fa fa-navicon fa-lg"></i></span>
         <ul>
             <li><a href="#"><i class="fa fa-home fa-lg"></i> <span>Dashboard</span></a></li>
-            <li><a href="~/admin/Page/"><i class="fa fa-pencil-square-o fa-lg"></i> <span>New Page</span></a></li>
+            <li><a href="@Url.Action("Index","PageAdmin")"><i class="fa fa-pencil-square-o fa-lg"></i> <span>New Page</span></a></li>
             <li><a href="#"><i class="fa fa-credit-card fa-lg"></i> <span>Donations</span></a></li>
             <li><a href="#"><i class="fa fa-briefcase fa-lg"></i> <span>Jobs</span></a></li>
             <li><a href="#"><i class="fa fa-newspaper-o fa-lg"></i> <span>News</span></a></li>

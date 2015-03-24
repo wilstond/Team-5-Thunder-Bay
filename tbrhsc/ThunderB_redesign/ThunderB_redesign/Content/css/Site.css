@@ -202,7 +202,8 @@ figure img {
         top: 0;
         border-left: 1px #B7B7B7 solid;
         right: 0;
-        position: absolute;
+        //position: absolute;
+        float:right;
         background-color: #fff;
         height: 100%;
         box-sizing:border-box;
@@ -243,6 +244,7 @@ footer {
         color: #fff;
         padding: 20px;
         box-sizing:border-box;
+        clear:both;
 
     }
     footer a{
