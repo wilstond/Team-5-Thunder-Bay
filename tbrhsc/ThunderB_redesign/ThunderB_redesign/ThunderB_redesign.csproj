@@ -199,13 +199,6 @@
     <Compile Include="Areas\admin\Controllers\FAQController.cs" />
     <Compile Include="Areas\admin\Controllers\FeedbackAdminController.cs" />
     <Compile Include="Areas\admin\Controllers\PageAdminController.cs" />
-    <Compile Include="Areas\admin\Models\PageLinq.designer.cs">
-      <DependentUpon>PageLinq.dbml</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Include="Areas\admin\Models\PageLinqClass.cs" />
-    <Compile Include="Areas\admin\Models\PageValidation.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Areas\admin\Controllers\AdminController.cs" />
     <Compile Include="Controllers\DonationController.cs" />
@@ -231,7 +224,7 @@
     <Compile Include="Models\MenuLinqClass.cs" />
     <Compile Include="Models\MenuModel.cs" />
     <Compile Include="Models\PageLinqClass.cs" />
-    <Compile Include="Models\PublicDisplayMenu.cs" />
+    <Compile Include="Models\PageModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -365,7 +358,7 @@
     <Content Include="Fonts\SourceSansPro-Regular.ttf" />
     <Content Include="Fonts\SourceSansPro-Semibold.ttf" />
     <Content Include="Fonts\SourceSansPro-SemiboldItalic.ttf" />
-    <Content Include="Areas\admin\Views\Web.config" />
+    <Content Include="Controllers\Web.config" />
     <Content Include="Areas\admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\admin\Views\Dashboard\Index.cshtml" />
@@ -379,16 +372,6 @@
     <Content Include="Content\fonts\FontAwesome.otf" />
     <Content Include="Areas\admin\Views\FeedbackAdmin\Index.cshtml" />
     <Content Include="Areas\admin\Views\FeedbackAdmin\Details.cshtml" />
-    <Content Include="Areas\admin\Models\PageLinq.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>PageLinq.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Areas\admin\Views\PageAdmin\Create.cshtml" />
-    <Content Include="Areas\admin\Views\PageAdmin\Delete.cshtml" />
-    <Content Include="Areas\admin\Views\PageAdmin\Details.cshtml" />
-    <Content Include="Areas\admin\Views\PageAdmin\Edit.cshtml" />
-    <Content Include="Areas\admin\Views\PageAdmin\Index.cshtml" />
     <Content Include="Content\tinymce\langs\readme.md" />
     <Content Include="Content\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
     <Content Include="Content\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
@@ -407,6 +390,12 @@
     <Content Include="Areas\admin\Views\Faq\Delete.cshtml" />
     <Content Include="Areas\admin\Views\Faq\Index.cshtml" />
     <Content Include="Areas\admin\Views\Faq\NotFound.cshtml" />
+    <Content Include="Areas\admin\Views\PageAdmin\Index.cshtml" />
+    <Content Include="Areas\admin\Views\PageAdmin\Details.cshtml" />
+    <Content Include="Areas\admin\Views\PageAdmin\Create.cshtml" />
+    <Content Include="Areas\admin\Views\PageAdmin\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\PageAdmin\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\PageAdmin\NotFound.cshtml" />
     <None Include="Properties\PublishProfiles\TBRHSC-redesign.pubxml" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -477,17 +466,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\admin\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Areas\admin\Models\PageLinq.dbml.layout">
-      <DependentUpon>PageLinq.dbml</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Models\Linq.dbml.layout">
