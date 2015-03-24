@@ -4,28 +4,24 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-using ThunderB_redesign.Areas.admin.Models;
+using ThunderB_redesign.Models;
 
 namespace ThunderB_redesign.Areas.admin.Controllers
 {
     public class PageAdminController : Controller
     {
         //creating new object
-
-        PageLinqClass objPage = new PageLinqClass();
         
-        //
-        // GET: /Admin/Page/
+        PageLinqClass objPage = new PageLinqClass();
 
+        // GET: admin/PageAdmin
         public ActionResult Index()
         {
             var AllPages = objPage.getPages();
             return View(AllPages);
         }
 
-        //
-        // GET: /Admin/Page/Details/5
-
+        // GET: admin/PageAdmin/Details/5
         public ActionResult Details(int id)
         {
             var selectPage = objPage.getPageByID(id);
@@ -42,19 +38,15 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             }
         }
 
-        //
-        // GET: /Admin/Page/Create
-
+        // GET: admin/PageAdmin/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        //
-        // POST: /Admin/Page/Create
-
+        // POST: admin/PageAdmin/Create
         [HttpPost]
-        public ActionResult Create(Page page)
+        public ActionResult Create(page page)
         {
             if (ModelState.IsValid)
             {
@@ -63,9 +55,10 @@ namespace ThunderB_redesign.Areas.admin.Controllers
                     objPage.commitInsert(page); // insert is committed and user is redirected to home page
                     return RedirectToAction("Index");
                 }
-                catch
+                catch (Exception ex)
                 {
-                    return View(); //if error occurs, user remains on insert page and no insert is commited
+                    //Content(ex.Message);
+                    return View(ex.Message); //if error occurs, user remains on insert page and no insert is commited
                 }
             }
             else
@@ -74,9 +67,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             }
         }
 
-        //
-        // GET: /Admin/Page/Edit/5
-
+        // GET: admin/PageAdmin/Edit/5
         public ActionResult Edit(int id)
         {
             var selPage = objPage.getPageByID(id); //variable is created to store selected Page
@@ -91,18 +82,18 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             }
         }
 
-        //
-        // POST: /Admin/Page/Edit/5
-
+        // POST: admin/PageAdmin/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, Page page)
+        public ActionResult Edit(int id, page page)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
                     //update is commited based on updated values and user redirected back to Details page 
-                    objPage.commitUpdate(id, page.page_title, page.user_id, page.page_content, page.page_created, page.menu_id, page.page_visibility, page.page_slug);
+                    objPage.commitUpdate(id, page.page_title, page.user_id, page.page_content, page.page_created,
+
+page.menu_id, page.page_visibility, page.page_slug);
                     return RedirectToAction("Details/" + id);
                 }
                 catch
@@ -112,12 +103,9 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             }
 
             return View();
-
         }
 
-        //
-        // GET: /Admin/Page/Delete/5
-
+        // GET: admin/PageAdmin/Delete/5
         public ActionResult Delete(int id)
         {
             var selPage = objPage.getPageByID(id);
@@ -131,11 +119,9 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             }
         }
 
-        //
-        // POST: /Admin/Page/Delete/5
-
+        // POST: admin/PageAdmin/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, Page page)
+        public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {
@@ -154,6 +140,5 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         {
             return View();
         }
-
     }
 }

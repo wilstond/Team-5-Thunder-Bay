@@ -7,17 +7,22 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
 using System.Web.Mvc;
 
-namespace ThunderB_redesign.Areas.admin.Models
+
+namespace ThunderB_redesign.Models
 {
-    [MetadataType(typeof(PageValidation))]
+    [MetadataType(typeof(PageModel))]
     public partial class page
     {
 
     }
 
     [Bind(Exclude = "page_id")]
-    public class PageValidation
+    public class PageModel
     {
+
+        [Required]
+        public int user_id { get; set; }
+
         [DisplayName("Page Title")]
         [Required]
         public string page_title { get; set; } //property names have to match column names
@@ -32,7 +37,15 @@ namespace ThunderB_redesign.Areas.admin.Models
         public DateTime page_created { get; set; }
 
         [DisplayName("Menu")]
-        [Required]
         public int menu_id { get; set; }
+
+        [Required]
+        public char page_visibility { get; set; }
+
+        public string page_slug { get; set; }
+
+        public string meta_title { get; set; }
+        public string meta_desc { get; set; }
+
     }
 }

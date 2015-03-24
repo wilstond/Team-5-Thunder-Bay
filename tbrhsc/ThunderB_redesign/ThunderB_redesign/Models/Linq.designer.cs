@@ -63,9 +63,6 @@ namespace ThunderB_redesign.Models
     partial void Inserttriage(triage instance);
     partial void Updatetriage(triage instance);
     partial void Deletetriage(triage instance);
-    partial void Insertpage(page instance);
-    partial void Updatepage(page instance);
-    partial void Deletepage(page instance);
     partial void Insertproduct(product instance);
     partial void Updateproduct(product instance);
     partial void Deleteproduct(product instance);
@@ -81,9 +78,9 @@ namespace ThunderB_redesign.Models
     partial void Insertappointment(appointment instance);
     partial void Updateappointment(appointment instance);
     partial void Deleteappointment(appointment instance);
-    partial void InsertUserProfile(UserProfile instance);
-    partial void UpdateUserProfile(UserProfile instance);
-    partial void DeleteUserProfile(UserProfile instance);
+    partial void Insertpage(page instance);
+    partial void Updatepage(page instance);
+    partial void Deletepage(page instance);
     #endregion
 		
 		public LinqDataContext() : 
@@ -204,14 +201,6 @@ namespace ThunderB_redesign.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<page> pages
-		{
-			get
-			{
-				return this.GetTable<page>();
-			}
-		}
-		
 		public System.Data.Linq.Table<product> products
 		{
 			get
@@ -252,11 +241,11 @@ namespace ThunderB_redesign.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<UserProfile> UserProfiles
+		public System.Data.Linq.Table<page> pages
 		{
 			get
 			{
-				return this.GetTable<UserProfile>();
+				return this.GetTable<page>();
 			}
 		}
 	}
@@ -1879,284 +1868,6 @@ namespace ThunderB_redesign.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.pages")]
-	public partial class page : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _page_id;
-		
-		private int _user_id;
-		
-		private string _page_title;
-		
-		private string _page_content;
-		
-		private System.DateTime _page_created;
-		
-		private int _menu_id;
-		
-		private char _page_visibility;
-		
-		private string _page_slug;
-		
-		private string _meta_title;
-		
-		private string _meta_desc;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onpage_idChanging(int value);
-    partial void Onpage_idChanged();
-    partial void Onuser_idChanging(int value);
-    partial void Onuser_idChanged();
-    partial void Onpage_titleChanging(string value);
-    partial void Onpage_titleChanged();
-    partial void Onpage_contentChanging(string value);
-    partial void Onpage_contentChanged();
-    partial void Onpage_createdChanging(System.DateTime value);
-    partial void Onpage_createdChanged();
-    partial void Onmenu_idChanging(int value);
-    partial void Onmenu_idChanged();
-    partial void Onpage_visibilityChanging(char value);
-    partial void Onpage_visibilityChanged();
-    partial void Onpage_slugChanging(string value);
-    partial void Onpage_slugChanged();
-    partial void Onmeta_titleChanging(string value);
-    partial void Onmeta_titleChanged();
-    partial void Onmeta_descChanging(string value);
-    partial void Onmeta_descChanged();
-    #endregion
-		
-		public page()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_page_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int page_id
-		{
-			get
-			{
-				return this._page_id;
-			}
-			set
-			{
-				if ((this._page_id != value))
-				{
-					this.Onpage_idChanging(value);
-					this.SendPropertyChanging();
-					this._page_id = value;
-					this.SendPropertyChanged("page_id");
-					this.Onpage_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", DbType="Int NOT NULL")]
-		public int user_id
-		{
-			get
-			{
-				return this._user_id;
-			}
-			set
-			{
-				if ((this._user_id != value))
-				{
-					this.Onuser_idChanging(value);
-					this.SendPropertyChanging();
-					this._user_id = value;
-					this.SendPropertyChanged("user_id");
-					this.Onuser_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_page_title", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string page_title
-		{
-			get
-			{
-				return this._page_title;
-			}
-			set
-			{
-				if ((this._page_title != value))
-				{
-					this.Onpage_titleChanging(value);
-					this.SendPropertyChanging();
-					this._page_title = value;
-					this.SendPropertyChanged("page_title");
-					this.Onpage_titleChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_page_content", DbType="Text", UpdateCheck=UpdateCheck.Never)]
-		public string page_content
-		{
-			get
-			{
-				return this._page_content;
-			}
-			set
-			{
-				if ((this._page_content != value))
-				{
-					this.Onpage_contentChanging(value);
-					this.SendPropertyChanging();
-					this._page_content = value;
-					this.SendPropertyChanged("page_content");
-					this.Onpage_contentChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_page_created", DbType="Date NOT NULL")]
-		public System.DateTime page_created
-		{
-			get
-			{
-				return this._page_created;
-			}
-			set
-			{
-				if ((this._page_created != value))
-				{
-					this.Onpage_createdChanging(value);
-					this.SendPropertyChanging();
-					this._page_created = value;
-					this.SendPropertyChanged("page_created");
-					this.Onpage_createdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_menu_id", DbType="Int NOT NULL")]
-		public int menu_id
-		{
-			get
-			{
-				return this._menu_id;
-			}
-			set
-			{
-				if ((this._menu_id != value))
-				{
-					this.Onmenu_idChanging(value);
-					this.SendPropertyChanging();
-					this._menu_id = value;
-					this.SendPropertyChanged("menu_id");
-					this.Onmenu_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_page_visibility", DbType="Char(1) NOT NULL")]
-		public char page_visibility
-		{
-			get
-			{
-				return this._page_visibility;
-			}
-			set
-			{
-				if ((this._page_visibility != value))
-				{
-					this.Onpage_visibilityChanging(value);
-					this.SendPropertyChanging();
-					this._page_visibility = value;
-					this.SendPropertyChanged("page_visibility");
-					this.Onpage_visibilityChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_page_slug", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string page_slug
-		{
-			get
-			{
-				return this._page_slug;
-			}
-			set
-			{
-				if ((this._page_slug != value))
-				{
-					this.Onpage_slugChanging(value);
-					this.SendPropertyChanging();
-					this._page_slug = value;
-					this.SendPropertyChanged("page_slug");
-					this.Onpage_slugChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_meta_title", DbType="VarChar(100)")]
-		public string meta_title
-		{
-			get
-			{
-				return this._meta_title;
-			}
-			set
-			{
-				if ((this._meta_title != value))
-				{
-					this.Onmeta_titleChanging(value);
-					this.SendPropertyChanging();
-					this._meta_title = value;
-					this.SendPropertyChanged("meta_title");
-					this.Onmeta_titleChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_meta_desc", DbType="VarChar(250)")]
-		public string meta_desc
-		{
-			get
-			{
-				return this._meta_desc;
-			}
-			set
-			{
-				if ((this._meta_desc != value))
-				{
-					this.Onmeta_descChanging(value);
-					this.SendPropertyChanging();
-					this._meta_desc = value;
-					this.SendPropertyChanged("meta_desc");
-					this.Onmeta_descChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.product")]
 	public partial class product : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -3019,67 +2730,259 @@ namespace ThunderB_redesign.Models
 		}
 	}
 	
-/*	[global::System.Data.Linq.Mapping.TableAttribute(Name="team5.UserProfile")]
-	public partial class UserProfile : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.pages")]
+	public partial class page : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _UserId;
+		private int _page_id;
 		
-		private string _UserName;
+		private int _user_id;
+		
+		private string _page_title;
+		
+		private string _page_content;
+		
+		private System.DateTime _page_created;
+		
+		private int _menu_id;
+		
+		private char _page_visibility;
+		
+		private string _page_slug;
+		
+		private string _meta_title;
+		
+		private string _meta_desc;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnUserIdChanging(int value);
-    partial void OnUserIdChanged();
-    partial void OnUserNameChanging(string value);
-    partial void OnUserNameChanged();
+    partial void Onpage_idChanging(int value);
+    partial void Onpage_idChanged();
+    partial void Onuser_idChanging(int value);
+    partial void Onuser_idChanged();
+    partial void Onpage_titleChanging(string value);
+    partial void Onpage_titleChanged();
+    partial void Onpage_contentChanging(string value);
+    partial void Onpage_contentChanged();
+    partial void Onpage_createdChanging(System.DateTime value);
+    partial void Onpage_createdChanged();
+    partial void Onmenu_idChanging(int value);
+    partial void Onmenu_idChanged();
+    partial void Onpage_visibilityChanging(char value);
+    partial void Onpage_visibilityChanged();
+    partial void Onpage_slugChanging(string value);
+    partial void Onpage_slugChanged();
+    partial void Onmeta_titleChanging(string value);
+    partial void Onmeta_titleChanged();
+    partial void Onmeta_descChanging(string value);
+    partial void Onmeta_descChanged();
     #endregion
 		
-		public UserProfile()
+		public page()
 		{
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int UserId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_page_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int page_id
 		{
 			get
 			{
-				return this._UserId;
+				return this._page_id;
 			}
 			set
 			{
-				if ((this._UserId != value))
+				if ((this._page_id != value))
 				{
-					this.OnUserIdChanging(value);
+					this.Onpage_idChanging(value);
 					this.SendPropertyChanging();
-					this._UserId = value;
-					this.SendPropertyChanged("UserId");
-					this.OnUserIdChanged();
+					this._page_id = value;
+					this.SendPropertyChanged("page_id");
+					this.Onpage_idChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="NVarChar(56) NOT NULL", CanBeNull=false)]
-		public string UserName
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", DbType="Int NOT NULL")]
+		public int user_id
 		{
 			get
 			{
-				return this._UserName;
+				return this._user_id;
 			}
 			set
 			{
-				if ((this._UserName != value))
+				if ((this._user_id != value))
 				{
-					this.OnUserNameChanging(value);
+					this.Onuser_idChanging(value);
 					this.SendPropertyChanging();
-					this._UserName = value;
-					this.SendPropertyChanged("UserName");
-					this.OnUserNameChanged();
+					this._user_id = value;
+					this.SendPropertyChanged("user_id");
+					this.Onuser_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_page_title", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string page_title
+		{
+			get
+			{
+				return this._page_title;
+			}
+			set
+			{
+				if ((this._page_title != value))
+				{
+					this.Onpage_titleChanging(value);
+					this.SendPropertyChanging();
+					this._page_title = value;
+					this.SendPropertyChanged("page_title");
+					this.Onpage_titleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_page_content", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string page_content
+		{
+			get
+			{
+				return this._page_content;
+			}
+			set
+			{
+				if ((this._page_content != value))
+				{
+					this.Onpage_contentChanging(value);
+					this.SendPropertyChanging();
+					this._page_content = value;
+					this.SendPropertyChanged("page_content");
+					this.Onpage_contentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_page_created", DbType="Date NOT NULL")]
+		public System.DateTime page_created
+		{
+			get
+			{
+				return this._page_created;
+			}
+			set
+			{
+				if ((this._page_created != value))
+				{
+					this.Onpage_createdChanging(value);
+					this.SendPropertyChanging();
+					this._page_created = value;
+					this.SendPropertyChanged("page_created");
+					this.Onpage_createdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_menu_id", DbType="Int NOT NULL")]
+		public int menu_id
+		{
+			get
+			{
+				return this._menu_id;
+			}
+			set
+			{
+				if ((this._menu_id != value))
+				{
+					this.Onmenu_idChanging(value);
+					this.SendPropertyChanging();
+					this._menu_id = value;
+					this.SendPropertyChanged("menu_id");
+					this.Onmenu_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_page_visibility", DbType="Char(1) NOT NULL")]
+		public char page_visibility
+		{
+			get
+			{
+				return this._page_visibility;
+			}
+			set
+			{
+				if ((this._page_visibility != value))
+				{
+					this.Onpage_visibilityChanging(value);
+					this.SendPropertyChanging();
+					this._page_visibility = value;
+					this.SendPropertyChanged("page_visibility");
+					this.Onpage_visibilityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_page_slug", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string page_slug
+		{
+			get
+			{
+				return this._page_slug;
+			}
+			set
+			{
+				if ((this._page_slug != value))
+				{
+					this.Onpage_slugChanging(value);
+					this.SendPropertyChanging();
+					this._page_slug = value;
+					this.SendPropertyChanged("page_slug");
+					this.Onpage_slugChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_meta_title", DbType="VarChar(100)")]
+		public string meta_title
+		{
+			get
+			{
+				return this._meta_title;
+			}
+			set
+			{
+				if ((this._meta_title != value))
+				{
+					this.Onmeta_titleChanging(value);
+					this.SendPropertyChanging();
+					this._meta_title = value;
+					this.SendPropertyChanged("meta_title");
+					this.Onmeta_titleChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_meta_desc", DbType="VarChar(250)")]
+		public string meta_desc
+		{
+			get
+			{
+				return this._meta_desc;
+			}
+			set
+			{
+				if ((this._meta_desc != value))
+				{
+					this.Onmeta_descChanging(value);
+					this.SendPropertyChanging();
+					this._meta_desc = value;
+					this.SendPropertyChanged("meta_desc");
+					this.Onmeta_descChanged();
 				}
 			}
 		}
@@ -3103,9 +3006,6 @@ namespace ThunderB_redesign.Models
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
-	} */
- 
+	}
 }
- 
-
 #pragma warning restore 1591

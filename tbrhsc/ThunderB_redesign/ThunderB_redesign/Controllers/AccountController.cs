@@ -21,6 +21,10 @@ namespace ThunderB_redesign.Controllers
         MenuLinqClass menuObj = new MenuLinqClass();
 
         public AccountController(){
+
+            //User.Identity.Name - login user name
+            //Roles.GetRolesForUser(User.Identity.Name)[0] - get role of the login user
+            //WebSecurity.GetUserId - get login user id 
             ViewData["MenuItems"] = menuObj.getMenuItems();
 
             var menuItems = (IEnumerable<ThunderB_redesign.Models.menu_category>)ViewData["MenuItems"];

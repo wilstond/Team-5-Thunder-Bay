@@ -1,86 +1,101 @@
-﻿@model ThunderB_redesign.Areas.admin.Models.Page
+﻿@model ThunderB_redesign.Models.page
 
 @{
     ViewBag.Title = "Edit";
 }
 
-
 <h2>Edit</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm())
+{
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
-
-    <fieldset>
-        <legend>Page</legend>
-
+    
+    <div class="form-horizontal">
+        <h4>page</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.page_id)
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.page_title)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.page_title)
-            @Html.ValidationMessageFor(model => model.page_title)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.user_id)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.user_id)
-            @Html.ValidationMessageFor(model => model.user_id)
+        <div class="form-group">
+            @Html.LabelFor(model => model.user_id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.user_id, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.user_id, "", new { @class = "text-danger" })
+            </div>
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.page_content)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.page_content)
-            @Html.ValidationMessageFor(model => model.page_content)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.page_created)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.page_created)
-            @Html.ValidationMessageFor(model => model.page_created)
+        <div class="form-group">
+            @Html.LabelFor(model => model.page_title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.page_title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.page_title, "", new { @class = "text-danger" })
+            </div>
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.menu_id)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.menu_id)
-            @Html.ValidationMessageFor(model => model.menu_id)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.page_visibility)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.page_visibility)
-            @Html.ValidationMessageFor(model => model.page_visibility)
+        <div class="form-group">
+            @Html.LabelFor(model => model.page_content, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.page_content, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.page_content, "", new { @class = "text-danger" })
+            </div>
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.page_slug)
+        <div class="form-group">
+            @Html.LabelFor(model => model.page_created, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.page_created, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.page_created, "", new { @class = "text-danger" })
+            </div>
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.page_slug)
-            @Html.ValidationMessageFor(model => model.page_slug)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.menu_id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.menu_id, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.menu_id, "", new { @class = "text-danger" })
+            </div>
         </div>
-        <p>
-            <input type="submit" value="Save" />
-        </p>
-    </fieldset>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.page_visibility, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.page_visibility, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.page_visibility, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.page_slug, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.page_slug, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.page_slug, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.meta_title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.meta_title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.meta_title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.meta_desc, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.meta_desc, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.meta_desc, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
 }
 
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
-
-    @Scripts.Render("~/bundles/jqueryval")
-

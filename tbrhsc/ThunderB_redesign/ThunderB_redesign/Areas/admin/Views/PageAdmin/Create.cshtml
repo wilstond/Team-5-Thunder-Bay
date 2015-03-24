@@ -1,8 +1,4 @@
-﻿@model ThunderB_redesign.Areas.admin.Models.Page
-@using ThunderB_redesign.Helpers
-
-
-
+﻿@model ThunderB_redesign.Models.page
 
 @{
     ViewBag.Title = "Create";
@@ -10,120 +6,94 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) {
+@using (Html.BeginForm()) 
+{
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
-
-    <fieldset>
-        <legend>Page</legend>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.page_title)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.page_title)
-            @Html.ValidationMessageFor(model => model.page_title)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.user_id)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.user_id)
-            @Html.ValidationMessageFor(model => model.user_id)
+    
+    <div class="form-horizontal">
+        <h4>page</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.user_id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.user_id, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.user_id, "", new { @class = "text-danger" })
+            </div>
         </div>
 
-        @*<div class="editor-label">
-            @Html.LabelFor(model => model.page_content)
-        </div>*@
-
-        @*//Label and Rich Text Editor to add content
-        //I followed YouTube tutorial to incorporate TinyMCE editor into MVC
-        // YouTube video url is : https://www.youtube.com/watch?v=b4-3CAQVwW8*@
-
-        <h3>@Html.LabelFor(model => model.page_content)</h3>
-
-        @Html.RichTextEditorFor("page_content", "Type Story content here...")
-
-        @*//TinyMCE installation*@
-
-       @Scripts.Render("/Scripts/jquery-1.8.2.min.js")
-        <script type="text/javascript" src="~/Content/tinymce/tinymce.min.js"></script>
-        <script type="text/javascript">
-        /*
-        all available plugins:
-            "advlist autolink lists link image charmap print preview hr anchor pagebreak",
-            "searchreplace wordcount visualblocks visualchars code fullscreen",
-            "insertdatetime media nonbreaking save table contextmenu directionality",
-            "emoticons template paste textcolor colorpicker textpattern"
-         */
-        tinymce.init({
-            selector: "textarea",
-            theme: "modern",
-            /*encoding: "xml",*/
-            plugins: [
-                "advlist autolink lists image link charmap print preview hr anchor pagebreak",
-                "searchreplace wordcount visualblocks visualchars code fullscreen",
-                "insertdatetime media nonbreaking save table contextmenu directionality",
-                "template paste textcolor colorpicker textpattern"
-            ],
-            toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
-            toolbar2: "print preview media | forecolor backcolor emoticons",
-            image_advtab: true,
-            templates: [
-                { title: 'Test template 1', content: 'Test 1' },
-                { title: 'Test template 2', content: 'Test 2' }
-            ]
-        });
-        </script>
-
-        @*<div class="editor-field">
-            @Html.EditorFor(model => model.page_content)
-            @Html.ValidationMessageFor(model => model.page_content)
-        </div>*@
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.page_created)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.page_created)
-            @Html.ValidationMessageFor(model => model.page_created)
+        <div class="form-group">
+            @Html.LabelFor(model => model.page_title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.page_title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.page_title, "", new { @class = "text-danger" })
+            </div>
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.menu_id)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.menu_id)
-            @Html.ValidationMessageFor(model => model.menu_id)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.page_visibility)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.page_visibility)
-            @Html.ValidationMessageFor(model => model.page_visibility)
+        <div class="form-group">
+            @Html.LabelFor(model => model.page_content, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.page_content, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.page_content, "", new { @class = "text-danger" })
+            </div>
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.page_slug)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.page_slug)
-            @Html.ValidationMessageFor(model => model.page_slug)
+        <div class="form-group">
+            @Html.LabelFor(model => model.page_created, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.page_created, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.page_created, "", new { @class = "text-danger" })
+            </div>
         </div>
 
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>
+        <div class="form-group">
+            @Html.LabelFor(model => model.menu_id, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.menu_id, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.menu_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.page_visibility, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.page_visibility, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.page_visibility, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.page_slug, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.page_slug, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.page_slug, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.meta_title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.meta_title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.meta_title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.meta_desc, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.meta_desc, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.meta_desc, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
 }
 
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
-
-    @Scripts.Render("~/bundles/jqueryval")
-

@@ -11,9 +11,9 @@ namespace ThunderB_redesign.Controllers
 {
     public class PageController : Controller
     {
-        PageClass objPage = new PageClass();
+        PageLinqClass objPage = new PageLinqClass();
 
-        PublicDisplayMenu objMenu = new PublicDisplayMenu();
+        //PublicDisplayMenu objMenu = new PublicDisplayMenu();
 
 
         //

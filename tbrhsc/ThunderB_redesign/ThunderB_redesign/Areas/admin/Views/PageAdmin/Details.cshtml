@@ -1,63 +1,90 @@
-﻿@model ThunderB_redesign.Areas.admin.Models.Page
+﻿@model ThunderB_redesign.Models.page
 
-@ViewBag.Title = "Details"
-
+@{
+    ViewBag.Title = "Details";
+}
 
 <h2>Details</h2>
 
-<fieldset>
-    <legend>Page</legend>
+<div>
+    <h4>page</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.user_id)
+        </dt>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.page_title)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.page_title)
-    </div>
+        <dd>
+            @Html.DisplayFor(model => model.user_id)
+        </dd>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.user_id)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.user_id)
-    </div>
+        <dt>
+            @Html.DisplayNameFor(model => model.page_title)
+        </dt>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.page_content)
-    </div>
-    <div class="display-field">
-        @Html.Raw(Model.page_content)
-    </div>
+        <dd>
+            @Html.DisplayFor(model => model.page_title)
+        </dd>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.page_created)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.page_created)
-    </div>
+        <dt>
+            @Html.DisplayNameFor(model => model.page_content)
+        </dt>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.menu_id)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.menu_id)
-    </div>
+        <dd>
+            @Html.DisplayFor(model => model.page_content)
+        </dd>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.page_visibility)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.page_visibility)
-    </div>
+        <dt>
+            @Html.DisplayNameFor(model => model.page_created)
+        </dt>
 
-    <div class="display-label">
-        @Html.DisplayNameFor(model => model.page_slug)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.page_slug)
-    </div>
-</fieldset>
+        <dd>
+            @Html.DisplayFor(model => model.page_created)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.menu_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.menu_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.page_visibility)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.page_visibility)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.page_slug)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.page_slug)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.meta_title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.meta_title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.meta_desc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.meta_desc)
+        </dd>
+
+    </dl>
+</div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.page_id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.page_id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

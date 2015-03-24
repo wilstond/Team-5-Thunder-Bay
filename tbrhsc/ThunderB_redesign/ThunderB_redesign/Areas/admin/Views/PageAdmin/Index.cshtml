@@ -1,17 +1,21 @@
-﻿@model IEnumerable<ThunderB_redesign.Areas.admin.Models.Page>
+﻿@model IEnumerable<ThunderB_redesign.Models.page>
 
 @{
     ViewBag.Title = "Index";
 }
 
+<h2>Index</h2>
 
-<table>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.page_title)
+            @Html.DisplayNameFor(model => model.user_id)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.user_id)
+            @Html.DisplayNameFor(model => model.page_title)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.page_content)
@@ -25,16 +29,25 @@
         <th>
             @Html.DisplayNameFor(model => model.page_visibility)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.page_slug)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.meta_title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.meta_desc)
+        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.page_title)
+            @Html.DisplayFor(modelItem => item.user_id)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.user_id)
+            @Html.DisplayFor(modelItem => item.page_title)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.page_content)
@@ -47,6 +60,15 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.page_visibility)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.page_slug)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.meta_title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.meta_desc)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.page_id }) |
