@@ -239,6 +239,7 @@
     <Content Include="Areas\admin\Content\AdminJS\admin.js" />
     <Content Include="Content\css\font-awesome.css" />
     <Content Include="Content\css\font-awesome.min.css" />
+    <Content Include="Content\css\form_styles.css" />
     <Content Include="Content\css\Site_Donation.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\css\normalize.css" />
