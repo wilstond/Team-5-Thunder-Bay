@@ -8,12 +8,12 @@ using ThunderB_redesign.Models;
 
 namespace ThunderB_redesign.Areas.admin.Controllers
 {
-    public class ERController : Controller
+    public class ERAdminController : Controller
     {
         Int16 numDoctors = 2;
         MenuLinqClass menuObj = new MenuLinqClass();
 
-        public ERController()
+        public ERAdminController()
         {
             ViewData["MenuItems"] = menuObj.getMenuItems();
 

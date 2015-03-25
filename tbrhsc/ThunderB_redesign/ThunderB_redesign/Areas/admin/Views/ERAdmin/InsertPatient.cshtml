@@ -1,6 +1,6 @@
 ﻿@model ThunderB_redesign.Models.triage
 
-@using (Html.BeginForm("Insert", "ER", FormMethod.Post))
+@using (Html.BeginForm("Insert", "ERAdmin", FormMethod.Post))
 {
     <table border="1" cellpadding="10">
 
@@ -17,10 +17,10 @@
 
             <td>
                 <input type="submit" value="Save"
-                       formaction="~/admin/ER/Insert" />
+                       formaction="~/admin/ERAdmin/Insert" />
                 &nbsp;&nbsp;
                 <input type="submit" value="Cancel"
-                       formaction="~/admin/ER/Index" />
+                       formaction="~/admin/ERAdmin/Index" />
             </td>
         </tr>
     </table>

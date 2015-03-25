@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
-    }
+}
 
 <h1>List of ER cases</h1>
 <h2>@ViewBag.numDoctors doctors on duty. Total wait time : @ViewBag.TotalWait</h2>
@@ -18,40 +18,41 @@
         @{
             foreach (var item in Model.ERpatients)
             {
-              if (Model.SelectedERpatient != null)
+                if (Model.SelectedERpatient != null)
                 {
                     if (item.case_id == Model.SelectedERpatient.case_id)
                     {
 
                         @:<tr class="selected_item" style="font-weight:bold;">
                             }
-                            else
-                            {
-                            @:<tr>
+                    else
+                    {
+                        @:<tr>
                             }
-                            }
-                            else
-                            {
-                            @:<tr>
+                }
+                else
+                {
+                    @:<tr>
                             }
                             <td>@item.case_id</td>
                             <td>@item.patient_name</td>
                             <td>
-                                <input type="submit" formaction="~/admin/ER/Select/@item.case_id"
+                                <input type="submit" formaction="~/admin/ERAdmin/Select/@item.case_id"
                                        value="Select" />
                             </td>
                             <td>
-                                <input type="submit" formaction="~/admin/ER/Delete/@item.case_id"
+                                <input type="submit" formaction="~/admin/ERAdmin/Delete/@item.case_id"
                                        value="Delete" />
                             </td>
                             @:</tr>
-                        
-                  }
+
+
+            }
 
         }
     </table>
     <br /><br />
-    <input type="submit" value="Add new patient" formaction="~/admin/ER/New" />
+    <input type="submit" value="Add new patient" formaction="~/admin/ERAdmin/New" />
 </form>
 <br /><br />
 @{

@@ -1,0 +1,23 @@
+﻿@model ThunderB_redesign.Models.triage
+
+@{
+    ViewBag.Title = "Emergency Room";
+}
+
+<h2>Emergency Room</h2>
+
+<div id="erm_holder">
+    @Html.Partial("Monitor")
+</div>
+@Scripts.Render("~/bundles/jquery")
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        setInterval(function () {
+            $('#erm_holder').load('/ER/Monitor');
+        }, 3000); // every 3 sec
+    });
+
+</script>
