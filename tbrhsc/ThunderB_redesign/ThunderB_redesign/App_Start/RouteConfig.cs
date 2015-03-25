@@ -37,6 +37,12 @@ namespace ThunderB_redesign
                       defaults: new { controller = "Faq", action = "Index" }
                   );
 
+                routes.MapRoute(
+                      name: "AlertRoute",
+                      url: "Alert",
+                      defaults: new { controller = "Alert", action = "Index" }
+                  );
+
 
                 routes.MapRoute(
                       name: "GetPageBySlug",
