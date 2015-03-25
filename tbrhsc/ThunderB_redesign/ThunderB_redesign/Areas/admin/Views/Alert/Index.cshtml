@@ -1,0 +1,21 @@
+﻿@model IEnumerable<ThunderB_redesign.Areas.admin.Models.AlertTable>
+
+@{
+    ViewBag.Title = "Index";
+    List<SelectListItem> alerts = new List<SelectListItem>();
+    alerts.Add(new SelectListItem() { Text = "", Value = "", Selected = true });
+    foreach (var x in Model)
+    {
+        alerts.Add(new SelectListItem() { Text = x.alert, Value = x.alert });
+    }
+}
+
+<h2>Post Alert</h2>
+
+@using (Html.BeginForm())
+{
+
+    @Html.DropDownList("Alerts", new SelectList(alerts, "Value", "Text"));
+
+    <input type="submit" value="Post" />
+}
