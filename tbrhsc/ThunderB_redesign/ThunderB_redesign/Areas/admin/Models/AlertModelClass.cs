@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ThunderB_redesign.Areas.admin.Models
+namespace ThunderB_redesign.Models
 {
     public class AlertModelClass
     {
