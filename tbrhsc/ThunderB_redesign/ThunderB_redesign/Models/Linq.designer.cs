@@ -60,9 +60,6 @@ namespace ThunderB_redesign.Models
     partial void Insertemergency_level(emergency_level instance);
     partial void Updateemergency_level(emergency_level instance);
     partial void Deleteemergency_level(emergency_level instance);
-    partial void Inserttriage(triage instance);
-    partial void Updatetriage(triage instance);
-    partial void Deletetriage(triage instance);
     partial void Insertproduct(product instance);
     partial void Updateproduct(product instance);
     partial void Deleteproduct(product instance);
@@ -81,6 +78,9 @@ namespace ThunderB_redesign.Models
     partial void Insertpage(page instance);
     partial void Updatepage(page instance);
     partial void Deletepage(page instance);
+    partial void Inserttriage(triage instance);
+    partial void Updatetriage(triage instance);
+    partial void Deletetriage(triage instance);
     #endregion
 		
 		public LinqDataContext() : 
@@ -193,14 +193,6 @@ namespace ThunderB_redesign.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<triage> triages
-		{
-			get
-			{
-				return this.GetTable<triage>();
-			}
-		}
-		
 		public System.Data.Linq.Table<product> products
 		{
 			get
@@ -246,6 +238,14 @@ namespace ThunderB_redesign.Models
 			get
 			{
 				return this.GetTable<page>();
+			}
+		}
+		
+		public System.Data.Linq.Table<triage> triages
+		{
+			get
+			{
+				return this.GetTable<triage>();
 			}
 		}
 	}
@@ -1686,188 +1686,6 @@ namespace ThunderB_redesign.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.triage")]
-	public partial class triage : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _case_id;
-		
-		private string _patient_name;
-		
-		private System.DateTime _arrival;
-		
-		private System.DateTime _discharge;
-		
-		private int _em_id;
-		
-		private int _dr_id;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Oncase_idChanging(int value);
-    partial void Oncase_idChanged();
-    partial void Onpatient_nameChanging(string value);
-    partial void Onpatient_nameChanged();
-    partial void OnarrivalChanging(System.DateTime value);
-    partial void OnarrivalChanged();
-    partial void OndischargeChanging(System.DateTime value);
-    partial void OndischargeChanged();
-    partial void Onem_idChanging(int value);
-    partial void Onem_idChanged();
-    partial void Ondr_idChanging(int value);
-    partial void Ondr_idChanged();
-    #endregion
-		
-		public triage()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_case_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int case_id
-		{
-			get
-			{
-				return this._case_id;
-			}
-			set
-			{
-				if ((this._case_id != value))
-				{
-					this.Oncase_idChanging(value);
-					this.SendPropertyChanging();
-					this._case_id = value;
-					this.SendPropertyChanged("case_id");
-					this.Oncase_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_patient_name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string patient_name
-		{
-			get
-			{
-				return this._patient_name;
-			}
-			set
-			{
-				if ((this._patient_name != value))
-				{
-					this.Onpatient_nameChanging(value);
-					this.SendPropertyChanging();
-					this._patient_name = value;
-					this.SendPropertyChanged("patient_name");
-					this.Onpatient_nameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_arrival", DbType="DateTime NOT NULL")]
-		public System.DateTime arrival
-		{
-			get
-			{
-				return this._arrival;
-			}
-			set
-			{
-				if ((this._arrival != value))
-				{
-					this.OnarrivalChanging(value);
-					this.SendPropertyChanging();
-					this._arrival = value;
-					this.SendPropertyChanged("arrival");
-					this.OnarrivalChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_discharge", DbType="DateTime NOT NULL")]
-		public System.DateTime discharge
-		{
-			get
-			{
-				return this._discharge;
-			}
-			set
-			{
-				if ((this._discharge != value))
-				{
-					this.OndischargeChanging(value);
-					this.SendPropertyChanging();
-					this._discharge = value;
-					this.SendPropertyChanged("discharge");
-					this.OndischargeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_em_id", DbType="Int NOT NULL")]
-		public int em_id
-		{
-			get
-			{
-				return this._em_id;
-			}
-			set
-			{
-				if ((this._em_id != value))
-				{
-					this.Onem_idChanging(value);
-					this.SendPropertyChanging();
-					this._em_id = value;
-					this.SendPropertyChanged("em_id");
-					this.Onem_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dr_id", DbType="Int NOT NULL")]
-		public int dr_id
-		{
-			get
-			{
-				return this._dr_id;
-			}
-			set
-			{
-				if ((this._dr_id != value))
-				{
-					this.Ondr_idChanging(value);
-					this.SendPropertyChanging();
-					this._dr_id = value;
-					this.SendPropertyChanged("dr_id");
-					this.Ondr_idChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.product")]
 	public partial class product : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2983,6 +2801,188 @@ namespace ThunderB_redesign.Models
 					this._meta_desc = value;
 					this.SendPropertyChanged("meta_desc");
 					this.Onmeta_descChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.triage")]
+	public partial class triage : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _case_id;
+		
+		private string _patient_name;
+		
+		private System.DateTime _arrival;
+		
+		private System.DateTime _discharge;
+		
+		private int _em_id;
+		
+		private int _dr_id;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Oncase_idChanging(int value);
+    partial void Oncase_idChanged();
+    partial void Onpatient_nameChanging(string value);
+    partial void Onpatient_nameChanged();
+    partial void OnarrivalChanging(System.DateTime value);
+    partial void OnarrivalChanged();
+    partial void OndischargeChanging(System.DateTime value);
+    partial void OndischargeChanged();
+    partial void Onem_idChanging(int value);
+    partial void Onem_idChanged();
+    partial void Ondr_idChanging(int value);
+    partial void Ondr_idChanged();
+    #endregion
+		
+		public triage()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_case_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int case_id
+		{
+			get
+			{
+				return this._case_id;
+			}
+			set
+			{
+				if ((this._case_id != value))
+				{
+					this.Oncase_idChanging(value);
+					this.SendPropertyChanging();
+					this._case_id = value;
+					this.SendPropertyChanged("case_id");
+					this.Oncase_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_patient_name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string patient_name
+		{
+			get
+			{
+				return this._patient_name;
+			}
+			set
+			{
+				if ((this._patient_name != value))
+				{
+					this.Onpatient_nameChanging(value);
+					this.SendPropertyChanging();
+					this._patient_name = value;
+					this.SendPropertyChanged("patient_name");
+					this.Onpatient_nameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_arrival", DbType="DateTime NOT NULL")]
+		public System.DateTime arrival
+		{
+			get
+			{
+				return this._arrival;
+			}
+			set
+			{
+				if ((this._arrival != value))
+				{
+					this.OnarrivalChanging(value);
+					this.SendPropertyChanging();
+					this._arrival = value;
+					this.SendPropertyChanged("arrival");
+					this.OnarrivalChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_discharge", DbType="DateTime NOT NULL")]
+		public System.DateTime discharge
+		{
+			get
+			{
+				return this._discharge;
+			}
+			set
+			{
+				if ((this._discharge != value))
+				{
+					this.OndischargeChanging(value);
+					this.SendPropertyChanging();
+					this._discharge = value;
+					this.SendPropertyChanged("discharge");
+					this.OndischargeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_em_id", DbType="Int NOT NULL")]
+		public int em_id
+		{
+			get
+			{
+				return this._em_id;
+			}
+			set
+			{
+				if ((this._em_id != value))
+				{
+					this.Onem_idChanging(value);
+					this.SendPropertyChanging();
+					this._em_id = value;
+					this.SendPropertyChanged("em_id");
+					this.Onem_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dr_id", DbType="Int NOT NULL")]
+		public int dr_id
+		{
+			get
+			{
+				return this._dr_id;
+			}
+			set
+			{
+				if ((this._dr_id != value))
+				{
+					this.Ondr_idChanging(value);
+					this.SendPropertyChanging();
+					this._dr_id = value;
+					this.SendPropertyChanged("dr_id");
+					this.Ondr_idChanged();
 				}
 			}
 		}

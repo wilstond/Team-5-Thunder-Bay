@@ -196,6 +196,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
+    <Compile Include="Areas\admin\Controllers\ERController.cs" />
     <Compile Include="Areas\admin\Controllers\FAQController.cs" />
     <Compile Include="Areas\admin\Controllers\FeedbackAdminController.cs" />
     <Compile Include="Areas\admin\Controllers\PageAdminController.cs" />
@@ -225,6 +226,8 @@
     <Compile Include="Models\MenuModel.cs" />
     <Compile Include="Models\PageLinqClass.cs" />
     <Compile Include="Models\PageModel.cs" />
+    <Compile Include="Models\TriageModel.cs" />
+    <Compile Include="Models\TriageViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -672,6 +675,10 @@
     <Content Include="ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.fla" />
     <Content Include="ckeditor\samples\sample_posteddata.php" />
     <Content Include="ckeditor\skins\moono\readme.md" />
+    <Content Include="Areas\admin\Views\ER\EditPatient.cshtml" />
+    <Content Include="Areas\admin\Views\ER\Index.cshtml" />
+    <Content Include="Areas\admin\Views\ER\InsertPatient.cshtml" />
+    <Content Include="Areas\admin\Views\ER\ShowPatient.cshtml" />
     <None Include="Properties\PublishProfiles\TBRHSC-redesign.pubxml" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />

@@ -84,16 +84,6 @@
       <Column Name="em_duration_hrs" Type="System.Decimal" DbType="Decimal(4,2) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.triage" Member="triages">
-    <Type Name="triage">
-      <Column Name="case_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="patient_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="arrival" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="discharge" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="em_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="dr_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
   <Table Name="dbo.product" Member="products">
     <Type Name="product">
       <Column Name="prd_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -154,6 +144,16 @@
       <Column Name="page_slug" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="meta_title" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Column Name="meta_desc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.triage" Member="triages">
+    <Type Name="triage">
+      <Column Name="case_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="patient_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="arrival" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="discharge" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="em_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="dr_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
 </Database>

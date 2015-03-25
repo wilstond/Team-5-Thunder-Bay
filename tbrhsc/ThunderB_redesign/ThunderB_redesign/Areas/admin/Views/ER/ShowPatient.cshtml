@@ -1,0 +1,30 @@
+﻿@model ThunderB_redesign.Models.triage
+
+@using (Html.BeginForm("Edit", "ER", FormMethod.Post))
+{
+    <table border="1" cellpadding="10">
+
+        <tr>
+            <td>Patient Name :</td>
+
+            <td>Arrived :</td>
+
+            <td>Discharged :</td>
+
+            <td>Actions</td>
+        </tr>
+        <tr>
+            <td>@Model.patient_name</td>
+            <td>@Model.arrival</td>
+            <td>@Model.discharge</td>
+
+            <td>
+                <input type="submit" value="Edit"
+                       formaction="~/admin/ER/Edit/@Model.case_id" />
+                &nbsp;&nbsp;
+                <input type="submit" value="Cancel"
+                       formaction="~/admin/ER/Index" />
+            </td>
+        </tr>
+    </table>
+}
