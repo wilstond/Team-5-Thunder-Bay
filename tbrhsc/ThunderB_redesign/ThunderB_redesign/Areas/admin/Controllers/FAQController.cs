@@ -8,7 +8,7 @@ using ThunderB_redesign.Models;
 
 namespace ThunderB_redesign.Areas.admin.Controllers
 {
-    public class FaqController : Controller
+    public class AdminFaqController : Controller
     {
         FaqClass objFaq = new FaqClass(); 
 

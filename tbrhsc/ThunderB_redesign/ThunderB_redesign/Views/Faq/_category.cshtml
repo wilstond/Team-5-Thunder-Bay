@@ -1,0 +1,14 @@
+﻿@model IEnumerable<ThunderB_redesign.Models.faq>
+
+
+@foreach (var x in Model)
+{
+    <article>
+        <div>
+            @x.question
+        </div>
+        <div>
+            @x.answer
+        </div>
+    </article>
+}

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ThunderB_redesign.Models.faq>
+@{
+    ViewBag.Title = "tbrhsc | Faq";
+}
+
+
+<h1>FAQ - Thunder Bay Regional Health Sciences Centre</h1>
+
+<div>
+    <h2>First, tell us who you are:</h2>
+    @Ajax.ActionLink("Patient",
+        "Patient","Faq",
+        new AjaxOptions
+        {
+            UpdateTargetId = "faqs",
+            InsertionMode = InsertionMode.Replace,
+            HttpMethod = "Post"
+        })
+    @Ajax.ActionLink("Visitor",
+        "Visitor", "Faq",
+        new AjaxOptions
+        {
+            UpdateTargetId = "faqs",
+            InsertionMode = InsertionMode.Replace,
+            HttpMethod = "Post"
+        })
+    @Ajax.ActionLink("Health Professional",
+        "HealthProfessional","Faq",
+        new AjaxOptions
+        {
+            UpdateTargetId = "faqs",
+            InsertionMode = InsertionMode.Replace,
+            HttpMethod = "Post"
+        })
+
+</div>
+
+
+<div id="faqs">
+    @foreach (var x in Model)
+    {
+        <article>
+            <div>
+                @x.question
+            </div>
+            <div>
+                @x.answer
+            </div>
+        </article>
+    }
+
+</div>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

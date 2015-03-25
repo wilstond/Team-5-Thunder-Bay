@@ -32,6 +32,13 @@ namespace ThunderB_redesign
                   );
 
                 routes.MapRoute(
+                      name: "FaqRoute",
+                      url: "Faq",
+                      defaults: new { controller = "Faq", action = "Index" }
+                  );
+
+
+                routes.MapRoute(
                       name: "GetPageBySlug",
                       url: "{page_slug}",
                       defaults: new { controller = "Page", action = "Detail" }

@@ -203,6 +203,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Areas\admin\Controllers\AdminController.cs" />
     <Compile Include="Controllers\DonationController.cs" />
+    <Compile Include="Controllers\FaqController.cs" />
     <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PageController.cs" />
@@ -652,11 +653,11 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="ClassDiagram1.cd" />
-    <Content Include="Areas\admin\Views\Faq\Create.cshtml" />
-    <Content Include="Areas\admin\Views\Faq\Edit.cshtml" />
-    <Content Include="Areas\admin\Views\Faq\Delete.cshtml" />
-    <Content Include="Areas\admin\Views\Faq\Index.cshtml" />
-    <Content Include="Areas\admin\Views\Faq\NotFound.cshtml" />
+    <Content Include="Areas\admin\Views\AdminFaq\Create.cshtml" />
+    <Content Include="Areas\admin\Views\AdminFaq\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\AdminFaq\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\AdminFaq\Index.cshtml" />
+    <Content Include="Areas\admin\Views\AdminFaq\NotFound.cshtml" />
     <Content Include="Areas\admin\Views\PageAdmin\Index.cshtml" />
     <Content Include="Areas\admin\Views\PageAdmin\Details.cshtml" />
     <Content Include="Areas\admin\Views\PageAdmin\Create.cshtml" />
@@ -745,6 +746,8 @@
     <Content Include="Views\Donation\Index.cshtml" />
     <Content Include="Views\Page\Index.cshtml" />
     <Content Include="Views\Page\Detail.cshtml" />
+    <Content Include="Views\Faq\Index.cshtml" />
+    <Content Include="Views\Faq\_category.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

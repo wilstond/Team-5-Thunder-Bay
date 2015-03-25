@@ -19,6 +19,14 @@ namespace ThunderB_redesign.Models
         {
             var allFaq = objFaq.faqs.SingleOrDefault(x => x.id == _FaqId);  //SingleOrDefault(x => x.Faq_Id == _FaqId); //the SingleOrDeafult returns the value that satifies a condition or a default value in this case the conditions is that the parameter id matches one of the ids in the Faq table
             return allFaq;
+            
+        }
+
+        public IQueryable<faq> GetFaqsByCategory(string _category = "general")
+        {
+            var selectedFAQs = objFaq.faqs.Where(x => x.category == _category);
+            
+            return selectedFAQs;
         }
 
         public bool commitInsert(faq faq) //this method returns a boolean value depending on the successful insertion of the Faq row

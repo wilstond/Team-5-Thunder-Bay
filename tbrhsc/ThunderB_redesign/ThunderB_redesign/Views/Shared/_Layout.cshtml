@@ -95,9 +95,10 @@
             </div>
         </footer>
     </section>
-
+   
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/Scripts")
+    @RenderSection("scripts", required: false)
    <script>
         var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
         (function (d, t) {
