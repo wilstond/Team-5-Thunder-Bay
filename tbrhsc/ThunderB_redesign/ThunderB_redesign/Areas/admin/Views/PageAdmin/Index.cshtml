@@ -18,9 +18,6 @@
             @Html.DisplayNameFor(model => model.page_title)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.page_content)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.page_created)
         </th>
         <th>
@@ -29,15 +26,7 @@
         <th>
             @Html.DisplayNameFor(model => model.page_visibility)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.page_slug)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.meta_title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.meta_desc)
-        </th>
+        
         <th></th>
     </tr>
 
@@ -50,9 +39,6 @@
             @Html.DisplayFor(modelItem => item.page_title)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.page_content)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.page_created)
         </td>
         <td>
@@ -61,15 +47,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.page_visibility)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.page_slug)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.meta_title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.meta_desc)
-        </td>
+
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.page_id }) |
             @Html.ActionLink("Details", "Details", new { id=item.page_id }) |

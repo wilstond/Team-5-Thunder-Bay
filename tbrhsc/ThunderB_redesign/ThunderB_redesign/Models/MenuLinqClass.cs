@@ -21,5 +21,20 @@ namespace ThunderB_redesign.Models
             return subMenuItems;
         }
 
+        public List<menu_category> getMenuTree()
+        {
+            var allMenuItems = menuObj.menu_categories.Where(x => x.parent_id == 0 && x.menu_id != 0);
+            List<menu_category> menuTree = new List<menu_category>();
+            foreach (menu_category menuItem in allMenuItems)
+            {
+                menuTree.Add(menuItem);
+                List<menu_category> subMenu = getSubMenuItemsByParentId(menuItem.menu_id).ToList();
+                foreach (menu_category submenuItem in subMenu)
+                {
+                    menuTree.Add(submenuItem);
+                }
+            }
+            return menuTree;
+        }
     }
 }

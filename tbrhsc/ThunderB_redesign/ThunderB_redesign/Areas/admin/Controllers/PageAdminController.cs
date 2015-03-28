@@ -13,6 +13,21 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         //creating new object
         
         PageLinqClass objPage = new PageLinqClass();
+        MenuLinqClass menuObj = new MenuLinqClass();
+
+        public PageAdminController()
+        {
+            ViewData["MenuItems"] = menuObj.getMenuItems();
+
+            var menuItems = (IEnumerable<ThunderB_redesign.Models.menu_category>)ViewData["MenuItems"];
+
+            foreach (var menuItem in menuItems)
+            {
+                ViewData["SubMenuItems for " + menuItem.menu_id.ToString()] = menuObj.getSubMenuItemsByParentId(menuItem.menu_id);
+            }
+            ViewBag.menuTree = menuObj.getMenuTree();
+
+        }
 
         // GET: admin/PageAdmin
         public ActionResult Index()
@@ -41,6 +56,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         // GET: admin/PageAdmin/Create
         public ActionResult Create()
         {
+            
             return View();
         }
 
