@@ -156,5 +156,17 @@ page.menu_id, page.page_visibility, page.page_slug);
         {
             return View();
         }
+
+        //Check if Slug is available - it needs to be unique
+        //based on the example found here:
+        //http://stackoverflow.com/questions/18037292/client-side-validation-for-unique-field-mvc
+
+        [HttpPost]
+        public JsonResult IsSlugAvailable(string page_slug) {
+
+            var slug = objPage.getSlug(page_slug);
+
+            return Json(slug == null);
+        }
     }
 }

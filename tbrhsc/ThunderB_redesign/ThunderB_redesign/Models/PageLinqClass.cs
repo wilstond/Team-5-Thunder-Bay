@@ -52,6 +52,14 @@ namespace ThunderB_redesign.Models
             return AllPages;
         }
 
+        public string getSlug(string _slug)
+        {
+            var sel_page = objPage.pages.SingleOrDefault(x => x.page_slug == _slug);
+            string slug = sel_page.page_slug;
+
+            return slug;
+        }
+
 
         public bool commitInsert(page _page)
         {

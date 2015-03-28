@@ -50,7 +50,7 @@
             <li><a href="#"><i class="fa fa-exclamation-circle fa-lg"></i> <span>Alerts</span></a></li>
             <li><a href="#"><i class="fa fa-picture-o fa-lg"></i> <span>Image Slider</span></a></li>
             <li><a href="#"><i class="fa fa-calendar fa-lg"></i> <span>Volunteers</span></a></li>
-            <li><a href="#"><i class="fa fa-clock-o fa-lg"></i> <span>ER wait times</span></a></li>
+            <li><a href="@Url.Action("Index","ERAdmin")"><i class="fa fa-clock-o fa-lg"></i> <span>ER wait times</span></a></li>
             <li><a href="#"><i class="fa fa-cart-plus fa-lg"></i> <span>Products</span></a></li>
             <li><a href="#"><i class="fa fa-user-md fa-lg"></i> <span>Doctors</span></a></li>
             <li><a href="#"><i class="fa fa-user-md fa-lg"></i> <span>Alert</span></a></li>
@@ -71,6 +71,10 @@
     @Scripts.Render("~/bundles/jquery")
 
     @Scripts.Render("~/Areas/admin/Content/AdminJS")
+
+    @Scripts.Render("~/Scripts/jquery.validate.min.js")
+
+    @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.min.js")
 
 </body>
 </html>

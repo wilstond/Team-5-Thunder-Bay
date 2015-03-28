@@ -39,9 +39,14 @@ namespace ThunderB_redesign.Models
         [DisplayName("Menu")]
         public int menu_id { get; set; }
 
+        [DisplayName("Published or Draft")]
         [Required]
         public char page_visibility { get; set; }
 
+        [Key]
+        [Required]
+        [DisplayName("Page Slug (Friendly Url)")]
+        [Remote("IsSlugAvailable", "PageAdmin", HttpMethod = "POST", ErrorMessage = "Slug Already Exist.")]
         public string page_slug { get; set; }
 
         public string meta_title { get; set; }
