@@ -46,7 +46,7 @@ namespace ThunderB_redesign.Models
         [Key]
         [Required]
         [DisplayName("Page Slug (Friendly Url)")]
-        [Remote("IsSlugAvailable", "PageAdmin", HttpMethod = "POST", ErrorMessage = "Slug Already Exist.")]
+       // [Remote("IsSlugAvailable", "PageAdmin", HttpMethod = "POST", ErrorMessage = "Slug Already Exist.")]
         public string page_slug { get; set; }
 
         public string meta_title { get; set; }

@@ -209,7 +209,6 @@
     <Compile Include="Controllers\ERController.cs" />
     <Compile Include="Controllers\FaqController.cs" />
     <Compile Include="Controllers\FeedbackController.cs" />
-    <Compile Include="Controllers\GPlaceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\SlugToIdAttribute.cs" />
