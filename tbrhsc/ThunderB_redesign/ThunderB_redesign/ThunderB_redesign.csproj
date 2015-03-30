@@ -205,6 +205,7 @@
     <Compile Include="Areas\admin\Controllers\PageAdminController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Areas\admin\Controllers\AdminController.cs" />
+    <Compile Include="Controllers\AlertController.cs" />
     <Compile Include="Controllers\DonationController.cs" />
     <Compile Include="Controllers\ERController.cs" />
     <Compile Include="Controllers\FaqController.cs" />
@@ -761,6 +762,12 @@
     <Content Include="Views\Faq\_category.cshtml" />
     <Content Include="Views\ER\Index.cshtml" />
     <Content Include="Views\ER\Monitor.cshtml" />
+    <Content Include="Views\Alert\snowyWeather.cshtml" />
+    <Content Include="Views\Alert\fogWarning.cshtml" />
+    <Content Include="Views\Alert\boardofDirectors.cshtml" />
+    <Content Include="Views\Alert\noPower.cshtml" />
+    <Content Include="Views\Alert\icyRoads.cshtml" />
+    <Content Include="Views\Alert\fluSeason.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
