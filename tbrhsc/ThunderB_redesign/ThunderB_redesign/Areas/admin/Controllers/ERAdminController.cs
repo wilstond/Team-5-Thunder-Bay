@@ -12,6 +12,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
     {
         Int16 numDoctors = 2;
         MenuLinqClass menuObj = new MenuLinqClass();
+        TriageViewModel triageObj = new TriageViewModel();
 
         public ERAdminController()
         {
@@ -23,6 +24,9 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             {
                 ViewData["SubMenuItems for " + menuItem.menu_id.ToString()] = menuObj.getSubMenuItemsByParentId(menuItem.menu_id);
             }
+
+            ViewBag.emergencyList = triageObj.getEmergencyList();
+
 
         }
 
@@ -205,6 +209,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
                 return View("Index", model);
             }
         }
+
 
 
     }

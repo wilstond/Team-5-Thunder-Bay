@@ -43,6 +43,11 @@ namespace ThunderB_redesign
                       defaults: new { controller = "Alert", action = "Index" }
                   );
 
+                routes.MapRoute(
+                       name: "PageAdmin_upload",
+                       url: "admin/PageAdmin/uploadPartial",
+                       defaults: new { controller = "PageAdmin", action = "uploadPartial" }
+                   );
 
                 routes.MapRoute(
                       name: "GetPageBySlug",

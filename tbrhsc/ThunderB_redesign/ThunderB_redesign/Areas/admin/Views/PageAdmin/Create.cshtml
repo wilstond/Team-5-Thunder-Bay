@@ -38,7 +38,21 @@
                 @Html.ValidationMessageFor(model => model.page_content, "", new { @class = "text-danger" })
            *@
                 <textarea id="page_content" name="page_content">&lt;p&gt;Initial content&lt;/p&gt;</textarea>
-                <script type="text/javascript"> CKEDITOR.replace('page_content'); </script>
+                @*<script type="text/javascript"> CKEDITOR.replace('page_content'); </script>*@
+                <script type="text/javascript">
+                    CKEDITOR.replace('page_content', {
+                    filebrowserImageBrowseUrl: '/admin/PageAdmin/uploadPartial',
+                    filebrowserImageUploadUrl: '/admin/PageAdmin/uploadnow'
+                    });
+
+                    function updateValue(id, value) {
+                        // this gets called from the popup window and updates the field with a new value
+                        document.getElementById(id).value = value;
+                        // this gets called from the popup window and updates the field with a new value 
+                        //var jqueryObjectByClass = $(".cke_dialog_ui_input_text")[1];
+                        //jqueryObjectByClass.value = value;
+                    }
+                </script>
                </div>
         </div>
 
