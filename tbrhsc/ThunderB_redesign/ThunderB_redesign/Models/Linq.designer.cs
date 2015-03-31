@@ -2912,7 +2912,7 @@ namespace ThunderB_redesign.Models
 		
 		private int _duration;
 		
-		private byte _status;
+		private int _alertNumber;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2926,8 +2926,8 @@ namespace ThunderB_redesign.Models
     partial void OncolourChanged();
     partial void OndurationChanging(int value);
     partial void OndurationChanged();
-    partial void OnstatusChanging(byte value);
-    partial void OnstatusChanged();
+    partial void OnalertNumberChanging(int value);
+    partial void OnalertNumberChanged();
     #endregion
 		
 		public AlertTable()
@@ -3015,22 +3015,22 @@ namespace ThunderB_redesign.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="TinyInt NOT NULL")]
-		public byte status
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_alertNumber", DbType="Int NOT NULL")]
+		public int alertNumber
 		{
 			get
 			{
-				return this._status;
+				return this._alertNumber;
 			}
 			set
 			{
-				if ((this._status != value))
+				if ((this._alertNumber != value))
 				{
-					this.OnstatusChanging(value);
+					this.OnalertNumberChanging(value);
 					this.SendPropertyChanging();
-					this._status = value;
-					this.SendPropertyChanged("status");
-					this.OnstatusChanged();
+					this._alertNumber = value;
+					this.SendPropertyChanged("alertNumber");
+					this.OnalertNumberChanged();
 				}
 			}
 		}

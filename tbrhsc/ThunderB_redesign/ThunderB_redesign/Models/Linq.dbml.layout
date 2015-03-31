@@ -98,10 +98,10 @@
         <elementListCompartment Id="4ffc4603-70cd-40a8-b36f-9a1623a0bf15" absoluteBounds="2.39, 3.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="3d3a326d-f8e9-4435-99c9-1a5f22d0a337" isExpanded="false" absoluteBounds="0.5, 0.5, 1.25, 0.45">
+    <classShape Id="acf606a1-e8ca-4933-98d2-722e0cbf10a1" isExpanded="false" absoluteBounds="0.5, 0.5, 1.25, 0.45">
       <DataClassMoniker Name="/LinqDataContext/AlertTable" />
       <nestedChildShapes>
-        <elementListCompartment Id="19473059-2033-411f-a2ff-0cf5935dad5f" absoluteBounds="0.51499999999999968, 0.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="1cc5fe32-9320-4030-b942-a9969c23bfa7" absoluteBounds="0.51499999999999968, 0.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

@@ -6,7 +6,7 @@
     alerts.Add(new SelectListItem() { Text = "", Value = "", Selected = true });
     foreach (var x in Model)
     {
-        alerts.Add(new SelectListItem() { Text = x.alert, Value = x.alert });
+        alerts.Add(new SelectListItem() { Text = x.alert, Value = x.Id.ToString()});
     }
 }
 
