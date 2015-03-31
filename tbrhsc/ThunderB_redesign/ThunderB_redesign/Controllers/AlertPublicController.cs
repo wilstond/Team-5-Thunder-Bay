@@ -15,13 +15,10 @@ namespace ThunderB_redesign.Controllers
         public ActionResult Index()
         {
             //grabbing the id of the activated row
-            int alertid = objAlert.getAlert();
-
-            //sending the id through the viewbag 
-            ViewBag.AlertId = alertid;
+            var alert = objAlert.getAlert();
 
             //returning the partialview associated with the id that was passed through the viewbag
-            return PartialView();
+            return PartialView(alert);
         }
     }
 }

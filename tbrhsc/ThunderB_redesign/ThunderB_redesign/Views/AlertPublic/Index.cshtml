@@ -1,34 +1,5 @@
-﻿@if (ViewBag.AlertId == 6)
-{
-    <div><p><span>Snowy Weather Warning!</span> Please drive carefully.</p></div>
-}
+﻿@model ThunderB_redesign.Models.AlertTable
 
-else if (ViewBag.AlertId == 9)
-{
-    <div><p><span>Power Outages Reported.</span> Please be advised.</p></div>
 
-}
 
-else if (ViewBag.AlertId == 10)
-{
-    <div><p><span>Roads may be icy!</span> Please drive carefully.</p></div>
-
-}
-
-else if (ViewBag.AlertId == 11)
-{
-    <div><p><span>Flu season is here...</span>cover your cough and wash your hands!</p></div>
-
-}
-
-else if (ViewBag.AlertId == 12)
-{
-    <div><p><span>Board of Directors meeting is today.</span> Register for attendance.</p></div>
-
-}
-
-else if (ViewBag.AlertId == 13)
-{
-    <div><p><span>Heavy fog warning.</span> Please drive with caution.</p></div>
-
-}
+    <div><p>@if(Model != null){@Model.alert}</p></div>

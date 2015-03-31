@@ -40,8 +40,11 @@ namespace ThunderB_redesign.Models
 
                 //this alert variable goes through the alert table and using singleordefault(which grabs the first matching value it finds) and matches the id to the alert id and sets the value to 1
                 //and then submits the changes, which 'activates' the alert
-                var alert = objAlert.AlertTables.SingleOrDefault(x => x.Id == _id);
-                alert.alertNumber = 1;
+                if (_id != 0)
+                {
+                    var alert = objAlert.AlertTables.SingleOrDefault(x => x.Id == _id);
+                    alert.alertNumber = 1;
+                }
 
                 objAlert.SubmitChanges();
                 return true;
@@ -49,7 +52,7 @@ namespace ThunderB_redesign.Models
             }
         }
 
-        public int getAlert()
+        public AlertTable getAlert()
         {
             using (objAlert)
             {
@@ -61,11 +64,11 @@ namespace ThunderB_redesign.Models
                 //returning the id of the selected row
                 if (alert != null)
                 {
-                    return alert.Id;
+                    return alert;
                 }
                 else
                 {
-                    return 0;
+                    return null;
                 }
             }
         }
