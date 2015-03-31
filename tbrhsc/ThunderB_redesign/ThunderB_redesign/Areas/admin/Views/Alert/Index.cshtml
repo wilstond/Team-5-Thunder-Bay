@@ -12,9 +12,10 @@
 
 <h2>Post Alert</h2>
 
-@using (Html.BeginForm())
+@*  Hitting Post goes to a FormMethod called post which sends to a page saying success *@
+@using (Html.BeginForm("AlertPost","Alert",FormMethod.Post))
 {
-
+    @* The value of the drop down list is the id of the alert table *@
     @Html.DropDownList("Alerts", new SelectList(alerts, "Value", "Text"));
 
     <input type="submit" value="Post" />

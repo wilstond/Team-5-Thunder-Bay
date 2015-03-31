@@ -16,8 +16,10 @@ namespace ThunderB_redesign.Controllers
         {
             //grabbing the id of the activated row
             int alertid = objAlert.getAlert();
+
             //sending the id through the viewbag 
             ViewBag.AlertId = alertid;
+
             //returning the partialview associated with the id that was passed through the viewbag
             return PartialView();
         }

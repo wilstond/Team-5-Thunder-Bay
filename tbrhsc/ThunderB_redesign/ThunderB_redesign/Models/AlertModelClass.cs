@@ -20,6 +20,8 @@ namespace ThunderB_redesign.Models
         }
 
 
+
+
         //This is the activation method
         //bool is being used because what is being returned doesn't mattter, we are just changing the table
         //_id is the id associated with each drop down list item
@@ -34,6 +36,8 @@ namespace ThunderB_redesign.Models
                     x.alertNumber = 0;
                 }
                
+
+
                 //this alert variable goes through the alert table and using singleordefault(which grabs the first matching value it finds) and matches the id to the alert id and sets the value to 1
                 //and then submits the changes, which 'activates' the alert
                 var alert = objAlert.AlertTables.SingleOrDefault(x => x.Id == _id);

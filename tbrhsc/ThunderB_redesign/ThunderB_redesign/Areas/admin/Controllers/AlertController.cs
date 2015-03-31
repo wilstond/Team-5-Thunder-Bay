@@ -39,6 +39,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         [HttpPost]
         public ActionResult AlertPost(string alerts)
         {
+            objAlert.activateAlert(Convert.ToInt32(alerts));
             return View();
         }
 
