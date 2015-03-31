@@ -20,6 +20,9 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             return View(alerts);
         }
 
+
+
+
         //were going to make a new page, this page will handle what happens whent he post button is hit
         //loading the page by itself
         //when the page is loaded with hitting post
@@ -27,6 +30,10 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         {
             return View();
         }
+
+
+
+
 
         //when post is hit, the page that is loaded is this one, which evaluates what to do when the button is hit
         [HttpPost]
