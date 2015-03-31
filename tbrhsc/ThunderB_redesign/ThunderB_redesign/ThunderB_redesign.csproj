@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -205,7 +205,7 @@
     <Compile Include="Areas\admin\Controllers\PageAdminController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Areas\admin\Controllers\AdminController.cs" />
-    <Compile Include="Controllers\AlertController.cs" />
+    <Compile Include="Controllers\AlertPublicController.cs" />
     <Compile Include="Controllers\DonationController.cs" />
     <Compile Include="Controllers\ERController.cs" />
     <Compile Include="Controllers\FaqController.cs" />
@@ -764,13 +764,8 @@
     <Content Include="Views\Faq\_category.cshtml" />
     <Content Include="Views\ER\Index.cshtml" />
     <Content Include="Views\ER\Monitor.cshtml" />
-    <Content Include="Views\Alert\snowyWeather.cshtml" />
-    <Content Include="Views\Alert\fogWarning.cshtml" />
-    <Content Include="Views\Alert\boardofDirectors.cshtml" />
-    <Content Include="Views\Alert\noPower.cshtml" />
-    <Content Include="Views\Alert\icyRoads.cshtml" />
-    <Content Include="Views\Alert\fluSeason.cshtml" />
     <Content Include="Views\Shared\_Monitor.cshtml" />
+    <Content Include="Views\AlertPublic\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
