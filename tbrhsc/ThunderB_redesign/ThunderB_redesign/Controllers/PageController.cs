@@ -85,12 +85,14 @@ namespace ThunderB_redesign.Controllers
                 return RedirectToAction("Index", "Home");
             }
             int user_id = selectPage.user_id;
+            int page_id = selectPage.page_id;
+            var pageById = objPage.getPageByID(page_id);
             //Display Details of the Page
 
             //ViewData["author"] = user_id;
 
-            
-            return View(selectPage);
+            return View(pageById);
+            //return View(selectPage);
 
         }
 

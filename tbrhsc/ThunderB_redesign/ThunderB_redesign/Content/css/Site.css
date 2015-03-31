@@ -160,6 +160,7 @@ body {
         margin: -15px auto;
         border-left: 1px #ccc solid;
         border-right: 1px #ccc solid;
+
        
     }
     
@@ -366,12 +367,16 @@ footer {
         width: 60%; 
         width: calc(100% - 500px);
         float: left;
+        outline: white solid thin;
+        padding-left:0.5%;
     }
     
         .main_nav ul li {
-        display: inline-block;
-        padding: 0 15px;
+        /*display: inline-block;*/
+        padding: 0 2%%;
         float: left;
+        outline: green solid thin;
+
     }
       /*  .main_nav ul li:first-child {margin-left: 0;}
         .main_nav ul li:last-child {margin-right: 0;} */
@@ -439,7 +444,7 @@ footer {
     
         .sec_nav ul li {
         display: inline;
-        padding: 0 15px;
+        padding: 0 2% 0;
         /*float: left;*/
     }
       /*  .main_nav ul li:first-child {margin-left: 0;}
@@ -602,10 +607,10 @@ footer {
    These examples override the primary ('mobile first') styles.
    Modify as content requires.
    ========================================================================== */
-@media only screen and (max-width: 38em) {
+@media only screen and (max-width: 45em) {
 
 .main_nav ul li {
-    width: 100%; margin: 10px 0; display: block; float: none;
+    width: 100%; margin: 10px 0; display: block; float: none; outline: green solid thin;
 }
 .sidebar_right, .main_content, .news_feed, .donate, .news_feed .news_title {
     display: block; position: relative; top: 0; clear: both; float: left;
@@ -654,13 +659,13 @@ footer .one-sixth, footer .one-third, footer .one-half {width: 47%;}
 .search-box button {margin-right: 0;}
 }
     
-@media only screen and (max-width: 65em) {
+@media only screen and (max-width: 70em) {
 footer {width: 100%;}
 #main_header, .main_nav {width: 100%; margin-left: 0; margin-right: 0;}
 .main_content {margin-right: 0;}
 .main_nav ul {width: 100%; display: block; padding: 0; margin: 0 auto; clear: both; float: none;}
-.main_nav ul li {word-wrap:break-word ; width: 28%;  margin: 10px 0 10px 0; display: inline-block; float: none; text-align: center;}
-.main_nav ul li:first-child{margin: 10px 1% !important;}
+.main_nav ul li {word-wrap:break-word ; width: 12.6%;  margin: 10px 0 10px 0; display: inline-block; float: none; text-align: center; outline: red dotted thin;}
+/*.main_nav ul li:first-child{margin: 10px 1% !important;}*/
 .one-sixth, .one-third {width: 32%; }
 footer.one-half {width: 46%;}
 .one-half {width: 98%;}

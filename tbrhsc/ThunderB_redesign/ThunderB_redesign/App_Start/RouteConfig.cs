@@ -51,8 +51,8 @@ namespace ThunderB_redesign
 
                 routes.MapRoute(
                       name: "GetPageBySlug",
-                      url: "{page_slug}",
-                      defaults: new { controller = "Page", action = "Detail", menu = UrlParameter.Optional }
+                      url: "Page/{page_slug}",
+                      defaults: new { controller = "Page", action = "Detail"}
                   );
 
                 routes.MapRoute(
