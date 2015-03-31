@@ -6,12 +6,16 @@
 
         <tr>
             <td>Patient Name :</td>
+            <td>Emergency type: </td>
             <td>Arrived :</td>
             <td>Discharged :</td>
             <td>Actions</td>
         </tr>
         <tr>
             <td>@Html.TextBoxFor(x => x.patient_name)</td>
+            <td>@Html.DropDownListFor(model => model.em_id, new SelectList(ViewBag.emergencyList, "em_id", "em_description"), "Select an emergency")
+                @Html.ValidationMessageFor(model => model.em_id, "", new { @class = "text-danger" })
+</td>
             <td>@Html.TextBox("arrival", DateTime.Now.ToLocalTime())</td>
             <td>@Html.TextBox("discharge", DateTime.Now.AddMinutes(40).ToLocalTime())</td>
 

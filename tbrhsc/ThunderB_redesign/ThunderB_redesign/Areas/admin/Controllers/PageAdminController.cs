@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 
 using ThunderB_redesign.Models;
+using System.IO;
 
 namespace ThunderB_redesign.Areas.admin.Controllers
 {
@@ -34,6 +35,30 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         {
             var AllPages = objPage.getPages();
             return View(AllPages);
+        }
+
+        //--addition to allow ckeditor pload local images; followed tutorial below
+        //---http://amitraya.blogspot.ca/2014/09/ck-editor-implement-your-own-image.html
+        public void uploadnow(HttpPostedFileWrapper upload)
+        {
+            if(upload!=null)
+            {
+                string ImageName = upload.FileName;
+                string path = System.IO.Path.Combine(Server.MapPath("~/Images/uploads"), ImageName);
+                upload.SaveAs(path);
+            }
+        }
+ 
+        //--addition to allow ckeditor pload local images; followed tutorial below
+        //---http://amitraya.blogspot.ca/2014/09/ck-editor-implement-your-own-image.html
+        public ActionResult uploadPartial()
+        {
+            var appData = Server.MapPath("~/Images/uploads");
+            var images = Directory.GetFiles(appData).Select(x => new imagesviewmodel
+            {
+                Url = Url.Content("/images/uploads/" + Path.GetFileName(x))
+            });
+            return View(images);
         }
 
         // GET: admin/PageAdmin/Details/5

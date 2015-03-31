@@ -40,7 +40,7 @@ namespace ThunderB_redesign.Models
         public page getPageBySlug(string _slug)
         {
             var selPage = objPage.pages.SingleOrDefault(x => x.page_slug == _slug);
-            //select only row with page_id = _id
+            //select only row with page_slug = _slug
             return selPage;
         }
 

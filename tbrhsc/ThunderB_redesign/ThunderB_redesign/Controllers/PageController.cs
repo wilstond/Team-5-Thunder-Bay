@@ -13,19 +13,7 @@ namespace ThunderB_redesign.Controllers
     {
         PageLinqClass objPage = new PageLinqClass();
 
-        //PublicDisplayMenu objMenu = new PublicDisplayMenu();
-
-
-        //
-        // GET: /Menu/
-
-       // public ActionResult _MenuList()
-       // {
-
-         //   var allMenuItems = objMenu.getMenuItems();
-         //   return View(allMenuItems);
-
-       // }
+        
 
         
         MenuLinqClass menuObj = new MenuLinqClass();

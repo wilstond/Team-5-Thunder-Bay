@@ -70,13 +70,6 @@
       <Column Name="departments_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.emergency_levels" Member="emergency_levels">
-    <Type Name="emergency_level">
-      <Column Name="em_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="em_description" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
-      <Column Name="em_duration_hrs" Type="System.Decimal" DbType="Decimal(4,2) NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
   <Table Name="dbo.product" Member="products">
     <Type Name="product">
       <Column Name="prd_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -156,6 +149,13 @@
       <Column Name="colour" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="duration" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="alertNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.emergency_levels" Member="emergency_levels">
+    <Type Name="emergency_level">
+      <Column Name="em_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="em_description" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="em_duration_hrs" Type="System.Decimal" DbType="Decimal(4,2) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
 </Database>

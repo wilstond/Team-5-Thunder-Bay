@@ -1,0 +1,32 @@
+﻿@model IEnumerable<ThunderB_redesign.Models.imagesviewmodel>
+
+@{
+    Layout = null;
+}
+
+<script src="/Scripts/jquery-2.1.3.js"></script>
+
+
+@*addition to allow ckeditor pload local images; followed tutorial below
+    --http://amitraya.blogspot.ca/2014/09/ck-editor-implement-your-own-image.html*@
+
+
+@foreach (var image in Model)
+{
+    <a href="#" class="returnImage" data-url="@Request.Url.GetLeftPart(UriPartial.Authority)@image.Url">
+        <img src="@image.Url" alt="Hejsan" id="#image" data-source="@image.Url" width="200" height="200" />
+    </a>
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".returnImage").click("click", function (e) {
+            var urlImage = $(this).attr("data-url");
+            //This takes the data value and id of the editor and sends the data(i.e.,image url) back to the caller page
+            //var ckImageField = $(".cke_dialog_ui_input_text")[1];
+            //window.opener.updateValue("cke_72_textInput", urlImage);
+            //window.opener.updateValue(ckImageField, urlImage);
+            window.opener.updateValue("cke_73_textInput", urlImage);
+            window.close();
+        });
+    });
+</script>
