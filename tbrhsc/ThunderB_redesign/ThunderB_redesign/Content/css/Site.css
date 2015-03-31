@@ -365,18 +365,17 @@ footer {
     
     .main_nav ul {
         width: 60%; 
-        width: calc(100% - 500px);
+        width: calc(100% - 400px);
         float: left;
         outline: white solid thin;
         padding-left:0.5%;
     }
     
         .main_nav ul li {
-        /*display: inline-block;*/
-        padding: 0 2%%;
+        display: inline-block;
+        padding: 0 2.2%;
         float: left;
         outline: green solid thin;
-
     }
       /*  .main_nav ul li:first-child {margin-left: 0;}
         .main_nav ul li:last-child {margin-right: 0;} */
@@ -385,10 +384,12 @@ footer {
             .main_nav ul li a, .main_nav ul li div {
             text-decoration: none;
             display: block;
-            font-size: 1.125rem;
+            /*font-size: 1.125rem;*/
+            font-size: 1.5vw;
             color: #fff;
             font-weight: 700;
             cursor: pointer;
+            /*padding-left: 2%;*/
     }
     
     .search-box {
@@ -612,6 +613,10 @@ footer {
 .main_nav ul li {
     width: 100%; margin: 10px 0; display: block; float: none; outline: green solid thin;
 }
+
+    .main_nav ul li a, .main_nav ul li div {
+        font-size: 2vw;
+    }
 .sidebar_right, .main_content, .news_feed, .donate, .news_feed .news_title {
     display: block; position: relative; top: 0; clear: both; float: left;
 }
@@ -652,19 +657,35 @@ section, .main_content, .sidebar_right, .donate, header,
 
 } 
 
-@media only screen and (max-width: 45em) {
+@media only screen and (max-width: 66em) {
 footer .one-sixth, footer .one-third, footer .one-half {width: 47%;}
-.main_nav ul li {min-width: 150px !important; width: 50%;}
+.main_nav ul li {/*width: 150px !important; width: 50%;*/ outline: blue dotted thin;}
 .search-box {display: block; float: left; margin: 0 10px 10px 10px;}
 .search-box button {margin-right: 0;}
 }
     
 @media only screen and (max-width: 70em) {
 footer {width: 100%;}
-#main_header, .main_nav {width: 100%; margin-left: 0; margin-right: 0;}
+#main_header, .main_nav {
+    width: 100%; 
+    margin-left: 0; 
+    margin-right: 0;
+}
 .main_content {margin-right: 0;}
 .main_nav ul {width: 100%; display: block; padding: 0; margin: 0 auto; clear: both; float: none;}
-.main_nav ul li {word-wrap:break-word ; width: 12.6%;  margin: 10px 0 10px 0; display: inline-block; float: none; text-align: center; outline: red dotted thin;}
+.main_nav ul li {
+    word-wrap:break-word ; 
+    width: 12%;  
+    margin: 10px 0 10px 0; 
+    display: inline-block; 
+    float: none; 
+    text-align: center; 
+    outline: red dotted thin;
+}
+
+    .main_nav ul li a, .main_nav ul li div {
+        font-size: 16px;
+    }
 /*.main_nav ul li:first-child{margin: 10px 1% !important;}*/
 .one-sixth, .one-third {width: 32%; }
 footer.one-half {width: 46%;}
