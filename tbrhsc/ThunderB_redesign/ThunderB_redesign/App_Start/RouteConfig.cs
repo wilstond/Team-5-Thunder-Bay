@@ -52,7 +52,7 @@ namespace ThunderB_redesign
                 routes.MapRoute(
                       name: "GetPageBySlug",
                       url: "{page_slug}",
-                      defaults: new { controller = "Page", action = "Detail" }
+                      defaults: new { controller = "Page", action = "Detail", menu = UrlParameter.Optional }
                   );
 
                 routes.MapRoute(
