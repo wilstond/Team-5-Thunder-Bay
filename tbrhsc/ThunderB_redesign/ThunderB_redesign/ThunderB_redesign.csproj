@@ -770,6 +770,7 @@
     <Content Include="Views\Alert\noPower.cshtml" />
     <Content Include="Views\Alert\icyRoads.cshtml" />
     <Content Include="Views\Alert\fluSeason.cshtml" />
+    <Content Include="Views\Shared\_Monitor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

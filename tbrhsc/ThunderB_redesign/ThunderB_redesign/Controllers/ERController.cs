@@ -53,6 +53,7 @@ namespace ThunderB_redesign.Controllers
         {
             return View();
         }
+
         [OutputCache(NoStore = true, Duration = 3)] // every 3 sec
         public ActionResult Monitor()
         {
