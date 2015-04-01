@@ -385,7 +385,7 @@ footer {
             text-decoration: none;
             display: block;
             /*font-size: 1.125rem;*/
-            font-size: 1.5vw;
+            font-size: 1.3vw;
             color: #fff;
             font-weight: 700;
             cursor: pointer;
@@ -648,6 +648,11 @@ footer {width: 100%;}
     .main_nav ul li a, .main_nav ul li div {
         font-size: 16px;
     }
+.sec_nav {
+       
+        margin-top: 15px;
+       
+}
 /*.main_nav ul li:first-child{margin: 10px 1% !important;}*/
 .one-sixth, .one-third {width: 32%; }
 footer.one-half {width: 46%;}
@@ -687,6 +692,11 @@ footer .one-sixth, footer .one-third, footer .one-half {width: 47%;}
         margin-left : 10px;
         /*outline: white solid thin;*/
         
+}
+.sec_nav {
+       
+        margin-top: 1px;
+       
 }
 
  /*.main_nav a#pull:after {

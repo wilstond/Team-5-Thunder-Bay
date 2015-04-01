@@ -110,13 +110,13 @@
     </script>
 
     <script type="text/javascript">
+//--mobile menu function created with the help of Patricio Salazar Cespedes
         function mobile_menu() {
            var menu = $(".main_nav ul");
-            //make this one match your cellphone breakpoint
-            if ($(window).width() <= 687) {
 
-                // hide menu items before click
-                $(".main_nav ul").css('display', 'none');
+           if ($(window).width() <= 687) {
+
+               $(".main_nav ul").css('display', 'none');
                 $("#pull").css('display', 'block');
 
                 // toggle menu. Unbind the click during the resize
