@@ -29,7 +29,6 @@ namespace ThunderB_redesign.Models
         [Required(ErrorMessage = "Please enter the amount")]
         public decimal dtn_amount { get; set; }
 
-        public 
 
     }
 
