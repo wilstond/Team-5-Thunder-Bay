@@ -190,6 +190,7 @@ body {
         margin-top: 0;
         display: table-cell;
         margin-right: 20px;
+        border-right: 1px #B7B7B7 solid;
 
         /*position:absolute;
         top:0;
@@ -223,7 +224,7 @@ section {
         width: 100%;
         margin-top: 15px;
         /*background-color: #fff;*/
-        border-right: 1px #B7B7B7 solid;
+        /*border-right: 1px #B7B7B7 solid;*/
         box-sizing:border-box;
         
 
@@ -233,7 +234,7 @@ section {
         width: 100%;
         margin-top: 0;
         box-sizing: border-box;      
-        border-right: 1px #B7B7B7 solid;
+        /*border-right: 1px #B7B7B7 solid;*/
         border-bottom: 1px #B7B7B7 solid;
     }
     
@@ -324,14 +325,24 @@ footer {
 
 
 .emergency_info .emergency_content {
-        width: 100%;
+        width: 45%;
+        width: calc(100% - 170px);
         box-sizing:border-box;
         margin-top: 0;
         background-color: #fff;
         color: #1a2f38;
         font-weight: 400;
         font-size: 1.1rem;
+        float:left;
     }
+
+    #erm_holder {
+        text-align:center;
+        width: 150px;
+        float: right;
+        padding-right: 10px;
+    }
+
 /* ==========================================================================
    Logos
    ========================================================================== */
@@ -377,9 +388,6 @@ footer {
         float: left;
         /*outline: green solid thin;*/
     }
-      /*  .main_nav ul li:first-child {margin-left: 0;}
-        .main_nav ul li:last-child {margin-right: 0;} */
-
     
             .main_nav ul li a, .main_nav ul li div {
             text-decoration: none;
@@ -392,7 +400,7 @@ footer {
             /*padding-left: 2%;*/
     }
     
-    .search-box {
+.search-box {
         width: 19%;
         min-width: 200px;
         position: relative;
@@ -410,31 +418,27 @@ footer {
       background: #fcfcfc;
       border: 1px solid #aaa;
       border-radius: 5px;
+      text-indent: 32px;
     }
 
-    .search-box input { text-indent: 32px;}
-        .search-box button {
+     .search-box button {
             position: absolute;
             right: 5px;
             top: 14px;
             background: transparent;
             border: none;
-        }
-     .main_nav a#pull {
-            display: none;
-            background-color: #283744;
-         /*width: 100%;*/
-        position: relative;
-          float: right;
-           margin-top: 14px;
-            width: 80px;
-            text-decoration: none;
-            outline:none;
-        }
-    .main_nav a#pull:visited {
-        color:transparent;
-        border:none;
-    }
+       }
+.main_nav a#pull {
+       display: none;
+       background-color: #283744;
+       position: relative;
+       float: right;
+       margin-top: 14px;
+       width: 80px;
+       text-decoration: none;
+       outline:none;
+       }
+    
 
 
 

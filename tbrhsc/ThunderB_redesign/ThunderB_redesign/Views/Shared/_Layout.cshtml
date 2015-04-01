@@ -108,8 +108,30 @@
     });
 
     </script>
-
     <script type="text/javascript">
+//     div height equalizer function
+
+        function equalize() {
+            if ($(window).width() > 687) {
+
+                var mainContent = $(".main_content");
+                var sidebar = $(".sidebar_right");
+                if (mainContent.height() > sidebar.height()) {
+                    console.log(mainContent.height());
+                    sidebar.height(mainContent.height());
+                }
+                else {
+                    console.log(mainContent.height());
+                    mainContent.height(sidebar.height());
+                }
+            }
+            else {
+                mainContent.css('height','auto');
+                sidebar.height('height', 'auto');
+            }
+        }
+
+    
 //--mobile menu function created with the help of Patricio Salazar Cespedes
         function mobile_menu() {
            var menu = $(".main_nav ul");
@@ -139,14 +161,16 @@
             }
         }
 
-
         $(document).ready(function () {
             // calling the function on load
             mobile_menu();
 
+            equalize();
+
             $(window).resize(function () {
                 // calling the function on resize
                 mobile_menu();
+                equalize();
             })
 
 
