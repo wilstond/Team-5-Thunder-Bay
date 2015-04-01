@@ -637,6 +637,8 @@
     <Content Include="Areas\admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\admin\Views\Dashboard\Index.cshtml" />
     <Content Include="img\donation.jpg" />
+    <Content Include="img\hamburger.png" />
+    <Content Include="img\hamburger_menu.png" />
     <Content Include="img\logo-top.png" />
     <Content Include="img\main.png" />
     <Content Include="Content\fonts\fontawesome-webfont.woff2" />

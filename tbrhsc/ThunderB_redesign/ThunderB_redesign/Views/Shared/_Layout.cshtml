@@ -108,6 +108,51 @@
     });
 
     </script>
+
+    <script type="text/javascript">
+        function mobile_menu() {
+           var menu = $(".main_nav ul");
+            //make this one match your cellphone breakpoint
+            if ($(window).width() <= 687) {
+
+                // hide menu items before click
+                $(".main_nav ul").css('display', 'none');
+                $("#pull").css('display', 'block');
+
+                // toggle menu. Unbind the click during the resize
+                $("#pull").unbind("click").click(function () {
+                    // animation for the menu
+                    $(menu).animate({
+                        height: "toggle"
+                    }, 300);
+
+                })
+            } else {
+
+                // display nav var if it was hidden when resizing to a bigger width
+                $(menu).css('display', 'block');
+                $("#pull").css('display', 'none');
+
+                // disables the click effect
+                $("#pull").unbind("click")
+
+            }
+        }
+
+
+        $(document).ready(function () {
+            // calling the function on load
+            mobile_menu();
+
+            $(window).resize(function () {
+                // calling the function on resize
+                mobile_menu();
+            })
+
+
+        })// end of document. ready
+
+    </script>
    <script>
         var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
         (function (d, t) {

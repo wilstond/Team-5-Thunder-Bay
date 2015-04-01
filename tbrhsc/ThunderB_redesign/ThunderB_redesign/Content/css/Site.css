@@ -367,7 +367,7 @@ footer {
         width: 60%; 
         width: calc(100% - 400px);
         float: left;
-        outline: white solid thin;
+        /*outline: white solid thin;*/
         padding-left:0.5%;
     }
     
@@ -375,7 +375,7 @@ footer {
         display: inline-block;
         padding: 0 2.2%;
         float: left;
-        outline: green solid thin;
+        /*outline: green solid thin;*/
     }
       /*  .main_nav ul li:first-child {margin-left: 0;}
         .main_nav ul li:last-child {margin-right: 0;} */
@@ -413,15 +413,30 @@ footer {
     }
 
     .search-box input { text-indent: 32px;}
-    .search-box button { 
-      position: absolute;
-      right: 5px;
-      top:14px;
-      background: transparent;
-      border: none;
-      
-      
+        .search-box button {
+            position: absolute;
+            right: 5px;
+            top: 14px;
+            background: transparent;
+            border: none;
+        }
+     .main_nav a#pull {
+            display: none;
+            background-color: #283744;
+         /*width: 100%;*/
+        position: relative;
+          float: right;
+           margin-top: 14px;
+            width: 80px;
+            text-decoration: none;
+            outline:none;
+        }
+    .main_nav a#pull:visited {
+        color:transparent;
+        border:none;
     }
+
+
 
 
 /* Secondary Navigation */
@@ -608,15 +623,82 @@ footer {
    These examples override the primary ('mobile first') styles.
    Modify as content requires.
    ========================================================================== */
-@media only screen and (max-width: 45em) {
 
+
+    
+@media only screen and (max-width: 70em) {
+footer {width: 100%;}
+#main_header, .main_nav {
+    width: 100%; 
+    margin-left: 0; 
+    margin-right: 0;
+}
+.main_content {margin-right: 0;}
+.main_nav ul {width: 100%; display: block; padding: 0; margin: 0 auto; clear: both; float: none;}
 .main_nav ul li {
-    width: 100%; margin: 10px 0; display: block; float: none; outline: green solid thin;
+    word-wrap:break-word ; 
+    width: 12%;  
+    margin: 10px 0 10px 0; 
+    display: inline-block; 
+    float: none; 
+    text-align: center; 
+    /*outline: red dotted thin;*/
 }
 
     .main_nav ul li a, .main_nav ul li div {
-        font-size: 2vw;
+        font-size: 16px;
     }
+/*.main_nav ul li:first-child{margin: 10px 1% !important;}*/
+.one-sixth, .one-third {width: 32%; }
+footer.one-half {width: 46%;}
+.one-half {width: 98%;}
+.search-box {display: block; float: none; margin: 0 auto; width: 45%;}
+.search-box input {margin-bottom: 10px;}
+#top-logo {width: 100%;}
+#title , #title h1 { width: 100%;}
+}
+
+@media only screen and (max-width: 66em) {
+footer .one-sixth, footer .one-third, footer .one-half {width: 47%;}
+/*.search-box {display: block; float: left; margin: 0 10px 10px 10px;}
+.search-box button {margin-right: 0;}*/
+}
+
+@media only screen and (max-width: 44em) {
+.main_nav ul {
+    /*width: 100%;  display: block; padding: 0; margin: 20px 0; float: none;*/
+    width: 100%;  display: none; padding: 0; margin: 20px 0; float: none; height:auto;
+}
+.main_nav ul li {
+    width: 100% !important; display: block; padding: 0; margin: 0; float: none; /*outline: green solid 1px !important;*/
+    border-bottom: #ddd solid 1px;
+}
+
+.main_nav ul li a, .main_nav ul li div {
+        font-size: 18px;
+        width: 100% !important; display: block; padding: 0; margin: 0; float: none;
+    }
+.main_nav a#pull {
+        display: block;
+        background: url('/img/hamburger.png') no-repeat center;
+        width: 60px;
+        height: 50px;
+        margin-top : -40px;
+        margin-left : 10px;
+        /*outline: white solid thin;*/
+        
+}
+
+ /*.main_nav a#pull:after {
+        content:"";
+        background: url('~/img/hamburger.png') no-repeat;
+        width: 30px;
+        height: 30px;
+        display: inline-block;
+        position: absolute;
+        right: 15px;
+        top: 10px;
+    }*/
 .sidebar_right, .main_content, .news_feed, .donate, .news_feed .news_title {
     display: block; position: relative; top: 0; clear: both; float: left;
 }
@@ -640,61 +722,16 @@ section, .main_content, .sidebar_right, .donate, header,
 .emergency_info { flex-order: 1; width: 100%;}
 .donate {flex-order: 2; width: 100%;}
 .news_feed {flex-order: 3; width: 100%;}
-.main_nav ul {
-    width: 100%;  display: block; padding: 0; margin: 20px 0; float: none;
-}
-.main_nav ul li{
-    width: 100% !important; display: block; padding: 0; margin: 0; float: none;
-}
-.main_nav ul li a {
-    width: 100% !important; display: block; padding: 0; margin: 0; float: none;
-}
+
+
 .search-box {
-    display: block; float: none; margin: 0 auto; }
+    display: block; float: none; margin: 0 auto; margin-right: 70px; width: calc(100% - 187px)}
+.search-box input {margin-bottom: 0;}
 
 #top_nav {display: none;}
 
 
 } 
-
-@media only screen and (max-width: 66em) {
-footer .one-sixth, footer .one-third, footer .one-half {width: 47%;}
-.main_nav ul li {/*width: 150px !important; width: 50%;*/ outline: blue dotted thin;}
-.search-box {display: block; float: left; margin: 0 10px 10px 10px;}
-.search-box button {margin-right: 0;}
-}
-    
-@media only screen and (max-width: 70em) {
-footer {width: 100%;}
-#main_header, .main_nav {
-    width: 100%; 
-    margin-left: 0; 
-    margin-right: 0;
-}
-.main_content {margin-right: 0;}
-.main_nav ul {width: 100%; display: block; padding: 0; margin: 0 auto; clear: both; float: none;}
-.main_nav ul li {
-    word-wrap:break-word ; 
-    width: 12%;  
-    margin: 10px 0 10px 0; 
-    display: inline-block; 
-    float: none; 
-    text-align: center; 
-    outline: red dotted thin;
-}
-
-    .main_nav ul li a, .main_nav ul li div {
-        font-size: 16px;
-    }
-/*.main_nav ul li:first-child{margin: 10px 1% !important;}*/
-.one-sixth, .one-third {width: 32%; }
-footer.one-half {width: 46%;}
-.one-half {width: 98%;}
-.search-box {display: block; float: none; margin: 0 auto; width: 50%;}
-#top-logo {width: 100%;}
-#title , #title h1 { width: 100%;}
-}
-
 
 
 @media print,

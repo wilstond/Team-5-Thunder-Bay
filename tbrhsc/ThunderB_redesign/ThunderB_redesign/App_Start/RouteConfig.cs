@@ -50,6 +50,11 @@ namespace ThunderB_redesign
                    );
 
                 routes.MapRoute(
+                       name: "BackToHome",
+                       url: "Page/Index",
+                   );
+ 
+               routes.MapRoute(
                       name: "GetPageBySlug",
                       url: "Page/{page_slug}",
                       defaults: new { controller = "Page", action = "Detail"}

@@ -24,7 +24,7 @@
                         <ul>
                             @foreach (var subMenuItem in subMenuItems)
                             {
-                                <li>@Html.ActionLink(subMenuItem.menu_text, subMenuItem.menu_slug)</li>
+                                <li>@Html.ActionLink(subMenuItem.menu_text, "Index", "Page", new { subMenuItem.menu_id })</li>
                             }
                         </ul>
                     </nav>
@@ -41,5 +41,6 @@
         <button><span class="fa fa-search"></span></button>
 
     </div>
+    <a href="#" id="pull">&nbsp;</a>
 </nav>
 
