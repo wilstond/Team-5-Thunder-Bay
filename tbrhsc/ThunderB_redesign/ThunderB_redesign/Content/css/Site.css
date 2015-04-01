@@ -303,6 +303,7 @@ footer {
         height: 35px;
         padding: 5px 10px 0 25px;
         font-weight: 400;
+        border-top: solid 1px #eee;
     }
     
 .news_feed .news_title {

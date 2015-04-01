@@ -8,10 +8,12 @@
 <h2>@ViewBag.numDoctors doctors on duty. Total wait time : @ViewBag.TotalWait</h2>
 <form method="post">
 
-    <table border="1" cellpadding="10">
+    <table class="stripes">
         <tr>
             <th>Id</th>
             <th>Name</th>
+            <th>Arrived</th>
+            <th>Discharge (est.)</th>
             <th colspan="2">Actions</th>
         </tr>
 
@@ -36,13 +38,15 @@
                             }
                             <td>@item.case_id</td>
                             <td>@item.patient_name</td>
+                            <td>@item.arrival</td>
+                            <td>@item.discharge</td>
                             <td>
                                 <input type="submit" formaction="~/admin/ERAdmin/Select/@item.case_id"
                                        value="Select" />
                             </td>
                             <td>
                                 <input type="submit" formaction="~/admin/ERAdmin/Delete/@item.case_id"
-                                       value="Delete" />
+                                       value="Discharge" />
                             </td>
                             @:</tr>
 

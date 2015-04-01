@@ -1,21 +1,23 @@
 ﻿@model ThunderB_redesign.Models.triage
 
-@using (Html.BeginForm("Insert", "ERAdmin", FormMethod.Post))
-{
-    <table border="1" cellpadding="10">
+<div class="timed">
+    @using (Html.BeginForm("Insert", "ERAdmin", FormMethod.Post))
+    {
+        <table class="stripes">
 
-        <tr>
-            <td>Patient Name :</td>
-            <td>Emergency type: </td>
-            <td>Arrived :</td>
-            <td>Discharged :</td>
-            <td>Actions</td>
-        </tr>
-        <tr>
-            <td>@Html.TextBoxFor(x => x.patient_name)</td>
-            <td>@Html.DropDownListFor(model => model.em_id, new SelectList(ViewBag.emergencyList, "em_id", "em_description"), "Select an emergency")
+            <tr>
+                <th>Patient Name</th>
+                <th>Emergency type</th>
+                <th>Arrived</th>
+                <th>Discharge(est.)</th>
+                <th>Actions</th>
+            </tr>
+            <tr>
+                <td>@Html.TextBoxFor(x => x.patient_name)</td>
+                <td>
+                    @Html.DropDownListFor(model => model.em_id, new SelectList(ViewBag.emergencyList, "em_id", "em_description"), "Select an emergency")
                 @Html.ValidationMessageFor(model => model.em_id, "", new { @class = "text-danger" })
-</td>
+            </td>
             <td>@Html.TextBox("arrival", DateTime.Now.ToLocalTime())</td>
             <td>@Html.TextBox("discharge", DateTime.Now.AddMinutes(40).ToLocalTime())</td>
 
@@ -23,10 +25,23 @@
                 <input type="submit" value="Save"
                        formaction="~/admin/ERAdmin/Insert" />
                 &nbsp;&nbsp;
-                <input type="submit" value="Cancel"
+                <input type="reset" value="Cancel"
                        formaction="~/admin/ERAdmin/Index" />
             </td>
         </tr>
     </table>
-}
+    }
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        // setTimeout() function will be fired after page is loaded
+        // it will wait for 5 sec. and then will fire
+        // $("#successMessage").hide() function
+        setTimeout(function () {
+            $(".timed").hide(500);
+        }, 30000);
+    });
+</script>
 

@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 using ThunderB_redesign.Models;
 using System.IO;
 
 namespace ThunderB_redesign.Areas.admin.Controllers
 {
+    [Authorize]
     public class PageAdminController : Controller
     {
         //creating new object
