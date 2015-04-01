@@ -1,5 +1,6 @@
 ﻿@model ThunderB_redesign.Models.AlertTable
 
 
-
-    <div><p>@if(Model != null){@Model.alert}</p></div>
+@if (Model != null) { 
+    <div style="margin-top: -1em; text-align: center; color: #FFF; background-color:@Model.colour; height: 35px;"><p style="padding-top: 5px;">
+    @Model.alert</p></div>}

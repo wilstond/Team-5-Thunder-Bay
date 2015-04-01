@@ -52,6 +52,7 @@ namespace ThunderB_redesign
                 routes.MapRoute(
                        name: "BackToHome",
                        url: "Page/Index",
+                       defaults: new {  controller = "Page", action = "index"}
                    );
  
                routes.MapRoute(
