@@ -64,7 +64,7 @@ ViewBag.MetaDescription = @Model.page_title;
             <header class="section-header">
                 <h1>@Model.page_title</h1>
             </header>
-            <span class="date">@Model.page_created.DayOfWeek, @Model.page_created.Date.ToLongDateString() - by @ViewData["author"]</span>
+            <span class="date">@Model.page_created.DayOfWeek, @Model.page_created.Date.ToLongDateString()</span>
             <article>
             @Html.Raw(Model.page_content)
 

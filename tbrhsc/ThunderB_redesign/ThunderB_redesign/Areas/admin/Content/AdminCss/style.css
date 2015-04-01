@@ -385,3 +385,19 @@ li a > span {
 #nav ul li a{
     color: #fff;
 }
+
+.stripes {outline: solid thin #1a2f38;}
+
+.stripes td, .stripes th {padding: 10px;}
+
+.stripes th {font-weight: 600; background-color: #1a2f38; color: white;}
+
+
+.stripes tr:nth-child(even) {
+  background-color: #e9f7ff;
+}
+
+
+table.stripes tr:nth-child(odd) {
+  background-color: #fff;
+}
