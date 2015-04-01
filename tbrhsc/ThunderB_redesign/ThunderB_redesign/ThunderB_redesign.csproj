@@ -769,6 +769,7 @@
     <Content Include="Views\ER\Monitor.cshtml" />
     <Content Include="Views\Shared\_Monitor.cshtml" />
     <Content Include="Views\AlertPublic\Index.cshtml" />
+    <Content Include="Views\Page\PageNotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -42,22 +42,21 @@ namespace ThunderB_redesign.Controllers
         }
 
 
-        public ActionResult Index(int menu_id = 0)
+        public ActionResult Index(int menu_id)
         {
-            if (menu_id != 0)
-            {
-                var AllPages = objPage.getVisiblePages();
+            
 
-                AllPages = objPage.getPagesByMenu(menu_id);
-                return View(AllPages);
+                var AllPages = objPage.getPagesByMenu(menu_id);
+                
+                if (AllPages.Any())
+                {
+                    var LandPage = AllPages.First();
+                    ViewBag.ListOfPages = AllPages.ToList();
+                    return View(LandPage);
+                }
 
-            }
-            else
-            {
-                var AllPages = objPage.getVisiblePages();
-
-                return View(AllPages);
-            }
+                return View("PageNotFound");
+                            
         }
 
         //[SlugToId]
@@ -74,7 +73,6 @@ namespace ThunderB_redesign.Controllers
         //    return View(selectPage);
 
         //}
-
         public ActionResult Detail(string page_slug)
         {
 
@@ -94,6 +92,11 @@ namespace ThunderB_redesign.Controllers
             return View(pageById);
             //return View(selectPage);
 
+        }
+
+        public ActionResult PageNotFound()
+        {
+            return View();
         }
 
     }
