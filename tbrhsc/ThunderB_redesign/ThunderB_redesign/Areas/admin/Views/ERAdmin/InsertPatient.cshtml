@@ -8,17 +8,15 @@
         <table class="stripes">
 
             <tr>
-                <th>Patient Name</th>
+                
                 <th>Emergency type</th>
                 <th>Arrived</th>
                 <th>Discharge(est.)</th>
                 <th>Actions</th>
             </tr>
             <tr>
-                <td>@Html.TextBoxFor(x => x.patient_name)
-                    <br/>@Html.ValidationMessageFor(model => model.patient_name, "", new { @class = "text-danger" })
-                </td>
-                <td>
+                <td>@Html.Hidden("patient_name", "Case Type")
+                
                     @Html.DropDownListFor(model => model.em_id, new SelectList(ViewBag.emergencyList, "em_id", "em_description"), "Select an emergency")
                     <br/>@Html.ValidationMessageFor(model => model.em_id, "", new { @class = "text-danger" })
                 </td>
@@ -42,7 +40,7 @@
                         $("#txtBox").val($(this).find("option:selected").attr("value"))
                         });
                     </script>*@
-    </td>
+                 </td>
 
 <td>
     <input type="submit" value="Save"

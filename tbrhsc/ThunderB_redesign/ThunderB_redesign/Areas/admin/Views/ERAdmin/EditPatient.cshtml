@@ -2,19 +2,21 @@
 
 @using (Html.BeginForm("Update", "ERAdmin", FormMethod.Post))
 {
-    <table border="1" cellpadding="10">
+    <table class="stripes">
 
 
         <tr>
-            <td>Patient ID :</td>
+            <th>Patient ID</th>
 
-            <td>Patient Name :</td>
+            <th>Patient Name</th>
 
-            <td>Arrival :</td>
+            <th>Arrival</th>
 
-            <td>Discharged :</td>
+            <th>Discharge (est)</th>
 
-            <td>Actions</td>
+            <th>Doctor Assigned</th>
+
+            <th>Actions</th>
         </tr>
         <tr>
             <td>@Html.DisplayFor(x => x.case_id)</td>
@@ -24,6 +26,8 @@
             </td>
             <td>@Html.TextBoxFor(x => x.arrival)</td>
             <td>@Html.TextBoxFor(x => x.discharge)</td>
+            <td>@Html.ValueFor(x => x.dr_id)
+            @Html.HiddenFor(x => x.dr_id)</td>
 
             <td>
                 <input type="submit" value="Save"

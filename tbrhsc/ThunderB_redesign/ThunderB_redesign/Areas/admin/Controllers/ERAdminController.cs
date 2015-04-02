@@ -11,6 +11,8 @@ namespace ThunderB_redesign.Areas.admin.Controllers
     public class ERAdminController : Controller
     {
         Int16 numDoctors = 2;
+        List<double> doctorQueu = new List<double>();
+        
         MenuLinqClass menuObj = new MenuLinqClass();
         TriageViewModel triageObj = new TriageViewModel();
 
@@ -32,7 +34,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
 
 
         public TimeSpan CalcWaitTime()
-        {
+        { 
             using (LinqDataContext db = new LinqDataContext())
             {
                 TriageViewModel model = new TriageViewModel();
@@ -50,6 +52,35 @@ namespace ThunderB_redesign.Areas.admin.Controllers
                 return resWaitTime;
             }
 
+        }
+
+        public int CalcShortestQueu()
+        {
+            using (LinqDataContext db = new LinqDataContext())
+            {
+                TriageViewModel model = new TriageViewModel();
+       //--https://msdn.microsoft.com/en-us/library/vstudio/bb386922%28v=vs.100%29.aspx
+                
+                var doctQueuRes = from triage in db.triages
+                                   group triage by triage.dr_id into grouping
+                                   select new 
+                                   {
+                                        grouping.Key,
+                                        TotalWait = grouping.Sum(x => ( x.discharge - x.arrival ).Hours)
+                                   };
+
+       //--http://stackoverflow.com/questions/23734686/c-sharp-dictionary-get-the-key-of-the-min-value
+                foreach (var item in doctQueuRes)
+                {
+                    Console.WriteLine("Dr_id = {0}, Total waait = {1}",
+                    item.Key, item.TotalWait);
+                }
+                var min_queu = doctQueuRes.OrderBy(m => m.TotalWait).FirstOrDefault();
+                //Console.WriteLine(min_queu);
+                return min_queu.Key;
+
+            }
+            //selDoctor = doctorQueu
         }
 
         public ActionResult Index()
@@ -108,6 +139,8 @@ namespace ThunderB_redesign.Areas.admin.Controllers
                 DateTime arrival = DateTime.Now;
                 obj.arrival = arrival.ToLocalTime();
                 obj.discharge = arrival.AddHours(Convert.ToDouble(selectedEmLevel.em_duration_hrs)).ToLocalTime();
+                obj.patient_name = selectedEmLevel.em_description;
+                obj.dr_id = CalcShortestQueu();
                 db.triages.InsertOnSubmit(obj);
                 db.SubmitChanges();
 
