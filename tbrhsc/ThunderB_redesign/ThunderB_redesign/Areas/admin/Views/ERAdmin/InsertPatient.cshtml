@@ -1,5 +1,7 @@
 ﻿@model ThunderB_redesign.Models.triage
 
+
+
 <div class="timed">
     @using (Html.BeginForm("Insert", "ERAdmin", FormMethod.Post))
     {
@@ -13,35 +15,60 @@
                 <th>Actions</th>
             </tr>
             <tr>
-                <td>@Html.TextBoxFor(x => x.patient_name)</td>
+                <td>@Html.TextBoxFor(x => x.patient_name)
+                    <br/>@Html.ValidationMessageFor(model => model.patient_name, "", new { @class = "text-danger" })
+                </td>
                 <td>
                     @Html.DropDownListFor(model => model.em_id, new SelectList(ViewBag.emergencyList, "em_id", "em_description"), "Select an emergency")
-                @Html.ValidationMessageFor(model => model.em_id, "", new { @class = "text-danger" })
-            </td>
-            <td>@Html.TextBox("arrival", DateTime.Now.ToLocalTime())</td>
-            <td>@Html.TextBox("discharge", DateTime.Now.AddMinutes(40).ToLocalTime())</td>
+                    <br/>@Html.ValidationMessageFor(model => model.em_id, "", new { @class = "text-danger" })
+                </td>
+                <td>@Html.TextBox("arrival", DateTime.Now.ToLocalTime())
+                    <br />@Html.ValidationMessageFor(model => model.arrival, "", new { @class = "text-danger" })
 
-            <td>
-                <input type="submit" value="Save"
-                       formaction="~/admin/ERAdmin/Insert" />
-                &nbsp;&nbsp;
-                <input type="reset" value="Cancel"
-                       formaction="~/admin/ERAdmin/Index" />
-            </td>
-        </tr>
-    </table>
+                </td>
+                <td>@Html.TextBox("discharge", DateTime.Now.AddMinutes(40).ToLocalTime())
+                    <br />@Html.ValidationMessageFor(model => model.discharge, "", new { @class = "text-danger" })
+                    @*<script type="text/javascript">
+                        $(document).ready(function () {
+                        jQuery("#datetimepicker").datetimepicker();
+                        });
+                    </script>*@
+                    @*<script type="text/javascript">
+                        $("#em_id").change(function () {
+                            var selectedValue = $(this).val();
+                            var arrival = $("#arrival").val();
+                            alert(selectedValue);
+                            var dischargeTime = 
+                        $("#txtBox").val($(this).find("option:selected").attr("value"))
+                        });
+                    </script>*@
+    </td>
+
+<td>
+    <input type="submit" value="Save"
+    formaction="~/admin/ERAdmin/Insert" />
+&nbsp;&nbsp;
+    <input type="reset" value="Cancel"
+    formaction="~/admin/ERAdmin/Index" />
+</td>
+</tr>
+</table>
     }
 
 </div>
 
+@*function to make "add new patient" disappear after 2 minutes.
+Prevents having to correct default arrival and discharge time if the form stays opened for over 2 min*@
+
 <script type="text/javascript">
+
     $(document).ready(function () {
-        // setTimeout() function will be fired after page is loaded
-        // it will wait for 5 sec. and then will fire
-        // $("#successMessage").hide() function
+
         setTimeout(function () {
             $(".timed").hide(500);
-        }, 30000);
+        }, 120000);
     });
-</script>
+                    </script>
+
+
 

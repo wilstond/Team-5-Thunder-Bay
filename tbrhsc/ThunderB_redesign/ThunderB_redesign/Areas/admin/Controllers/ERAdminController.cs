@@ -76,6 +76,12 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult New(string whatever)
+        {
+            return RedirectToAction("Index");
+        }
+
         [HttpPost]
         public ActionResult New()
         {
@@ -98,6 +104,10 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         {
             using (LinqDataContext db = new LinqDataContext())
             {
+                emergency_level selectedEmLevel = db.emergency_levels.Single(e => e.em_id == obj.em_id);
+                DateTime arrival = DateTime.Now;
+                obj.arrival = arrival.ToLocalTime();
+                obj.discharge = arrival.AddHours(Convert.ToDouble(selectedEmLevel.em_duration_hrs)).ToLocalTime();
                 db.triages.InsertOnSubmit(obj);
                 db.SubmitChanges();
 
