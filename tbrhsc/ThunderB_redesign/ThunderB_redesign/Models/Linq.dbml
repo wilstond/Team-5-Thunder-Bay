@@ -45,13 +45,6 @@
       <Column Name="dept_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.donation" Member="donations">
-    <Type Name="donation">
-      <Column Name="dtn_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="dtn_dnr_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="dtn_amount" Type="System.Decimal" DbType="Decimal(9,2)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.donor" Member="donors">
     <Type Name="donor">
       <Column Name="dnr_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -156,6 +149,14 @@
       <Column Name="em_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="em_description" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="em_duration_hrs" Type="System.Decimal" DbType="Decimal(4,2) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.donation" Member="donations">
+    <Type Name="donation">
+      <Column Name="dtn_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="dtn_dnr_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="dtn_amount" Type="System.Decimal" DbType="Decimal(9,2) NOT NULL" CanBeNull="false" />
+      <Column Name="dtn_date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
 </Database>

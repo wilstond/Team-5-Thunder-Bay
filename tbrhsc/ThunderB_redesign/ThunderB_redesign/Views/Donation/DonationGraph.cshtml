@@ -1,0 +1,13 @@
+﻿@*@{
+    var myChart = new Chart(width: 400, height: 250)
+       .AddTitle("Monthy Report")
+       .AddSeries(chartType: "Column",
+          xValue: (IEnumerable<string>)@ViewData["xValues"],
+          yValues: (IEnumerable<string>)@ViewData["yValues"])
+        .Write();
+
+       
+       
+    //myChart.Save("MonthlyReport", "jpeg");
+    
+}*@

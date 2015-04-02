@@ -45,9 +45,6 @@ namespace ThunderB_redesign.Models
     partial void Insertdoctor(doctor instance);
     partial void Updatedoctor(doctor instance);
     partial void Deletedoctor(doctor instance);
-    partial void Insertdonation(donation instance);
-    partial void Updatedonation(donation instance);
-    partial void Deletedonation(donation instance);
     partial void Insertdonor(donor instance);
     partial void Updatedonor(donor instance);
     partial void Deletedonor(donor instance);
@@ -81,6 +78,9 @@ namespace ThunderB_redesign.Models
     partial void Insertemergency_level(emergency_level instance);
     partial void Updateemergency_level(emergency_level instance);
     partial void Deleteemergency_level(emergency_level instance);
+    partial void Insertdonation(donation instance);
+    partial void Updatedonation(donation instance);
+    partial void Deletedonation(donation instance);
     #endregion
 		
 		public LinqDataContext() : 
@@ -150,14 +150,6 @@ namespace ThunderB_redesign.Models
 			get
 			{
 				return this.GetTable<doctor>();
-			}
-		}
-		
-		public System.Data.Linq.Table<donation> donations
-		{
-			get
-			{
-				return this.GetTable<donation>();
 			}
 		}
 		
@@ -246,6 +238,14 @@ namespace ThunderB_redesign.Models
 			get
 			{
 				return this.GetTable<emergency_level>();
+			}
+		}
+		
+		public System.Data.Linq.Table<donation> donations
+		{
+			get
+			{
+				return this.GetTable<donation>();
 			}
 		}
 	}
@@ -1015,116 +1015,6 @@ namespace ThunderB_redesign.Models
 					this._dept_id = value;
 					this.SendPropertyChanged("dept_id");
 					this.Ondept_idChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.donation")]
-	public partial class donation : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _dtn_id;
-		
-		private int _dtn_dnr_id;
-		
-		private System.Nullable<decimal> _dtn_amount;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Ondtn_idChanging(int value);
-    partial void Ondtn_idChanged();
-    partial void Ondtn_dnr_idChanging(int value);
-    partial void Ondtn_dnr_idChanged();
-    partial void Ondtn_amountChanging(System.Nullable<decimal> value);
-    partial void Ondtn_amountChanged();
-    #endregion
-		
-		public donation()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dtn_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int dtn_id
-		{
-			get
-			{
-				return this._dtn_id;
-			}
-			set
-			{
-				if ((this._dtn_id != value))
-				{
-					this.Ondtn_idChanging(value);
-					this.SendPropertyChanging();
-					this._dtn_id = value;
-					this.SendPropertyChanged("dtn_id");
-					this.Ondtn_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dtn_dnr_id", DbType="Int NOT NULL")]
-		public int dtn_dnr_id
-		{
-			get
-			{
-				return this._dtn_dnr_id;
-			}
-			set
-			{
-				if ((this._dtn_dnr_id != value))
-				{
-					this.Ondtn_dnr_idChanging(value);
-					this.SendPropertyChanging();
-					this._dtn_dnr_id = value;
-					this.SendPropertyChanged("dtn_dnr_id");
-					this.Ondtn_dnr_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dtn_amount", DbType="Decimal(9,2)")]
-		public System.Nullable<decimal> dtn_amount
-		{
-			get
-			{
-				return this._dtn_amount;
-			}
-			set
-			{
-				if ((this._dtn_amount != value))
-				{
-					this.Ondtn_amountChanging(value);
-					this.SendPropertyChanging();
-					this._dtn_amount = value;
-					this.SendPropertyChanged("dtn_amount");
-					this.Ondtn_amountChanged();
 				}
 			}
 		}
@@ -3031,6 +2921,140 @@ namespace ThunderB_redesign.Models
 					this._em_duration_hrs = value;
 					this.SendPropertyChanged("em_duration_hrs");
 					this.Onem_duration_hrsChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.donation")]
+	public partial class donation : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _dtn_id;
+		
+		private int _dtn_dnr_id;
+		
+		private decimal _dtn_amount;
+		
+		private System.DateTime _dtn_date;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Ondtn_idChanging(int value);
+    partial void Ondtn_idChanged();
+    partial void Ondtn_dnr_idChanging(int value);
+    partial void Ondtn_dnr_idChanged();
+    partial void Ondtn_amountChanging(decimal value);
+    partial void Ondtn_amountChanged();
+    partial void Ondtn_dateChanging(System.DateTime value);
+    partial void Ondtn_dateChanged();
+    #endregion
+		
+		public donation()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dtn_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int dtn_id
+		{
+			get
+			{
+				return this._dtn_id;
+			}
+			set
+			{
+				if ((this._dtn_id != value))
+				{
+					this.Ondtn_idChanging(value);
+					this.SendPropertyChanging();
+					this._dtn_id = value;
+					this.SendPropertyChanged("dtn_id");
+					this.Ondtn_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dtn_dnr_id", DbType="Int NOT NULL")]
+		public int dtn_dnr_id
+		{
+			get
+			{
+				return this._dtn_dnr_id;
+			}
+			set
+			{
+				if ((this._dtn_dnr_id != value))
+				{
+					this.Ondtn_dnr_idChanging(value);
+					this.SendPropertyChanging();
+					this._dtn_dnr_id = value;
+					this.SendPropertyChanged("dtn_dnr_id");
+					this.Ondtn_dnr_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dtn_amount", DbType="Decimal(9,2) NOT NULL")]
+		public decimal dtn_amount
+		{
+			get
+			{
+				return this._dtn_amount;
+			}
+			set
+			{
+				if ((this._dtn_amount != value))
+				{
+					this.Ondtn_amountChanging(value);
+					this.SendPropertyChanging();
+					this._dtn_amount = value;
+					this.SendPropertyChanged("dtn_amount");
+					this.Ondtn_amountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dtn_date", DbType="Date NOT NULL")]
+		public System.DateTime dtn_date
+		{
+			get
+			{
+				return this._dtn_date;
+			}
+			set
+			{
+				if ((this._dtn_date != value))
+				{
+					this.Ondtn_dateChanging(value);
+					this.SendPropertyChanging();
+					this._dtn_date = value;
+					this.SendPropertyChanged("dtn_date");
+					this.Ondtn_dateChanged();
 				}
 			}
 		}
