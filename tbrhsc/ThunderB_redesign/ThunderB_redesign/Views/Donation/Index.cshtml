@@ -1,4 +1,4 @@
-﻿
+﻿@model ThunderB_redesign.Models.DonationVM
 @{
     ViewBag.Title = "tbrhsc | Donations";
 }
@@ -53,54 +53,30 @@
         </form>
     </div>*@
     <div class="bottom-left">
-        @using (Html.BeginForm("Thanks", "Contact", FormMethod.Post))
+        @using (Html.BeginForm("Index", "Donation", FormMethod.Post))
         {
-            @Html.ValidationSummary();
-            <br />
+            @Html.ValidationSummary()
+            <div class="clear-both"></div>
+            <div class="float-left">@Html.LabelFor(model => model.dnr_name)</div>
+            <div class="float-right">@Html.TextBoxFor(model => model.dnr_name)</div>
+            <div class="clear-both"></div>
+            <div class="float-left">@Html.LabelFor(model => model.dnr_email)</div>
+            <div class="float-right">@Html.TextBoxFor(model => model.dnr_email)</div>
+            <div class="clear-both"></div>
+            <div class="float-left">@Html.LabelFor(model => model.dtn_amount)</div>
+            <div class="float-right">@Html.TextBoxFor(model => model.dtn_amount)</div>
+            <div class="clear-both"></div>
 
-            @Html.LabelFor(model => model.Name)
-            @Html.TextBoxFor(model => model.Name)
-            <br />
-            @Html.LabelFor(model => model.Email)
-            @Html.TextBoxFor(model => model.Email)
-            <br />
-            @Html.LabelFor(model => model.Age)
-            @Html.TextBoxFor(model => model.Age)
-            <br />
-
-            <input type="submit" id="submit" value="Submit" />
+            <button type="submit" class="paypal-button large">Donate</button>
 
         }
-        <form method="post" action="https://www.sandbox.paypal.com/cgi-bin/webscr" class="paypal-button" target="_blank" style="opacity: 1;">
-            <h2>Donation Form</h2>
-            <div class="hide" id="errorBox"></div>
-            <input type="hidden" name="button" value="donate">
-            <input type="hidden" name="business" value="thunderbayhospital@gmail.com">
-            <input type="hidden" name="item_name" value="Donation towards hospital">
-            <input type="hidden" name="quantity" value="">
-            <label id="lbl_name" class="float-left">Name</label>
-            <input type="text" name="Name" class="float-right">
-            <div class="clear-both"></div>
-            <label id="lbl_email" class="float-left">Email</label>
-            <input type="text" name="Email" class="float-right">
-            <div class="clear-both"></div>
-            <label id="lbl_amount" class="float-left">Amount</label>
-            <input type="text" name="amount" class="float-right">
-            <div class="clear-both"></div>
-            <label id="lbl_currency" class="float-left">Currency</label>
-            <input type="text" name="currency_code" value="CAD" disabled class="float-right">
-            <div class="clear-both"></div>
-            <input type="hidden" name="shipping" value="0">
-            <input type="hidden" name="tax" value="0">
-            <input type="hidden" name="notify_url" value="http://www.tbrhsc.net">
-            <input type="hidden" name="env" value="www.sandbox">
-            <input type="hidden" name="cmd" value="_donations">
-            <input type="hidden" name="bn" value="JavaScriptButton_donate">
-            <button type="submit" class="paypal-button large">Donate</button>
-        </form>
+        
     </div>
     <div class="bottom-right">
         <p>Testimonials go here</p>
+        @*@Html.Partial("DonationGraph");*@
+        <img src="@Url.Action("DonationGraph", "Donation")" />
+        <br/><br/>
     </div>
     <div class="clearfix"></div>
 </div>
