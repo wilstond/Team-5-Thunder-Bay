@@ -15,7 +15,10 @@ namespace ThunderB_redesign.Models
         {
             using (LinqDataContext db = new LinqDataContext())
             {
-                var allEmergencies = db.emergency_levels.GroupBy(x => x.em_description).Select(x => x.First());
+                //Option for building a list of DISTINCT values - not used here
+                //var allEmergencies = db.emergency_levels.GroupBy(x => x.em_description).Select(x => x.First());
+               
+                var allEmergencies = db.emergency_levels.Select(x => x);
 
                 List<emergency_level> emegencyList = new List<emergency_level>();
                 foreach (emergency_level emergency in allEmergencies)
