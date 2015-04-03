@@ -199,6 +199,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
     <Compile Include="Areas\admin\Controllers\AlertController.cs" />
+    <Compile Include="Areas\admin\Controllers\DonationAdminController.cs" />
     <Compile Include="Areas\admin\Controllers\ERAdminController.cs" />
     <Compile Include="Areas\admin\Controllers\FAQController.cs" />
     <Compile Include="Areas\admin\Controllers\FeedbackAdminController.cs" />
@@ -698,6 +699,7 @@
     <Content Include="Areas\admin\Views\Web.config" />
     <Content Include="Areas\admin\Views\PageAdmin\uploadPartial.cshtml" />
     <Content Include="Areas\admin\Views\Alert\AlertPost.cshtml" />
+    <Content Include="Areas\admin\Views\DonationAdmin\Index.cshtml" />
     <None Include="Properties\PublishProfiles\TBRHSC-redesign.pubxml" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -773,7 +775,7 @@
     <Content Include="Views\Shared\_Monitor.cshtml" />
     <Content Include="Views\AlertPublic\Index.cshtml" />
     <Content Include="Views\Page\PageNotFound.cshtml" />
-    <Content Include="Views\Donation\DonationGraph.cshtml" />
+    <Content Include="Areas\admin\Views\DonationAdmin\DonationGraph.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

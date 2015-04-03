@@ -279,6 +279,10 @@ footer {
     box-sizing:border-box;
 }
 
+    .donate a {
+        color: white;
+    }
+
 .news_feed, .emergency_info {
     margin-top: 0 !important;
     border: none;

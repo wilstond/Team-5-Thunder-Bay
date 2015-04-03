@@ -401,3 +401,16 @@ li a > span {
 table.stripes tr:nth-child(odd) {
   background-color: #fff;
 }
+
+
+/* Donation Admin Side Styling */
+
+.donation-admin {
+    margin: 0 auto;
+    text-align: center;
+}
+
+    .donation-admin h2 {
+        font-size: 20px;
+        font-weight: bolder;
+    }

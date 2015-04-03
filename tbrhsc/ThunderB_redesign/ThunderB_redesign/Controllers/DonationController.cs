@@ -23,28 +23,6 @@ namespace ThunderB_redesign.Controllers
                 ViewData["SubMenuItems for " + menuItem.menu_id.ToString()] = menuObj.getSubMenuItemsByParentId(menuItem.menu_id);
             }
 
-
-            //Code to generate monthly graph
-            var objDonationVM = new DonationVM();
-            var allDonations = objDonationVM.getAllDonationDetails();
-            var xValues = new[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "Ocotober", "November", "December" };
-            var amounts = new[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
-            foreach (var dtn in allDonations)
-            {
-                amounts[dtn.dtn_date.Month - 1] = amounts[dtn.dtn_date.Month - 1] + (double)dtn.dtn_amount;
-            }
-
-            List<string> yValues = new List<string>();
-
-            foreach (var amt in amounts)
-            {
-                yValues.Add(amt.ToString());
-            }
-
-            ViewData["xValues"] = xValues;
-            ViewData["yValues"] = yValues;
-
-
         }
 
         public ActionResult Index()
@@ -72,20 +50,7 @@ namespace ThunderB_redesign.Controllers
             return View();
 
         }
-
-        public ActionResult DonationGraph()
-        {
-            var myChart = new Chart(width: 400, height: 250)
-                            .AddTitle("Monthy Report")
-                            .AddSeries(chartType: "Column",
-                            xValue: (IEnumerable<string>)@ViewData["xValues"],
-                            yValues: (IEnumerable<string>)@ViewData["yValues"])
-                            .GetBytes("jpeg");
-
-            return File(myChart, "image/jpeg");
-        }
-
-
+        
         //Method to process info and redirect to paypal
 
         private void proceedToPaypal(System.Nullable<decimal> amount)
