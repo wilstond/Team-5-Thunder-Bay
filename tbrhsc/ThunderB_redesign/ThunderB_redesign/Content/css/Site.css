@@ -690,7 +690,7 @@ footer .one-sixth, footer .one-third, footer .one-half {width: 47%;}
     }
 .main_nav a#pull {
         display: block;
-        background: url('/img/hamburger.png') no-repeat center;
+        background: url('/img/hamburger_menu.png') no-repeat center;
         width: 60px;
         height: 50px;
         margin-top : -40px;
