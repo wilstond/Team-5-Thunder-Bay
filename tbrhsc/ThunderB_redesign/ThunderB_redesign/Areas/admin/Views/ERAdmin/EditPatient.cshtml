@@ -8,7 +8,7 @@
         <tr>
             <th>Patient ID</th>
 
-            <th>Patient Name</th>
+            <th>Emergency Type</th>
 
             <th>Arrival</th>
 
@@ -19,16 +19,41 @@
             <th>Actions</th>
         </tr>
         <tr>
-            <td>@Html.DisplayFor(x => x.case_id)</td>
-            <td>
+            <td>@Html.DisplayFor(x => x.case_id)
                 @Html.HiddenFor(x => x.case_id)
-                @Html.TextBoxFor(x => x.patient_name)
             </td>
-            <td>@Html.TextBoxFor(x => x.arrival)</td>
-            <td>@Html.TextBoxFor(x => x.discharge)</td>
-            <td>@Html.ValueFor(x => x.dr_id)
-            @Html.HiddenFor(x => x.dr_id)</td>
+            <td>
+                @Html.DisplayFor(x => x.patient_name)
+                @Html.HiddenFor(x => x.patient_name)          
 
+                @*@Html.DropDownListFor(model => model.em_id, new SelectList(ViewBag.emergencyList, "em_id", "em_description"), Model.em_id)*@
+                @*<br />@Html.ValidationMessageFor(model => model.em_id, "", new { @class = "text-danger" })*@
+        </td>
+            <td>@Html.DisplayFor(x => x.arrival)</td>
+            <td>@Html.TextBoxFor(x => x.discharge, new { @id = "datetimepicker" })
+                <script type="text/javascript">
+                     $(document).ready(function () {
+                     jQuery("#datetimepicker").datetimepicker();
+                     });
+                </script>
+
+            </td>
+            
+            <td>
+                @Html.HiddenFor(x => x.dr_id)
+                @{foreach (var doc in ViewBag.docList)
+                {
+                    if (
+                        @Model.dr_id == doc.Key
+                        )
+                    {
+                        @: Dr.
+                        @doc.Value }
+                }
+
+                }
+
+            </td>
             <td>
                 <input type="submit" value="Save"
                        formaction="~/admin/ERAdmin/Update/" />

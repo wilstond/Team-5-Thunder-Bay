@@ -10,11 +10,12 @@ namespace ThunderB_redesign.Areas.admin.Controllers
 {
     public class ERAdminController : Controller
     {
-        Int16 numDoctors = 2;
-        List<double> doctorQueu = new List<double>();
-        
+
+        static int numDoctors;
         MenuLinqClass menuObj = new MenuLinqClass();
         TriageViewModel triageObj = new TriageViewModel();
+        LinqDataContext db = new LinqDataContext();
+       
 
         public ERAdminController()
         {
@@ -29,7 +30,15 @@ namespace ThunderB_redesign.Areas.admin.Controllers
 
             ViewBag.emergencyList = triageObj.getEmergencyList();
 
+            triageObj.ERdoctors = db.doctors.Where(X => X.dept_id == 2).Select(x => x);
+            Dictionary<int, string> docList = new Dictionary<int, string>();
 
+            foreach (doctor doc in triageObj.ERdoctors)
+            {
+                docList.Add(doc.dr_id, doc.dr_name);
+            }
+
+            ViewBag.docList = docList;
         }
 
 
@@ -39,59 +48,45 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             {
                 TriageViewModel model = new TriageViewModel();
                 model.ERpatients = db.triages.OrderBy(x => x.case_id).ToList();
+                model.ERdoctors = db.doctors.Where(X => X.dept_id == 2).Select(x => x);
+                Dictionary<int, TimeSpan> docStats = new Dictionary<int, TimeSpan>();
+                Dictionary<string, TimeSpan> docOutput = new Dictionary<string, TimeSpan>();
+                numDoctors = model.ERdoctors.Count();
 
-                TimeSpan TotalWait = new TimeSpan();
-                foreach (triage item in model.ERpatients)
+                foreach (doctor doc in model.ERdoctors)
                 {
-                    System.TimeSpan diff = item.discharge.Subtract(item.arrival);
-                    TotalWait += diff;
-
+                    docStats.Add(doc.dr_id, model.getWaitTimes(doc.dr_id));
+                    docOutput.Add(doc.dr_name, model.getWaitTimes(doc.dr_id));
                 }
 
-                var resWaitTime = new TimeSpan(TotalWait.Ticks / numDoctors);
-                return resWaitTime;
+                ViewBag.docOutput = docOutput;
+
+                System.TimeSpan minWaitTime = docStats.OrderBy(x => x.Value).First().Value;
+
+                return minWaitTime;
             }
 
         }
 
-        public int CalcShortestQueu()
-        {
-            using (LinqDataContext db = new LinqDataContext())
-            {
-                TriageViewModel model = new TriageViewModel();
-       //--https://msdn.microsoft.com/en-us/library/vstudio/bb386922%28v=vs.100%29.aspx
-                
-                var doctQueuRes = from triage in db.triages
-                                   group triage by triage.dr_id into grouping
-                                   select new 
-                                   {
-                                        grouping.Key,
-                                        TotalWait = grouping.Sum(x => ( x.discharge - x.arrival ).Hours)
-                                   };
-
-       //--http://stackoverflow.com/questions/23734686/c-sharp-dictionary-get-the-key-of-the-min-value
-                foreach (var item in doctQueuRes)
-                {
-                    Console.WriteLine("Dr_id = {0}, Total waait = {1}",
-                    item.Key, item.TotalWait);
-                }
-                var min_queu = doctQueuRes.OrderBy(m => m.TotalWait).FirstOrDefault();
-                //Console.WriteLine(min_queu);
-                return min_queu.Key;
-
-            }
-            //selDoctor = doctorQueu
-        }
 
         public ActionResult Index()
         {
             using (LinqDataContext db = new LinqDataContext())
             {
                 TriageViewModel model = new TriageViewModel();
+
                 model.ERpatients = db.triages.OrderBy(x => x.case_id).ToList();
 
+                //model.ERdoctors = db.doctors.Where(X => X.dept_id == 2).Select(x => x);
+                //Dictionary<int, string> docList = new Dictionary<int, string>();
+
+                //foreach (doctor doc in model.ERdoctors)
+                //{
+                //    docList.Add(doc.dr_id, doc.dr_name);
+                //}
                 model.SelectedERpatient = null;
 
+                //ViewBag.docList = docList;
                 ViewBag.TotalWait = CalcWaitTime();
                 ViewBag.numDoctors = numDoctors;
 
@@ -120,6 +115,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             {
                 TriageViewModel model = new TriageViewModel();
                 model.ERpatients = db.triages.OrderBy(x => x.case_id).ToList();
+                
                 model.SelectedERpatient = null;
                 model.DisplayMode = "Write";
 
@@ -135,17 +131,21 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         {
             using (LinqDataContext db = new LinqDataContext())
             {
+                TriageViewModel model = new TriageViewModel();
+
                 emergency_level selectedEmLevel = db.emergency_levels.Single(e => e.em_id == obj.em_id);
                 DateTime arrival = DateTime.Now;
                 obj.arrival = arrival.ToLocalTime();
                 obj.discharge = arrival.AddHours(Convert.ToDouble(selectedEmLevel.em_duration_hrs)).ToLocalTime();
                 obj.patient_name = selectedEmLevel.em_description;
-                obj.dr_id = CalcShortestQueu();
+                obj.dr_id = model.getShortQueu();
+
                 db.triages.InsertOnSubmit(obj);
                 db.SubmitChanges();
 
-                TriageViewModel model = new TriageViewModel();
                 model.ERpatients = db.triages.OrderBy(x => x.case_id).ToList();
+               
+
                 model.SelectedERpatient = db.triages.Single(x => x.case_id == obj.case_id);
                 model.DisplayMode = "Read";
 
@@ -163,6 +163,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             {
                 TriageViewModel model = new TriageViewModel();
                 model.ERpatients = db.triages.OrderBy(x => x.case_id).ToList();
+                
                 model.SelectedERpatient = db.triages.Single(x => x.case_id == id);
                 model.DisplayMode = "Read";
 
@@ -180,6 +181,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             {
                 TriageViewModel model = new TriageViewModel();
                 model.ERpatients = db.triages.OrderBy(x => x.case_id).ToList();
+               
                 model.SelectedERpatient = db.triages.Single(x => x.case_id == id);
                 model.DisplayMode = "ReadWrite";
 
@@ -227,6 +229,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
                 model.ERpatients = db.triages.OrderBy(x => x.case_id).ToList();
 
                 model.SelectedERpatient = null;
+
                 model.DisplayMode = "";
 
                 ViewBag.TotalWait = CalcWaitTime();
@@ -244,6 +247,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
                 TriageViewModel model = new TriageViewModel();
                 model.ERpatients = db.triages.OrderBy(x => x.case_id).ToList();
                 model.SelectedERpatient = db.triages.Single(x => x.case_id == id);
+
                 model.DisplayMode = "Read";
 
                 ViewBag.TotalWait = CalcWaitTime();

@@ -10,8 +10,9 @@ namespace ThunderB_redesign.Controllers
 {
     public class ERController : Controller
     {
-        Int16 numDoctors = 2;
+        static int numDoctors;
         MenuLinqClass menuObj = new MenuLinqClass();
+        TriageViewModel triageObj = new TriageViewModel();
 
         public ERController()
         {
@@ -24,7 +25,31 @@ namespace ThunderB_redesign.Controllers
                 ViewData["SubMenuItems for " + menuItem.menu_id.ToString()] = menuObj.getSubMenuItemsByParentId(menuItem.menu_id);
             }
 
+            ViewBag.emergencyList = triageObj.getEmergencyList();
+
         }
+
+
+        //public TimeSpan CalcWaitTime()
+        //{
+        //    using (LinqDataContext db = new LinqDataContext())
+        //    {
+        //        TriageViewModel model = new TriageViewModel();
+        //        model.ERpatients = db.triages.OrderBy(x => x.case_id).ToList();
+
+        //        TimeSpan TotalWait = new TimeSpan();
+        //        foreach (triage item in model.ERpatients)
+        //        {
+        //            System.TimeSpan diff = item.discharge.Subtract(item.arrival);
+        //            TotalWait += diff;
+
+        //        }
+
+        //        var resWaitTime = new TimeSpan(TotalWait.Ticks / numDoctors);
+        //        return resWaitTime;
+        //    }
+
+        //}
 
 
         public TimeSpan CalcWaitTime()
@@ -33,17 +58,22 @@ namespace ThunderB_redesign.Controllers
             {
                 TriageViewModel model = new TriageViewModel();
                 model.ERpatients = db.triages.OrderBy(x => x.case_id).ToList();
+                model.ERdoctors = db.doctors.Where(X => X.dept_id == 2).Select(x => x);
+                Dictionary<int, TimeSpan> docStats = new Dictionary<int, TimeSpan>();
+                Dictionary<string, TimeSpan> docOutput = new Dictionary<string, TimeSpan>();
+                numDoctors = model.ERdoctors.Count();
 
-                TimeSpan TotalWait = new TimeSpan();
-                foreach (triage item in model.ERpatients)
+                foreach (doctor doc in model.ERdoctors)
                 {
-                    System.TimeSpan diff = item.discharge.Subtract(item.arrival);
-                    TotalWait += diff;
-
+                    docStats.Add(doc.dr_id, model.getWaitTimes(doc.dr_id));
+                    docOutput.Add(doc.dr_name, model.getWaitTimes(doc.dr_id));
                 }
 
-                var resWaitTime = new TimeSpan(TotalWait.Ticks / numDoctors);
-                return resWaitTime;
+                ViewBag.docOutput = docOutput;
+
+                System.TimeSpan minWaitTime = docStats.OrderBy(x => x.Value).First().Value;
+
+                return minWaitTime;
             }
 
         }

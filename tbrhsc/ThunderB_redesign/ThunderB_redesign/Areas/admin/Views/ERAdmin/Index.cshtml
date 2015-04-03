@@ -4,14 +4,30 @@
     ViewBag.Title = "Index";
 }
 
-<h1>List of ER cases</h1>
-<h2>@ViewBag.numDoctors doctors on duty. Total wait time : @ViewBag.TotalWait</h2>
+<h1>Emergency Room Status</h1>
+<h2>Doctors on duty : @ViewBag.numDoctors  &nbsp; &nbsp; Minimum wait time : @ViewBag.TotalWait</h2>
+<ul>
+@{
+    foreach (var doc in ViewBag.docOutput)
+    {
+
+        <li>
+            Dr.  @doc.Key : @doc.Value
+            @if (@doc.Value == @ViewBag.TotalWait)
+            { 
+                @: <i class="fa fa-arrow-right"></i>
+            }
+        </li>
+
+    }
+}
+</ul>
 <form method="post">
 
     <table class="stripes">
         <tr>
             <th>Id</th>
-            <th>Name</th>
+            <th>Case Type</th>
             <th>Arrived</th>
             <th>Discharge (est.)</th>
             <th>Assigned ER doctor</th>
@@ -41,7 +57,17 @@
                             <td>@item.patient_name</td>
                             <td>@item.arrival</td>
                             <td>@item.discharge</td>
-                            <td>@item.dr_id</td>
+                            <td>
+                                @{foreach (var doc in ViewBag.docList)
+                                  {
+                                      if (item.dr_id == doc.Key) {
+                                          @: Dr.
+                                           @doc.Value }
+                                  }
+                                      
+                                  }
+                                
+                            </td>
                             <td>
                                 <input type="submit" formaction="~/admin/ERAdmin/Select/@item.case_id"
                                        value="Select" />

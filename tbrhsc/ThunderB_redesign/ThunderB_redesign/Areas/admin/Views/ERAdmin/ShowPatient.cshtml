@@ -2,21 +2,38 @@
 
 @using (Html.BeginForm("Edit", "ERAdmin", FormMethod.Post))
 {
-    <table border="1" cellpadding="10">
+    <table class="stripes">
 
         <tr>
-            <td>Patient Name :</td>
+            <th>Case Id</th>
+            
+            <th>Case type</th>
 
-            <td>Arrived :</td>
+            <th>Arrival</th>
 
-            <td>Discharged :</td>
+            <th>Discharge</th>
 
-            <td>Actions</td>
+            <th>Doctor Assigned</th>
+
+            <th>Actions</th>
         </tr>
         <tr>
+            <td>@Model.case_id</td>
             <td>@Model.patient_name</td>
             <td>@Model.arrival</td>
             <td>@Model.discharge</td>
+            <td>
+                @{foreach (var doc in ViewBag.docList)
+                {
+                    if (Model.dr_id == doc.Key)
+                    {
+                        @: Dr.
+                        @doc.Value }
+                }
+
+                }
+
+            </td>
 
             <td>
                 <input type="submit" value="Edit"
