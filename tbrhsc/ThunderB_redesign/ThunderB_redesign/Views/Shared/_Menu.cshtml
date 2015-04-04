@@ -24,9 +24,9 @@
                         <ul>
                             @foreach (var subMenuItem in subMenuItems)
                             {
-                                @*<li>@Html.ActionLink(subMenuItem.menu_text, "Index", "Page", new {menu_id = subMenuItem.menu_id })</li>*@
-                                  <li><a href="@Url.Action("Index", "Page", new { subMenuItem.menu_id })">@subMenuItem.menu_text</a></li>
-
+                               @*<li>@Html.ActionLink(subMenuItem.menu_text, "Index", subMenuItem.menu_slug, new { subMenuItem.menu_id })</li>*@
+                               @*<li><a href="@Url.Action("Index", "Page", new { subMenuItem.menu_id })">@subMenuItem.menu_text</a></li>*@
+                            <li><a href="~/@subMenuItem.menu_slug/Index?menu_id=@subMenuItem.menu_id">@subMenuItem.menu_text</a></li>
                             }
                         </ul>
                     </nav>

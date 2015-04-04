@@ -28,7 +28,9 @@ namespace ThunderB_redesign.Models
             foreach (menu_category menuItem in allMenuItems)
             {
                 menuTree.Add(menuItem);
-                List<menu_category> subMenu = getSubMenuItemsByParentId(menuItem.menu_id).ToList();
+                var subMenu = menuObj.menu_categories.Where(x => x.parent_id == menuItem.menu_id && x.menu_slug == "Page");
+
+                //List<menu_category> subMenu = getSubMenuItemsByParentId(menuItem.menu_id).ToList();
                 foreach (menu_category submenuItem in subMenu)
                 {
                     menuTree.Add(submenuItem);

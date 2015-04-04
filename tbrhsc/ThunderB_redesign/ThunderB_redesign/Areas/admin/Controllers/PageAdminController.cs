@@ -1,9 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Transactions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+//using DotNetOpenAuth.AspNet;
+//using Microsoft.Web.WebPages.OAuth;
+//using WebMatrix.WebData;
+using ThunderB_redesign.Filters;
+
 
 using ThunderB_redesign.Models;
 using System.IO;
@@ -29,6 +35,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
                 ViewData["SubMenuItems for " + menuItem.menu_id.ToString()] = menuObj.getSubMenuItemsByParentId(menuItem.menu_id);
             }
             ViewBag.menuTree = menuObj.getMenuTree();
+            ViewBag.user_id = Membership.GetUser().ProviderUserKey;
 
         }
 
@@ -83,7 +90,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         // GET: admin/PageAdmin/Create
         public ActionResult Create()
         {
-            
+           
             return View();
         }
 
