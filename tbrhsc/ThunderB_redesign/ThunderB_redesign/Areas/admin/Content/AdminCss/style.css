@@ -402,6 +402,10 @@ table.stripes tr:nth-child(odd) {
   background-color: #fff;
 }
 
+table.page_editor {width: 800px;}
+table.page_editor tr td{ padding: 5px;}
+
+table.page_editor tr td:first-child { width: 200px;}
 
 /* Donation Admin Side Styling */
 

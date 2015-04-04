@@ -47,9 +47,7 @@
                     function updateValue(id, value) {
                         // this gets called from the popup window and updates the field with a new value
                         document.getElementById(id).value = value;
-                        // this gets called from the popup window and updates the field with a new value 
-                        //var jqueryObjectByClass = $(".cke_dialog_ui_input_text")[1];
-                        //jqueryObjectByClass.value = value;
+                        
                     }
                 </script>
                </div>
@@ -68,7 +66,7 @@
             <div class="col-md-10">
             @Html.DropDownListFor(model => model.menu_id, new SelectList(ViewBag.menuTree, "menu_id", "menu_text"), "Select a menu")
             @Html.ValidationMessageFor(model => model.menu_id, "", new { @class = "text-danger" })
-</div>
+            </div>
         </div>
 
         <div class="form-group">
