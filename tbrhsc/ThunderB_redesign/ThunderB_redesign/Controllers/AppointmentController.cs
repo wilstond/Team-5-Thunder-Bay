@@ -42,12 +42,14 @@ namespace ThunderB_redesign.Controllers
        }
 
         // GET: Appointment/Form
+        // Hidden fields for the form are populated in the controller
         public ActionResult Form()
         {
             appointment newApt = new appointment();
             newApt.date_req = DateTime.Now;
 
-            newApt.date_book = newApt.date_req.AddDays(-1);
+            //newApt.date_book = newApt.date_req.AddDays(-1);
+            newApt.date_book = DateTime.MinValue;
 
             newApt.time_book = "00:00:00 AM";
 
@@ -56,6 +58,9 @@ namespace ThunderB_redesign.Controllers
         }
 
         // POST: Appointment/Form
+        // This function inserts patient's information in the database and at the same time sends
+        // patient a confirmation email . Email sending is using a Nuget package Postal.Mvc5
+        // found using this tutorial --http://aboutcode.net/postal/--
         [HttpPost]
         public ActionResult Form(appointment _apt)
         {
@@ -65,6 +70,16 @@ namespace ThunderB_redesign.Controllers
                 {
                     apptObject.commitInsert(_apt); // insert is committed and user is redirected to home page
                     var last_id = _apt.apt_id;
+                    // Uncomment to send email confirmation to the customer
+                    dynamic email = new Email("Request_Confirmation");
+                    email.Doctor = db.doctors.Where(x => x.dr_id == _apt.dr_id).SingleOrDefault().dr_name.ToString();
+                    email.Patient = _apt.pat_name.ToString();
+                    email.To = _apt.pat_email.ToString();
+                    email.Phone = _apt.pat_phone.ToString();
+                    email.FollowUpDate = _apt.date_req.AddDays(7).ToShortDateString().ToString();
+
+                    email.Send();
+                    
                     return View("Details", _apt);
                 }
                 catch (Exception ex)
@@ -81,11 +96,6 @@ namespace ThunderB_redesign.Controllers
 
         public ActionResult Details()
         {
-
-            dynamic email = new Email("Request_Confirmation");
-            email.To = "ilecoche@acn.net";
-
-            email.Send();
             return View();
         }
 

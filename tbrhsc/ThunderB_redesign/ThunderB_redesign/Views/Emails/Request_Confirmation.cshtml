@@ -1,9 +1,26 @@
 ﻿
-
-
 To: @ViewBag.To
-From: ilecoche@gmail.com
-Subject: test
+From: booking@tbrhsc.wikiplay.ca
+Subject: We received your request for an appointment with Dr. @ViewBag.Doctor
 
-Hello
-Here is a test
+<p>
+    Hello @ViewBag.Patient,
+</p>
+<p>
+    We received your request for an appointment with Dr. @ViewBag.Doctor .
+    Our office will review doctor's schedule and contact you with the date and time of your appointment.
+
+</p>
+<p>
+    The contact information you provided is:
+    Email: @ViewBag.To
+    Phone: @ViewBag.Phone
+</p>
+<p>
+    We will get back to provide you with your appointment date and time within 7 days.
+    If you don't hear from us by @ViewBag.FollowUpDate please contact our office at (905)999-9999
+</p>
+<p>
+    Best regards,
+    Dr. @ViewBag.Doctor
+</p>
