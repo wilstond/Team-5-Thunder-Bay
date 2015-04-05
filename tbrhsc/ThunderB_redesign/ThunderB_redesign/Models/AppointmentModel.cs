@@ -9,9 +9,15 @@ using System.Web.Mvc;
 
 namespace ThunderB_redesign.Models
 {
+    [MetadataType(typeof(AppointmentModel))]
+    public partial class appointment
+    {
+
+    }
+
+    [Bind(Exclude = "apt_id")]
     public class AppointmentModel
     {
-        public int apt_id { get; set; }
 
         [DisplayName("Doctor Id")]
         [Required(ErrorMessage = "Doctor Id is required")]
@@ -23,7 +29,7 @@ namespace ThunderB_redesign.Models
 
         [DisplayName("Appointment booked date")]
         [Required(ErrorMessage = "*")]
-        public System.DateTime date_book { get; set; }
+        public System.DateTime? date_book { get; set; }
 
         [DisplayName("Appintment booked time")]
         [Required(ErrorMessage = "*")]

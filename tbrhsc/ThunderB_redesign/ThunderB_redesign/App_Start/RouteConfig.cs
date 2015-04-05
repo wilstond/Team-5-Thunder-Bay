@@ -44,6 +44,12 @@ namespace ThunderB_redesign
                   );
 
                 routes.MapRoute(
+                      name: "AppointmentsRoute",
+                      url: "Appointment",
+                      defaults: new { controller = "Appointment", action = "Form" }
+                  );
+
+                routes.MapRoute(
                        name: "PageAdmin_upload",
                        url: "admin/PageAdmin/uploadPartial",
                        defaults: new { controller = "PageAdmin", action = "uploadPartial" }

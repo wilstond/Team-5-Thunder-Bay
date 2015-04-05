@@ -93,6 +93,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Postal">
+      <HintPath>..\packages\Postal.Mvc5.1.2.0\lib\net45\Postal.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorEngine">
+      <HintPath>..\packages\RazorEngine.3.4.1\lib\net45\RazorEngine.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
@@ -207,6 +213,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Areas\admin\Controllers\AdminController.cs" />
     <Compile Include="Controllers\AlertPublicController.cs" />
+    <Compile Include="Controllers\AppointmentController.cs" />
     <Compile Include="Controllers\DonationController.cs" />
     <Compile Include="Controllers\ERController.cs" />
     <Compile Include="Controllers\FaqController.cs" />
@@ -221,6 +228,8 @@
     <Compile Include="Helpers\InputExtensions.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\AlertModelClass.cs" />
+    <Compile Include="Models\AppointmentLinqClass.cs" />
+    <Compile Include="Models\AppointmentModel.cs" />
     <Compile Include="Models\DonationVM.cs" />
     <Compile Include="Models\FaqClass.cs" />
     <Compile Include="Models\FaqModel.cs" />
@@ -776,6 +785,14 @@
     <Content Include="Views\AlertPublic\Index.cshtml" />
     <Content Include="Views\Page\PageNotFound.cshtml" />
     <Content Include="Areas\admin\Views\DonationAdmin\DonationGraph.cshtml" />
+    <Content Include="Views\Appointment\Create.cshtml" />
+    <Content Include="Views\Appointment\Details.cshtml" />
+    <Content Include="Views\Appointment\Form.cshtml" />
+    <Content Include="Views\Appointment\Edit.cshtml" />
+    <Content Include="Views\Appointment\Update.cshtml" />
+    <Content Include="Views\Emails\Web.config" />
+    <Content Include="Views\Emails\_ViewStart.cshtml" />
+    <Content Include="Views\Emails\Request_Confirmation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

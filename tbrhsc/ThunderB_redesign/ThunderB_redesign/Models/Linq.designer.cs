@@ -63,9 +63,6 @@ namespace ThunderB_redesign.Models
     partial void Insertmenu_category(menu_category instance);
     partial void Updatemenu_category(menu_category instance);
     partial void Deletemenu_category(menu_category instance);
-    partial void Insertappointment(appointment instance);
-    partial void Updateappointment(appointment instance);
-    partial void Deleteappointment(appointment instance);
     partial void Insertpage(page instance);
     partial void Updatepage(page instance);
     partial void Deletepage(page instance);
@@ -81,6 +78,9 @@ namespace ThunderB_redesign.Models
     partial void Insertdonation(donation instance);
     partial void Updatedonation(donation instance);
     partial void Deletedonation(donation instance);
+    partial void Insertappointment(appointment instance);
+    partial void Updateappointment(appointment instance);
+    partial void Deleteappointment(appointment instance);
     #endregion
 		
 		public LinqDataContext() : 
@@ -201,14 +201,6 @@ namespace ThunderB_redesign.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<appointment> appointments
-		{
-			get
-			{
-				return this.GetTable<appointment>();
-			}
-		}
-		
 		public System.Data.Linq.Table<page> pages
 		{
 			get
@@ -246,6 +238,14 @@ namespace ThunderB_redesign.Models
 			get
 			{
 				return this.GetTable<donation>();
+			}
+		}
+		
+		public System.Data.Linq.Table<appointment> appointments
+		{
+			get
+			{
+				return this.GetTable<appointment>();
 			}
 		}
 	}
@@ -1868,356 +1868,6 @@ namespace ThunderB_redesign.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.appointments")]
-	public partial class appointment : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _apt_id;
-		
-		private int _dr_id;
-		
-		private System.DateTime _date_req;
-		
-		private System.DateTime _date_book;
-		
-		private string _time_book;
-		
-		private string _pat_name;
-		
-		private string _pat_phone;
-		
-		private string _pat_email;
-		
-		private string _pat_address;
-		
-		private string _pat_ohip;
-		
-		private string _fam_dr_name;
-		
-		private string _fan_dr_phone;
-		
-		private string _app_status;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onapt_idChanging(int value);
-    partial void Onapt_idChanged();
-    partial void Ondr_idChanging(int value);
-    partial void Ondr_idChanged();
-    partial void Ondate_reqChanging(System.DateTime value);
-    partial void Ondate_reqChanged();
-    partial void Ondate_bookChanging(System.DateTime value);
-    partial void Ondate_bookChanged();
-    partial void Ontime_bookChanging(string value);
-    partial void Ontime_bookChanged();
-    partial void Onpat_nameChanging(string value);
-    partial void Onpat_nameChanged();
-    partial void Onpat_phoneChanging(string value);
-    partial void Onpat_phoneChanged();
-    partial void Onpat_emailChanging(string value);
-    partial void Onpat_emailChanged();
-    partial void Onpat_addressChanging(string value);
-    partial void Onpat_addressChanged();
-    partial void Onpat_ohipChanging(string value);
-    partial void Onpat_ohipChanged();
-    partial void Onfam_dr_nameChanging(string value);
-    partial void Onfam_dr_nameChanged();
-    partial void Onfan_dr_phoneChanging(string value);
-    partial void Onfan_dr_phoneChanged();
-    partial void Onapp_statusChanging(string value);
-    partial void Onapp_statusChanged();
-    #endregion
-		
-		public appointment()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_apt_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int apt_id
-		{
-			get
-			{
-				return this._apt_id;
-			}
-			set
-			{
-				if ((this._apt_id != value))
-				{
-					this.Onapt_idChanging(value);
-					this.SendPropertyChanging();
-					this._apt_id = value;
-					this.SendPropertyChanged("apt_id");
-					this.Onapt_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dr_id", DbType="Int NOT NULL")]
-		public int dr_id
-		{
-			get
-			{
-				return this._dr_id;
-			}
-			set
-			{
-				if ((this._dr_id != value))
-				{
-					this.Ondr_idChanging(value);
-					this.SendPropertyChanging();
-					this._dr_id = value;
-					this.SendPropertyChanged("dr_id");
-					this.Ondr_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_date_req", DbType="Date NOT NULL")]
-		public System.DateTime date_req
-		{
-			get
-			{
-				return this._date_req;
-			}
-			set
-			{
-				if ((this._date_req != value))
-				{
-					this.Ondate_reqChanging(value);
-					this.SendPropertyChanging();
-					this._date_req = value;
-					this.SendPropertyChanged("date_req");
-					this.Ondate_reqChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_date_book", DbType="Date NOT NULL")]
-		public System.DateTime date_book
-		{
-			get
-			{
-				return this._date_book;
-			}
-			set
-			{
-				if ((this._date_book != value))
-				{
-					this.Ondate_bookChanging(value);
-					this.SendPropertyChanging();
-					this._date_book = value;
-					this.SendPropertyChanged("date_book");
-					this.Ondate_bookChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_time_book", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string time_book
-		{
-			get
-			{
-				return this._time_book;
-			}
-			set
-			{
-				if ((this._time_book != value))
-				{
-					this.Ontime_bookChanging(value);
-					this.SendPropertyChanging();
-					this._time_book = value;
-					this.SendPropertyChanged("time_book");
-					this.Ontime_bookChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pat_name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string pat_name
-		{
-			get
-			{
-				return this._pat_name;
-			}
-			set
-			{
-				if ((this._pat_name != value))
-				{
-					this.Onpat_nameChanging(value);
-					this.SendPropertyChanging();
-					this._pat_name = value;
-					this.SendPropertyChanged("pat_name");
-					this.Onpat_nameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pat_phone", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
-		public string pat_phone
-		{
-			get
-			{
-				return this._pat_phone;
-			}
-			set
-			{
-				if ((this._pat_phone != value))
-				{
-					this.Onpat_phoneChanging(value);
-					this.SendPropertyChanging();
-					this._pat_phone = value;
-					this.SendPropertyChanged("pat_phone");
-					this.Onpat_phoneChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pat_email", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string pat_email
-		{
-			get
-			{
-				return this._pat_email;
-			}
-			set
-			{
-				if ((this._pat_email != value))
-				{
-					this.Onpat_emailChanging(value);
-					this.SendPropertyChanging();
-					this._pat_email = value;
-					this.SendPropertyChanged("pat_email");
-					this.Onpat_emailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pat_address", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string pat_address
-		{
-			get
-			{
-				return this._pat_address;
-			}
-			set
-			{
-				if ((this._pat_address != value))
-				{
-					this.Onpat_addressChanging(value);
-					this.SendPropertyChanging();
-					this._pat_address = value;
-					this.SendPropertyChanged("pat_address");
-					this.Onpat_addressChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pat_ohip", DbType="VarChar(12) NOT NULL", CanBeNull=false)]
-		public string pat_ohip
-		{
-			get
-			{
-				return this._pat_ohip;
-			}
-			set
-			{
-				if ((this._pat_ohip != value))
-				{
-					this.Onpat_ohipChanging(value);
-					this.SendPropertyChanging();
-					this._pat_ohip = value;
-					this.SendPropertyChanged("pat_ohip");
-					this.Onpat_ohipChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fam_dr_name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string fam_dr_name
-		{
-			get
-			{
-				return this._fam_dr_name;
-			}
-			set
-			{
-				if ((this._fam_dr_name != value))
-				{
-					this.Onfam_dr_nameChanging(value);
-					this.SendPropertyChanging();
-					this._fam_dr_name = value;
-					this.SendPropertyChanged("fam_dr_name");
-					this.Onfam_dr_nameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fan_dr_phone", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
-		public string fan_dr_phone
-		{
-			get
-			{
-				return this._fan_dr_phone;
-			}
-			set
-			{
-				if ((this._fan_dr_phone != value))
-				{
-					this.Onfan_dr_phoneChanging(value);
-					this.SendPropertyChanging();
-					this._fan_dr_phone = value;
-					this.SendPropertyChanged("fan_dr_phone");
-					this.Onfan_dr_phoneChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_app_status", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-		public string app_status
-		{
-			get
-			{
-				return this._app_status;
-			}
-			set
-			{
-				if ((this._app_status != value))
-				{
-					this.Onapp_statusChanging(value);
-					this.SendPropertyChanging();
-					this._app_status = value;
-					this.SendPropertyChanged("app_status");
-					this.Onapp_statusChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.pages")]
 	public partial class page : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -3055,6 +2705,356 @@ namespace ThunderB_redesign.Models
 					this._dtn_date = value;
 					this.SendPropertyChanged("dtn_date");
 					this.Ondtn_dateChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.appointments")]
+	public partial class appointment : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _apt_id;
+		
+		private int _dr_id;
+		
+		private System.DateTime _date_req;
+		
+		private System.DateTime _date_book;
+		
+		private string _time_book;
+		
+		private string _pat_name;
+		
+		private string _pat_phone;
+		
+		private string _pat_email;
+		
+		private string _pat_address;
+		
+		private string _pat_ohip;
+		
+		private string _fam_dr_name;
+		
+		private string _fan_dr_phone;
+		
+		private string _app_status;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onapt_idChanging(int value);
+    partial void Onapt_idChanged();
+    partial void Ondr_idChanging(int value);
+    partial void Ondr_idChanged();
+    partial void Ondate_reqChanging(System.DateTime value);
+    partial void Ondate_reqChanged();
+    partial void Ondate_bookChanging(System.DateTime value);
+    partial void Ondate_bookChanged();
+    partial void Ontime_bookChanging(string value);
+    partial void Ontime_bookChanged();
+    partial void Onpat_nameChanging(string value);
+    partial void Onpat_nameChanged();
+    partial void Onpat_phoneChanging(string value);
+    partial void Onpat_phoneChanged();
+    partial void Onpat_emailChanging(string value);
+    partial void Onpat_emailChanged();
+    partial void Onpat_addressChanging(string value);
+    partial void Onpat_addressChanged();
+    partial void Onpat_ohipChanging(string value);
+    partial void Onpat_ohipChanged();
+    partial void Onfam_dr_nameChanging(string value);
+    partial void Onfam_dr_nameChanged();
+    partial void Onfan_dr_phoneChanging(string value);
+    partial void Onfan_dr_phoneChanged();
+    partial void Onapp_statusChanging(string value);
+    partial void Onapp_statusChanged();
+    #endregion
+		
+		public appointment()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_apt_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int apt_id
+		{
+			get
+			{
+				return this._apt_id;
+			}
+			set
+			{
+				if ((this._apt_id != value))
+				{
+					this.Onapt_idChanging(value);
+					this.SendPropertyChanging();
+					this._apt_id = value;
+					this.SendPropertyChanged("apt_id");
+					this.Onapt_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dr_id", DbType="Int NOT NULL")]
+		public int dr_id
+		{
+			get
+			{
+				return this._dr_id;
+			}
+			set
+			{
+				if ((this._dr_id != value))
+				{
+					this.Ondr_idChanging(value);
+					this.SendPropertyChanging();
+					this._dr_id = value;
+					this.SendPropertyChanged("dr_id");
+					this.Ondr_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_date_req", DbType="Date NOT NULL")]
+		public System.DateTime date_req
+		{
+			get
+			{
+				return this._date_req;
+			}
+			set
+			{
+				if ((this._date_req != value))
+				{
+					this.Ondate_reqChanging(value);
+					this.SendPropertyChanging();
+					this._date_req = value;
+					this.SendPropertyChanged("date_req");
+					this.Ondate_reqChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_date_book", DbType="Date NOT NULL")]
+		public System.DateTime date_book
+		{
+			get
+			{
+				return this._date_book;
+			}
+			set
+			{
+				if ((this._date_book != value))
+				{
+					this.Ondate_bookChanging(value);
+					this.SendPropertyChanging();
+					this._date_book = value;
+					this.SendPropertyChanged("date_book");
+					this.Ondate_bookChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_time_book", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string time_book
+		{
+			get
+			{
+				return this._time_book;
+			}
+			set
+			{
+				if ((this._time_book != value))
+				{
+					this.Ontime_bookChanging(value);
+					this.SendPropertyChanging();
+					this._time_book = value;
+					this.SendPropertyChanged("time_book");
+					this.Ontime_bookChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pat_name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string pat_name
+		{
+			get
+			{
+				return this._pat_name;
+			}
+			set
+			{
+				if ((this._pat_name != value))
+				{
+					this.Onpat_nameChanging(value);
+					this.SendPropertyChanging();
+					this._pat_name = value;
+					this.SendPropertyChanged("pat_name");
+					this.Onpat_nameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pat_phone", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
+		public string pat_phone
+		{
+			get
+			{
+				return this._pat_phone;
+			}
+			set
+			{
+				if ((this._pat_phone != value))
+				{
+					this.Onpat_phoneChanging(value);
+					this.SendPropertyChanging();
+					this._pat_phone = value;
+					this.SendPropertyChanged("pat_phone");
+					this.Onpat_phoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pat_email", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string pat_email
+		{
+			get
+			{
+				return this._pat_email;
+			}
+			set
+			{
+				if ((this._pat_email != value))
+				{
+					this.Onpat_emailChanging(value);
+					this.SendPropertyChanging();
+					this._pat_email = value;
+					this.SendPropertyChanged("pat_email");
+					this.Onpat_emailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pat_address", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string pat_address
+		{
+			get
+			{
+				return this._pat_address;
+			}
+			set
+			{
+				if ((this._pat_address != value))
+				{
+					this.Onpat_addressChanging(value);
+					this.SendPropertyChanging();
+					this._pat_address = value;
+					this.SendPropertyChanged("pat_address");
+					this.Onpat_addressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pat_ohip", DbType="VarChar(12) NOT NULL", CanBeNull=false)]
+		public string pat_ohip
+		{
+			get
+			{
+				return this._pat_ohip;
+			}
+			set
+			{
+				if ((this._pat_ohip != value))
+				{
+					this.Onpat_ohipChanging(value);
+					this.SendPropertyChanging();
+					this._pat_ohip = value;
+					this.SendPropertyChanged("pat_ohip");
+					this.Onpat_ohipChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fam_dr_name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string fam_dr_name
+		{
+			get
+			{
+				return this._fam_dr_name;
+			}
+			set
+			{
+				if ((this._fam_dr_name != value))
+				{
+					this.Onfam_dr_nameChanging(value);
+					this.SendPropertyChanging();
+					this._fam_dr_name = value;
+					this.SendPropertyChanged("fam_dr_name");
+					this.Onfam_dr_nameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_fan_dr_phone", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
+		public string fan_dr_phone
+		{
+			get
+			{
+				return this._fan_dr_phone;
+			}
+			set
+			{
+				if ((this._fan_dr_phone != value))
+				{
+					this.Onfan_dr_phoneChanging(value);
+					this.SendPropertyChanging();
+					this._fan_dr_phone = value;
+					this.SendPropertyChanged("fan_dr_phone");
+					this.Onfan_dr_phoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_app_status", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string app_status
+		{
+			get
+			{
+				return this._app_status;
+			}
+			set
+			{
+				if ((this._app_status != value))
+				{
+					this.Onapp_statusChanging(value);
+					this.SendPropertyChanging();
+					this._app_status = value;
+					this.SendPropertyChanged("app_status");
+					this.Onapp_statusChanged();
 				}
 			}
 		}
