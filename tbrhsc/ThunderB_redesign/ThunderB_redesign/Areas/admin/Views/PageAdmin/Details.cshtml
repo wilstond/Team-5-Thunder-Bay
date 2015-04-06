@@ -33,11 +33,14 @@
             </td>
 
             <td>
-                @Html.DisplayFor(model => model.menu_id)
+                @Html.DisplayFor(model => model.menu_id) - 
                 @{
-                    foreach(menu_item in ViewBag.menuTree)
+                    foreach (var menu_item in ViewBag.breadCrumbs)
                     {
-                        
+                        if(menu_item.Key == Model.menu_id)
+                        {
+                            @Html.Raw(menu_item.Value);
+                        }
                     }
                 }
             </td>

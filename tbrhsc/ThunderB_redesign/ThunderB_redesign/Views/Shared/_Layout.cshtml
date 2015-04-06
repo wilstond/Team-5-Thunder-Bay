@@ -30,10 +30,15 @@
     <![endif]-->
 
     <section class="wrapper clearfix">
+        <div id="warning">
+           <i class="fa fa-warning"></i>This is a student project. Actual TBRHSC site is located at www.tbrhsc.net
+        </div>
         <header id="main_header">
             <div id="top-logo">
                 <img src="~/img/logo-top.png" class="top-logo-img" />
-                <div id="title"><h1>Thunder Bay Regional Health Sciences Centre</h1></div>
+                <div id="title">
+                <h1>Thunder Bay Regional Health Sciences Centre</h1>
+                </div>
             </div>
             <nav id="top_nav">
                 <ul>
@@ -139,7 +144,8 @@
            if ($(window).width() <= 687) {
 
                $(".main_nav ul").css('display', 'none');
-                $("#pull").css('display', 'block');
+               $("#pull").css('display', 'block');
+               $("#title h1").html('TBRHSC');
 
                 // toggle menu. Unbind the click during the resize
                 $("#pull").unbind("click").click(function () {
@@ -154,6 +160,8 @@
                 // display nav var if it was hidden when resizing to a bigger width
                 $(menu).css('display', 'block');
                 $("#pull").css('display', 'none');
+                $("#title h1").html('Thunder Bay Regional Health Sciences Centre');
+
 
                 // disables the click effect
                 $("#pull").unbind("click")

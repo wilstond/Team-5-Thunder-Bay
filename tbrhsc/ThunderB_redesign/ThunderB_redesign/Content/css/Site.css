@@ -134,7 +134,7 @@ body {
 
 
 #title h1 {
-    padding-top: 35px;
+    padding-top: 45px;
     font-size:20px;
     font-size: 1.3rem;
     position: relative;
@@ -163,13 +163,23 @@ body {
 
        
     }
-    
+ 
+#warning {
+    min-height: 30px;
+    background-color: #f68b22;
+    color: white;
+    margin-top:15px;
+    margin-bottom:0;
+    width:100%;
+    text-align:center;
+}      
 #main_header {
         height: 124px;
         background-color: #fff;
         width: 100%;
         box-sizing:border-box;
         position: relative;
+        margin-top: -14px;
 
 
     }
@@ -445,7 +455,10 @@ footer {
        outline:none;
        }
     
-
+.page_breadcrumb{
+    padding-left: 20px;
+}
+ 
 
 
 
@@ -642,9 +655,20 @@ footer {width: 100%;}
     width: 100%; 
     margin-left: 0; 
     margin-right: 0;
+    height:auto;
 }
 .main_content {margin-right: 0;}
-.main_nav ul {width: 100%; display: block; padding: 0; margin: 0 auto; clear: both; float: none;}
+.main_nav ul {
+    width: 100%; 
+    display: block; 
+    padding: 0; 
+    margin: 0 auto; 
+    height:auto;
+    overflow-y: visible;
+    clear: both;
+    float: none;
+
+}
 .main_nav ul li {
     word-wrap:break-word ; 
     width: 12%;  

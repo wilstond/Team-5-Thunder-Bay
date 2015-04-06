@@ -29,6 +29,9 @@ namespace ThunderB_redesign.Controllers
                 ViewData["SubMenuItems for " + menuItem.menu_id.ToString()] = menuObj.getSubMenuItemsByParentId(menuItem.menu_id);
             }
 
+            ViewBag.breadCrumbs = menuObj.getBreadcrumbList();
+
+
         }
 
         public ActionResult _PageList(int menu_id = 0)

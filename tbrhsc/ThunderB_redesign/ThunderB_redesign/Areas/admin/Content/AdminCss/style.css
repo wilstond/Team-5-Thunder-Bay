@@ -404,8 +404,13 @@ table.stripes tr:nth-child(odd) {
 
 table.page_editor {width: 800px;}
 table.page_editor tr td{ padding: 5px;}
+table.page_editor tr td:first-child {font-weight: 600;}
 
 table.page_editor tr td:first-child { width: 200px;}
+
+.page_preview h1{ font-size: 24px; font-weight:700; }
+.page_preview span.date {font-size: 12px;}
+.page_preview h4 {font-size: 18px;}
 
 /* Donation Admin Side Styling */
 

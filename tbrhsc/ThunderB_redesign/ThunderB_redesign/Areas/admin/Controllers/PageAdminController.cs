@@ -36,6 +36,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             }
             ViewBag.menuTree = menuObj.getMenuTree();
             ViewBag.user_id = Membership.GetUser().ProviderUserKey;
+            ViewBag.breadCrumbs = menuObj.getBreadcrumbList();
 
         }
 

@@ -28,7 +28,8 @@ namespace ThunderB_redesign.Models
             foreach (menu_category menuItem in allMenuItems)
             {
                 menuTree.Add(menuItem);
-                var subMenu = menuObj.menu_categories.Where(x => x.parent_id == menuItem.menu_id && x.menu_slug == "Page");
+                var subMenu = menuObj.menu_categories.
+                    Where(x => x.parent_id == menuItem.menu_id && x.menu_slug == "Page");
 
                 //List<menu_category> subMenu = getSubMenuItemsByParentId(menuItem.menu_id).ToList();
                 foreach (menu_category submenuItem in subMenu)
@@ -37,6 +38,26 @@ namespace ThunderB_redesign.Models
                 }
             }
             return menuTree;
+        }
+
+        public Dictionary<int, string> getBreadcrumbList()
+        {
+            Dictionary<int, string> menuBreadcrumbList = new Dictionary<int, string>();
+            var query = (from m in menuObj.menu_categories
+                    join p in menuObj.menu_categories on m.parent_id equals p.menu_id
+            select new 
+                {
+                    menuId = m.menu_id,
+                    menuText = m.menu_text,
+                    fullBreadcrumb = "<a href='" + "/" + "'>Home</a> > " + p.menu_text + " > <a href='/Page/Index?menu_id=" + m.menu_id + "'>" + m.menu_text + "</a> ",
+                }).ToList();
+
+            foreach (var row in query)
+            {
+                menuBreadcrumbList.Add(row.menuId, row.fullBreadcrumb);
+            }
+            return menuBreadcrumbList;
+
         }
     }
 }
