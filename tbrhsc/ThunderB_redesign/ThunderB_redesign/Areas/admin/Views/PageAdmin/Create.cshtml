@@ -16,8 +16,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.user_id, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @ViewBag.user_id
-                <input type="hidden" id="user_id" name="user_id" value="@ViewBag.user_id" />
+                @*@ViewBag.user_id
+                <input type="hidden" id="user_id" name="user_id" value="@ViewBag.user_id" />*@
+                @Html.HiddenFor(model => model.user_id)
            </div>
         </div>
 

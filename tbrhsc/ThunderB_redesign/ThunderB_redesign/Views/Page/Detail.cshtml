@@ -63,12 +63,13 @@ ViewBag.MetaDescription = @Model.page_title;
         <section class="top_section clearfix top">
             <header class="section-header">
                 <span class="page_breadcrumb">
+
                     @{
                         foreach (var menu_item in ViewBag.breadCrumbs)
                         {
                             if (menu_item.Key == Model.menu_id)
                             {
-                                @Html.Raw(menu_item.Value);
+                                @:<a href="/">Home</a> > @Html.Raw(menu_item.Value)
                             }
                         }
                     }

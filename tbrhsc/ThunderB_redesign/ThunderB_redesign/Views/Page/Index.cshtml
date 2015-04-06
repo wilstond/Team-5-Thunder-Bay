@@ -80,7 +80,8 @@
                         {
                             if (menu_item.Key == Model.menu_id)
                             {
-                                @Html.Raw(menu_item.Value);
+                                @:<a href="/">Home</a> > @Html.Raw(menu_item.Value)
+
                             }
                         }
                     }

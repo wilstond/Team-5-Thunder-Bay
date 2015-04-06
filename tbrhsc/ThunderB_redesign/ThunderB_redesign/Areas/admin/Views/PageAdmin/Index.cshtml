@@ -4,11 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<div class="action_link">
+    @Html.ActionLink("Add New page", "Create")
+</div>
 <table class="stripes">
     <tr>
         <th>
@@ -42,7 +41,15 @@
             @Html.DisplayFor(modelItem => item.page_created)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.menu_id)
+            @{
+                foreach (var menu_item in ViewBag.breadCrumbs)
+                {
+                    if (menu_item.Key == item.menu_id)
+                        {
+                            @Html.Raw(menu_item.Value);
+                        }
+                }
+            }
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.page_visibility)

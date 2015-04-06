@@ -159,6 +159,17 @@ header {
 #nav:last-child {
   margin-right: auto;
 }
+div.action_link {
+    width:130px;
+}
+div.action_link a{
+    color: white;
+    text-decoration: none;
+    background-color: #f68b22;
+    display:block;
+    padding:10px;
+
+}
 @media (min-width: 600px) {
   #nav {
 

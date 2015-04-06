@@ -23,6 +23,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         
         PageLinqClass objPage = new PageLinqClass();
         MenuLinqClass menuObj = new MenuLinqClass();
+        static int user_id;
 
         public PageAdminController()
         {
@@ -35,8 +36,9 @@ namespace ThunderB_redesign.Areas.admin.Controllers
                 ViewData["SubMenuItems for " + menuItem.menu_id.ToString()] = menuObj.getSubMenuItemsByParentId(menuItem.menu_id);
             }
             ViewBag.menuTree = menuObj.getMenuTree();
-            ViewBag.user_id = Membership.GetUser().ProviderUserKey;
             ViewBag.breadCrumbs = menuObj.getBreadcrumbList();
+            user_id = Convert.ToInt16(Membership.GetUser().ProviderUserKey);
+
 
         }
 
@@ -91,8 +93,10 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         // GET: admin/PageAdmin/Create
         public ActionResult Create()
         {
-           
-            return View();
+            page newPage = new page();
+            newPage.page_created = DateTime.Now.ToLocalTime();
+            newPage.user_id = user_id;
+            return View(newPage);
         }
 
         // POST: admin/PageAdmin/Create
