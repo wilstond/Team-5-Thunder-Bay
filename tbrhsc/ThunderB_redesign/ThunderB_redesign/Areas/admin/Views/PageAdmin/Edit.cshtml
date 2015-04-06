@@ -16,6 +16,10 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.page_id)
         @Html.HiddenFor(model => model.user_id)
+        @Html.HiddenFor(model => model.page_created)
+        @Html.HiddenFor(model => model.page_slug)
+
+
 
         <table class="page_editor">
             <tr>
@@ -46,15 +50,7 @@
                         </script>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                    @Html.LabelFor(model => model.page_created, htmlAttributes: new { @class = "control-label col-md-2" })
-                    </td>
-                    <td>
-                        @Html.EditorFor(model => model.page_created, new { htmlAttributes = new { @class = "form-control" } })
-                        <br /> @Html.ValidationMessageFor(model => model.page_created, "", new { @class = "text-danger" })
-                    </td>
-                </tr>
+               
 
                 <tr>
                     <td>
@@ -82,8 +78,7 @@
                          @Html.LabelFor(model => model.page_slug, htmlAttributes: new { @class = "control-label col-md-2" })
                     </td> 
                     <td>
-                        @Html.EditorFor(model => model.page_slug, new { htmlAttributes = new { @class = "form-control" } })
-                        <br /> @Html.ValidationMessageFor(model => model.page_slug, "", new { @class = "text-danger" })
+                        @Html.DisplayFor(model => model.page_slug)
                     </td>
                 </tr>
 

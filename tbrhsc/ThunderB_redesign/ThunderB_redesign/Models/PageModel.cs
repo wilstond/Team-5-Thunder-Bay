@@ -19,7 +19,7 @@ namespace ThunderB_redesign.Models
     [Bind(Exclude = "page_id")]
     public class PageModel
     {
-
+        [DisplayName("User Id")]
         [Required]
         public int user_id { get; set; }
 
@@ -28,7 +28,6 @@ namespace ThunderB_redesign.Models
         public string page_title { get; set; } //property names have to match column names
 
         [DisplayName("Page Content")]
-        [Required]
         [UIHint("tinymce_jquery_full"), AllowHtml]
         public MvcHtmlString page_content { get; set; }
 
@@ -46,10 +45,13 @@ namespace ThunderB_redesign.Models
         [Key]
         [Required]
         [DisplayName("Page Slug (Friendly Url)")]
-       // [Remote("IsSlugAvailable", "PageAdmin", HttpMethod = "POST", ErrorMessage = "Slug Already Exist.")]
+        [Remote("IsSlugAvailable", "PageAdmin", HttpMethod = "POST", ErrorMessage = "Slug Already Exist.")]
         public string page_slug { get; set; }
 
+        [DisplayName("Meta Title")]
         public string meta_title { get; set; }
+
+        [DisplayName("Meta Description")]
         public string meta_desc { get; set; }
 
     }

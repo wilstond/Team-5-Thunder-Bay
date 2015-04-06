@@ -74,7 +74,10 @@ namespace ThunderB_redesign.Models
             }
         }
 
-        public bool commitUpdate(int _page_id, string _page_title, int _user_id, string _page_content, DateTime _page_created, int _menu_id, char _page_visibility, string _page_slug)
+        public bool commitUpdate(int _page_id, string _page_title, int _user_id, 
+            string _page_content, DateTime _page_created, int _menu_id, 
+            char _page_visibility, string _page_slug, 
+            string _meta_title, string _meta_desc)
         {
             using (objPage)
             {
@@ -88,6 +91,8 @@ namespace ThunderB_redesign.Models
                 pageUpd.menu_id = _menu_id;
                 pageUpd.page_visibility = _page_visibility;
                 pageUpd.page_slug = _page_slug;
+                pageUpd.meta_title = _meta_title;
+                pageUpd.meta_desc = _meta_desc;
 
                 objPage.SubmitChanges();
                 //executes update

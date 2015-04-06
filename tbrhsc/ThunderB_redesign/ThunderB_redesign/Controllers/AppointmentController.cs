@@ -43,7 +43,7 @@ namespace ThunderB_redesign.Controllers
 
         // GET: Appointment/Form
         // Hidden fields for the form are populated in the controller
-        public ActionResult Form()
+        public ActionResult Index()
         {
             appointment newApt = new appointment();
             newApt.date_req = DateTime.Now;
@@ -62,7 +62,7 @@ namespace ThunderB_redesign.Controllers
         // patient a confirmation email . Email sending is using a Nuget package Postal.Mvc5
         // found using this tutorial --http://aboutcode.net/postal/--
         [HttpPost]
-        public ActionResult Form(appointment _apt)
+        public ActionResult Index(appointment _apt)
         {
             if (ModelState.IsValid)
             {
