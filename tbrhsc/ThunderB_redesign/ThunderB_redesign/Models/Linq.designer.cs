@@ -5,14 +5,10 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
 //     Runtime Version:4.0.30319.34209
 =======
 //     Runtime Version:4.0.30319.33440
 >>>>>>> origin/master
-=======
-//     Runtime Version:4.0.30319.34014
->>>>>>> parent of ff8d9a8... test
 =======
 //     Runtime Version:4.0.30319.34014
 >>>>>>> parent of ff8d9a8... test
