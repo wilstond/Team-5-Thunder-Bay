@@ -31,7 +31,6 @@ namespace ThunderB_redesign.Controllers
 
             ViewBag.breadCrumbs = menuObj.getBreadcrumbList();
 
-
         }
 
         public ActionResult _PageList(int menu_id = 0)
@@ -55,6 +54,8 @@ namespace ThunderB_redesign.Controllers
                 {
                     var LandPage = AllPages.First();
                     ViewBag.ListOfPages = AllPages.ToList();
+                    ViewBag.subMenuItems = menuObj.getSubMenuItemsByParentId(menu_id).ToList();
+
                     return View(LandPage);
                 }
 
@@ -80,6 +81,8 @@ namespace ThunderB_redesign.Controllers
         {
 
             var selectPage = objPage.getPageBySlug(page_slug);
+            var relatedPages = objPage.getPagesByMenu(selectPage.menu_id);
+            ViewBag.relatedPages = relatedPages.ToList();
             if(selectPage == null)
             {
                 // Redirect the user to the main page

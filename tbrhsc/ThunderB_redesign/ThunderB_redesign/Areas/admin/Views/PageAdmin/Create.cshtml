@@ -10,105 +10,118 @@
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
+    <td class="form-horizontal">
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.user_id, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @*@ViewBag.user_id
-                <input type="hidden" id="user_id" name="user_id" value="@ViewBag.user_id" />*@
-                @Html.HiddenFor(model => model.user_id)
-           </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.page_title, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.page_title, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.page_title, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.page_content, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-          @*
-                    @Html.EditorFor(model => model.page_content, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.page_content, "", new { @class = "text-danger" })
-           *@
-                <textarea id="page_content" name="page_content">&lt;p&gt;Initial content&lt;/p&gt;</textarea>
-                @*<script type="text/javascript"> CKEDITOR.replace('page_content'); </script>*@
-                <script type="text/javascript">
-                    CKEDITOR.replace('page_content', {
-                    filebrowserImageBrowseUrl: '/admin/PageAdmin/uploadPartial',
-                    filebrowserImageUploadUrl: '/admin/PageAdmin/uploadnow'
-                    });
+        @*Hidden fields*@
 
-                    function updateValue(id, value) {
-                        // this gets called from the popup window and updates the field with a new value
-                        document.getElementById(id).value = value;
-                        
-                    }
-                </script>
-               </div>
-        </div>
+            @Html.HiddenFor(model => model.page_created)
+            @Html.HiddenFor(model => model.user_id)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.page_created, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.page_created, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.page_created, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.menu_id, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-            @Html.DropDownListFor(model => model.menu_id, new SelectList(ViewBag.menuTree, "menu_id", "menu_text"), "Select a menu")
-            @Html.ValidationMessageFor(model => model.menu_id, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        <table class="page_editor">
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.user_id, htmlAttributes: new { @class = "control-label col-md-2" })
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.user_id)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.page_title, htmlAttributes: new { @class = "control-label col-md-2" })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.page_title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.page_title, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+            <td colspan="2">
+               
+                @*CK Editor instructions are found here --https://www.youtube.com/watch?v=uJ_BeZUO0rg*@
+                @*Tutorial to upload and embed images using CK editor is found here --http://amitraya.blogspot.ca/2014/09/ck-editor-implement-your-own-image.html*@
+               
+                 <textarea id="page_content" name="page_content">
+                    &lt;p&gt;Type your content here, replacing these instructions&lt;/p&gt;
+                    &lt;p&gt;To format text and headers use Format and Styles buttons on the editor toolbar&lt;/p&gt;
+                    &lt;p&gt;To insert or upload images click on image icon in the top row of the editor toolbar&lt;/p&gt;
+                    &lt;p&gt;To embed youtube videos click on source button and paste your html code in the editor. To exit source view click Source button again&lt;/p&gt;
+                </textarea>
+                    <script type="text/javascript">
+                        CKEDITOR.replace('page_content', {
+                            filebrowserImageBrowseUrl: '/admin/PageAdmin/uploadPartial',
+                            filebrowserImageUploadUrl: '/admin/PageAdmin/uploadnow'
+                        });
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.page_visibility, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.RadioButtonFor(model => model.page_visibility, "Y") Published &nbsp;&nbsp;&nbsp;
-                @Html.RadioButtonFor(model => model.page_visibility, "N", new { @checked = "checked", htmlAttributes = new { @class = "form-control" } }) Draft <br />
-                @Html.ValidationMessageFor(model => model.page_visibility, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                        function updateValue(id, value) {
+                            // this gets called from the popup window and updates the field with a new value
+                            document.getElementById(id).value = value;
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.page_slug, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.page_slug, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.page_slug, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                        }
+                    </script>
+                </td>
+            </tr>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.meta_title, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.meta_title, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.meta_title, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.menu_id, htmlAttributes: new { @class = "control-label col-md-2" })
+                </td>
+                <td>
+                    @Html.DropDownListFor(model => model.menu_id, new SelectList(ViewBag.menuTree, "menu_id", "menu_text"), "Select a menu")
+                    @Html.ValidationMessageFor(model => model.menu_id, "", new { @class = "text-danger" })
+                </td>
+            </tr>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.meta_desc, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.meta_desc, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.meta_desc, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.page_visibility, htmlAttributes: new { @class = "control-label col-md-2" })
+                </td>
+                <td>
+                    @Html.RadioButtonFor(model => model.page_visibility, "Y") Published &nbsp;&nbsp;&nbsp;
+                    @Html.RadioButtonFor(model => model.page_visibility, "N", new { @checked = "checked", htmlAttributes = new { @class = "form-control" } }) Draft <br />
+                    @Html.ValidationMessageFor(model => model.page_visibility, "", new { @class = "text-danger" })
+                </td>
+            </tr>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.page_slug, htmlAttributes: new { @class = "control-label col-md-2" })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.page_slug, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.page_slug, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.meta_title, htmlAttributes: new { @class = "control-label col-md-2" })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.meta_title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.meta_title, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.meta_desc, htmlAttributes: new { @class = "control-label col-md-2" })
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.meta_desc, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.meta_desc, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            </table>
+
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+</div>
 }
 
 <div>

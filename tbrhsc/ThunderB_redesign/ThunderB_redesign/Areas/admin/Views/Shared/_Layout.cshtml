@@ -19,6 +19,29 @@
     <link href="@Url.Content("~/Content/themes/base/jquery-ui.css")" rel="stylesheet" type="text/css" />
     <link href="~/Scripts/jquery.datetimepicker.css" rel="stylesheet" />
 
+    @*Script to redirect to login if no activity for (3)min. Timeout is set in web.config*@
+    @*--http://contractnamespace.blogspot.ca/2014/05/automatic-redirect-upon-session-timeout-mvc-js.html*@
+    <script>
+
+    var timeout = @FormsAuthentication.Timeout.TotalMilliseconds; // 3 minutes
+
+    var wintimeout;
+
+    function SetWinTimeout() {
+        wintimeout =  window.setTimeout( "window.location.href='@FormsAuthentication.LoginUrl';",                          timeout); // In millisecods
+
+    }
+
+    $('body').click(function() {
+        //when user clicks remove timeout and reset it
+        window.clearTimeout(wintimeout);
+        SetWinTimeout();
+
+    });
+    SetWinTimeout();
+    </script> 
+    @*end redirection script*@
+
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
     <script src="~/Scripts/jquery-ui-1.11.3.min.js" type="text/javascript" language="javascript"></script>
     <script src="~/Scripts/jquery.datetimepicker.js" type="text/javascript" language="javascript"></script>

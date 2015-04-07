@@ -195,24 +195,43 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         [HttpPost]
         public ActionResult Update(int case_id, triage obj)
         {
-            using (LinqDataContext db = new LinqDataContext())
+            if (ModelState.IsValid)
             {
-                var pat_upd = db.triages.Single(x => x.case_id == case_id);
-                pat_upd.patient_name = obj.patient_name;
-                pat_upd.arrival = Convert.ToDateTime(obj.arrival);
-                pat_upd.discharge = Convert.ToDateTime(obj.discharge);
-                db.SubmitChanges();
+                using (LinqDataContext db = new LinqDataContext())
+                {
+                    var pat_upd = db.triages.Single(x => x.case_id == case_id);
+                    pat_upd.patient_name = obj.patient_name;
+                    pat_upd.arrival = Convert.ToDateTime(obj.arrival);
+                    pat_upd.discharge = Convert.ToDateTime(obj.discharge);
+                    db.SubmitChanges();
 
-                TriageViewModel model = new TriageViewModel();
-                model.ERpatients = db.triages.OrderBy(x => x.case_id).ToList();
+                    TriageViewModel model = new TriageViewModel();
+                    model.ERpatients = db.triages.OrderBy(x => x.case_id).ToList();
 
-                model.SelectedERpatient = pat_upd;
-                model.DisplayMode = "Read";
+                    model.SelectedERpatient = pat_upd;
+                    model.DisplayMode = "Read";
 
-                ViewBag.TotalWait = CalcWaitTime();
-                ViewBag.numDoctors = numDoctors;
+                    ViewBag.TotalWait = CalcWaitTime();
+                    ViewBag.numDoctors = numDoctors;
 
-                return View("Index", model);
+                    return View("Index", model);
+                }
+            }
+            else
+            {
+                using (LinqDataContext db = new LinqDataContext())
+                {
+                    TriageViewModel model = new TriageViewModel();
+                    model.ERpatients = db.triages.OrderBy(x => x.case_id).ToList();
+                    var pat_upd = db.triages.Single(x => x.case_id == case_id);
+
+                    model.SelectedERpatient = pat_upd;
+                    model.DisplayMode = "ReadWrite";
+
+                    ViewBag.TotalWait = CalcWaitTime();
+                    ViewBag.numDoctors = numDoctors;
+                    return View("Index", model);
+                }
             }
         }
 

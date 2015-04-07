@@ -46,6 +46,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         public ActionResult Index()
         {
             var AllPages = objPage.getPages();
+            
             return View(AllPages);
         }
 
@@ -107,6 +108,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             {
                 try
                 {
+                   // page.page_content = "<div class='content'>" + page.page_content + "</div>";
                     objPage.commitInsert(page); // insert is committed and user is redirected to home page
                     return RedirectToAction("Index");
                 }
@@ -148,7 +150,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
                     //update is commited based on updated values and user redirected back to Details page 
                     objPage.commitUpdate(id, page.page_title, page.user_id, page.page_content, page.page_created,
 
-page.menu_id, page.page_visibility, page.page_slug);
+page.menu_id, page.page_visibility, page.page_slug, page.meta_title, page.meta_desc);
                     return RedirectToAction("Details/" + id);
                 }
                 catch
@@ -201,11 +203,20 @@ page.menu_id, page.page_visibility, page.page_slug);
         //http://stackoverflow.com/questions/18037292/client-side-validation-for-unique-field-mvc
 
         [HttpPost]
-        public JsonResult IsSlugAvailable(string page_slug) {
-
-            var slug = objPage.getSlug(page_slug);
-
-            return Json(slug == null);
+        public ActionResult IsSlugAvailable(string page_slug) 
+        {
+            using (LinqDataContext db = new LinqDataContext())
+            {
+                try
+                {
+                    var slug = db.pages.Single(m => m.page_slug == page_slug);
+                    return Json(false, JsonRequestBehavior.AllowGet);
+                }
+                catch (Exception)
+                {
+                    return Json(true, JsonRequestBehavior.AllowGet);
+                }
+            }
         }
     }
 }

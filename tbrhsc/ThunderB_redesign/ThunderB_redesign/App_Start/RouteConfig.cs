@@ -30,6 +30,11 @@ namespace ThunderB_redesign
                       url: "Feedback",
                       defaults: new { controller = "Feedback", action = "Index"}
                   );
+                routes.MapRoute(
+                     name: "AboutUsRoute",
+                     url: "About-Us",
+                     defaults: new { controller = "Page", action = "Index", menu_id = "101" }
+                 );
 
                 routes.MapRoute(
                       name: "FaqRoute",
