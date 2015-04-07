@@ -42,9 +42,8 @@ namespace ThunderB_redesign.Areas.admin.Controllers
 
         public ActionResult DonationGraph()
         {
-            var myChart = new Chart(width: 400, height: 250)
+            var myChart = new Chart(width: 600, height: 400)
                             .AddTitle("Monthy Report")
-                            .AddSeries(chartType: "Bar",
                             xValue: (IEnumerable<string>)@ViewData["xValues"],
                             yValues: (IEnumerable<string>)@ViewData["yValues"])
                             .GetBytes("jpeg");
