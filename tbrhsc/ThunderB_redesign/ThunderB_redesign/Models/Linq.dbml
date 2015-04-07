@@ -1,12 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="tbrhsc" Class="LinqDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=dodder.arvixe.com;Initial Catalog=tbrhsc;User ID=team5" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="tbrhsc" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.AlertTable" Member="AlertTables">
-    <Type Name="AlertTable">
+  <Table Name="dbo.faq" Member="faqs">
+    <Type Name="faq">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="question" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="answer" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="category" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.feedbacks" Member="feedbacks">
+    <Type Name="feedback">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="alert" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="colour" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="duration" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="alertNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="topic" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="fbcontent" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.newsTable" Member="newsTables">
+    <Type Name="newsTable">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="stories" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="headline" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="media" Type="System.Data.Linq.Binary" DbType="Image NOT NULL" CanBeNull="false" UpdateCheck="Never" />
     </Type>
   </Table>
   <Table Name="dbo.departments" Member="departments">
@@ -14,16 +30,6 @@
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="dept_name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="dept_description" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Association Name="department_doctor" Member="doctors" ThisKey="id" OtherKey="dept_id" Type="doctor" />
-      <Association Name="department_doctor1" Member="doctors1" ThisKey="id" OtherKey="dept_id" Type="doctor" />
-    </Type>
-  </Table>
-  <Table Name="dbo.faq" Member="faqs">
-    <Type Name="faq">
-      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="question" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="answer" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="category" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.doctors" Member="doctors">
@@ -37,43 +43,24 @@
       <Column Name="dr_photo" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="dept_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="doctor_triage" Member="triages" ThisKey="dr_id" OtherKey="dr_id" Type="triage" />
-      <Association Name="doctor_triage1" Member="triages1" ThisKey="dr_id" OtherKey="dr_id" Type="triage" />
-      <Association Name="doctor_appointment" Member="appointments" ThisKey="dr_id" OtherKey="dr_id" Type="appointment" />
-      <Association Name="doctor_appointment1" Member="appointments1" ThisKey="dr_id" OtherKey="dr_id" Type="appointment" />
-      <Association Name="department_doctor" Member="department" ThisKey="dept_id" OtherKey="id" Type="department" IsForeignKey="true" />
-      <Association Name="department_doctor1" Member="department1" ThisKey="dept_id" OtherKey="id" Type="department" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="team5.menu_categories" Member="menu_categories">
-    <Type Name="menu_category">
-      <Column Name="menu_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="menu_text" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="parent_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="menu_slug" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="menu_category_menu_category" Member="menu_categories" ThisKey="menu_id" OtherKey="parent_id" Type="menu_category" />
-      <Association Name="menu_category_page" Member="pages" ThisKey="menu_id" OtherKey="menu_id" Type="page" />
-      <Association Name="menu_category_menu_category" Member="menu_category1" ThisKey="parent_id" OtherKey="menu_id" Type="menu_category" IsForeignKey="true" />
+  <Table Name="dbo.donor" Member="donors">
+    <Type Name="donor">
+      <Column Name="dnr_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="dnr_email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="dnr_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="dnr_anonymous" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.feedbacks" Member="feedbacks">
-    <Type Name="feedback">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="topic" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="fbcontent" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Job" Member="Jobs">
-    <Type Name="Job">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+  <Table Name="dbo.jobs" Member="jobs">
+    <Type Name="job">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="job_title" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="category_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="closing_date" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="position_type" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="job_description" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
-      <Column Name="date_posted" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="data_posted" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="date_updated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="job_description" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="departments_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.product" Member="products">
@@ -84,38 +71,41 @@
       <Column Name="prd_price" Type="System.Decimal" DbType="Decimal(9,2) NOT NULL" CanBeNull="false" />
       <Column Name="prd_count" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="prd_cat_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="product_category_product" Member="product_category" ThisKey="prd_cat_id" OtherKey="prd_cat_id" Type="product_category" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.newsTable" Member="newsTables">
-    <Type Name="newsTable">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="stories" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="headline" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="media" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
-    </Type>
-  </Table>
-  <Table Name="dbo.emergency_levels" Member="emergency_levels">
-    <Type Name="emergency_level">
-      <Column Name="em_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="em_description" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="em_duration_hrs" Type="System.Decimal" DbType="Decimal(4,2) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.product_category" Member="product_categories">
     <Type Name="product_category">
       <Column Name="prd_cat_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="prd_cat_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Association Name="product_category_product" Member="products" ThisKey="prd_cat_id" OtherKey="prd_cat_id" Type="product" />
     </Type>
   </Table>
-  <Table Name="dbo.donation" Member="donations">
-    <Type Name="donation">
-      <Column Name="dtn_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="dtn_dnr_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="dtn_amount" Type="System.Decimal" DbType="Decimal(9,2) NOT NULL" CanBeNull="false" />
-      <Column Name="dtn_date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Association Name="donor_donation" Member="donor" ThisKey="dtn_dnr_id" OtherKey="dnr_id" Type="donor" IsForeignKey="true" />
+  <Table Name="dbo.subscriber" Member="subscribers">
+    <Type Name="subscriber">
+      <Column Name="sub_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="sub_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="sub_email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="team5.menu_categories" Member="menu_categories">
+    <Type Name="menu_category">
+      <Column Name="menu_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="menu_text" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="parent_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="menu_slug" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.pages" Member="pages">
+    <Type Name="page">
+      <Column Name="page_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="page_title" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="page_content" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="page_created" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="menu_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="page_visibility" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="page_slug" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="meta_title" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="meta_desc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.triage" Member="triages">
@@ -126,24 +116,30 @@
       <Column Name="discharge" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="em_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="dr_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="doctor_triage" Member="doctor" ThisKey="dr_id" OtherKey="dr_id" Type="doctor" IsForeignKey="true" />
-      <Association Name="doctor_triage1" Member="doctor1" ThisKey="dr_id" OtherKey="dr_id" Type="doctor" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.subscriber" Member="subscribers">
-    <Type Name="subscriber">
-      <Column Name="sub_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="sub_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="sub_email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+  <Table Name="dbo.AlertTable" Member="AlertTables">
+    <Type Name="AlertTable">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="alert" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="colour" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="duration" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="alertNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
-  <Table Name="dbo.donor" Member="donors">
-    <Type Name="donor">
-      <Column Name="dnr_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="dnr_email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="dnr_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="dnr_anonymous" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
-      <Association Name="donor_donation" Member="donations" ThisKey="dnr_id" OtherKey="dtn_dnr_id" Type="donation" />
+  <Table Name="dbo.emergency_levels" Member="emergency_levels">
+    <Type Name="emergency_level">
+      <Column Name="em_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="em_description" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="em_duration_hrs" Type="System.Decimal" DbType="Decimal(4,2) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.donation" Member="donations">
+    <Type Name="donation">
+      <Column Name="dtn_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="dtn_dnr_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="dtn_amount" Type="System.Decimal" DbType="Decimal(9,2) NOT NULL" CanBeNull="false" />
+      <Column Name="dtn_date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.appointments" Member="appointments">
@@ -161,23 +157,6 @@
       <Column Name="fam_dr_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="fan_dr_phone" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
       <Column Name="app_status" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Association Name="doctor_appointment" Member="doctor" ThisKey="dr_id" OtherKey="dr_id" Type="doctor" IsForeignKey="true" />
-      <Association Name="doctor_appointment1" Member="doctor1" ThisKey="dr_id" OtherKey="dr_id" Type="doctor" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.pages" Member="pages">
-    <Type Name="page">
-      <Column Name="page_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="page_title" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="page_content" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="page_created" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="menu_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="page_visibility" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
-      <Column Name="page_slug" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="meta_title" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="meta_desc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
-      <Association Name="menu_category_page" Member="menu_category" ThisKey="menu_id" OtherKey="menu_id" Type="menu_category" IsForeignKey="true" DeleteRule="SET DEFAULT" />
     </Type>
   </Table>
 </Database>
