@@ -205,6 +205,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
     <Compile Include="Areas\admin\Controllers\AlertController.cs" />
+    <Compile Include="Areas\admin\Controllers\ApptAdminController.cs" />
     <Compile Include="Areas\admin\Controllers\DonationAdminController.cs" />
     <Compile Include="Areas\admin\Controllers\ERAdminController.cs" />
     <Compile Include="Areas\admin\Controllers\FAQController.cs" />
@@ -230,6 +231,7 @@
     <Compile Include="Models\AlertModelClass.cs" />
     <Compile Include="Models\AppointmentLinqClass.cs" />
     <Compile Include="Models\AppointmentModel.cs" />
+    <Compile Include="Models\DateRangeAttribute.cs" />
     <Compile Include="Models\DonationVM.cs" />
     <Compile Include="Models\FaqClass.cs" />
     <Compile Include="Models\FaqModel.cs" />
@@ -709,6 +711,9 @@
     <Content Include="Areas\admin\Views\PageAdmin\uploadPartial.cshtml" />
     <Content Include="Areas\admin\Views\Alert\AlertPost.cshtml" />
     <Content Include="Areas\admin\Views\DonationAdmin\Index.cshtml" />
+    <Content Include="Areas\admin\Views\ApptAdmin\Index.cshtml" />
+    <Content Include="Areas\admin\Views\ApptAdmin\Details.cshtml" />
+    <Content Include="Areas\admin\Views\ApptAdmin\Edit.cshtml" />
     <None Include="Properties\PublishProfiles\TBRHSC-redesign.pubxml" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -785,14 +790,12 @@
     <Content Include="Views\AlertPublic\Index.cshtml" />
     <Content Include="Views\Page\PageNotFound.cshtml" />
     <Content Include="Areas\admin\Views\DonationAdmin\DonationGraph.cshtml" />
-    <Content Include="Views\Appointment\Create.cshtml" />
     <Content Include="Views\Appointment\Details.cshtml" />
     <Content Include="Views\Appointment\Form.cshtml" />
-    <Content Include="Views\Appointment\Edit.cshtml" />
-    <Content Include="Views\Appointment\Update.cshtml" />
     <Content Include="Views\Emails\Web.config" />
     <Content Include="Views\Emails\_ViewStart.cshtml" />
     <Content Include="Views\Emails\Request_Confirmation.cshtml" />
+    <Content Include="Views\Appointment\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
