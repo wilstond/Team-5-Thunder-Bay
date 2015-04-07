@@ -11,7 +11,7 @@ namespace ThunderB_redesign.Models
 
         public IEnumerable<menu_category> getMenuItems()
         {
-            var allMenuItems = menuObj.menu_categories.Where(x => x.parent_id == 0);
+            var allMenuItems = menuObj.menu_categories.Where(x => x.parent_id == 0 && x.menu_id < 6);
             return allMenuItems;
         }
 
@@ -49,12 +49,21 @@ namespace ThunderB_redesign.Models
                 {
                     menuId = m.menu_id,
                     menuText = m.menu_text,
-                    fullBreadcrumb = p.menu_text + " > <a href='/Page/Index?menu_id=" + m.menu_id + "'>" + m.menu_text + "</a> ",
+                    parentId = p.menu_id,
+                    shortBreadcrumb = " <a href='/Page/Index?menu_id=" + m.menu_id + "'>" + m.menu_text + "</a> ",
+                    fullBreadcrumb = p.menu_text + " > <a href='/Page/Index?menu_id=" + m.menu_id + "'>" + m.menu_text + "</a> "
                 }).ToList();
 
             foreach (var row in query)
             {
-                menuBreadcrumbList.Add(row.menuId, row.fullBreadcrumb);
+                if (row.parentId == 0)
+                {
+                    menuBreadcrumbList.Add(row.menuId, row.shortBreadcrumb);
+                }
+                else
+                {
+                    menuBreadcrumbList.Add(row.menuId, row.fullBreadcrumb);
+                }
             }
             return menuBreadcrumbList;
 

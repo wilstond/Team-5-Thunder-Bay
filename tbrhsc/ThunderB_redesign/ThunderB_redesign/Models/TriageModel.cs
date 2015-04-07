@@ -29,6 +29,7 @@ namespace ThunderB_redesign.Models
 
         [DisplayName("Discharge")]
         [Required(ErrorMessage = "Discharge date & time are required")]
+        [DateRange]
         public System.DateTime discharge { get; set; }
 
         [DisplayName("Complaint")]
@@ -36,5 +37,7 @@ namespace ThunderB_redesign.Models
         public int em_id { get; set; }
 
         public Nullable<int> dr_id { get; set; }
+
+       
     }
 }

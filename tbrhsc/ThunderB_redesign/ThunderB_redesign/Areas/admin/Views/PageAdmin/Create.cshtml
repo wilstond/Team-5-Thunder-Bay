@@ -10,7 +10,7 @@
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
+    <td class="form-horizontal">
         <hr />
 
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -67,11 +67,13 @@
             </tr>
 
             <tr>
-                @Html.LabelFor(model => model.menu_id, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                <td>
+                    @Html.LabelFor(model => model.menu_id, htmlAttributes: new { @class = "control-label col-md-2" })
+                </td>
+                <td>
                     @Html.DropDownListFor(model => model.menu_id, new SelectList(ViewBag.menuTree, "menu_id", "menu_text"), "Select a menu")
                     @Html.ValidationMessageFor(model => model.menu_id, "", new { @class = "text-danger" })
-                </div>
+                </td>
             </tr>
 
             <tr>

@@ -28,8 +28,8 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         {
             user_id = Convert.ToInt16(Membership.GetUser().ProviderUserKey);
             
-                db.DeferredLoadingEnabled = false;
-                dr_id = db.doctors.Where(x => x.user_id == user_id).SingleOrDefault().dr_id;
+               // db.DeferredLoadingEnabled = false;
+            dr_id = db.doctors.Where(x => x.user_id == user_id).SingleOrDefault().dr_id;
             
             ViewBag.dr_id = dr_id;
         }

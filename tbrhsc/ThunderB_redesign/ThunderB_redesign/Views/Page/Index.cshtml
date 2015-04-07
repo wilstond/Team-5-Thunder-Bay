@@ -33,10 +33,33 @@
         </div>
 
         <section class="news_feed clearfix">
-            <header>Other pages</header>
+            @{
+                List<ThunderB_redesign.Models.menu_category> submenuList = ViewBag.subMenuItems;
+            }
+            @if (submenuList.Count > 0)
+            { 
+            <header>Sub-categories</header>
             <div class="news_title">
 
-                <h2>List of pages</h2>
+                <ul>
+
+                    @{foreach (var item in ViewBag.subMenuItems)
+                    {
+
+                        <li>
+                            @*<a href="@Url.Action("Index", @item.menu_text, new { item.menu_id })">@item.menu_text</a>*@
+                            <a href="~/@item.menu_slug/Index?menu_id=@item.menu_id">@item.menu_text</a>
+
+
+                        </li>
+                    }
+                    }
+                </ul>
+            </div>
+            }
+            <header>List of pages</header>
+            <div class="news_title">
+
                 <ul>
 
                 @{foreach (var item in ViewBag.ListOfPages)
