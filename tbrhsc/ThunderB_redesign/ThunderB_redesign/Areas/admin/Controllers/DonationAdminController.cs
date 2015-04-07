@@ -44,6 +44,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         {
             var myChart = new Chart(width: 600, height: 400)
                             .AddTitle("Monthy Report")
+                            .AddSeries(chartType: "Pie",
                             xValue: (IEnumerable<string>)@ViewData["xValues"],
                             yValues: (IEnumerable<string>)@ViewData["yValues"])
                             .GetBytes("jpeg");
