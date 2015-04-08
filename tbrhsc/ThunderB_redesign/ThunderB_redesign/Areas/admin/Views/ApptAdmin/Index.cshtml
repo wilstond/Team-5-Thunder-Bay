@@ -36,13 +36,23 @@
             @Html.DisplayFor(modelItem => item.pat_name)
         </td>       
         <td>
-            @Html.DisplayFor(modelItem => item.date_req)
+            @item.date_req.ToShortDateString()
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.date_book)
+            @{
+                if(item.date_book != DateTime.MinValue)
+                {
+                    @item.date_book.ToShortDateString()
+                }
+            }
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.time_book)
+            @{
+                if (item.time_book != "00:00:00 AM")
+                {
+                    @item.time_book
+                }
+            }        
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.app_status)

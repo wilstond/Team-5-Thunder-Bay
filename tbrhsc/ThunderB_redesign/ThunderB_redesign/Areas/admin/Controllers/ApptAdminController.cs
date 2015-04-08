@@ -71,27 +71,45 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             }
         }
 
-        // GET: admin/ApptAdmin/Edit/5
+        // GET: admin/ApptAdmin/Edit/id
+        // select appointment by id and pass it to the Edit view
         public ActionResult Edit(int id)
         {
             var selAppt = apptObject.getAppointmentById(id);
+            if (selAppt.date_book == DateTime.MinValue.ToLocalTime())
+            {
+                ViewData["date_book"] = "";
+            }
+            else
+            {
+                ViewData["date_book"] = selAppt.date_book.ToLocalTime();
+            }
             return View(selAppt);
         }
 
-        // POST: admin/ApptAdmin/Edit/5
+        // POST: admin/ApptAdmin/Edit/id
+        // update selected appointment booking date and time
         [HttpPost]
         public ActionResult Edit(int id, appointment appt)
         {
+            if(ModelState.IsValid){
             try
-            {
-                // TODO: Add update logic here
+                {
+                    if (appt.date_book != DateTime.MinValue.ToLocalTime())
+                    {
+                        appt.time_book = appt.date_book.ToShortTimeString();
+                    }
+                    apptObject.commitUpdate(id, appt.dr_id, appt.date_req, appt.date_book, appt.time_book, appt.pat_name,
+                        appt.pat_phone, appt.pat_email, appt.pat_address, appt.pat_ohip, appt.fam_dr_name, appt.fan_dr_phone, appt.app_status);
 
-                return RedirectToAction("Index");
+                    return RedirectToAction("Index");
+                }
+            catch(Exception ex)
+                {
+                    return View(ex.Message);
+                }
             }
-            catch
-            {
-                return View();
-            }
+            return View(appt);
         }
 
         // GET: admin/ApptAdmin/Delete/5
