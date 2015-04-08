@@ -205,6 +205,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
     <Compile Include="Areas\admin\Controllers\AlertController.cs" />
+    <Compile Include="Areas\admin\Controllers\ApptAdminController.cs" />
     <Compile Include="Areas\admin\Controllers\DonationAdminController.cs" />
     <Compile Include="Areas\admin\Controllers\ERAdminController.cs" />
     <Compile Include="Areas\admin\Controllers\FAQController.cs" />
@@ -246,6 +247,7 @@
     </Compile>
     <Compile Include="Models\MenuLinqClass.cs" />
     <Compile Include="Models\MenuModel.cs" />
+    <Compile Include="Models\NewsPostAdminModel.cs" />
     <Compile Include="Models\PageLinqClass.cs" />
     <Compile Include="Models\PageModel.cs" />
     <Compile Include="Models\SubscriberClass.cs" />
@@ -259,6 +261,7 @@
     <Content Include="Areas\admin\Content\AdminJS\admin.js" />
     <Content Include="ckeditor\adapters\jquery.js" />
     <Content Include="ckeditor\build-config.js" />
+    <Content Include="ckeditor\CHANGES.md" />
     <Content Include="ckeditor\ckeditor.js" />
     <Content Include="ckeditor\config.js" />
     <Content Include="ckeditor\contents.css" />
@@ -328,6 +331,7 @@
     <Content Include="ckeditor\lang\vi.js" />
     <Content Include="ckeditor\lang\zh-cn.js" />
     <Content Include="ckeditor\lang\zh.js" />
+    <Content Include="ckeditor\LICENSE.md" />
     <Content Include="ckeditor\plugins\a11yhelp\dialogs\a11yhelp.js" />
     <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\af.js" />
     <Content Include="ckeditor\plugins\a11yhelp\dialogs\lang\ar.js" />
@@ -465,6 +469,7 @@
     <Content Include="ckeditor\plugins\wsc\dialogs\wsc.css" />
     <Content Include="ckeditor\plugins\wsc\dialogs\wsc.js" />
     <Content Include="ckeditor\plugins\wsc\dialogs\wsc_ie.js" />
+    <Content Include="ckeditor\README.md" />
     <Content Include="ckeditor\samples\ajax.html" />
     <Content Include="ckeditor\samples\api.html" />
     <Content Include="ckeditor\samples\appendto.html" />
@@ -606,14 +611,10 @@
     <Content Include="Areas\admin\Views\PageAdmin\Edit.cshtml" />
     <Content Include="Areas\admin\Views\PageAdmin\Delete.cshtml" />
     <Content Include="Areas\admin\Views\PageAdmin\NotFound.cshtml" />
-    <Content Include="ckeditor\CHANGES.md" />
-    <Content Include="ckeditor\LICENSE.md" />
     <Content Include="ckeditor\plugins\scayt\LICENSE.md" />
     <Content Include="ckeditor\plugins\scayt\README.md" />
-    <Content Include="ckeditor\plugins\Thumbs.db" />
     <Content Include="ckeditor\plugins\wsc\LICENSE.md" />
     <Content Include="ckeditor\plugins\wsc\README.md" />
-    <Content Include="ckeditor\README.md" />
     <Content Include="ckeditor\samples\assets\posteddata.php" />
     <Content Include="ckeditor\samples\plugins\htmlwriter\assets\outputforflash\outputforflash.fla" />
     <Content Include="ckeditor\samples\sample_posteddata.php" />
@@ -633,6 +634,10 @@
     <Content Include="Areas\admin\Views\Alert\AlertPost.cshtml" />
     <Content Include="Areas\admin\Views\DonationAdmin\Index.cshtml" />
     <Content Include="Areas\admin\Views\NewsPost\CreateNews.cshtml" />
+    <Content Include="Areas\admin\Views\ApptAdmin\Details.cshtml" />
+    <Content Include="Areas\admin\Views\ApptAdmin\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\ApptAdmin\Index.cshtml" />
+    <Content Include="Content\MonthlyReport" />
     <None Include="Properties\PublishProfiles\File System Deployment.pubxml" />
     <None Include="Properties\PublishProfiles\TBRHSC-redesign.pubxml" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
@@ -710,15 +715,12 @@
     <Content Include="Views\AlertPublic\Index.cshtml" />
     <Content Include="Views\Page\PageNotFound.cshtml" />
     <Content Include="Areas\admin\Views\DonationAdmin\DonationGraph.cshtml" />
-    <Content Include="Views\Appointment\Create.cshtml" />
     <Content Include="Views\Appointment\Details.cshtml" />
-    <Content Include="Views\Appointment\Form.cshtml" />
-    <Content Include="Views\Appointment\Edit.cshtml" />
-    <Content Include="Views\Appointment\Update.cshtml" />
     <Content Include="Views\Emails\Web.config" />
     <Content Include="Views\Emails\_ViewStart.cshtml" />
     <Content Include="Views\Emails\Request_Confirmation.cshtml" />
     <Content Include="Views\Newsletter\Index.cshtml" />
+    <Content Include="Views\Appointment\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

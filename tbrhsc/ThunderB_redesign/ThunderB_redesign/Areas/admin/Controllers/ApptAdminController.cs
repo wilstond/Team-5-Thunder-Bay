@@ -49,27 +49,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             return View(selAppt);
         }
 
-        // GET: admin/ApptAdmin/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: admin/ApptAdmin/Create
-        [HttpPost]
-        public ActionResult Create(appointment appt)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+       
 
         // GET: admin/ApptAdmin/Edit/id
         // select appointment by id and pass it to the Edit view
