@@ -72,7 +72,6 @@
                 @*@Html.TextBoxFor(model => model.date_book, new { @id = "datetimepicker" })*@
                 <script type="text/javascript">
                     $(document).ready(function () {
-                        //var tomorrow = new Date(today.getTime() + 24 * 60 * 60 * 1000);
                         jQuery("#datetimepicker").datetimepicker({
                              format: 'Y-m-d H:i:s A',
                              minDate: '-1969/12/31'

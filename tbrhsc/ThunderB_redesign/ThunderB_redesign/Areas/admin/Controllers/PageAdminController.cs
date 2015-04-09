@@ -5,9 +5,9 @@ using System.Transactions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-//using DotNetOpenAuth.AspNet;
-//using Microsoft.Web.WebPages.OAuth;
-//using WebMatrix.WebData;
+using DotNetOpenAuth.AspNet;
+using Microsoft.Web.WebPages.OAuth;
+using WebMatrix.WebData;
 using ThunderB_redesign.Filters;
 
 
@@ -37,7 +37,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             }
             ViewBag.menuTree = menuObj.getMenuTree();
             ViewBag.breadCrumbs = menuObj.getBreadcrumbList();
-            user_id = Convert.ToInt16(Membership.GetUser().ProviderUserKey);
+            user_id = WebSecurity.CurrentUserId;
 
 
         }
