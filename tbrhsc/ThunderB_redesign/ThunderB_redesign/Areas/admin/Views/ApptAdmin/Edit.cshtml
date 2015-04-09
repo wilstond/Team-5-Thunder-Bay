@@ -65,7 +65,8 @@
                     }
                     else
                     {
-                        @Html.TextBoxFor(model => model.date_book, new { @id = "datetimepicker" })
+                        <input id="datetimepicker" name="date_book" type="text" value="@Model.date_book.ToShortDateString() @Model.time_book" />
+
                     }
                 }
 
@@ -73,8 +74,12 @@
                 <script type="text/javascript">
                     $(document).ready(function () {
                         jQuery("#datetimepicker").datetimepicker({
-                             format: 'Y-m-d H:i:s A',
-                             minDate: '-1969/12/31'
+                             format: 'Y-m-d H:i A',
+                             minDate: '-1969/12/31',
+                             allowTimes: [
+                                 '8:00', '8:30', '9:00', '9:30', '10:00', '10:30',
+                                 '11:00', '11:30', '14:00', '14:30', '15:00', '15:30'
+                             ]
                         });
                      });
                 </script>

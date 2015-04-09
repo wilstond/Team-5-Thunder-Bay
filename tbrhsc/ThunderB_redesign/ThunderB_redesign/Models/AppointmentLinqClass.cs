@@ -11,7 +11,12 @@ namespace ThunderB_redesign.Models
     {
         LinqDataContext db = new LinqDataContext();
 
+        public doctor getDoctorByUserId(int user_id)
+        {
+            var selDoctor = db.doctors.Where(x => x.user_id == user_id).SingleOrDefault();
+            return selDoctor;
 
+        }
 
         public IQueryable<appointment> getAllAppointments()
         {

@@ -14,7 +14,7 @@
 @foreach (var image in Model)
 {
     <a href="#" class="returnImage" data-url="@Request.Url.GetLeftPart(UriPartial.Authority)@image.Url">
-        <img src="@image.Url" alt="Hejsan" id="#image" data-source="@image.Url" width="200" height="200" />
+        <img src="@image.Url" alt="image" id="#image" data-source="@image.Url" width="200" height="200" />
     </a>
 }
 <script type="text/javascript">
