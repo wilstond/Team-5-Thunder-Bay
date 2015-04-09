@@ -97,14 +97,18 @@
                     <li id="rss"><a href="" class="fa fa-rss"></a></li>
                     <li id="google"><a href="" class="fa fa-google-plus"></a></li>
                 </ul> 
-                @Html.Partial("~/Views/Newsletter/NewsletterForm.cshtml")
+
+                @*@Html.Partial("~/Views/Newsletter/NewsletterForm.cshtml")*@
+                @*Code above was not passing a model to Page controller, so I replaced it with call below that forces subscriber model into partial view. (I.L.)*@
+
+                @Html.Partial("~/Views/Newsletter/NewsletterForm.cshtml", new ThunderB_redesign.Models.subscriber(), new ViewDataDictionary())
             </div>
         </footer>
     </section>
    
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/Scripts")
-    @Scripts.Render("~/bundles/jqueryval")
+
     @RenderSection("scripts", required: false)
     <script type="text/javascript">
 
@@ -187,6 +191,11 @@
         })// end of document. ready
 
     </script>
+
+    @*@Scripts.Render("~/bundles/jqueryval") -- Bundle messes up equalizer script -- so I replaced it with single AJAX script below*@
+
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+
    <script>
         var _gaq = [['_setAccount', 'UA-XXXXX-X'], ['_trackPageview']];
         (function (d, t) {
