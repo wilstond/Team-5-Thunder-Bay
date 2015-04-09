@@ -1,0 +1,16 @@
+﻿@model IEnumerable<ThunderB_redesign.Models.newsTable>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h1>TBRHSC News</h1>
+)
+<p>@Html.ActionLink("Write a News Story", "Insert", "Linq")</p>
+
+<ul>
+    @foreach (var x in Model)
+    {
+        <li>@Html.ActionLink(x.headline, "Story", new { id = x.Id })</li>
+    }
+</ul>

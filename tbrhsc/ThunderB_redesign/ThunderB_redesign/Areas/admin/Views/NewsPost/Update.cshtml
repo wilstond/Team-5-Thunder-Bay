@@ -1,0 +1,30 @@
+﻿@model ThunderB_redesign.Models.newsTable
+
+@{
+    ViewBag.Title = "Update News Story: " + @Model.headline;
+}
+
+<h1>Update: @Model.headline</h1>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(x => x.Id)
+    
+    @Html.LabelFor(x => x.headline)
+    @Html.TextBoxFor(x => x.headline)
+    @Html.ValidationMessageFor(x => x.headline)
+    <br />
+    <br />
+    @Html.LabelFor(x => x.stories)
+    @Html.TextBoxFor(x => x.stories)
+    @Html.ValidationMessageFor(x => x.stories)
+    <br />
+    <br />
+    <input type="submit" value="Update" />
+}
+
+<p>@Html.ActionLink("Back", "Details", new { id = Model.Id })</p>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
