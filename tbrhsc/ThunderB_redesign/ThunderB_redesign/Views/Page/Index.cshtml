@@ -1,31 +1,11 @@
 ﻿@model ThunderB_redesign.Models.page
 
 @{
-    ViewBag.Title = "Index";
+    
+    ViewBag.Title = "TBRHSC";
 }
 
 
-
-@*@{
-    ViewBag.Title = @Model.page_title;
-    ViewBag.MetaDescription = @Model.page_title;
-}*@
-
-@*<dt>
-        @Html.DisplayNameFor(model => model.user_id)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.user_id)
-    </dd>*@
-
-@*<dt>
-        @Html.DisplayNameFor(model => model.page_title)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.page_title)
-    </dd>*@
 <div class="middle clearfix">
     <div class="sidebar_right clearfix">
         <div class="donate clearfix">
@@ -47,7 +27,6 @@
                     {
 
                         <li>
-                            @*<a href="@Url.Action("Index", @item.menu_text, new { item.menu_id })">@item.menu_text</a>*@
                             <a href="~/@item.menu_slug/Index?menu_id=@item.menu_id">@item.menu_text</a>
 
 

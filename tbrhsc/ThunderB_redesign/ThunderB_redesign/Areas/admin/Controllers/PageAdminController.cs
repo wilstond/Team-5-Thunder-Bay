@@ -57,7 +57,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             if(upload!=null)
             {
                 string ImageName = upload.FileName;
-                string path = System.IO.Path.Combine(Server.MapPath("~/Images/uploads"), ImageName);
+                string path = System.IO.Path.Combine(Server.MapPath("/Images/uploads"), ImageName);
                 upload.SaveAs(path);
             }
         }
@@ -66,10 +66,10 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         //---http://amitraya.blogspot.ca/2014/09/ck-editor-implement-your-own-image.html
         public ActionResult uploadPartial()
         {
-            var appData = Server.MapPath("~/Images/uploads");
+            var appData = Server.MapPath("/Images/uploads");
             var images = Directory.GetFiles(appData).Select(x => new imagesviewmodel
             {
-                Url = Url.Content("/images/uploads/" + Path.GetFileName(x))
+                Url = Url.Content("/Images/uploads/" + Path.GetFileName(x))
             });
             return View(images);
         }
@@ -178,7 +178,7 @@ page.menu_id, page.page_visibility, page.page_slug, page.meta_title, page.meta_d
 
         // POST: admin/PageAdmin/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, page page)
         {
             try
             {

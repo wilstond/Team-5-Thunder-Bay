@@ -39,18 +39,22 @@ namespace ThunderB_redesign.Models
         [Required(ErrorMessage = "Please enter patient name")]
         public string pat_name { get; set; }
 
-        [DisplayName("Patient Phone")]
+        [DisplayName("Patient Phone, ex. 4161234567")]
         [Required(ErrorMessage = "Please enter patient phone")]
+        [StringLength(10, ErrorMessage="10 digits phone numbers only are accepted")]
+        [RegularExpression("^[0-9]{10}$", ErrorMessage="10 digit phone number without hyphens, dots or brackets is expected.")]
         public string pat_phone { get; set; }
 
         [DisplayName("Patient Email")]
         [Required(ErrorMessage = "Please enter patient email")]
+        [EmailAddress(ErrorMessage="Invalid email address")]
         public string pat_email { get; set; }
 
         [DisplayName("Patient Address")]
         [Required(ErrorMessage = "Please enter patient address")]
         public string pat_address { get; set; }
 
+        [StringLength(12, ErrorMessage = "12 character OHIP card # is expected")]
         [DisplayName("Patient Health Card")]
         [Required(ErrorMessage = "Please enter patient OHIP #")]
         public string pat_ohip { get; set; }
@@ -59,7 +63,9 @@ namespace ThunderB_redesign.Models
         [Required(ErrorMessage = "Please enter Family Doctor name")]
         public string fam_dr_name { get; set; }
 
-        [DisplayName("Family Doctor Phone")]
+        [StringLength(10, ErrorMessage = "10 digits phone numbers only are accepted")]
+        [RegularExpression("^[0-9]{10}$", ErrorMessage = "10 digit phone number without hyphens, dots or brackets is expected.")]
+        [DisplayName("Family Doctor Phone,  ex. 4161234567")]
         [Required(ErrorMessage = "Please enter Family Doctor phone")]
         public string fan_dr_phone { get; set; }
 

@@ -1,0 +1,11 @@
+﻿body {
+}
+
+#subscribefrm {
+    border: 2px solid white;
+}
+
+#subscribefrm .form-group {
+    float: left;
+    width: 49%;
+}

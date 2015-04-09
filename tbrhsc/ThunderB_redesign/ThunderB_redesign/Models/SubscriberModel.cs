@@ -19,10 +19,12 @@ namespace ThunderB_redesign.Models
     public class SubscriberModel
     {
         [DisplayName("Name")]
+        [Required(ErrorMessage = "Please enter your name")]
         public string sub_name { get; set; }
 
         [DisplayName("Email")]
         [Required(ErrorMessage="Please enter your email")]
+        [RegularExpression(".+\\@.+\\..+", ErrorMessage = "Please enter a valid email")]
         public string sub_email { get; set; }
 
     }

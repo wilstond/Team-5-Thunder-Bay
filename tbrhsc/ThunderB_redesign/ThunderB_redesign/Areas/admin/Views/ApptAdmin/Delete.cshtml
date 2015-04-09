@@ -1,0 +1,126 @@
+﻿@model ThunderB_redesign.Models.appointment
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>appointment</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.dr_id)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.dr_id)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.date_req)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.date_req)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.date_book)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.date_book)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.time_book)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.time_book)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.pat_name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.pat_name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.pat_phone)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.pat_phone)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.pat_email)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.pat_email)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.pat_address)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.pat_address)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.pat_ohip)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.pat_ohip)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.fam_dr_name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.fam_dr_name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.fan_dr_phone)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.fan_dr_phone)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.app_status)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.app_status)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>
