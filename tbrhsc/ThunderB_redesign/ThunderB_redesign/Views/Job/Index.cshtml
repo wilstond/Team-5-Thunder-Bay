@@ -1,0 +1,25 @@
+﻿@model IEnumerable<ThunderB_redesign.Models.Job>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Job Board</h2>
+
+<table>
+    <tr>
+        <td>@Html.DisplayNameFor(model => model.job_title)</td>
+        <td>@Html.DisplayNameFor(model => model.jobCategory.category)</td>
+        <td>@Html.DisplayNameFor(model => model.closing_date)</td>
+    </tr>
+
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@Html.ActionLink(x.job_title, "Details", new { id = x.Id })</td>
+            <td>@x.jobCategory.category</td>
+            <td>@x.closing_date</td>
+        </tr>
+    }
+
+</table>
+
