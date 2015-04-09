@@ -6,11 +6,11 @@ using System.Web.Mvc;
 
 using ThunderB_redesign.Models;
 
-namespace ThunderB_redesign.Models.NewsPostLinq
+namespace ThunderB_redesign.Areas.admin.Controllers
 {
-    public class NewsPostLinq : Controller
+    public class NewsPostController : Controller
     {
-        newsClass objNews = new newsClass();
+        NewsPostLinq objNews = new NewsPostLinq();
 
         public ActionResult Index()
         {
@@ -69,7 +69,28 @@ namespace ThunderB_redesign.Models.NewsPostLinq
         }
 
         [HttpPost]
-        public ActionResult Delete(int id, newsTable allNews)
+        public ActionResult Update(int Id, newsTable news)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    objNews.commitUpdate(Id, news.stories, news.headline);
+                }
+                catch
+                {
+                    return View();
+                }
+
+                return RedirectToAction("Details", new { id = Id });
+
+            }
+            
+            return View(news);
+
+        }
+
+        public ActionResult Delete(int id)
         {
             try
             {

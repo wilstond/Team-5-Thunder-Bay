@@ -15,7 +15,7 @@ namespace ThunderB_redesign.Models
 
     }
 
-    [Bind(Exclude="id")]
+    [Bind(Exclude="Id")]
     public partial class newsValidation
     {
         [DisplayName("News Story")]

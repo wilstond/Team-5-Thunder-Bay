@@ -257,6 +257,7 @@
     <Compile Include="Models\MenuModel.cs" />
     <Compile Include="Models\NewsPostAdminModel.cs" />
     <Compile Include="Models\NewsPostLinq.cs" />
+    <Compile Include="Models\NewsPostPublic.cs" />
     <Compile Include="Models\PageLinqClass.cs" />
     <Compile Include="Models\PageModel.cs" />
     <Compile Include="Models\SubscriberClass.cs" />
@@ -647,11 +648,12 @@
     <Content Include="Areas\admin\Views\JobAdmin\Edit.cshtml" />
     <Content Include="Areas\admin\Views\JobAdmin\Index.cshtml" />
     <Content Include="Areas\admin\Views\JobAdmin\NotFound.cshtml" />
+    <Content Include="Areas\admin\Views\NewsPost\Index.cshtml" />
+    <Content Include="Areas\admin\Views\NewsPost\Delete.cshtml" />
     <Content Include="Areas\admin\Views\NewsPost\Details.cshtml" />
     <Content Include="Areas\admin\Views\NewsPost\Insert.cshtml" />
-    <Content Include="Areas\admin\Views\NewsPost\Update.cshtml" />
-    <Content Include="Areas\admin\Views\NewsPost\Delete.cshtml" />
     <Content Include="Areas\admin\Views\NewsPost\NotFound.cshtml" />
+    <Content Include="Areas\admin\Views\NewsPost\Update.cshtml" />
     <None Include="Properties\PublishProfiles\File System Deployment.pubxml" />
     <None Include="Properties\PublishProfiles\TBRHSC-redesign.pubxml" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />

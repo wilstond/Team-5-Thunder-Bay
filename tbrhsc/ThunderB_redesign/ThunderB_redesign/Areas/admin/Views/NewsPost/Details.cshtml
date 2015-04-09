@@ -7,9 +7,9 @@
 <h1>News Story Details</h1>
 
 <h2>@Html.DisplayFor(x => x.headline)</h2>
-<p>@Html.DisplayFor(x => x.story)</p>
+<p>@Html.DisplayFor(x => x.stories)</p>
 <p>
-    @Html.ActionLink("Back", "Index", "Linq") |
+    @Html.ActionLink("Back", "Index") |
     @Html.ActionLink("Update", "Update", new { id = Model.Id }) |
     @Html.ActionLink("Delete", "Delete", new { id = Model.Id })
 </p>

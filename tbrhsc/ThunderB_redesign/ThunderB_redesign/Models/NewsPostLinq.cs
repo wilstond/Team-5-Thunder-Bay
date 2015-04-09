@@ -19,7 +19,7 @@ namespace ThunderB_redesign.Models
 
         public newsTable getNewsByID(int _id)
         {
-            var allNew = objNews.newsTables.SingleOrDefault(x => x.id == _id);
+            var allNew = objNews.newsTables.SingleOrDefault(x => x.Id == _id);
             return allNew;
         }
 
@@ -30,7 +30,7 @@ namespace ThunderB_redesign.Models
             using (objNews)
             {
                 //using the model to set table columns to new balues veing passed and providing it to the insert command
-                objNews.newsTables.InsertAllOnSubmit(newNews);
+                objNews.newsTables.InsertOnSubmit(newNews);
                 //committing insert against database
                 objNews.SubmitChanges();
                 return true;
@@ -41,7 +41,7 @@ namespace ThunderB_redesign.Models
         {
             using (objNews)
             {
-                var objUpdateNews = objNews.newsTables.Single(x => x.id == _id);
+                var objUpdateNews = objNews.newsTables.Single(x => x.Id == _id);
                 //setting table columns to new values being passed
                 objUpdateNews.stories = _stories;
                 objUpdateNews.headline = _headline;
@@ -55,9 +55,9 @@ namespace ThunderB_redesign.Models
         {
             using (objNews)
             {
-                var objDeleteNews = objNews.newsTables.Single(x => x.id == _id);
+                var objDeleteNews = objNews.newsTables.Single(x => x.Id == _id);
                 //delete command
-                objNews.newsTables.DeleteAllOnSubmit(objDeleteNews);
+                objNews.newsTables.DeleteOnSubmit(objDeleteNews);
                 //committing delete
                 objNews.SubmitChanges();
                 return true;

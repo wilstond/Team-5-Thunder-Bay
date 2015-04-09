@@ -8,7 +8,7 @@
 
 @using (Html.BeginForm())
 {
-    @Html.HiddenFor(x => x.Id)
+    @*@Html.HiddenFor(x => x.Id)*@
     
     @Html.LabelFor(x => x.headline)
     @Html.TextBoxFor(x => x.headline)
@@ -20,7 +20,7 @@
     @Html.ValidationMessageFor(x => x.stories)
     <br />
     <br />
-    <input type="submit" value="Update" />
+    <input type="submit" value="Update" id="Update" />
 }
 
 <p>@Html.ActionLink("Back", "Details", new { id = Model.Id })</p>
