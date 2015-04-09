@@ -19,17 +19,16 @@ namespace ThunderB_redesign.Controllers
         [HttpPost]
         public ActionResult ProcessSubscription(subscriber sub)
         {
-            //if (ModelState.IsValid)
-            //{
-            //    var objSub = new SubscriberClass();
-            //    objSub.commitInsert(sub);
-            //    return PartialView();
-            //}
-            //else
-            //{
-            //    return PartialView("NewsletterForm");
-            //}
-            return PartialView();
+            if (ModelState.IsValid)
+            {
+                var objSub = new SubscriberClass();
+                objSub.commitInsert(sub);
+                return PartialView();
+            }
+            else
+            {
+                return PartialView("NewsletterForm");
+            }
         }
 
     }
