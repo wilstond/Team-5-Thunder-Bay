@@ -721,6 +721,8 @@
     <Content Include="Views\Emails\Request_Confirmation.cshtml" />
     <Content Include="Views\Newsletter\Index.cshtml" />
     <Content Include="Views\Appointment\Index.cshtml" />
+    <Content Include="Views\Newsletter\NewsletterForm.cshtml" />
+    <Content Include="Views\Newsletter\ProcessSubscription.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
