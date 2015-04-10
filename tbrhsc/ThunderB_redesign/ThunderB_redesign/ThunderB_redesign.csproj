@@ -651,7 +651,6 @@
     <Content Include="Areas\admin\Views\JobAdmin\NotFound.cshtml" />
     <Content Include="Areas\admin\Views\NewsPost\Index.cshtml" />
     <Content Include="Areas\admin\Views\NewsPost\Delete.cshtml" />
-    <Content Include="Areas\admin\Views\NewsPost\Details.cshtml" />
     <Content Include="Areas\admin\Views\NewsPost\Insert.cshtml" />
     <Content Include="Areas\admin\Views\NewsPost\NotFound.cshtml" />
     <Content Include="Areas\admin\Views\NewsPost\Update.cshtml" />

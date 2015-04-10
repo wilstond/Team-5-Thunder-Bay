@@ -18,18 +18,18 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             return View(allNews);
         }
 
-        public ActionResult Details(int id)
-        {
-            var allNews = objNews.getNewsByID(id);
-            if (allNews == null)
-            {
-                return View("NotFound");
-            }
-            else
-            {
-                return View(allNews);
-            }
-        }
+        //public ActionResult Details(int id)
+        //{
+        //    var allNews = objNews.getNewsByID(id);
+        //    if (allNews == null)
+        //    {
+        //        return View("NotFound");
+        //    }
+        //    else
+        //    {
+        //        return View(allNews);
+        //    }
+        //}
 
         public ActionResult Insert()
         {
