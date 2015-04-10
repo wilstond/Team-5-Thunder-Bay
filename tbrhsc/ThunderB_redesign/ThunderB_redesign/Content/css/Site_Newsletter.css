@@ -2,10 +2,39 @@
 }
 
 #subscribefrm {
-    border: 2px solid white;
+    /*border: 1px solid white;*/
 }
 
-#subscribefrm .form-group {
-    float: left;
-    width: 49%;
+    #subscribefrm h4 {
+        margin: 10px 0;
+        font-weight: bolder;
+}
+
+    #subscribefrm hr {
+        margin: 10px 0;
+    }
+
+    #subscribefrm form {
+        /*border: 1px solid blue;*/
+        /*text-align: center;*/
+        /*padding-bottom: 20px;*/
+    }
+
+        #subscribefrm form .form-group {
+            display: inline-block;
+            float: left;
+            width: 45%;
+            margin-right: 2%;
+            min-height: 50px;
+        }
+
+        #subscribefrm form input[type="submit"] {
+            border: 1px solid white;
+            background-color: #1a2f38;    
+            color: white;
+            padding: 5px 10px;
+        }
+
+.text-danger {
+    color: red;
 }

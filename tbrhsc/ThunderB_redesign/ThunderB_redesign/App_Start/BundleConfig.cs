@@ -35,7 +35,8 @@ namespace ThunderB_redesign
                         .Include("~/Content/css/normalize.css")
                         .Include("~/Content/css/site.css")
                         .Include("~/Content/css/font-awesome.css")
-                        .Include("~/Content/css/Site_Donation.css"));
+                        .Include("~/Content/css/Site_Donation.css")
+                        .Include("~/Content/css/Site_Newsletter.css"));
 
             
             bundles.Add(new StyleBundle("~/Fonts").Include(
