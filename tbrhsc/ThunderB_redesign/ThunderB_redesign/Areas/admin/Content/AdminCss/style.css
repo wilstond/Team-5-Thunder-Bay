@@ -425,6 +425,13 @@ table.page_editor tr td:first-child { width: 200px;}
 .page_preview span.date {font-size: 12px;}
 .page_preview h4 {font-size: 18px;}
 
+ul.pagination li {display: inline-block; margin: 2px;}
+ul.pagination li.active {
+  background-color: #e9f7ff;
+}
+ul.pagination li a {display: block; width: 25px; height: 25px; border:#1a2f38 solid 1px; text-align:center; 
+                    padding-top: 3px;}
+
 /* Donation Admin Side Styling */
 
 .donation-admin {
