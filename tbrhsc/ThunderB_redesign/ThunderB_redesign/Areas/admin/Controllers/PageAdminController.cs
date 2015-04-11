@@ -21,7 +21,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
     public class PageAdminController : Controller
     {
         //creating new object
-        
+        LinqDataContext db = new LinqDataContext();
         PageLinqClass objPage = new PageLinqClass();
         MenuLinqClass menuObj = new MenuLinqClass();
         static int user_id;
@@ -38,12 +38,14 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             }
             ViewBag.menuTree = menuObj.getMenuTree();
             ViewBag.breadCrumbs = menuObj.getBreadcrumbList();
+            ViewBag.headerList = menuObj.getHeadersList();
             user_id = WebSecurity.CurrentUserId;
 
 
         }
 
-        // GET: admin/PageAdmin
+        // GET: admin/PageAdmin/
+        // displays paginated list of all pages created using CMS
         public ActionResult Index(int? p)
         {
             int itemsPerPage = 10;
@@ -57,6 +59,16 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             }
 
                 return View(listOfPages.ToPagedList(pageNumber, itemsPerPage));
+        }
+
+        public ActionResult Main()
+        {
+
+            var pagesGrouped = from p in db.pages 
+                               group p by p.menu_id into g
+                               select new Group<page, int> {Key = g.Key, Values = g};
+
+            return View(pagesGrouped.ToList());
         }
 
         //--addition to allow ckeditor pload local images; followed tutorial below
@@ -101,11 +113,12 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         }
 
         // GET: admin/PageAdmin/Create
-        public ActionResult Create()
+        public ActionResult Create(int menu_id = -1)
         {
             page newPage = new page();
             newPage.page_created = DateTime.Now.ToLocalTime();
             newPage.user_id = user_id;
+            newPage.menu_id = menu_id;
             return View(newPage);
         }
 
