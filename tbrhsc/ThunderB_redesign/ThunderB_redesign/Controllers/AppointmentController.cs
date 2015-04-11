@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+//using System.Net.Mail;
 using Postal;
 
 
@@ -62,14 +62,17 @@ namespace ThunderB_redesign.Controllers
                     apptObject.commitInsert(_apt); // insert is committed and user is redirected to home page
                     var last_id = _apt.apt_id;
                     // Uncomment to send email confirmation to the customer
-                    //dynamic email = new Email("Request_Confirmation");
-                    //email.Doctor = db.doctors.Where(x => x.dr_id == _apt.dr_id).SingleOrDefault().dr_name.ToString();
-                    //email.Patient = _apt.pat_name.ToString();
-                    //email.To = _apt.pat_email.ToString();
-                    //email.Phone = _apt.pat_phone.ToString();
-                    //email.FollowUpDate = _apt.date_req.AddDays(7).ToShortDateString().ToString();
+                    //var smtp = new SmtpClient();
+                    //smtp.EnableSsl = true;
 
-                    //email.Send();
+                    dynamic email = new Email("Request_Confirmation");
+                    email.Doctor = db.doctors.Where(x => x.dr_id == _apt.dr_id).SingleOrDefault().dr_name.ToString();
+                    email.Patient = _apt.pat_name.ToString();
+                    email.To = _apt.pat_email.ToString();
+                    email.Phone = _apt.pat_phone.ToString();
+                    email.FollowUpDate = _apt.date_req.AddDays(7).ToShortDateString().ToString();
+
+                    email.Send();
                     
                     return View("Details", _apt);
                 }
