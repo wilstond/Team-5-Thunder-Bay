@@ -211,6 +211,7 @@
     <Compile Include="Areas\admin\Controllers\FAQController.cs" />
     <Compile Include="Areas\admin\Controllers\FeedbackAdminController.cs" />
     <Compile Include="Areas\admin\Controllers\JobAdminController.cs" />
+    <Compile Include="Areas\admin\Controllers\NewsletterAdminController.cs" />
     <Compile Include="Areas\admin\Controllers\NewsPostController.cs" />
     <Compile Include="Areas\admin\Controllers\PageAdminController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -255,6 +256,7 @@
     </Compile>
     <Compile Include="Models\MenuLinqClass.cs" />
     <Compile Include="Models\MenuModel.cs" />
+    <Compile Include="Models\NewsletterModel.cs" />
     <Compile Include="Models\NewsPostAdminModel.cs" />
     <Compile Include="Models\NewsPostLinq.cs" />
     <Compile Include="Models\NewsPostPublic.cs" />
@@ -654,6 +656,12 @@
     <Content Include="Areas\admin\Views\NewsPost\Insert.cshtml" />
     <Content Include="Areas\admin\Views\NewsPost\NotFound.cshtml" />
     <Content Include="Areas\admin\Views\NewsPost\Update.cshtml" />
+    <Content Include="Areas\admin\Views\NewsletterAdmin\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\NewsletterAdmin\Details.cshtml" />
+    <Content Include="Areas\admin\Views\NewsletterAdmin\Index.cshtml" />
+    <Content Include="Areas\admin\Views\NewsletterAdmin\NewsletterSent.cshtml" />
+    <Content Include="Areas\admin\Views\NewsletterAdmin\SendNewsletter.cshtml" />
+    <Content Include="Areas\admin\Views\NewsletterAdmin\Update.cshtml" />
     <None Include="Properties\PublishProfiles\File System Deployment.pubxml" />
     <None Include="Properties\PublishProfiles\TBRHSC-redesign.pubxml" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
@@ -743,10 +751,12 @@
     <Content Include="Views\Job\Index.cshtml" />
     <Content Include="Views\Job\NotFound.cshtml" />
     <Content Include="Views\jobApp\Create.cshtml" />
+    <Content Include="Views\Emails\NewsletterMail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\admin\Models\" />
+    <Folder Include="Areas\admin\Views\FaqAdmin\" />
     <Folder Include="Images\uploads\" />
     <Folder Include="Views\GPlace\" />
     <Folder Include="Views\Locator\" />
