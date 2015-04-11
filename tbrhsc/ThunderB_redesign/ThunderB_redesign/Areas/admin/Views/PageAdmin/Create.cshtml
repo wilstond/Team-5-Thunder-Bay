@@ -70,8 +70,20 @@
                     @Html.LabelFor(model => model.menu_id, htmlAttributes: new { @class = "control-label col-md-2" })
                 </td>
                 <td>
-                    @Html.DropDownListFor(model => model.menu_id, new SelectList(ViewBag.menuTree, "menu_id", "menu_text"), "Select a menu")
-                    @Html.ValidationMessageFor(model => model.menu_id, "", new { @class = "text-danger" })
+                    @{
+                        if(Model.menu_id == -1)
+                        {
+                            @Html.DropDownListFor(model => model.menu_id, new SelectList(ViewBag.headerList, "Key", "Value"), "Select a menu")
+                            @Html.ValidationMessageFor(model => model.menu_id, "", new { @class = "text-danger" })
+                        }
+
+                        else
+                        {
+                            @Html.HiddenFor(model => model.menu_id)
+                            @Html.DisplayFor(model => model.menu_id)
+                        }
+                    }
+                   
                 </td>
             </tr>
 

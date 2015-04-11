@@ -1,0 +1,43 @@
+﻿@using ThunderB_redesign.Models
+@model List<Group<page,int>>
+
+@{
+    ViewBag.Title = "Page Grouping";
+}
+
+<h2>Grouping books by Genre</h2>
+
+<table class="stripes">
+    @*<thead><tr><th>Author</th><th>Title</th><th></th></tr></thead>*@
+    <tbody>
+        @foreach (var group in Model)
+        {
+            <tr><th colspan="2">@group.Key
+                @{
+            foreach (var menu_item in ViewBag.headerList)
+            {
+                if (menu_item.Key == group.Key)
+                {
+                    @Html.Raw(menu_item.Value);
+                }
+            }
+                }
+                </th>
+        <th>
+            <div class="action_link">
+                @Html.ActionLink("Add New page", "Create", new { menu_id = group.Key })
+            </div>
+        </th>
+        </tr>
+            foreach (var item in group.Values)
+            {
+                <tr><td>@item.page_title</td><td>@item.page_created</td>
+                    <td>@Html.ActionLink("Edit", "Edit", new { id = item.page_id }) |
+                        @Html.ActionLink("Preview", "Details", new { id = item.page_id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.page_id })
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
