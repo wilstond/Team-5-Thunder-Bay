@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ThunderB_redesign.Models.subscriber>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div id="newsletter-admin">
+
+    <hr/>
+    <br/>
+    <p>
+        @Html.ActionLink("Compose a Newsletter", "SendNewsletter")
+    </p>
+    <br/>
+    <hr/>
+    
+    <br />
+    <br/>
+
+    <h2>Newsletter Subscribers</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.sub_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sub_email)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sub_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sub_email)
+                </td>
+                <td>
+                    @Html.ActionLink("Update", "Update", new { id = item.sub_id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.sub_id })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>

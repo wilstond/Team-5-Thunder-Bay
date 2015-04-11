@@ -1,7 +1,7 @@
 ﻿@model ThunderB_redesign.Models.appointment
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Thank you for your request";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -68,38 +68,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.pat_address)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.pat_address)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.pat_ohip)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.pat_ohip)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.fam_dr_name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.fam_dr_name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.fan_dr_phone)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.fan_dr_phone)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.app_status)
         </dt>
 
@@ -110,16 +78,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.apt_id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Request another appointment", "Index")
 </p>
-@using (Html.BeginForm("Edit", "Appointment", "Post"))
-{
-    @Html.HiddenFor(model => model.apt_id)
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
-    </div>
-}

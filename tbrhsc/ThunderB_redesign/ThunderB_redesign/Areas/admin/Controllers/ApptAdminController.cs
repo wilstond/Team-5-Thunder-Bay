@@ -32,8 +32,8 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             user_id = WebSecurity.CurrentUserId;
 
             // db.DeferredLoadingEnabled = false;
-           
-            
+
+
         }
 
         // GET: admin/ApptAdmin
@@ -55,7 +55,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
 
                 return View(appts);
             }
-            
+
         }
 
         public ActionResult NotFound()
@@ -70,23 +70,14 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             return View(selAppt);
         }
 
-       
+
 
         // GET: admin/ApptAdmin/Edit/id
         // select appointment by id and pass it to the Edit view
         public ActionResult Edit(int id)
         {
-
-            
             var selAppt = apptObject.getAppointmentById(id);
-            if (selAppt.date_book == DateTime.MinValue.ToLocalTime())
-            {
-                ViewData["date_book"] = "";
-            }
-            else
-            {
-                ViewData["date_book"] = selAppt.date_book.ToLocalTime();
-            }
+
             return View(selAppt);
         }
 
@@ -95,20 +86,23 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         [HttpPost]
         public ActionResult Edit(int id, appointment appt)
         {
-            if(ModelState.IsValid){
-            try
+            if (ModelState.IsValid)
+            {
+                try
                 {
-                    if (appt.date_book != DateTime.MinValue)
+                    if (appt.date_book != null)
                     {
-                        appt.time_book = appt.date_book.ToShortTimeString();
-                        appt.app_status = "Booked";
+                        //appt.time_book = appt.date_book.ToString();
+                        appt.app_status = "Booked"; // if booking date has been set - appointment status is changed to Booked instead of Pending
                     }
+
+                    // Update is committed
                     apptObject.commitUpdate(id, appt.dr_id, appt.date_req, appt.date_book, appt.time_book, appt.pat_name,
-                        appt.pat_phone, appt.pat_email, appt.pat_address, appt.pat_ohip, appt.fam_dr_name, appt.fan_dr_phone, appt.app_status);
+                        appt.pat_phone, appt.pat_email, appt.app_status);
 
                     return RedirectToAction("Index");
                 }
-            catch(Exception ex)
+                catch (Exception ex)
                 {
                     return View(ex.Message);
                 }

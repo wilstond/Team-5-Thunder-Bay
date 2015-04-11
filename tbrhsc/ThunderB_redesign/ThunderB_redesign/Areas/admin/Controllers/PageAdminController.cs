@@ -4,6 +4,7 @@ using System.Linq;
 using System.Transactions;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using System.Web.Security;
 using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
@@ -43,11 +44,19 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         }
 
         // GET: admin/PageAdmin
-        public ActionResult Index()
+        public ActionResult Index(int? p)
         {
+            int itemsPerPage = 10;
+            int pageNumber = p ?? 1;
+            List<page> listOfPages = new List<page>();
+
             var AllPages = objPage.getPages();
-            
-            return View(AllPages);
+            foreach (page item in AllPages)
+            {
+                listOfPages.Add(item);
+            }
+
+                return View(listOfPages.ToPagedList(pageNumber, itemsPerPage));
         }
 
         //--addition to allow ckeditor pload local images; followed tutorial below
