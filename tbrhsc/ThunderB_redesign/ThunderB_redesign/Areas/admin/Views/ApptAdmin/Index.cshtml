@@ -11,7 +11,7 @@
 </p>
 <table class="stripes">
     <tr>
-        
+
         <th>
             @Html.DisplayNameFor(model => model.pat_name)
         </th>
@@ -30,39 +30,40 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.pat_name)
-        </td>       
-        <td>
-            @item.date_req.ToShortDateString()
-        </td>
-        <td>
-            @{
-                if(item.date_book != DateTime.MinValue)
-                {
-                    @item.date_book.ToShortDateString()
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.pat_name)
+            </td>
+            <td>
+                @item.date_req.ToShortDateString()
+            </td>
+            <td>
+                @{
+        if (item.date_book != null)
+        {
+            @item.date_book.Value.ToShortDateString()
+        }
                 }
-            }
-        </td>
-        <td>
-            @{
-                if (item.time_book != "00:00:00 AM")
-                {
-                    @item.time_book
+            </td>
+            <td>
+                @{
+        if (item.date_book != null)
+        {
+            @item.date_book.Value.ToShortTimeString()
+        }
                 }
-            }        
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.app_status)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.apt_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.apt_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.apt_id })
-        </td>
-    </tr>
-}
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.app_status)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.apt_id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.apt_id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.apt_id })
+            </td>
+        </tr>
+    }
 
 </table>

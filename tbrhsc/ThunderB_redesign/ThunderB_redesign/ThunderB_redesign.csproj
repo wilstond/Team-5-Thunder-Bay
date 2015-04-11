@@ -662,6 +662,8 @@
     <Content Include="Areas\admin\Views\NewsletterAdmin\NewsletterSent.cshtml" />
     <Content Include="Areas\admin\Views\NewsletterAdmin\SendNewsletter.cshtml" />
     <Content Include="Areas\admin\Views\NewsletterAdmin\Update.cshtml" />
+    <Content Include="Areas\admin\Views\ApptAdmin\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\ApptAdmin\NotFound.cshtml" />
     <None Include="Properties\PublishProfiles\File System Deployment.pubxml" />
     <None Include="Properties\PublishProfiles\TBRHSC-redesign.pubxml" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
