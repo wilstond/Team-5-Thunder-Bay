@@ -49,39 +49,3 @@
 </table>
 
 
-@*<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.stories)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.headline)
-        </th>
-        
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.headline)
-        </td>
-    </tr>
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.stories)
-        </td>
-    </tr>
-    <tr>    
-        <td>
-            @Html.ActionLink("Edit"+item.Id, "Update", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-        &nbsp;
-    </tr>
-}
-
-</table>*@

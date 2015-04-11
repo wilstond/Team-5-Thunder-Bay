@@ -743,6 +743,7 @@
     <Content Include="Views\Job\Index.cshtml" />
     <Content Include="Views\Job\NotFound.cshtml" />
     <Content Include="Views\jobApp\Create.cshtml" />
+    <Content Include="Views\News Posts\News.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

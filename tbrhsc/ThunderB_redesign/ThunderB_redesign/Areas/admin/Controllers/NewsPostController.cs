@@ -82,7 +82,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
                     return View();
                 }
 
-                return RedirectToAction("Details", new { id = Id });
+                return RedirectToAction("Index", new { id = Id });
 
             }
             

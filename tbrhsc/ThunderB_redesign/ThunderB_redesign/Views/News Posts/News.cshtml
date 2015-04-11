@@ -1,0 +1,15 @@
+﻿@*@model IEnumerable<ThunderB_redesign.Models.feedback>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<ul>
+    @foreach (var x in Model)
+    {
+        <li>@Html.ActionLink(x.topic, "Details", new { id = x.Id })</li>
+    }
+</ul>*@
