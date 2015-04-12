@@ -399,20 +399,26 @@ li a > span {
 
 .stripes {outline: solid thin #1a2f38;}
 
-.stripes td, .stripes th {padding: 10px;}
+.stripes td, .stripes th, .stripes li {padding: 10px;}
 
-.stripes th {font-weight: 600; background-color: #1a2f38; color: white;}
+.stripes th, .page-list-header {font-weight: 600; background-color: #1a2f38; color: white;}
 
 
-.stripes tr:nth-child(even) {
+.stripes tr:nth-child(even),  ul.stripes li:nth-child(even) {
   background-color: #e9f7ff;
 }
 
 
-table.stripes tr:nth-child(odd) {
+table.stripes tr:nth-child(odd), ul.stripes li:nth-child(odd)  {
   background-color: #fff;
 }
 
+.page-list-header {padding: 10px; outline: solid 1px #1a2f38; margin-top: 5px; position: relative;}
+.page-list-header-button { width: 160px; background-color: orange; 
+                          padding-top:10px; text-align: center; position: absolute;
+                          top: 0; right: 0; bottom: 0; height: 100%;
+}
+.page-list-header-button a{color: white;}
 table.page_editor {width: 800px;}
 table.page_editor tr td{ padding: 5px;}
 table.page_editor tr td:first-child {font-weight: 600;}

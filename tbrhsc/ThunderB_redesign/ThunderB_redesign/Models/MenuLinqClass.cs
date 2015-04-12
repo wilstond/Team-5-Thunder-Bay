@@ -75,6 +75,7 @@ namespace ThunderB_redesign.Models
 
             var query = (from m in menuObj.menu_categories
                          join p in menuObj.menu_categories on m.parent_id equals p.menu_id
+                         where (m.menu_id >= 6)  &&  (m.menu_slug == "Page") 
                          select new
                          {
                              menuId = m.menu_id,

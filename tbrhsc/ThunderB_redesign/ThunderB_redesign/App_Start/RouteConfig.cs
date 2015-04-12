@@ -63,9 +63,10 @@ namespace ThunderB_redesign
                 routes.MapRoute(
                        name: "BackToHome",
                        url: "Page/Index",
-                       defaults: new {  controller = "Page", action = "index"}
+                       defaults: new {  controller = "Page", action = "Index"}
                    );
- 
+
+ //Custom Route to fetch page by friendly url instead of id
                routes.MapRoute(
                       name: "GetPageBySlug",
                       url: "Page/{page_slug}",

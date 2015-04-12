@@ -18,12 +18,14 @@ using System.IO;
 namespace ThunderB_redesign.Areas.admin.Controllers
 {
     [Authorize]
+    [InitializeSimpleMembership] 
     public class PageAdminController : Controller
     {
         //creating new object
         LinqDataContext db = new LinqDataContext();
         PageLinqClass objPage = new PageLinqClass();
         MenuLinqClass menuObj = new MenuLinqClass();
+
         static int user_id;
 
         public PageAdminController()
@@ -132,7 +134,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
                 {
                    // page.page_content = "<div class='content'>" + page.page_content + "</div>";
                     objPage.commitInsert(page); // insert is committed and user is redirected to home page
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Main");
                 }
                 catch (Exception ex)
                 {
@@ -206,7 +208,7 @@ page.menu_id, page.page_visibility, page.page_slug, page.meta_title, page.meta_d
             {
                 //page deleted and user redirected to index
                 objPage.commitDelete(id);
-                return RedirectToAction("Index");
+                return RedirectToAction("Main");
             }
             catch
             {

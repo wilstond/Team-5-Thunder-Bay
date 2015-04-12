@@ -15,3 +15,10 @@ tbrhsc/ThunderB_redesign/packages/*
 tbrhsc/ThunderB_redesign/packages/repositories.config
 tbrhsc/ThunderB_redesign/packages/repositories.config
 *.config
+tbrhsc/ThunderB_redesign/packages/FontAwesome.4.2.0/*
+tbrhsc/ThunderB_redesign/packages/font-awesome.4.3.0/*
+tbrhsc/ThunderB_redesign/packages/Font.Awesome.4.3.0.1/*
+tbrhsc/ThunderB_redesign/packages/jQuery.2.1.3/*
+tbrhsc/ThunderB_redesign/packages/jQuery.UI.Combined.1.11.3/*
+tbrhsc/ThunderB_redesign/packages/jQuery.Validation.1.13.1/*
+tbrhsc/ThunderB_redesign/packages/knockoutjs.3.3.0/*
