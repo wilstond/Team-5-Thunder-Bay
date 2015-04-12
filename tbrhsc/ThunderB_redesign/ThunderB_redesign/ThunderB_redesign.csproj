@@ -233,6 +233,7 @@
     <Compile Include="Controllers\jobAppController.cs" />
     <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Controllers\NewsletterController.cs" />
+    <Compile Include="Controllers\NewsPostPublicController.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\SlugToIdAttribute.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -763,8 +764,9 @@
     <Content Include="Views\Job\Index.cshtml" />
     <Content Include="Views\Job\NotFound.cshtml" />
     <Content Include="Views\jobApp\Create.cshtml" />
-    <Content Include="Views\News Posts\News.cshtml" />
     <Content Include="Views\Emails\NewsletterMail.cshtml" />
+    <Content Include="Views\NewsPostPublic\Index.cshtml" />
+    <Content Include="Views\NewsPostPublic\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

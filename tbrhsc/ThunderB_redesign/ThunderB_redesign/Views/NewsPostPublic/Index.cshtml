@@ -1,0 +1,14 @@
+﻿@model IEnumerable<ThunderB_redesign.Models.newsTable>
+
+@{
+    ViewBag.Title = "TBRHSC News";
+}
+
+@foreach (var x in Model)
+{
+    <div>
+        <h2>@x.headline</h2>
+        <div>@x.stories</div>
+    </div>
+    
+}
