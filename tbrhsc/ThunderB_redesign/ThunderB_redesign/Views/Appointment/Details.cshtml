@@ -5,79 +5,75 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<div class="middle clearfix">
+    <div class="sidebar_right clearfix">
+        <div class="donate clearfix">
+            <h2>Help Make a Difference Donate to TBRHSC</h2>
+        </div>
 
-<div>
-    <h4>appointment</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.dr_id)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.dr_id)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.date_req)
-        </dt>
+        <section class="emergency_info">
+            <h2>Emergency Room</h2>
+            <div class="emergency_content">
+                <ul>
+                    <li><a href="~/ER/Index#how-to-get">Trip to ER</a></li>
+                    <li><a href="~/ER/Index#visitors">Visitors</a></li>
+                    <li><a href="~/ER/Index#discharge">Discharge</a></li>
+                    <li><a href="~/ER/Index#admittance">Admittance</a></li>
+                    <li><a href="~/ER/Index#er-plan">ER Plan</a></li>
+                </ul>
+            </div>
+            <div id="erm_holder">
 
-        <dd>
-            @Html.DisplayFor(model => model.date_req)
-        </dd>
+            </div>
+        </section>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.date_book)
-        </dt>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.date_book)
-        </dd>
+    <div class="main_content clearfix">
+        <section class="top_section clearfix top">
+            <header class="section-header">
+                <span class="page_breadcrumb">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.time_book)
-        </dt>
+                    <a href="/">Home</a> > Patients > <a href="/Appointment/Index">Book an Appointment</a>
 
-        <dd>
-            @Html.DisplayFor(model => model.time_book)
-        </dd>
+                </span>
+                <h1>Thank you for your request</h1>
+            </header>
+            <article>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.pat_name)
-        </dt>
+                <hr />
+             
 
-        <dd>
-            @Html.DisplayFor(model => model.pat_name)
-        </dd>
+                <p>
+                    Hello @ViewBag.Patient,
+                </p>
+                <p>
+                    We received your request for an appointment with Dr. @ViewBag.Doctor .
+                    Our office will review doctor's schedule and contact you with the date and time of your appointment.
 
-        <dt>
-            @Html.DisplayNameFor(model => model.pat_phone)
-        </dt>
+                </p>
+                <p>
+                    The contact information you provided is:
+                    Email: @ViewBag.To
+                    Phone: @ViewBag.Phone
+                </p>
+                <p>
+                    We will get back to provide you with your appointment date and time within 7 days.
+                    If you don't hear from us by @ViewBag.FollowUpDate please contact our office at (905)999-9999
+                </p>
+                <p>
+                    Best regards,
+                    Dr. @ViewBag.Doctor
+                </p>
 
-        <dd>
-            @Html.DisplayFor(model => model.pat_phone)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.pat_email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.pat_email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.app_status)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.app_status)
-        </dd>
-
-    </dl>
+    
+    <p>
+        @Html.ActionLink("Request another appointment", "Index")
+    </p>
+    </article>
+    </section>
 </div>
-<p>
-    @Html.ActionLink("Request another appointment", "Index")
-</p>
+</div>
 

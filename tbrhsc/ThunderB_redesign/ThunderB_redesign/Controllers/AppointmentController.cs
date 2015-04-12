@@ -73,6 +73,12 @@ namespace ThunderB_redesign.Controllers
 
                     email.Send();
 
+                    ViewBag.Doctor = email.Doctor;
+                    ViewBag.Patient = email.Patient;
+                    ViewBag.Phone = email.Phone;
+                    ViewBag.To = email.To;
+                    ViewBag.FollowUpDate = email.FollowUpDate;
+
                     return View("Details", _apt);
                 }
                 catch (Exception ex)
