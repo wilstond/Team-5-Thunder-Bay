@@ -767,6 +767,7 @@
     <Content Include="Views\Emails\NewsletterMail.cshtml" />
     <Content Include="Views\NewsPostPublic\Index.cshtml" />
     <Content Include="Views\NewsPostPublic\NotFound.cshtml" />
+    <Content Include="Views\NewsPostPublic\topNews.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

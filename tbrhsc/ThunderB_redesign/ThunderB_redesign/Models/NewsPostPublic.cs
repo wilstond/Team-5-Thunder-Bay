@@ -22,5 +22,11 @@ namespace ThunderB_redesign.Models
         //    var allNew = objNews.newsTables.SingleOrDefault(x => x.Id == _id);
         //    return allNew;
         //}
+
+        public IQueryable<newsTable> getTopNews()
+        {
+            var topNews = objNews.newsTables.OrderByDescending(x => x.Id).Take(5);
+            return topNews;       
+        }
     }
 }

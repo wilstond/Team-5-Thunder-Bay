@@ -1,4 +1,6 @@
-﻿@{
+﻿@model ThunderB_redesign.Models.NewsPostPublic
+
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -11,19 +13,7 @@
 
         <section class="news_feed clearfix">
             <header>Recent News</header>
-            <div class="news_title">
-                New Website for Thunder Bay Regional Health Sciences Centre
-            </div>
-            <div class="news_title">
-                New Website for Thunder Bay Regional Health Sciences Centre
-            </div>
-            <div class="news_title">
-                New Website for Thunder Bay Regional Health Sciences Centre
-            </div>
-            <div class="news_title bottom">
-                New Website for Thunder Bay Regional Health Sciences Centre
-            </div>
-
+          @{Html.RenderAction("topNews", "NewsPostPublic");}
         </section>
 
         <section class="emergency_info">

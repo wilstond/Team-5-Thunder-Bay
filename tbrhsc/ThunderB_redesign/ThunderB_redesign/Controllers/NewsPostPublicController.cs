@@ -25,6 +25,12 @@ namespace ThunderB_redesign.Controllers
             }
         }
 
+        public PartialViewResult topNews()
+        {
+            var topNews = objNews.getTopNews();
+            return PartialView(topNews);
+        }
+
 
         public ActionResult NotFound()
         {
