@@ -8,6 +8,7 @@ using ThunderB_redesign.Models;
 
 namespace ThunderB_redesign.Areas.admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ERAdminController : Controller
     {
 
