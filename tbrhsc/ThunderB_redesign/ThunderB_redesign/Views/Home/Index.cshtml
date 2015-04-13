@@ -40,7 +40,16 @@
             </header>
             <span class="date">@DateTime.Now.DayOfWeek, @DateTime.Now.Date.ToLongDateString()</span>
             <figure>
-                <img src="~/img/main.png" />
+
+                @* Responsive image for the home page - allows to load small image for phone screen
+                    medium image for tablet and large hi-res image for desktop *@
+
+                <img src="~/img/main_sm.png"
+                     srcset="~/img/main_lg.png 1027w,
+                             ~/img/main_md.png 780w,
+                             ~/img/main_sm.png 480w"
+                     sizes="100%"
+                     alt="TBRHSC main building">
             </figure>
             <article>
                 <div class="one-half first">
