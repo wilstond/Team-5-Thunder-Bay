@@ -131,14 +131,6 @@
       <Association Name="donor_donation" Member="donor" ThisKey="dtn_dnr_id" OtherKey="dnr_id" Type="donor" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.newsTable" Member="newsTables">
-    <Type Name="newsTable">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="stories" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="headline" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="media" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
-    </Type>
-  </Table>
   <Table Name="dbo.feedbacks" Member="feedbacks">
     <Type Name="feedback">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -198,6 +190,15 @@
       <Column Name="app_status" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
       <Association Name="doctor_appointment" Member="doctor" ThisKey="dr_id" OtherKey="dr_id" Type="doctor" IsForeignKey="true" />
       <Association Name="doctor_appointment1" Member="doctor1" ThisKey="dr_id" OtherKey="dr_id" Type="doctor" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.newsTable" Member="newsTables">
+    <Type Name="newsTable">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="stories" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="headline" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="date" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="author" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

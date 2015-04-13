@@ -314,6 +314,7 @@ footer {
     padding: 15px 20px 25px 20px;
     border: solid;
     border-color: grey;
+    border-width: 1px;
     margin: 15px 0px 15px 0px;
 }
 

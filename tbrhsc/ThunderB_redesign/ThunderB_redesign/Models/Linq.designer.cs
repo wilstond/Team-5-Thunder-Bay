@@ -66,9 +66,6 @@ namespace ThunderB_redesign.Models
     partial void Insertdonation(donation instance);
     partial void Updatedonation(donation instance);
     partial void Deletedonation(donation instance);
-    partial void InsertnewsTable(newsTable instance);
-    partial void UpdatenewsTable(newsTable instance);
-    partial void DeletenewsTable(newsTable instance);
     partial void Insertfeedback(feedback instance);
     partial void Updatefeedback(feedback instance);
     partial void Deletefeedback(feedback instance);
@@ -87,6 +84,9 @@ namespace ThunderB_redesign.Models
     partial void Insertappointment(appointment instance);
     partial void Updateappointment(appointment instance);
     partial void Deleteappointment(appointment instance);
+    partial void InsertnewsTable(newsTable instance);
+    partial void UpdatenewsTable(newsTable instance);
+    partial void DeletenewsTable(newsTable instance);
     #endregion
 		
 		public LinqDataContext() : 
@@ -215,14 +215,6 @@ namespace ThunderB_redesign.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<newsTable> newsTables
-		{
-			get
-			{
-				return this.GetTable<newsTable>();
-			}
-		}
-		
 		public System.Data.Linq.Table<feedback> feedbacks
 		{
 			get
@@ -268,6 +260,14 @@ namespace ThunderB_redesign.Models
 			get
 			{
 				return this.GetTable<appointment>();
+			}
+		}
+		
+		public System.Data.Linq.Table<newsTable> newsTables
+		{
+			get
+			{
+				return this.GetTable<newsTable>();
 			}
 		}
 	}
@@ -2909,140 +2909,6 @@ namespace ThunderB_redesign.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.newsTable")]
-	public partial class newsTable : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _stories;
-		
-		private string _headline;
-		
-		private System.Data.Linq.Binary _media;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnstoriesChanging(string value);
-    partial void OnstoriesChanged();
-    partial void OnheadlineChanging(string value);
-    partial void OnheadlineChanged();
-    partial void OnmediaChanging(System.Data.Linq.Binary value);
-    partial void OnmediaChanged();
-    #endregion
-		
-		public newsTable()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_stories", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string stories
-		{
-			get
-			{
-				return this._stories;
-			}
-			set
-			{
-				if ((this._stories != value))
-				{
-					this.OnstoriesChanging(value);
-					this.SendPropertyChanging();
-					this._stories = value;
-					this.SendPropertyChanged("stories");
-					this.OnstoriesChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_headline", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string headline
-		{
-			get
-			{
-				return this._headline;
-			}
-			set
-			{
-				if ((this._headline != value))
-				{
-					this.OnheadlineChanging(value);
-					this.SendPropertyChanging();
-					this._headline = value;
-					this.SendPropertyChanged("headline");
-					this.OnheadlineChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_media", DbType="Image", UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary media
-		{
-			get
-			{
-				return this._media;
-			}
-			set
-			{
-				if ((this._media != value))
-				{
-					this.OnmediaChanging(value);
-					this.SendPropertyChanging();
-					this._media = value;
-					this.SendPropertyChanged("media");
-					this.OnmediaChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.feedbacks")]
 	public partial class feedback : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -4185,6 +4051,164 @@ namespace ThunderB_redesign.Models
 						this._dr_id = default(int);
 					}
 					this.SendPropertyChanged("doctor1");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.newsTable")]
+	public partial class newsTable : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _stories;
+		
+		private string _headline;
+		
+		private string _date;
+		
+		private string _author;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnstoriesChanging(string value);
+    partial void OnstoriesChanged();
+    partial void OnheadlineChanging(string value);
+    partial void OnheadlineChanged();
+    partial void OndateChanging(string value);
+    partial void OndateChanged();
+    partial void OnauthorChanging(string value);
+    partial void OnauthorChanged();
+    #endregion
+		
+		public newsTable()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_stories", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string stories
+		{
+			get
+			{
+				return this._stories;
+			}
+			set
+			{
+				if ((this._stories != value))
+				{
+					this.OnstoriesChanging(value);
+					this.SendPropertyChanging();
+					this._stories = value;
+					this.SendPropertyChanged("stories");
+					this.OnstoriesChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_headline", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string headline
+		{
+			get
+			{
+				return this._headline;
+			}
+			set
+			{
+				if ((this._headline != value))
+				{
+					this.OnheadlineChanging(value);
+					this.SendPropertyChanging();
+					this._headline = value;
+					this.SendPropertyChanged("headline");
+					this.OnheadlineChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_date", DbType="VarChar(50)")]
+		public string date
+		{
+			get
+			{
+				return this._date;
+			}
+			set
+			{
+				if ((this._date != value))
+				{
+					this.OndateChanging(value);
+					this.SendPropertyChanging();
+					this._date = value;
+					this.SendPropertyChanged("date");
+					this.OndateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_author", DbType="VarChar(50)")]
+		public string author
+		{
+			get
+			{
+				return this._author;
+			}
+			set
+			{
+				if ((this._author != value))
+				{
+					this.OnauthorChanging(value);
+					this.SendPropertyChanging();
+					this._author = value;
+					this.SendPropertyChanged("author");
+					this.OnauthorChanged();
 				}
 			}
 		}
