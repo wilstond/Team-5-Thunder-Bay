@@ -1,12 +1,123 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Web;
-//using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 
-//using ThunderB_redesign.Models;
+using ThunderB_redesign.Models;
 
-//namespace ThunderB_redesign.Areas.admin.Controllers
+namespace ThunderB_redesign.Areas.admin.Controllers
+{
+    public class NewsPostController : Controller
+    {
+        NewsPostLinq objNews = new NewsPostLinq();
+
+        public ActionResult Index()
+        {
+            var allNews = objNews.getNews();
+            return View(allNews);
+        }
+
+        //public ActionResult Details(int id)
+        //{
+        //    var allNews = objNews.getNewsByID(id);
+        //    if (allNews == null)
+        //    {
+        //        return View("NotFound");
+        //    }
+        //    else
+        //    {
+        //        return View(allNews);
+        //    }
+        //}
+
+        public ActionResult Insert()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Insert(newsTable allnews)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    objNews.commitInsert(allnews);
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+                    return View();
+                }
+            }
+
+            return View();
+        }
+
+        public ActionResult Update(int id)
+        {
+            var allNews = objNews.getNewsByID(id);
+            if (allNews == null)
+            {
+                return View("NotFound");
+            }
+            else
+            {
+                return View(allNews);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Update(int Id, newsTable news)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    objNews.commitUpdate(Id, news.stories, news.headline);
+                }
+                catch
+                {
+                    return View();
+                }
+
+                return RedirectToAction("Index", new { id = Id });
+
+            }
+            
+            return View(news);
+
+        }
+
+        public ActionResult Delete(int id)
+        {
+            try
+            {
+                objNews.commitDelete(id);
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult NotFound()
+        {
+            return View();
+        }
+    }
+
+    
+}
+
+
+
+
+
+
+
 //{
 //    [Authorize]
 

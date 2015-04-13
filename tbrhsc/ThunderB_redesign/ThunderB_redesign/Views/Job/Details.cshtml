@@ -1,0 +1,53 @@
+﻿@model ThunderB_redesign.Models.Job
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Job</legend>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.job_title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.job_title)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.jobCategory.category)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.jobCategory.category)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.closing_date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.closing_date)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.job_description)
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.job_description)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.date_posted)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.date_posted)
+    </div>
+
+
+</fieldset>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Apply", "Create", "jobApp", new { job_id = Model.Id }, null)
+</p>
+

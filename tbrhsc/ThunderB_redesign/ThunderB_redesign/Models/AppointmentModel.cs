@@ -28,40 +28,28 @@ namespace ThunderB_redesign.Models
         public System.DateTime date_req { get; set; }
 
         [DisplayName("Appointment booked date")]
-        [Required(ErrorMessage = "*")]
-        public System.DateTime? date_book { get; set; }
+        //[Required(ErrorMessage = "*")]
+        public System.Nullable<System.DateTime> date_book { get; set; }
 
         [DisplayName("Appintment booked time")]
-        [Required(ErrorMessage = "*")]
+        //[Required(ErrorMessage = "*")]
         public string time_book { get; set; }
 
         [DisplayName("Patient Name")]
         [Required(ErrorMessage = "Please enter patient name")]
         public string pat_name { get; set; }
 
-        [DisplayName("Patient Phone")]
+        [DisplayName("Patient Phone, ex. 416-123-4567")]
         [Required(ErrorMessage = "Please enter patient phone")]
+        [StringLength(12, ErrorMessage = "10 digits phone numbers are accepted")]
+        //[RegularExpression("^[0-9]{10}$", ErrorMessage="10 digit phone number without hyphens, dots or brackets is expected.")]
         public string pat_phone { get; set; }
 
         [DisplayName("Patient Email")]
         [Required(ErrorMessage = "Please enter patient email")]
+        [EmailAddress(ErrorMessage = "Invalid email address")]
         public string pat_email { get; set; }
 
-        [DisplayName("Patient Address")]
-        [Required(ErrorMessage = "Please enter patient address")]
-        public string pat_address { get; set; }
-
-        [DisplayName("Patient Health Card")]
-        [Required(ErrorMessage = "Please enter patient OHIP #")]
-        public string pat_ohip { get; set; }
-
-        [DisplayName("Family Doctor Name")]
-        [Required(ErrorMessage = "Please enter Family Doctor name")]
-        public string fam_dr_name { get; set; }
-
-        [DisplayName("Family Doctor Phone")]
-        [Required(ErrorMessage = "Please enter Family Doctor phone")]
-        public string fan_dr_phone { get; set; }
 
         [DisplayName("Appt Status")]
         public string app_status { get; set; }

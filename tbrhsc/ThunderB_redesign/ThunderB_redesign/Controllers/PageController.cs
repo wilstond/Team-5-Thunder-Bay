@@ -33,6 +33,8 @@ namespace ThunderB_redesign.Controllers
 
         }
 
+
+
         public ActionResult _PageList(int menu_id = 0)
         {
             var AllPages = objPage.getVisiblePages();
@@ -104,6 +106,8 @@ namespace ThunderB_redesign.Controllers
         {
             return View();
         }
+
+        
 
     }
 }

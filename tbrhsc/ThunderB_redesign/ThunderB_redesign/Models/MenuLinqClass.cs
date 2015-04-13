@@ -51,7 +51,7 @@ namespace ThunderB_redesign.Models
                     menuText = m.menu_text,
                     parentId = p.menu_id,
                     shortBreadcrumb = " <a href='/Page/Index?menu_id=" + m.menu_id + "'>" + m.menu_text + "</a> ",
-                    fullBreadcrumb = p.menu_text + " > <a href='/Page/Index?menu_id=" + m.menu_id + "'>" + m.menu_text + "</a> "
+                    fullBreadcrumb = " <a href='/Page/Index?menu_id=" + p.menu_id + "'>" + p.menu_text + "</a> > <a href='/Page/Index?menu_id=" + m.menu_id + "'>" + m.menu_text + "</a> "
                 }).ToList();
 
             foreach (var row in query)
@@ -66,6 +66,41 @@ namespace ThunderB_redesign.Models
                 }
             }
             return menuBreadcrumbList;
+
+        }
+
+        public Dictionary<int, string> getHeadersList()
+        {
+            Dictionary<int, string> menuHeaderList = new Dictionary<int, string>();
+
+            var query = (from m in menuObj.menu_categories
+                         join p in menuObj.menu_categories on m.parent_id equals p.menu_id
+                         where m.menu_slug == "Page"
+                         select new
+                         {
+                             menuId = m.menu_id,
+                             menuText = m.menu_text,
+                             parentId = p.menu_id,
+                             shortHeader = m.menu_text ,
+                             fullHeader = p.menu_text + " > " + m.menu_text
+                         }
+                         
+                         ).ToList();
+
+            foreach (var row in query)
+            {
+                if (row.parentId == 0)
+                {
+                    menuHeaderList.Add(row.menuId, row.shortHeader);
+                }
+                else
+                {
+                    menuHeaderList.Add(row.menuId, row.fullHeader);
+                }
+            }
+
+            menuHeaderList.OrderBy(Key => Key.Value);
+            return menuHeaderList;
 
         }
     }

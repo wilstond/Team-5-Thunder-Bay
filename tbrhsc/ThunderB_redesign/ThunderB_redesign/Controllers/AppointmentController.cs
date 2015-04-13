@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
 using Postal;
 
 
@@ -16,7 +15,7 @@ namespace ThunderB_redesign.Controllers
         LinqDataContext db = new LinqDataContext();
         AppointmentLinqClass apptObject = new AppointmentLinqClass();
         MenuLinqClass menuObj = new MenuLinqClass();
-        
+
 
         public AppointmentController()
         {
@@ -39,22 +38,13 @@ namespace ThunderB_redesign.Controllers
 
             ViewBag.docList = docList;
 
-       }
+        }
 
         // GET: Appointment/Form
         // Hidden fields for the form are populated in the controller
         public ActionResult Index()
         {
-            appointment newApt = new appointment();
-            newApt.date_req = DateTime.Now;
-
-            //newApt.date_book = newApt.date_req.AddDays(-1);
-            newApt.date_book = DateTime.MinValue;
-
-            newApt.time_book = "00:00:00 AM";
-
-            newApt.app_status = "Pending";
-            return View(newApt);
+            return View();
         }
 
         // POST: Appointment/Form
@@ -71,6 +61,9 @@ namespace ThunderB_redesign.Controllers
                     apptObject.commitInsert(_apt); // insert is committed and user is redirected to home page
                     var last_id = _apt.apt_id;
                     // Uncomment to send email confirmation to the customer
+                    //var smtp = new SmtpClient();
+                    //smtp.EnableSsl = true;
+
                     dynamic email = new Email("Request_Confirmation");
                     email.Doctor = db.doctors.Where(x => x.dr_id == _apt.dr_id).SingleOrDefault().dr_name.ToString();
                     email.Patient = _apt.pat_name.ToString();
@@ -79,7 +72,13 @@ namespace ThunderB_redesign.Controllers
                     email.FollowUpDate = _apt.date_req.AddDays(7).ToShortDateString().ToString();
 
                     email.Send();
-                    
+
+                    ViewBag.Doctor = email.Doctor;
+                    ViewBag.Patient = email.Patient;
+                    ViewBag.Phone = email.Phone;
+                    ViewBag.To = email.To;
+                    ViewBag.FollowUpDate = email.FollowUpDate;
+
                     return View("Details", _apt);
                 }
                 catch (Exception ex)
@@ -103,14 +102,14 @@ namespace ThunderB_redesign.Controllers
         {
             dynamic email = new Email("Request_Confirmation");
             email.To = "ilecoche@acn.net";
-            
+
             email.Send();
             return View();
         }
 
-       
-       
-       
+
+
+
         public ActionResult NotFound()
         {
             return View();

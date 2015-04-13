@@ -19,9 +19,9 @@ namespace ThunderB_redesign.Models
         protected override ValidationResult IsValid (object value, ValidationContext validationContext)
         {
             DateTime discharge = (DateTime)value;
-            if (discharge < DateTime.Now || discharge > DateTime.Now.AddHours(6))
+            if (discharge < DateTime.Now)
             {
-                string errorMessage = "Discharge date has to be within 6 hours from now";
+                string errorMessage = "Discharge could not accept past date/time. If case was discharged in the past, use Discharge button";
                 return new ValidationResult(errorMessage);
             }
             else

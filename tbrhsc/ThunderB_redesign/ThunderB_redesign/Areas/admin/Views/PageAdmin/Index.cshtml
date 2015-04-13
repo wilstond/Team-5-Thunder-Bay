@@ -1,8 +1,14 @@
-﻿@model IEnumerable<ThunderB_redesign.Models.page>
+﻿@*@model IEnumerable<ThunderB_redesign.Models.page>*@
+@model PagedList.IPagedList<ThunderB_redesign.Models.page>
 
 @{
     ViewBag.Title = "Index";
 }
+
+@using PagedList.Mvc; @*//import this so we get our HTML Helper*@
+@using PagedList; @*//import this so we can cast our list to IPagedList (only necessary because ViewBag is dynamic)*@
+
+<p><a href="~/admin/PageAdmin/Main">View pages listed by categories</a></p>
 
 
 <div class="action_link">
@@ -11,19 +17,19 @@
 <table class="stripes">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.user_id)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().page_id)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.page_title)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().page_title)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.page_created)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().page_created)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.menu_id)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().menu_id)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.page_visibility)
+            @Html.DisplayNameFor(model => model.FirstOrDefault().page_visibility)
         </th>
         
         <th>Actions</th>
@@ -74,3 +80,7 @@
 }
 
 </table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+<br/>
+@Html.PagedListPager(Model, p => Url.Action("Index", new { p }))

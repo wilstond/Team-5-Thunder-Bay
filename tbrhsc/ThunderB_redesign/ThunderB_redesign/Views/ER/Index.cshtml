@@ -1,23 +1,192 @@
 ﻿@model ThunderB_redesign.Models.triage
 
 @{
-    ViewBag.Title = "Emergency Room";
+    ViewBag.Title = "TBRHSC | Emergency Room";
 }
 
-<h2>Emergency Room</h2>
+<div class="middle clearfix white">
+    
 
-<div id="erm_holder">
-    @Html.Partial("Monitor")
-</div>
+        <section class="top_section clearfix emergency-red text-centered">
+            <h2>If you are having a medical emergency, please call 911 immediately.</h2>
+
+        </section>
+        <section class="clearfix">
+            <header class="section-header">
+                <span class="page_breadcrumb">
+
+                    <a href="/">Home</a> > <a href="~/Page/Index?menu_id=2">Visitors</a> > <a href="/ER/Index">Emergency Room</a>
+
+                </span>
+                <div id="erm_holder">
+                    @Html.Partial("Monitor")
+                </div>
+            </header>
+            <article>
+                <h1>Emergency and Critical Care Services</h1>
+
+                <a id="how-to-get"></a>
+                    <h3>How to Get Here / What to Expect</h3>
+
+                    <p>
+                        The Emergency Department has its own set of doors on the south side of the building. Metered parking is available immediately outside, with two other parking lots nearby. Upon entering the Emergency Department, please wash your hands with hand sanitizer and wait in line for the next available nurse.
+                    </p><p>
+                        <strong>Please remember to bring your Health Card every visit.</strong>
+                    </p><p>
+                        At the desk, a triage nurse will ask you general questions about your condition and swipe your Health Card. You will then be asked to have a seat in the waiting room, where you will be called and admitted into the Health Sciences Centre. Then, you will be asked to return to the waiting room until you are called once again to be “triaged” or assessed by a nurse, who will take your vital signs (temperature, blood pressure, etc.) and will ask you more specific questions. After this assessment, you will be asked to return to the waiting room until you are called for treatment.
+                    </p><p>
+    Please note: although Emergency Department staff work hard to see you as soon as possible, patients are seen based on the seriousness of their injuries/illness, not in order of arrival. Those with less serious injuries may be required to wait longer.
+</p><p>
+    If your symptoms worsen while you are waiting, please approach the desk and let the nurse know. Nurses will also be watching your condition while you are in the waiting room – in fact, the area is set up so that the nurse at the desk can see and monitor all patients. Nurses may also check your vital signs again, depending on your symptoms and the wait time. You are also welcome to approach the nurse if you feel you have been waiting a long time.
+</p>
+                    <p>
+
+                        We have made the waiting room as comfortable as possible for our patients with a wide variety of vending choices including hot and cold drinks, snacks, and healthy choices. We have also created a children’s play area and installed TVs to help you pass the time. You may also wish to bring a book or some other form of entertainment. Electronic devices are allowed, but please be respectful of the other patients and family members around you.
+                    </p>
+               
+   <h3> During Treatment</h3>
+                    <p>
+    You will be called at some point to enter the main treatment area of the Emergency Department. A doctor specially trained in emergency treatment will assess you based on your symptoms and ask you questions about your condition. You may be sent for tests including diagnostic imaging (X-rays, etc.) or lab tests (for example, blood work).
+</p><p>
+
+    For the safety and confidentiality of our patients, recording with cameras, voice recorders, or video recorders – including those on cell phones – is not permitted in the Emergency Department.
+</p>
+                
+            </article>
+            <article>
+                <a id="visitors"></a>
+
+                <h3>Visitors</h3>
+                <p>
+                    Family and loved ones are an important part of the care we provide. However, the Emergency Department is a busy place with over 50 beds. Too many visitors can cause congestion in the treatment areas, so we ask that only one visitor visit a patient at a time.
+                </p>
+
+                <a id="discharge"></a>
+                <h3>Discharge</h3>
+                <p>
+                    After your assessment, your doctor may find that there is no need for further treatment, and will discharge you. The doctor may give you a prescription and further instructions, including follow up with your primary care provider (family doctor, nurse practitioner, etc.) Please note these instructions carefully. You may find it helpful to bring a pen and paper, if possible, to write these instructions down.
+                </p><p>
+                     Note that if you require a prescription, the Emergency Department does not fill that prescription or provide a “first dose”. If needed, there are 24-hour pharmacies in Thunder Bay that can fill your prescription. Some medical items including crutches, inhaler chambers, and other devices may be available at a charge. The Emergency Department doctor will discuss this with you at the time.
+                </p><p>
+
+                    Please arrange for a ride from the Emergency Department. City bus service is available from the Health Sciences Centre’s main entrance, but it is often advisable to have someone drive you after a visit to the Emergency Department depending on your condition or medication.
+                </p>
+
+                <a id="admittance"></a>
+                <h3>Admitting to the Health Sciences Centre</h3>
+                <p>
+                    After your assessment, your doctor may find that you will need to be admitted to the Health Sciences Centre for further treatment. Once this decision is made, various staff at the Health Sciences Centre will work to find you a bed as quickly as possible. However, if the facility is in gridlock, it may take some time to locate an appropriate bed. You will still receive the same level of care while you are waiting for a bed.
+                </p><p>
+
+                    We have created a kitchenette area for patients and family members to prepare snacks and store food while they are waiting. Please help keep this area tidy, respect the food and drinks of others, and remove all food from the fridge/area when you leave.
+                </p>
+</article>
+        </section>
+        <section>
+            <a id="er-plan"></a>
+
+            <img src="http://tbrhsc.net/wp-content/uploads/2014/12/TBRHSC-Level-2.jpg" style="width:100%;">
+        </section>
+        <section class="news_feed clearfix">
+            <header>Non-Emergency Care Providers</header>
+
+            <div class="news_title">
+                Dilico Anishinabek Family Care, Walk-In Clinic
+                Fort William First Nation
+                200 Anemki Pl, Thunder Bay, ON P7J 1L6
+                Phone: 807-626-5200
+                Fax: 807-623-0536
+                Hours: Wed 5pm-8pm; Fri 1pm-4pm
+            </div>
+            <div class="news_title">
+                Joseph Esquega Health Centre, Walk-In Clinic
+                401 Donald St E, Thunder Bay, ON P7E 5V1
+                Phone: 807-623-4444
+                Fax: 807-623-4929
+                Hours: Tue-Thu 1 pm-4 pm, Sat 10 am-1 pm
+            </div>
+            <div class="news_title">
+                Northwest Walk-In Medical Clinic (Woit's Pharmacy)
+                1265 Arthur St E, Ste 100, Thunder Bay, ON P7E 6E7
+                Phone: 807-623-7101
+                Hours: Mon-Tue, Thu 3:30pm-6:30pm
+            </div>
+            <div class="news_title">
+                Northwood Park Health Centre, Walk-In Clinic
+                504 Edward St N, Thunder Bay ON P7C 4P9
+                Phone: 807-285-0186
+                Fax: 807-285-2418
+                Hours: Tue, Thu 5pm-8pm
+                Accepts the first 30 individuals to walk in
+            </div>
+            <div class="news_title">
+                NorWest Community Health Centre, Urgent Care Clinic
+                525 Simpson St, Thunder Bay ON P7C 3J6
+                Phone: 807-622-8235
+                Fax: 807-622-3548
+                Hours: Mon-Thu 4:30pm-8pm; Fri 1pm-4:00pm; Sat, Sun 10am-3pm
+            </div>
+            <div class="news_title">
+                Red River Walk-In Medical Clinic
+                901 Red River Rd, Thunder Bay ON
+                Phone: None
+                Hours: Mon-Thu 12 noon-8pm, Fri 12 noon-4pm, Sat 10am-1pm
+            </div>
+            <div class="news_title">
+                Ridgeway Walk-In Medical Clinic
+                1001 Ridgeway St, Thunder Bay ON P7E 5H8
+                Phone: 807-622-0601
+                Fax: 807-623-0470
+                Hours: Mon-Thu 9:30am-4:30pm
+            </div>
+            <div class="news_title">
+                Westfort Village Health Centre, Walk-In Clinic
+                129 Frederica St W, Thunder Bay ON P7E 3V8
+                Phone: 807-473-9666
+                Fax: 807-473-9739
+                Hours: Mon-Wed 5pm to 8pm
+            </div>
+            <div class="news_title">
+                White Cedar Health Care Centre, Walk-in Clinic
+                125 Vickers St S, Thunder Bay, ON P7E 1J2
+                Phone: 807-475-4357
+                Hours: First three Sat of the month: 9:30am-12:30pm
+            </div>
+            <div class="news_title">
+                Anishnawbe Mushkiki Walk-In Medical Clinic
+                29 Royston Crt, Thunder Bay ON P7A 4Y7
+                Phone: 807-343-4819
+                Fax: 807-343-4728
+                Hours: Mon 1:30pm-3:30pm, Wed 1pm-8pm, Fri 9am-12 noon
+                Call first for availability
+                *Must be a patient of the Clinic*
+            </div>
+            <div class="news_title">
+                Aurora Family Health Centre, Walk-In Clinic
+                971 Carrick St (inside the Superstore), Thunder Bay, ON P7B 6L9
+                Phone: 807-285-1894
+                Fax: 807-285-2098
+                Hours: Mon-Tue, Thu 5 pm-6:30 pm * Sat 10 am-2 pm
+                *Must be a patient of the Clinic*
+            </div>
+            <div class="news_title">
+                For the full list of walk-in and outpatient clinics in Thunder Bay area please visit
+                <a href="http://search.211north.ca/record/TBY0738">211north.ca</a>
+            </div>
+
+        </section>
+      </div>
+
+
 @Scripts.Render("~/bundles/jquery")
 
 
-<script type="text/javascript">
+    <script type="text/javascript">
 
-    $(document).ready(function () {
-        setInterval(function () {
-            $('#erm_holder').load('/ER/Monitor');
-        }, 3000); // every 3 sec
-    });
+        $(document).ready(function () {
+            setInterval(function () {
+                $('#erm_holder').load('/ER/Monitor');
+            }, 3000); // every 3 sec
+        });
 
-</script>
+    </script>

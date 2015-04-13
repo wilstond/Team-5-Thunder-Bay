@@ -14,7 +14,7 @@
    
             <h1>@Model.page_title</h1>
             <p>     
-                 <span class="date">@Model.page_created.DayOfWeek, @Model.page_created.Date.ToLongDateString()</span>
+                 <span class="date">@Model.page_created.Date.ToLongDateString()</span>
             </p>
     <p>&nbsp;</p>
             <article>
@@ -94,5 +94,5 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.page_id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Main")
 </p>

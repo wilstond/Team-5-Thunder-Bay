@@ -1,0 +1,31 @@
+﻿@model ThunderB_redesign.Models.newsTable
+
+@{
+    ViewBag.Title = "Write a Story";
+}
+
+<h2>Write a New Story</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    
+    @Html.LabelFor(model => model.headline)
+    @Html.TextBoxFor(model => model.headline)
+    @Html.ValidationMessageFor(model => model.headline, "*")
+    <br />
+    <br />
+    @Html.LabelFor(model => model.stories)
+    @Html.TextBoxFor(model => model.stories)
+    @Html.ValidationMessageFor(model => model.stories, "*")
+    <br />
+    <br />
+    <input type="submit" value="Publish" />
+    
+}
+
+<p>@Html.ActionLink("Back", "Index")</p>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

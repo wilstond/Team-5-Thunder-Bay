@@ -1,0 +1,57 @@
+﻿@using ThunderB_redesign.Models
+@model List<Group<page,int>>
+
+@{
+    ViewBag.Title = "Pages Grouped by categories";
+}
+
+<h2>Add, Edit or Delete Pages</h2>
+<p>&nbsp;</p>
+<div class="page-list">
+   
+        @{
+            
+          foreach (var menu_item in ViewBag.headerList)
+            {
+              <div class="page-list-header">
+                <span class="page-list-title">
+                        @menu_item.Value
+                    </span>
+                    <div class="page-list-header-button">
+                        <i class="fa fa-plus"></i>
+                            @Html.ActionLink("Add New page", "Create", new { menu_id = menu_item.Key })
+                    </div>
+                    </div>
+
+                    foreach (var group in Model)
+                    {
+                        if (menu_item.Key == group.Key)
+                        {
+                            <div class="page-list-content">
+                                    <ul class="stripes">
+                                        @foreach (var item in group.Values)
+                                        {
+                                        <li>
+                                            @item.page_title
+                                            @item.page_created.ToShortDateString()
+                                                    <div class="action-buttons" style="float:right; width: 160px">
+                                                        @Html.ActionLink("Edit", "Edit", new { id = item.page_id }) |
+                                                        @Html.ActionLink("Preview", "Details", new { id = item.page_id }) |
+                                                        @Html.ActionLink("Delete", "Delete", new { id = item.page_id })
+                                                    </div>
+                                              
+                                        </li>
+                                        }
+                                   </ul>
+                            </div>
+                        }
+                    }
+                    
+              }
+               
+            
+        }
+</div>
+
+<p><a href="~/Areas/admin/Views/PageAdmin/Index.cshtml">Full list of pages without breaking up by menu categories</a></p>
+

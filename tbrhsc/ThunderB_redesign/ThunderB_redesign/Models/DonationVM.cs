@@ -103,6 +103,7 @@ namespace ThunderB_redesign.Models
             donation donationInfo = new donation();
             donationInfo.dtn_dnr_id = donorInfo.dnr_id;
             donationInfo.dtn_amount = dtn_amount;
+            donationInfo.dtn_date = DateTime.Now;
             commitInsertDonation(donationInfo);
 
             return true;

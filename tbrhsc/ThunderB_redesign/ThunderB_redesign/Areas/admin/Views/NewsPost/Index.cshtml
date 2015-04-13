@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ThunderB_redesign.Models.newsTable>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>News Stories</h2>
+<br />
+<p>
+    @Html.ActionLink("Create New", "Insert", "NewsPost")
+</p>
+<table>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+        </tr>
+    <tr>
+        <td>
+            &nbsp;
+        </td>
+    </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.headline)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.stories)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.ActionLink("Update", "Update", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+            
+        </tr>
+    }
+
+</table>
+
+

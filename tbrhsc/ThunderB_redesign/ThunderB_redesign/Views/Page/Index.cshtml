@@ -1,35 +1,15 @@
 ﻿@model ThunderB_redesign.Models.page
 
 @{
-    ViewBag.Title = "Index";
+    
+    ViewBag.Title = "TBRHSC";
 }
 
 
-
-@*@{
-    ViewBag.Title = @Model.page_title;
-    ViewBag.MetaDescription = @Model.page_title;
-}*@
-
-@*<dt>
-        @Html.DisplayNameFor(model => model.user_id)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.user_id)
-    </dd>*@
-
-@*<dt>
-        @Html.DisplayNameFor(model => model.page_title)
-    </dt>
-
-    <dd>
-        @Html.DisplayFor(model => model.page_title)
-    </dd>*@
 <div class="middle clearfix">
     <div class="sidebar_right clearfix">
         <div class="donate clearfix">
-            <h2>Help Make a Difference Donate to TBRHSC</h2>
+            <h2><a href="/Donation/Index">Help Make a Difference Donate to TBRHSC</a></h2>
         </div>
 
         <section class="news_feed clearfix">
@@ -47,7 +27,6 @@
                     {
 
                         <li>
-                            @*<a href="@Url.Action("Index", @item.menu_text, new { item.menu_id })">@item.menu_text</a>*@
                             <a href="~/@item.menu_slug/Index?menu_id=@item.menu_id">@item.menu_text</a>
 
 
@@ -79,16 +58,19 @@
         </section>
 
         <section class="emergency_info">
-            <h2>Emergency</h2>
+            <h2>Emergency Room</h2>
             <div class="emergency_content">
                 <ul>
-                    <li>Who to call</li>
-                    <li>Directions</li>
-                    <li>Maps</li>
+                    <li><a href="~/ER/Index#how-to-get">Trip to ER</a></li>
+                    <li><a href="~/ER/Index#visitors">Visitors</a></li>
+                    <li><a href="~/ER/Index#discharge">Discharge</a></li>
+                    <li><a href="~/ER/Index#admittance">Admittance</a></li>
+                    <li><a href="~/ER/Index#er-plan">ER Plan</a></li>
                 </ul>
             </div>
             <div id="erm_holder">
 
+                @*Emergency room wait time monitor gets inserted here and refreshes every 3 seconds*@
             </div>
         </section>
 

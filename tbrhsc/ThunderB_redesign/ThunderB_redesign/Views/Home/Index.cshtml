@@ -1,4 +1,6 @@
-﻿@{
+﻿@model ThunderB_redesign.Models.NewsPostPublic
+
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -11,30 +13,19 @@
 
         <section class="news_feed clearfix">
             <header>Recent News</header>
-            <div class="news_title">
-                New Website for Thunder Bay Regional Health Sciences Centre
-            </div>
-            <div class="news_title">
-                New Website for Thunder Bay Regional Health Sciences Centre
-            </div>
-            <div class="news_title">
-                New Website for Thunder Bay Regional Health Sciences Centre
-            </div>
-            <div class="news_title bottom">
-                New Website for Thunder Bay Regional Health Sciences Centre
-            </div>
-
+          @{Html.RenderAction("topNews", "NewsPostPublic");}
         </section>
 
         <section class="emergency_info">
-            <h2>Emergency</h2>
+            <h2>Emergency Room</h2>
             <div class="emergency_content">
                 <ul>
-                    <li>Who to call</li>
-                    <li>Directions</li>
-                    <li>Maps</li>
+                    <li><a href="~/ER/Index#how-to-get">Trip to ER</a></li>
+                    <li><a href="~/ER/Index#visitors">Visitors</a></li>
+                    <li><a href="~/ER/Index#discharge">Discharge</a></li>
+                    <li><a href="~/ER/Index#admittance">Admittance</a></li>
+                    <li><a href="~/ER/Index#er-plan">ER Plan</a></li>
                 </ul>
-                
             </div>
             <div id="erm_holder">
 
@@ -49,7 +40,16 @@
             </header>
             <span class="date">@DateTime.Now.DayOfWeek, @DateTime.Now.Date.ToLongDateString()</span>
             <figure>
-                <img src="~/img/main.png" />
+
+                @* Responsive image for the home page - allows to load small image for phone screen
+                    medium image for tablet and large hi-res image for desktop *@
+
+                <img src="~/img/main_sm.png"
+                     srcset="~/img/main_lg.png 1027w,
+                             ~/img/main_md.png 780w,
+                             ~/img/main_sm.png 480w"
+                     sizes="100%"
+                     alt="TBRHSC main building">
             </figure>
             <article>
                 <div class="one-half first">
@@ -68,24 +68,29 @@
         </section>
 
         <section class="clearfix bottom">
-            <header class="section-header">
-                <h1>Another Story about Thunder Bay</h1>
-            </header>
+            
+               
+           
+                    <ul class="hp-links clearfix">
+                        <li>
+                            <a href="~/Page/Index?menu_id=3">Programs and services</a>
+                        </li>
 
-            <article class="clearfix">
-                <div class="one-half first">
-                    <p>
-                        Lorem ipsum dolor sit amet, quo ei eirmod animal, an sea oratio mandamus disputationi. Eos enim minimum atomorum ei, vel an odio dicit. Ne sit fabulas persecuti mediocritatem. Eos errem vulputate an. Et cibo mundi periculis pro, ne mentitum deserunt ius.
-                        Eos ludus invenire eu. Est ea idque ubique. Alterum feugait mei in. Albucius accusata pericula sit in, eam ut fuisset euripidis, id movet soleat pri. Qui timeam appareat euripidis ne, soluta legendos democritum eu id. In lorem expetendis est, exerci postea vel ea.
-                    </p>
-                </div>
-                <div class="one-half last">
-                    <p>
-                        Over the recent months Thunder Bay Regional Health Sciences Centre’s website, www.tbrhsc.net, was redesigned by the web extrordinaires over at Peregrine, which is a web studio based out of Toronto. Along with the lovely website redesign, THRHSC had it’s branding redesigned to elevate it’s identity into the advanced web friendly future.
-                        Lorem ipsum dolor sit amet, quo ei eirmod animal, an sea oratio mandamus disputationi. Eos enim minimum atomorum ei, vel an odio dicit. Ne sit fabulas persecuti mediocritatem. Eos errem vulputate an. Et cibo mundi periculis pro, ne mentitum deserunt ius.
-                    </p>
-                </div>
-            </article>
+                        <li>
+                            <a href="~/Appointment/Job/Index">Careers at TBRHSC</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Volunteers</a>
+                        </li>
+
+                        <li>
+                            <a href="~/Appointment/Index">Book an appointment</a>
+                        </li>
+
+                       
+                    </ul>
+                
         </section>
     </div>
 

@@ -44,6 +44,7 @@ namespace ThunderB_redesign.Models
 
         [Key]
         [Required]
+        [RegularExpression("^[a-z0-9-]+$", ErrorMessage = "Slug can only contain letters, numbers or hyphens. No spaces or special charaters.")]
         [DisplayName("Page Slug (Friendly Url)")]
         [Remote("IsSlugAvailable", "PageAdmin", HttpMethod = "POST", ErrorMessage = "Slug Already Exist.")]
         public string page_slug { get; set; }

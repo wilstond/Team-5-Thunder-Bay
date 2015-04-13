@@ -10,123 +10,110 @@
 </head>
 <body>
     <h2>Book Appointment</h2>
-            @using (Html.BeginForm())
-            {
-                @Html.AntiForgeryToken()
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-                    <h4>Pending Appointment Details</h4>
-                
-                    <hr />
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    @Html.HiddenFor(model => model.apt_id)
-                    @Html.HiddenFor(model => model.dr_id)
-                    @Html.HiddenFor(model => model.date_req)
-                    @Html.HiddenFor(model => model.time_book)
-                    @Html.HiddenFor(model => model.pat_name)
-                    @Html.HiddenFor(model => model.pat_phone)
-                    @Html.HiddenFor(model => model.pat_email)
-                    @Html.HiddenFor(model => model.pat_address)
-                    @Html.HiddenFor(model => model.pat_ohip)
-                    @Html.HiddenFor(model => model.fam_dr_name)
-                    @Html.HiddenFor(model => model.fan_dr_phone)
-                    @Html.HiddenFor(model => model.app_status)
+        <h4>Pending Appointment Details</h4>
 
-    <table class="page_editor">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.apt_id)
+        @Html.HiddenFor(model => model.dr_id)
+        @Html.HiddenFor(model => model.date_req)
+        @Html.HiddenFor(model => model.time_book)
+        @Html.HiddenFor(model => model.pat_name)
+        @Html.HiddenFor(model => model.pat_phone)
+        @Html.HiddenFor(model => model.pat_email)
+        @Html.HiddenFor(model => model.app_status)
+
+        <table class="page_editor">
 
 
-        <tr>
-            <td>
-                @Html.LabelFor(model => model.dr_id, htmlAttributes: new { @class = "control-label col-md-2" })
-            </td>
-            <td>              
-                @Html.DisplayFor(model => model.dr_id)
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.dr_id, htmlAttributes: new { @class = "control-label col-md-2" })
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.dr_id)
+                </td>
+            </tr>
 
-        <tr>
-            <td>
-                @Html.LabelFor(model => model.date_req, htmlAttributes: new { @class = "control-label col-md-2" })
-            </td>
-            <td>
-                @Model.date_req.ToShortDateString()
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.date_req, htmlAttributes: new { @class = "control-label col-md-2" })
+                </td>
+                <td>
+                    @Model.date_req.ToShortDateString()
+                </td>
+            </tr>
 
-        <tr>
-            <td>
-                @Html.LabelFor(model => model.date_book, htmlAttributes: new { @class = "control-label col-md-2" })
-            </td>
-            <td>   
-                @{
-                    if (Model.date_book == DateTime.MinValue)
-                    {
-                        <input id="datetimepicker" name="date_book" type="text" value="" />
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.date_book, htmlAttributes: new { @class = "control-label col-md-2" })
+                </td>
+                <td>
+                    @{
+        if (Model.date_book == null)
+        {
+            <input id="datetimepicker" name="date_book" type="text" value="" />
 
+        }
+        else
+        {
+            <input id="datetimepicker" name="date_book" type="text" value="@Model.date_book" />
+
+        }
                     }
-                    else
-                    {
-                        @Html.TextBoxFor(model => model.date_book, new { @id = "datetimepicker" })
-                    }
-                }
 
-                @*@Html.TextBoxFor(model => model.date_book, new { @id = "datetimepicker" })*@
-                <script type="text/javascript">
-                    $(document).ready(function () {
-                        //var tomorrow = new Date(today.getTime() + 24 * 60 * 60 * 1000);
-                        jQuery("#datetimepicker").datetimepicker({
-                             format: 'Y-m-d H:i:s A',
-                             minDate: '-1969/12/31'
+                    @*@Html.TextBoxFor(model => model.date_book, new { @id = "datetimepicker" })*@
+                    <script type="text/javascript">
+                        $(document).ready(function () {
+                            jQuery("#datetimepicker").datetimepicker({
+                                format: 'Y-m-d H:i A',
+                                minDate: '-1969/12/31',
+                                allowTimes: [
+                                    '8:00', '8:30', '9:00', '9:30', '10:00', '10:30',
+                                    '11:00', '11:30', '14:00', '14:30', '15:00', '15:30'
+                                ]
+                            });
                         });
-                     });
-                </script>
-                @Html.ValidationMessageFor(model => model.date_book, "", new { @class = "text-danger" })
+                    </script>
+                    @Html.ValidationMessageFor(model => model.date_book, "", new { @class = "text-danger" })
 
-            </td>
-        </tr>
+                </td>
+            </tr>
 
-       
 
-        <tr>
-            <td>Patient Details</td>
-            <td>
-                 <h4>@Html.DisplayFor(model => model.pat_name)</h4>
-                 <br />
-                 @Html.DisplayFor(model => model.pat_address)
-                 <br /> 
-                 @Html.DisplayFor(model => model.pat_phone)
-                 <br />
-                 <a href="mailto:@Html.DisplayFor(model => model.pat_email)">@Html.DisplayFor(model => model.pat_email)</a>
-            </td>
-        </tr>
 
-        <tr>
-            <td>
-                Family doctor information
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.fam_dr_name)
-                <br />
-                @Html.DisplayFor(model => model.fan_dr_phone)
-            </td>
-        </tr>
+            <tr>
+                <td>Patient Details</td>
+                <td>
+                    <h4>@Html.DisplayFor(model => model.pat_name)</h4>
+                    <br />
+                    @Html.DisplayFor(model => model.pat_phone)
+                    <br />
+                    <a href="mailto:@Html.DisplayFor(model => model.pat_email)">@Html.DisplayFor(model => model.pat_email)</a>
+                </td>
+            </tr>
 
-        <tr>
-            <td>
-                @Html.LabelFor(model => model.app_status)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.app_status)
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @Html.LabelFor(model => model.app_status)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.app_status)
+                </td>
+            </tr>
 
-    </table>
-    <div class="col-md-offset-2 col-md-10">
-        <input type="submit" value="Save" class="btn btn-default" />
+        </table>
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
     </div>
-            }
-
-            <div>
-                @Html.ActionLink("Back to List", "Index")
-            </div>
 </body>
 </html>
