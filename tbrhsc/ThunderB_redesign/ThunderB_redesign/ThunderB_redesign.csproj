@@ -93,13 +93,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="PagedList">
-      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
-    </Reference>
-    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
-    </Reference>
     <Reference Include="Postal">
       <HintPath>..\packages\Postal.Mvc5.1.2.0\lib\net45\Postal.dll</HintPath>
     </Reference>
@@ -217,10 +210,9 @@
     <Compile Include="Areas\admin\Controllers\ERAdminController.cs" />
     <Compile Include="Areas\admin\Controllers\FAQController.cs" />
     <Compile Include="Areas\admin\Controllers\FeedbackAdminController.cs" />
-    <Compile Include="Areas\admin\Controllers\JobAdminController.cs" />
-    <Compile Include="Areas\admin\Controllers\NewsletterAdminController.cs" />
     <Compile Include="Areas\admin\Controllers\NewsPostController.cs" />
     <Compile Include="Areas\admin\Controllers\PageAdminController.cs" />
+    <Compile Include="Areas\admin\Controllers\VolunteerAdminController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Areas\admin\Controllers\AdminController.cs" />
     <Compile Include="Controllers\AlertPublicController.cs" />
@@ -230,12 +222,10 @@
     <Compile Include="Controllers\FaqController.cs" />
     <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\jobAppController.cs" />
-    <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Controllers\NewsletterController.cs" />
-    <Compile Include="Controllers\NewsPostPublicController.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\SlugToIdAttribute.cs" />
+    <Compile Include="Controllers\VolunteerShiftController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -251,13 +241,7 @@
     <Compile Include="Models\FaqModel.cs" />
     <Compile Include="Models\FeedbackLinqClass.cs" />
     <Compile Include="Models\FeedbackModel.cs" />
-    <Compile Include="Models\Group.cs" />
     <Compile Include="Models\imagesviewmodel.cs" />
-    <Compile Include="Models\jobApplicationClass.cs" />
-    <Compile Include="Models\jobAppLinqClass.cs" />
-    <Compile Include="Models\jobCategoryClass.cs" />
-    <Compile Include="Models\jobClass.cs" />
-    <Compile Include="Models\JobLinqClass.cs" />
     <Compile Include="Models\Linq.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -265,16 +249,16 @@
     </Compile>
     <Compile Include="Models\MenuLinqClass.cs" />
     <Compile Include="Models\MenuModel.cs" />
-    <Compile Include="Models\NewsletterModel.cs" />
     <Compile Include="Models\NewsPostAdminModel.cs" />
-    <Compile Include="Models\NewsPostLinq.cs" />
-    <Compile Include="Models\NewsPostPublic.cs" />
     <Compile Include="Models\PageLinqClass.cs" />
     <Compile Include="Models\PageModel.cs" />
     <Compile Include="Models\SubscriberClass.cs" />
     <Compile Include="Models\SubscriberModel.cs" />
     <Compile Include="Models\TriageModel.cs" />
     <Compile Include="Models\TriageViewModel.cs" />
+    <Compile Include="Models\VolunteerLinqClass.cs" />
+    <Compile Include="Models\VolunteerModel.cs" />
+    <Compile Include="Models\VolunteerViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -551,10 +535,8 @@
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\form_styles.css" />
     <Content Include="Content\css\Site_Donation.css" />
-    <Content Include="Content\css\Site_Newsletter.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\css\normalize.css" />
-    <Content Include="Content\PagedList.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -647,34 +629,21 @@
     <Content Include="Areas\admin\Views\ERAdmin\Index.cshtml" />
     <Content Include="Areas\admin\Views\ERAdmin\InsertPatient.cshtml" />
     <Content Include="Areas\admin\Views\ERAdmin\ShowPatient.cshtml" />
+    <Content Include="Areas\admin\Views\FaqAdmin\Create.cshtml" />
+    <Content Include="Areas\admin\Views\FaqAdmin\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\FaqAdmin\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\FaqAdmin\Index.cshtml" />
+    <Content Include="Areas\admin\Views\FaqAdmin\NotFound.cshtml" />
     <Content Include="Areas\admin\Views\Web.config" />
     <Content Include="Areas\admin\Views\PageAdmin\uploadPartial.cshtml" />
     <Content Include="Areas\admin\Views\Alert\AlertPost.cshtml" />
     <Content Include="Areas\admin\Views\DonationAdmin\Index.cshtml" />
-    <Content Include="Areas\admin\Views\NewsPost\News.cshtml" />
+    <Content Include="Areas\admin\Views\NewsPost\CreateNews.cshtml" />
     <Content Include="Areas\admin\Views\ApptAdmin\Details.cshtml" />
     <Content Include="Areas\admin\Views\ApptAdmin\Edit.cshtml" />
     <Content Include="Areas\admin\Views\ApptAdmin\Index.cshtml" />
     <Content Include="Content\MonthlyReport" />
-    <Content Include="Areas\admin\Views\JobAdmin\Create.cshtml" />
-    <Content Include="Areas\admin\Views\JobAdmin\Delete.cshtml" />
-    <Content Include="Areas\admin\Views\JobAdmin\Edit.cshtml" />
-    <Content Include="Areas\admin\Views\JobAdmin\Index.cshtml" />
-    <Content Include="Areas\admin\Views\JobAdmin\NotFound.cshtml" />
-    <Content Include="Areas\admin\Views\NewsPost\Index.cshtml" />
-    <Content Include="Areas\admin\Views\NewsPost\Delete.cshtml" />
-    <Content Include="Areas\admin\Views\NewsPost\Insert.cshtml" />
-    <Content Include="Areas\admin\Views\NewsPost\NotFound.cshtml" />
-    <Content Include="Areas\admin\Views\NewsPost\Update.cshtml" />
-    <Content Include="Areas\admin\Views\ApptAdmin\NotFound.cshtml" />
-    <Content Include="Areas\admin\Views\ApptAdmin\Delete.cshtml" />
-    <Content Include="Areas\admin\Views\NewsletterAdmin\Delete.cshtml" />
-    <Content Include="Areas\admin\Views\NewsletterAdmin\Details.cshtml" />
-    <Content Include="Areas\admin\Views\NewsletterAdmin\Index.cshtml" />
-    <Content Include="Areas\admin\Views\NewsletterAdmin\NewsletterSent.cshtml" />
-    <Content Include="Areas\admin\Views\NewsletterAdmin\SendNewsletter.cshtml" />
-    <Content Include="Areas\admin\Views\NewsletterAdmin\Update.cshtml" />
-    <Content Include="Areas\admin\Views\PageAdmin\Main.cshtml" />
+    <Content Include="Areas\admin\Views\VolunteerAdmin\Index.cshtml" />
     <None Include="Properties\PublishProfiles\File System Deployment.pubxml" />
     <None Include="Properties\PublishProfiles\TBRHSC-redesign.pubxml" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
@@ -758,21 +727,11 @@
     <Content Include="Views\Emails\Request_Confirmation.cshtml" />
     <Content Include="Views\Newsletter\Index.cshtml" />
     <Content Include="Views\Appointment\Index.cshtml" />
-    <Content Include="Views\Newsletter\NewsletterForm.cshtml" />
-    <Content Include="Views\Newsletter\ProcessSubscription.cshtml" />
-    <Content Include="Views\Job\Details.cshtml" />
-    <Content Include="Views\Job\Index.cshtml" />
-    <Content Include="Views\Job\NotFound.cshtml" />
-    <Content Include="Views\jobApp\Create.cshtml" />
-    <Content Include="Views\Emails\NewsletterMail.cshtml" />
-    <Content Include="Views\NewsPostPublic\Index.cshtml" />
-    <Content Include="Views\NewsPostPublic\NotFound.cshtml" />
-    <Content Include="Views\NewsPostPublic\topNews.cshtml" />
+    <Content Include="Views\VolunteerShift\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\admin\Models\" />
-    <Folder Include="Areas\admin\Views\FaqAdmin\" />
     <Folder Include="Images\uploads\" />
     <Folder Include="Views\GPlace\" />
     <Folder Include="Views\Locator\" />
