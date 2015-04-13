@@ -16,7 +16,7 @@ using System.IO;
 
 namespace ThunderB_redesign.Areas.admin.Controllers
 {
-    [Authorize]
+    [Authorize(Roles="Doctor, Admin")]
     [InitializeSimpleMembership]
     public class ApptAdminController : Controller
     {
@@ -29,7 +29,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         public ApptAdminController()
         {
 
-            user_id = WebSecurity.CurrentUserId;
+            //user_id = WebSecurity.CurrentUserId;
 
             // db.DeferredLoadingEnabled = false;
 
@@ -40,6 +40,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         //List all appointments by doctor Id
         public ActionResult Index()
         {
+            user_id = WebSecurity.GetUserId(User.Identity.Name);
 
             var selDoctor = apptObject.getDoctorByUserId(user_id);
             if (selDoctor == null)

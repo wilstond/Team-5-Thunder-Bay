@@ -17,8 +17,7 @@ using System.IO;
 
 namespace ThunderB_redesign.Areas.admin.Controllers
 {
-    [Authorize]
-    [InitializeSimpleMembership] 
+    [Authorize(Roles="Admin")]
     public class PageAdminController : Controller
     {
         //creating new object
@@ -41,7 +40,9 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             ViewBag.menuTree = menuObj.getMenuTree();
             ViewBag.breadCrumbs = menuObj.getBreadcrumbList();
             ViewBag.headerList = menuObj.getHeadersList();
-            user_id = WebSecurity.CurrentUserId;
+            //user_id = WebSecurity.CurrentUserId;
+            
+            
 
 
         }
@@ -117,6 +118,8 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         // GET: admin/PageAdmin/Create
         public ActionResult Create(int menu_id = -1)
         {
+            user_id = WebSecurity.GetUserId(User.Identity.Name);
+
             page newPage = new page();
             newPage.page_created = DateTime.Now.ToLocalTime();
             newPage.user_id = user_id;
