@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.375, 8.5" name="Linq">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.375, 8.875" name="Linq">
   <DataContextMoniker Name="/LinqDataContext" />
   <nestedChildShapes>
     <classShape Id="efb9903a-ee34-4ada-b8c0-63fc244bcb2a" isExpanded="false" absoluteBounds="3.5, 4.75, 2, 0.45">
@@ -111,7 +111,7 @@
         <classShapeMoniker Id="349d8dfc-a421-468c-8a43-305fd9964e7e" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(3.125 : 2.925); (3.5 : 2.925)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(3.125 : 2.925); (3.5 : 2.925)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/LinqDataContext/department/department_doctor1" />
       <nodes>
         <classShapeMoniker Id="cbc745fb-a397-4fa3-80b5-02438e3c7cfb" />
@@ -194,7 +194,7 @@
         <classShapeMoniker Id="5d286e31-c407-4629-b51d-5541416724f9" />
       </nodes>
     </associationConnector>
-    <classShape Id="4dfed356-5ded-4964-8349-b8ab4564699e" isExpanded="false" absoluteBounds="8.75, 6.875, 2, 0.45">
+    <classShape Id="4dfed356-5ded-4964-8349-b8ab4564699e" absoluteBounds="8.75, 6.875, 2, 1.7708968098958327">
       <DataClassMoniker Name="/LinqDataContext/newsTable" />
       <nestedChildShapes>
         <elementListCompartment Id="9aa4fa8a-22b5-4dd9-87fb-0cbb4653a1b6" absoluteBounds="8.765, 7.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
