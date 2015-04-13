@@ -51,7 +51,7 @@ namespace ThunderB_redesign.Models
                     menuText = m.menu_text,
                     parentId = p.menu_id,
                     shortBreadcrumb = " <a href='/Page/Index?menu_id=" + m.menu_id + "'>" + m.menu_text + "</a> ",
-                    fullBreadcrumb = p.menu_text + " > <a href='/Page/Index?menu_id=" + m.menu_id + "'>" + m.menu_text + "</a> "
+                    fullBreadcrumb = " <a href='/Page/Index?menu_id=" + p.menu_id + "'>" + p.menu_text + "</a> > <a href='/Page/Index?menu_id=" + m.menu_id + "'>" + m.menu_text + "</a> "
                 }).ToList();
 
             foreach (var row in query)
