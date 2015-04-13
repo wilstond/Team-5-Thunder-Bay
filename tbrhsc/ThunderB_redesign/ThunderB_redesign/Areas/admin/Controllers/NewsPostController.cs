@@ -75,7 +75,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             {
                 try
                 {
-                    objNews.commitUpdate(Id, news.stories, news.headline, news.date, news.author);
+                    objNews.commitUpdate(Id, news.stories, news.headline);
                 }
                 catch
                 {

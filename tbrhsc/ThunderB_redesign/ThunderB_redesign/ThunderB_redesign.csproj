@@ -768,6 +768,12 @@
     <Content Include="Content\MonthlyReport" />
     <Content Include="Areas\admin\Views\VolunteerAdmin\Index.cshtml" />
     <Content Include="bin\ThunderB_redesign.dll.config" />
+    <Content Include="Areas\admin\Views\NewsPost\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\NewsPost\Index.cshtml" />
+    <Content Include="Areas\admin\Views\NewsPost\Insert.cshtml" />
+    <Content Include="Areas\admin\Views\NewsPost\News.cshtml" />
+    <Content Include="Areas\admin\Views\NewsPost\NotFound.cshtml" />
+    <Content Include="Areas\admin\Views\NewsPost\Update.cshtml" />
     <None Include="Properties\PublishProfiles\File System Deployment.pubxml" />
     <None Include="Properties\PublishProfiles\TBRHSC-redesign.pubxml" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
