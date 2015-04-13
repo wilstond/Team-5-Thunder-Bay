@@ -1,0 +1,23 @@
+﻿@model ThunderB_redesign.Models.DonationVM
+@{
+    ViewBag.Title = "tbrhsc | Donations";
+}
+
+<div class="donation-container">
+    <div class="top-left">
+        <img alt="donation image" src="~/img/donation.jpg" />
+    </div>
+    <div class="top-right">
+        <h2>Giving</h2>
+        <p>Your gift to the Thunder Bay Regional Health Sciences Foundation ensures excellence in healthcare in Northwestern Ontario. You can choose to direct your gift to the area of highest need, to one of our specialty funds: the Northern Cancer Fund, the Northern Cardiac Fund or the Health Sciences Discovery Fund, or to any specific area of care at Thunder Bay Regional Health Sciences Centre.</p>
+    </div>
+    <div class="clearfix"></div>
+    <div class="bottom">
+        <br/>
+        <h4>Thank you <strong>@Model.dnr_name</strong> for your generous donation</h4>
+        <br/>
+        @Html.ActionLink("Donate more", "Index")
+    </div>
+    <div class="clearfix"></div>
+</div>
+

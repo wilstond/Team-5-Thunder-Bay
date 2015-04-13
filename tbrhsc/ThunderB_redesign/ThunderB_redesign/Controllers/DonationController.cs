@@ -39,16 +39,21 @@ namespace ThunderB_redesign.Controllers
                 {
                     objDonationVM.addDonationInfo();
                     proceedToPaypal(objDonationVM.dtn_amount);
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Success", objDonationVM);
                 }
                 catch
                 {
-                    return View();
+                    return View("Index");
                 }
             }
 
             return View();
 
+        }
+
+        public ActionResult Success(DonationVM objDonation)
+        {
+            return View(objDonation);
         }
         
         //Method to process info and redirect to paypal

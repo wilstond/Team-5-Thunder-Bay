@@ -23,7 +23,40 @@ namespace ThunderB_redesign.Models
         [Required(ErrorMessage = "Please enter your name")]
         public string dnr_name { get; set; }
 
-        public System.Nullable<char> _dnr_anonymous { get; set; }
+        [DisplayName("Donor Phone")]
+        [Required(ErrorMessage="Please enter your phone number")]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Enter a valid phone number")]
+        public decimal dnr_phone { get; set; }
+
+
+        [DisplayName("Donor Apartment Number")]
+        [Required(ErrorMessage = "Please enter your apartment number")]
+        public string dnr_apt_no { get; set; }
+
+
+        [DisplayName("Donor street name")]
+        [Required(ErrorMessage = "Please enter your street name")]
+        public string dnr_street { get; set; }
+
+
+        [DisplayName("Donor City")]
+        [Required(ErrorMessage = "Please enter your city")]
+        public string dnr_city { get; set; }
+
+        [DisplayName("Donor Province")]
+        [Required(ErrorMessage = "Please enter your province")]
+        public string dnr_province { get; set; }
+
+
+        [DisplayName("Donor Country")]
+        [Required(ErrorMessage = "Please enter your country")]
+        public string dnr_country { get; set; }
+
+
+        [DisplayName("Donor Postal Code")]
+        [Required(ErrorMessage = "Please enter your postal code")]
+        public string dnr_postal_code { get; set; }
+        
 
         public int dtn_id {get; set;}
         public int dtn_dnr_id {get; set;}
@@ -79,6 +112,13 @@ namespace ThunderB_redesign.Models
                 donationWithDonor.dnr_id = donorInfo.dnr_id;
                 donationWithDonor.dnr_name = donorInfo.dnr_name;
                 donationWithDonor.dnr_email = donorInfo.dnr_email;
+                donationWithDonor.dnr_phone = donorInfo.dnr_phone;
+                donationWithDonor.dnr_apt_no = donorInfo.dnr_apt_no;
+                donationWithDonor.dnr_street = donorInfo.dnr_street;
+                donationWithDonor.dnr_city = donorInfo.dnr_city;
+                donationWithDonor.dnr_province = donorInfo.dnr_province;
+                donationWithDonor.dnr_country = donorInfo.dnr_country;
+                donationWithDonor.dnr_postal_code = donorInfo.dnr_postal_code;
                 
                 allDonationsWithDetails.Add(donationWithDonor);
 
@@ -97,6 +137,13 @@ namespace ThunderB_redesign.Models
                 donorInfo = new donor();
                 donorInfo.dnr_email = dnr_email;
                 donorInfo.dnr_name = dnr_name;
+                donorInfo.dnr_phone = dnr_phone;
+                donorInfo.dnr_apt_no = dnr_apt_no;
+                donorInfo.dnr_street = dnr_street;
+                donorInfo.dnr_city = dnr_city;
+                donorInfo.dnr_province = dnr_province;
+                donorInfo.dnr_country = dnr_country;
+                donorInfo.dnr_postal_code = dnr_postal_code;
                 commitInsertDonor(donorInfo);
             }
 

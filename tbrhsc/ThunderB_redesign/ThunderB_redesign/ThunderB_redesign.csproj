@@ -881,6 +881,7 @@
     <Content Include="Views\NewsPostPublic\Index.cshtml" />
     <Content Include="Views\NewsPostPublic\NotFound.cshtml" />
     <Content Include="Views\NewsPostPublic\topNews.cshtml" />
+    <Content Include="Views\Donation\Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -3,18 +3,6 @@
     ViewBag.Title = "tbrhsc | Donations";
 }
 
-<script async="async" src="https://www.paypalobjects.com/js/external/paypal-button.min.js?merchant=thunderbayhospital@gmail.com"
-        data-button="donate"
-        data-name="Donation towards hospital"
-        data-amount="10"
-        data-currency="CAD"
-        data-shipping="0"
-        data-tax="0"
-        data-callback="http://tbrhsc.net"
-        data-env="sandbox">
-</script>
-
-
 <div class="donation-container">
     <div class="top-left">
         <img alt="donation image" src="~/img/donation.jpg"/> 
@@ -23,57 +11,117 @@
         <h2>Giving</h2>
         <p>Your gift to the Thunder Bay Regional Health Sciences Foundation ensures excellence in healthcare in Northwestern Ontario. You can choose to direct your gift to the area of highest need, to one of our specialty funds: the Northern Cancer Fund, the Northern Cardiac Fund or the Health Sciences Discovery Fund, or to any specific area of care at Thunder Bay Regional Health Sciences Centre.</p>
     </div>
-    @*<div class="bottom-left">
-        <form method="post" action="https://www.sandbox.paypal.com/cgi-bin/webscr" class="paypal-button" target="_blank" style="opacity: 1;">
-            <h2>Donation Form</h2>
-            <div class="hide" id="errorBox"></div>
-            <input type="hidden" name="button" value="donate">
-            <input type="hidden" name="business" value="thunderbayhospital@gmail.com">
-            <input type="hidden" name="item_name" value="Donation towards hospital">
-            <input type="hidden" name="quantity" value="">
-            <label id="lbl_name" class="float-left">Name</label>
-            <input type="text" name="Name" class="float-right">
-            <div class="clear-both"></div>
-            <label id="lbl_email" class="float-left">Email</label>
-            <input type="text" name="Email" class="float-right">
-            <div class="clear-both"></div>
-            <label id="lbl_amount" class="float-left">Amount</label>
-            <input type="text" name="amount" class="float-right">
-            <div class="clear-both"></div>
-            <label id="lbl_currency" class="float-left">Currency</label>
-            <input type="text" name="currency_code" value="CAD" disabled class="float-right">
-            <div class="clear-both"></div>
-            <input type="hidden" name="shipping" value="0">
-            <input type="hidden" name="tax" value="0">
-            <input type="hidden" name="notify_url" value="http://www.tbrhsc.net">
-            <input type="hidden" name="env" value="www.sandbox">
-            <input type="hidden" name="cmd" value="_donations">
-            <input type="hidden" name="bn" value="JavaScriptButton_donate">
-            <button type="submit" class="paypal-button large">Donate</button>
-        </form>
-    </div>*@
-    <div class="bottom-left">
-        @using (Html.BeginForm("Index", "Donation", FormMethod.Post))
-        {
-            @Html.ValidationSummary()
-            <div class="clear-both"></div>
-            <div class="float-left">@Html.LabelFor(model => model.dnr_name)</div>
-            <div class="float-right">@Html.TextBoxFor(model => model.dnr_name)</div>
-            <div class="clear-both"></div>
-            <div class="float-left">@Html.LabelFor(model => model.dnr_email)</div>
-            <div class="float-right">@Html.TextBoxFor(model => model.dnr_email)</div>
-            <div class="clear-both"></div>
-            <div class="float-left">@Html.LabelFor(model => model.dtn_amount)</div>
-            <div class="float-right">@Html.TextBoxFor(model => model.dtn_amount)</div>
-            <div class="clear-both"></div>
 
-            <button type="submit" class="paypal-button large">Donate</button>
+    <div class="bottom">
 
-        }
-        
-    </div>
-    <div class="bottom-right">
-        <p>Testimonials go here</p>
+        <h2>Donate Now</h2>
+            @using (Html.BeginForm("Index", "Donation", FormMethod.Post))
+            {
+                @*@Html.ValidationSummary()*@
+                <div class="clear-both"></div>
+                
+                <div class="float-left width-40">
+                  
+                    <div class="form-group">
+                        <div class="float-left">@Html.Label("Name")</div>
+                        <div class="float-right">@Html.TextBoxFor(model => model.dnr_name)</div>
+                        <div class="clear-both"></div>
+                        @Html.ValidationMessageFor(model => model.dnr_name, "", new { @class = "text-danger" })
+                    </div>
+                    
+                    <div class="clear-both"></div>
+
+                    <div class="form-group">
+                        <div class="float-left">@Html.Label("Phone")</div>
+                        <div class="float-right">@Html.TextBoxFor(model => model.dnr_phone)</div>
+                        <div class="clear-both"></div>
+                        @Html.ValidationMessageFor(model => model.dnr_phone, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="clear-both"></div>
+
+                    <div class="form-group">
+                        <div class="float-left">@Html.Label("Street")</div>
+                        <div class="float-right">@Html.TextBoxFor(model => model.dnr_street)</div>
+                        <div class="clear-both"></div>
+                        @Html.ValidationMessageFor(model => model.dnr_street, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="clear-both"></div>
+
+                    <div class="form-group">
+                        <div class="float-left">@Html.Label("Province")</div>
+                        <div class="float-right">@Html.TextBoxFor(model => model.dnr_province)</div>
+                        <div class="clear-both"></div>
+                        @Html.ValidationMessageFor(model => model.dnr_province, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="clear-both"></div>
+
+                    <div class="form-group">
+                        <div class="float-left">@Html.Label("Postal Code")</div>
+                        <div class="float-right">@Html.TextBoxFor(model => model.dnr_postal_code)</div>
+                        <div class="clear-both"></div>
+                        @Html.ValidationMessageFor(model => model.dnr_postal_code, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="clear-both"></div>
+
+                </div>
+                
+                <div class="float-right width-40">
+
+                    <div class="form-group">
+                        <div class="float-left">@Html.Label("Email")</div>
+                        <div class="float-right">@Html.TextBoxFor(model => model.dnr_email)</div>
+                        <div class="clear-both"></div>
+                        @Html.ValidationMessageFor(model => model.dnr_email, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <div class="float-left">@Html.Label("Apartment Number")</div>
+                        <div class="float-right">@Html.TextBoxFor(model => model.dnr_apt_no)</div>
+                        <div class="clear-both"></div>
+                        @Html.ValidationMessageFor(model => model.dnr_apt_no, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="clear-both"></div>
+
+                    <div class="form-group">
+                        <div class="float-left">@Html.Label("City")</div>
+                        <div class="float-right">@Html.TextBoxFor(model => model.dnr_city)</div>
+                        <div class="clear-both"></div>
+                        @Html.ValidationMessageFor(model => model.dnr_city, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="clear-both"></div>
+
+                    <div class="form-group">
+                        <div class="float-left">@Html.Label("Country")</div>
+                        <div class="float-right">@Html.TextBoxFor(model => model.dnr_country)</div>
+                        <div class="clear-both"></div>
+                        @Html.ValidationMessageFor(model => model.dnr_country, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="clear-both"></div>
+
+                    <div class="form-group">
+                        <div class="float-left">@Html.Label("Amount")</div>
+                        <div class="float-right">@Html.TextBoxFor(model => model.dtn_amount)</div>
+                        <div class="clear-both"></div>
+                        @Html.ValidationMessageFor(model => model.dtn_amount, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+                
+                <div class="clear-both"></div>
+
+                <button type="submit" class="paypal-button large">Donate</button>
+
+                <div class="clear-both"></div>
+
+            }
+        <div class="clearfix"></div>
     </div>
     <div class="clearfix"></div>
 </div>
