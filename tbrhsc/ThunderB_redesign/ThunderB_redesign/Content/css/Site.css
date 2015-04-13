@@ -466,10 +466,11 @@ footer {
               margin:10px 0.8% 10px 0.8%; 
               outline:#e9e9e9 thin solid; 
               text-align: center; 
-              height: 57px; vertical-align: top;
+              height: 57px; 
               list-style: none;
               list-style-position:outside;
-              overflow:hidden
+              overflow:hidden;
+              line-height: 57px;
 }
 
 .hp-links li a {
@@ -477,8 +478,6 @@ footer {
     outline: red thin solid;
     height:100%;
     background-color: #c9e5ff;
-    padding-top: 5px;
-    padding-bottom: 5px;
     color: #1a2f38;
 }
 
@@ -673,6 +672,15 @@ footer {
     *zoom: 1;
 }
 
+/* colors*/
+
+.white {background-color: white;}
+.emergency-red {background-color: #9e0b0f; color: white; font-weight: 700;}
+.tb-orange {background-color:#f68b22; }
+.dark-navy {background-color: #1a2f38;}
+
+/* alignment */
+.text-centered {text-align:center;}
 /* ==========================================================================
    EXAMPLE Media Queries for Responsive Design.
    These examples override the primary ('mobile first') styles.
@@ -790,7 +798,7 @@ footer .one-sixth, footer .one-third, footer .one-half {width: 47%;}
 .sidebar_right, .main_content, .news_feed, .donate, .news_feed .news_title {
     display: block; position: relative; top: 0; clear: both; float: left;
 }
-.top_section {margin-top: 20px;}
+.top_section {margin-top: 1px;}
 .one-half, .one-third, .one-sixth {
     width: 100%; display: block; float: none;
 }
