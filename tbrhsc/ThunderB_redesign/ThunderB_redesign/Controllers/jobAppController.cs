@@ -12,6 +12,19 @@ namespace ThunderB_redesign.Controllers
         //
         // GET: /jobApp/
         jobAppLinqClass objJob = new jobAppLinqClass();
+        MenuLinqClass menuObj = new MenuLinqClass();
+
+        public jobAppController()
+        {
+            ViewData["MenuItems"] = menuObj.getMenuItems();
+
+            var menuItems = (IEnumerable<ThunderB_redesign.Models.menu_category>)ViewData["MenuItems"];
+
+            foreach (var menuItem in menuItems)
+            {
+                ViewData["SubMenuItems for " + menuItem.menu_id.ToString()] = menuObj.getSubMenuItemsByParentId(menuItem.menu_id);
+            }
+        }
 
         [HttpGet]
         public ActionResult Create(int job_id)

@@ -26,9 +26,6 @@ namespace ThunderB_redesign.Models
             [DataType(DataType.Date)]
             [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
             public DateTime closing_date { get; set; }
-            [Required(ErrorMessage = "Please enter position type")]
-            [DisplayName("Position Type")]
-            public string position_type { get; set; }
             [Required(ErrorMessage = "Please enter job description")]
             [DisplayName("Job Description")]
             [AllowHtml]
