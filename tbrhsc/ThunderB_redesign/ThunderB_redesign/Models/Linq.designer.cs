@@ -81,6 +81,12 @@ namespace ThunderB_redesign.Models
     partial void Insertappointment(appointment instance);
     partial void Updateappointment(appointment instance);
     partial void Deleteappointment(appointment instance);
+    partial void InsertShift(Shift instance);
+    partial void UpdateShift(Shift instance);
+    partial void DeleteShift(Shift instance);
+    partial void InsertVolunteer(Volunteer instance);
+    partial void UpdateVolunteer(Volunteer instance);
+    partial void DeleteVolunteer(Volunteer instance);
     #endregion
 		
 		public LinqDataContext() : 
@@ -246,6 +252,22 @@ namespace ThunderB_redesign.Models
 			get
 			{
 				return this.GetTable<appointment>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Shift> Shifts
+		{
+			get
+			{
+				return this.GetTable<Shift>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Volunteer> Volunteers
+		{
+			get
+			{
+				return this.GetTable<Volunteer>();
 			}
 		}
 	}
@@ -3755,6 +3777,367 @@ namespace ThunderB_redesign.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Shifts")]
+	public partial class Shift : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _shift_id;
+		
+		private System.Nullable<int> _volunteer_id;
+		
+		private string _day;
+		
+		private string _shifts;
+		
+		private EntityRef<Volunteer> _Volunteer;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onshift_idChanging(int value);
+    partial void Onshift_idChanged();
+    partial void Onvolunteer_idChanging(System.Nullable<int> value);
+    partial void Onvolunteer_idChanged();
+    partial void OndayChanging(string value);
+    partial void OndayChanged();
+    partial void OnshiftsChanging(string value);
+    partial void OnshiftsChanged();
+    #endregion
+		
+		public Shift()
+		{
+			this._Volunteer = default(EntityRef<Volunteer>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_shift_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int shift_id
+		{
+			get
+			{
+				return this._shift_id;
+			}
+			set
+			{
+				if ((this._shift_id != value))
+				{
+					this.Onshift_idChanging(value);
+					this.SendPropertyChanging();
+					this._shift_id = value;
+					this.SendPropertyChanged("shift_id");
+					this.Onshift_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_volunteer_id", DbType="Int")]
+		public System.Nullable<int> volunteer_id
+		{
+			get
+			{
+				return this._volunteer_id;
+			}
+			set
+			{
+				if ((this._volunteer_id != value))
+				{
+					if (this._Volunteer.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onvolunteer_idChanging(value);
+					this.SendPropertyChanging();
+					this._volunteer_id = value;
+					this.SendPropertyChanged("volunteer_id");
+					this.Onvolunteer_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_day", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string day
+		{
+			get
+			{
+				return this._day;
+			}
+			set
+			{
+				if ((this._day != value))
+				{
+					this.OndayChanging(value);
+					this.SendPropertyChanging();
+					this._day = value;
+					this.SendPropertyChanged("day");
+					this.OndayChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_shifts", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string shifts
+		{
+			get
+			{
+				return this._shifts;
+			}
+			set
+			{
+				if ((this._shifts != value))
+				{
+					this.OnshiftsChanging(value);
+					this.SendPropertyChanging();
+					this._shifts = value;
+					this.SendPropertyChanged("shifts");
+					this.OnshiftsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Volunteer_Shift", Storage="_Volunteer", ThisKey="volunteer_id", OtherKey="volunteer_id", IsForeignKey=true)]
+		public Volunteer Volunteer
+		{
+			get
+			{
+				return this._Volunteer.Entity;
+			}
+			set
+			{
+				Volunteer previousValue = this._Volunteer.Entity;
+				if (((previousValue != value) 
+							|| (this._Volunteer.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Volunteer.Entity = null;
+						previousValue.Shifts.Remove(this);
+					}
+					this._Volunteer.Entity = value;
+					if ((value != null))
+					{
+						value.Shifts.Add(this);
+						this._volunteer_id = value.volunteer_id;
+					}
+					else
+					{
+						this._volunteer_id = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Volunteer");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Volunteer")]
+	public partial class Volunteer : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _volunteer_id;
+		
+		private string _name;
+		
+		private string _email;
+		
+		private string _phone;
+		
+		private int _UserId;
+		
+		private EntitySet<Shift> _Shifts;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onvolunteer_idChanging(int value);
+    partial void Onvolunteer_idChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void OnemailChanging(string value);
+    partial void OnemailChanged();
+    partial void OnphoneChanging(string value);
+    partial void OnphoneChanged();
+    partial void OnUserIdChanging(int value);
+    partial void OnUserIdChanged();
+    #endregion
+		
+		public Volunteer()
+		{
+			this._Shifts = new EntitySet<Shift>(new Action<Shift>(this.attach_Shifts), new Action<Shift>(this.detach_Shifts));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_volunteer_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int volunteer_id
+		{
+			get
+			{
+				return this._volunteer_id;
+			}
+			set
+			{
+				if ((this._volunteer_id != value))
+				{
+					this.Onvolunteer_idChanging(value);
+					this.SendPropertyChanging();
+					this._volunteer_id = value;
+					this.SendPropertyChanged("volunteer_id");
+					this.Onvolunteer_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		public string email
+		{
+			get
+			{
+				return this._email;
+			}
+			set
+			{
+				if ((this._email != value))
+				{
+					this.OnemailChanging(value);
+					this.SendPropertyChanging();
+					this._email = value;
+					this.SendPropertyChanged("email");
+					this.OnemailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_phone", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string phone
+		{
+			get
+			{
+				return this._phone;
+			}
+			set
+			{
+				if ((this._phone != value))
+				{
+					this.OnphoneChanging(value);
+					this.SendPropertyChanging();
+					this._phone = value;
+					this.SendPropertyChanged("phone");
+					this.OnphoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int NOT NULL")]
+		public int UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Volunteer_Shift", Storage="_Shifts", ThisKey="volunteer_id", OtherKey="volunteer_id")]
+		public EntitySet<Shift> Shifts
+		{
+			get
+			{
+				return this._Shifts;
+			}
+			set
+			{
+				this._Shifts.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Shifts(Shift entity)
+		{
+			this.SendPropertyChanging();
+			entity.Volunteer = this;
+		}
+		
+		private void detach_Shifts(Shift entity)
+		{
+			this.SendPropertyChanging();
+			entity.Volunteer = null;
 		}
 	}
 }

@@ -1,0 +1,69 @@
+﻿@model ThunderB_redesign.Models.VolunteerViewModel
+@{
+    ViewBag.Title = "View Schedule";
+}
+
+<h2>View Schedule</h2>
+
+<form method="post">
+
+     <table class="stripes">
+        <tr>
+            <th>Volunteer Id</th>
+            <th>Volunteer Name</th>
+            <th>Available Days</th>
+            <th colspan="2">Actions</th>
+         </tr>
+
+        @{ foreach (var item in Model.shifList)
+          {
+                if (Model.SelectedVolunteer != null)
+                        {
+                            if (item.shift_id == Model.SelectedVolunteer.shift_id)
+                                {
+
+                                @:<tr class="selected_item" style="font-weight:bold;">
+                                }
+                                    
+                                    else
+                                    {
+                                    @:<tr>
+                                    }
+
+                              }
+                                    else
+                                    {
+                                    @:<tr>
+                                    <td>@item.volunteer_id</td>
+                                <td>
+                           @{foreach (var vol in ViewBag.VolunteerList)
+                                 {
+                                    if (item.volunteer_id == vol.Key)
+                                    {
+                                      @vol.Value
+                                    }
+                                 }
+                             }
+         </td>
+                                    }
+
+                                    <td>item.day</td>
+                        <td>
+                            <input type="submit" formaction="~/admin/ERAdmin/Select/@item.shift_id"
+                                    value="Select" />
+                        </td>
+                        <td>
+                            <input type="submit" formaction="~/admin/ERAdmin/Delete/@item.shift_id"
+                                    value="Discharge" />
+                        </td>
+
+                   @:</tr>
+
+
+          }
+         }
+      </table>
+    <br /><br />
+    <input type="submit" value="Add new patient" formaction="~/admin/ERAdmin/New" />
+</form>
+<br /><br />

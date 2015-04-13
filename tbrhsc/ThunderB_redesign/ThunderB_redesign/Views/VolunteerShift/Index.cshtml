@@ -1,0 +1,42 @@
+﻿<title><</title>@model ThunderB_redesign.Models.VolunteerModel
+
+@{
+    ViewBag.Title = "Index";
+    ViewBag.days_title =new string[]{ "Monday", "Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};
+}
+
+<h2>Add/Update Schedule</h2>
+@using (Html.BeginForm())
+{
+
+<table border="1">
+    <tr>
+        <th>Days</th>
+        <th>Morning</th>
+        <th>Evening</th>
+        <th>Night</th>
+        <th>Anytime</th>
+        <th>None</th>
+
+           </tr>
+    @for (int i = 0; i <= 6; i++)
+    {     <tr>
+        <td>@ViewBag.days_title[i]</td>
+        <td> @Html.RadioButtonFor(model => model.days[i], "Morning")</td>
+        <td> @Html.RadioButtonFor(model => model.days[i], "Evening")</td>
+        <td>@Html.RadioButtonFor(model => model.days[i], "Night")</td>
+         <td>@Html.RadioButtonFor(model => model.days[i], "Anytime")</td>
+              <td>@Html.RadioButtonFor(model => model.days[i], "None")</td>
+    </tr>
+    }
+
+   
+    
+
+</table>
+    <br/>
+   
+    <div><input type="submit" value="Ok" id="submit"/>
+    &nbsp;&nbsp;<input type="reset" value="Cancel" id="cancel"/></div>
+    <br/>
+}

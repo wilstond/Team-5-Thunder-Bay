@@ -212,6 +212,7 @@
     <Compile Include="Areas\admin\Controllers\FeedbackAdminController.cs" />
     <Compile Include="Areas\admin\Controllers\NewsPostController.cs" />
     <Compile Include="Areas\admin\Controllers\PageAdminController.cs" />
+    <Compile Include="Areas\admin\Controllers\VolunteerAdminController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Areas\admin\Controllers\AdminController.cs" />
     <Compile Include="Controllers\AlertPublicController.cs" />
@@ -224,6 +225,7 @@
     <Compile Include="Controllers\NewsletterController.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\SlugToIdAttribute.cs" />
+    <Compile Include="Controllers\VolunteerShiftController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -254,6 +256,9 @@
     <Compile Include="Models\SubscriberModel.cs" />
     <Compile Include="Models\TriageModel.cs" />
     <Compile Include="Models\TriageViewModel.cs" />
+    <Compile Include="Models\VolunteerLinqClass.cs" />
+    <Compile Include="Models\VolunteerModel.cs" />
+    <Compile Include="Models\VolunteerViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -638,6 +643,7 @@
     <Content Include="Areas\admin\Views\ApptAdmin\Edit.cshtml" />
     <Content Include="Areas\admin\Views\ApptAdmin\Index.cshtml" />
     <Content Include="Content\MonthlyReport" />
+    <Content Include="Areas\admin\Views\VolunteerAdmin\Index.cshtml" />
     <None Include="Properties\PublishProfiles\File System Deployment.pubxml" />
     <None Include="Properties\PublishProfiles\TBRHSC-redesign.pubxml" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
@@ -721,6 +727,7 @@
     <Content Include="Views\Emails\Request_Confirmation.cshtml" />
     <Content Include="Views\Newsletter\Index.cshtml" />
     <Content Include="Views\Appointment\Index.cshtml" />
+    <Content Include="Views\VolunteerShift\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
