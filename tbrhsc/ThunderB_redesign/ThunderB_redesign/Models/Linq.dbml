@@ -28,21 +28,6 @@
       <Association Name="product_category_product" Member="products" ThisKey="prd_cat_id" OtherKey="prd_cat_id" Type="product" />
     </Type>
   </Table>
-  <Table Name="dbo.pages" Member="pages">
-    <Type Name="page">
-      <Column Name="page_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="page_title" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="page_content" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="page_created" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="menu_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="page_visibility" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
-      <Column Name="page_slug" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="meta_title" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="meta_desc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
-      <Association Name="menu_category_page" Member="menu_category" ThisKey="menu_id" OtherKey="menu_id" Type="menu_category" IsForeignKey="true" DeleteRule="SET DEFAULT" />
-    </Type>
-  </Table>
   <Table Name="dbo.doctors" Member="doctors">
     <Type Name="doctor">
       <Column Name="dr_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -79,8 +64,8 @@
       <Column Name="menu_text" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="parent_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="menu_slug" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="menu_category_page" Member="pages" ThisKey="menu_id" OtherKey="menu_id" Type="page" />
       <Association Name="menu_category_menu_category" Member="menu_categories" ThisKey="menu_id" OtherKey="parent_id" Type="menu_category" />
+      <Association Name="menu_category_page" Member="pages" ThisKey="menu_id" OtherKey="menu_id" Type="page" />
       <Association Name="menu_category_menu_category" Member="menu_category1" ThisKey="parent_id" OtherKey="menu_id" Type="menu_category" IsForeignKey="true" />
     </Type>
   </Table>
@@ -199,6 +184,41 @@
       <Column Name="headline" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="date" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="author" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Volunteer" Member="Volunteers">
+    <Type Name="Volunteer">
+      <Column Name="volunteer_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="email" Type="System.String" DbType="Text NOT NULL" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="phone" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Volunteer_Shift" Member="Shifts" ThisKey="volunteer_id" OtherKey="volunteer_id" Type="Shift" />
+    </Type>
+  </Table>
+  <Table Name="dbo.pages" Member="pages">
+    <Type Name="page">
+      <Column Name="page_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="page_title" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="page_content" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="page_created" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="menu_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="page_visibility" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="page_slug" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="meta_title" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="meta_desc" Type="System.String" DbType="VarChar(250)" CanBeNull="true" />
+      <Column Name="page_order" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="menu_category_page" Member="menu_category" ThisKey="menu_id" OtherKey="menu_id" Type="menu_category" IsForeignKey="true" DeleteRule="SET DEFAULT" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Shifts" Member="Shifts">
+    <Type Name="Shift">
+      <Column Name="shift_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="volunteer_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="day" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="shifts" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Volunteer_Shift" Member="Volunteer" ThisKey="volunteer_id" OtherKey="volunteer_id" Type="Volunteer" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
