@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
 using ThunderB_redesign.Models;
+using Postal;
 
 namespace ThunderB_redesign.Controllers
 {
@@ -37,9 +38,21 @@ namespace ThunderB_redesign.Controllers
             {
                 try
                 {
+                    //Add donation to database
                     objDonationVM.addDonationInfo();
+
+                    //Proceed to paypal for payment
                     proceedToPaypal(objDonationVM.dtn_amount);
+
+                    //Send thank you email
+                    dynamic email = new Email("DonationThankYou");
+                    email.name = objDonationVM.dnr_name;
+                    email.to = objDonationVM.dnr_email;
+                    email.Send();
+                
+                    //Display thank you message
                     return RedirectToAction("Success", objDonationVM);
+
                 }
                 catch
                 {
