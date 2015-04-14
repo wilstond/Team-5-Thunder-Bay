@@ -883,6 +883,7 @@
     <Content Include="Views\Donation\Success.cshtml" />
     <Content Include="Views\Emails\NewsletterMail.cshtml" />
     <Content Include="Views\Emails\DonationThankYou.cshtml" />
+    <Content Include="Views\Emails\NewsletterSubscription.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

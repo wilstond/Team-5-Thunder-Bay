@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+using Postal;
+
 using ThunderB_redesign.Models;
 
 namespace ThunderB_redesign.Controllers
@@ -23,6 +25,12 @@ namespace ThunderB_redesign.Controllers
             {
                 var objSub = new SubscriberClass();
                 objSub.commitInsert(sub);
+                
+                //Send a notification to the subscriber
+                dynamic email = new Email("NewsletterSubscription");
+                email.to = sub.sub_email;
+                email.name = sub.sub_name;
+                email.Send();
                 return PartialView();
             }
             else
