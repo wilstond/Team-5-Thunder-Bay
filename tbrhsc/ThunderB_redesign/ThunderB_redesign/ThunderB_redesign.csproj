@@ -219,6 +219,7 @@
     <Compile Include="Areas\admin\Controllers\FAQController.cs" />
     <Compile Include="Areas\admin\Controllers\FeedbackAdminController.cs" />
     <Compile Include="Areas\admin\Controllers\JobAdminController.cs" />
+    <Compile Include="Areas\admin\Controllers\JobAppAdminController.cs" />
     <Compile Include="Areas\admin\Controllers\NewsletterAdminController.cs" />
     <Compile Include="Areas\admin\Controllers\NewsPostController.cs" />
     <Compile Include="Areas\admin\Controllers\PageAdminController.cs" />
@@ -788,6 +789,10 @@
     <Content Include="Areas\admin\Views\PageAdmin\Main.cshtml" />
     <Content Include="Areas\admin\Views\ApptAdmin\Delete.cshtml" />
     <Content Include="Areas\admin\Views\ApptAdmin\NotFound.cshtml" />
+    <Content Include="Areas\admin\Views\JobAppAdmin\_jobApplications.cshtml" />
+    <Content Include="Areas\admin\Views\JobAppAdmin\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\JobAppAdmin\Details.cshtml" />
+    <Content Include="Areas\admin\Views\JobAppAdmin\Index.cshtml" />
     <None Include="Properties\PublishProfiles\File System Deployment.pubxml" />
     <None Include="Properties\PublishProfiles\TBRHSC-redesign.pubxml" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
@@ -887,6 +892,8 @@
     <Content Include="Views\Emails\Cancel_appointment.cshtml" />
     <Content Include="Views\Newsletter\NewsletterForm.cshtml" />
     <Content Include="Views\Newsletter\ProcessSubscription.cshtml" />
+    <Content Include="Views\Donation\MonthlyReport" />
+    <Content Include="ThunderB_redesign.idc" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
