@@ -18,6 +18,8 @@
     @Html.ValidationMessageFor(x => x.headline)
     <br />
     <br />
+    @Html.LabelFor(x => x.date)
+    <br />
     @Html.TextBoxFor(x => x.date)
     @Html.ValidationMessageFor(x => x.date)
     <br />
@@ -27,6 +29,8 @@
     @Html.TextAreaFor(x => x.stories, new { style = "width: 600px; height: 300px;" })
     @Html.ValidationMessageFor(x => x.stories)
     <br />
+    <br />
+    @Html.LabelFor(x => x.author)
     <br />
     @Html.TextBoxFor(x => x.author)
     @Html.ValidationMessageFor(x => x.author)
