@@ -322,6 +322,11 @@ footer {
     font-size: 26px;
     font-weight: bold;
 }
+
+.news_story p{
+    padding: 0px 0px 10px 0px;
+    margin: 0px 0px 0px 0px;
+}
     
 .emergency_info h2 {
         width: 100%;

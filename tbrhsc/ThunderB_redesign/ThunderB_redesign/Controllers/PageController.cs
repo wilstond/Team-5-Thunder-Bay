@@ -46,15 +46,36 @@ namespace ThunderB_redesign.Controllers
         }
 
 
-        public ActionResult Index(int menu_id)
+        public ActionResult Index(int menu_id = 0)
         {
-            
+            if (menu_id == 0)
+            {
+                // Redirect the user to the main page
+                return RedirectToAction("Index", "Home");
+            }
 
                 var AllPages = objPage.getPagesByMenu(menu_id);
                 
+            //if there are any pages in the category, first one is displayed as a landing page for the category
                 if (AllPages.Any())
                 {
                     var LandPage = AllPages.First();
+                    if (LandPage.meta_title == null)
+                    {
+                        ViewBag.LandPageTitle = LandPage.page_title;
+                    }
+                    else
+                    {
+                        ViewBag.LandPageTitle = LandPage.meta_title;
+                    }
+                    if (LandPage.meta_desc == null)
+                    {
+                        ViewBag.LandPageDescription = "";
+                    }
+                    else
+                    {
+                        ViewBag.LandPageDescription = LandPage.meta_desc;
+                    }
                     ViewBag.ListOfPages = AllPages.ToList();
                     ViewBag.subMenuItems = menuObj.getSubMenuItemsByParentId(menu_id).ToList();
 
@@ -65,37 +86,38 @@ namespace ThunderB_redesign.Controllers
                             
         }
 
-        //[SlugToId]
-        //public ActionResult Content(int id)
-        //{
-        //    var slug = RouteData.Values["slug"] as string;
-        //    ViewData["slug"] = slug;
-        //    ViewData["id"] = id;
-
-        //    var selectPage = objPage.getPageByID(id);
-
-
-        //    //Display Details of the Page
-        //    return View(selectPage);
-
-        //}
+        
         public ActionResult Detail(string page_slug)
         {
 
             var selectPage = objPage.getPageBySlug(page_slug);
-            var relatedPages = objPage.getPagesByMenu(selectPage.menu_id);
-            ViewBag.relatedPages = relatedPages.ToList();
+            
             if(selectPage == null)
             {
                 // Redirect the user to the main page
                 return RedirectToAction("Index", "Home");
             }
+            var relatedPages = objPage.getPagesByMenu(selectPage.menu_id);
+            ViewBag.relatedPages = relatedPages.ToList();
             int user_id = selectPage.user_id;
             int page_id = selectPage.page_id;
             var pageById = objPage.getPageByID(page_id);
-            //Display Details of the Page
-
-            //ViewData["author"] = user_id;
+            if (pageById.meta_title == null)
+            {
+                ViewBag.LandPageTitle = pageById.page_title;
+            }
+            else
+            {
+                ViewBag.LandPageTitle = pageById.meta_title;
+            }
+            if (pageById.meta_desc == null)
+            {
+                ViewBag.LandPageDescription = "";
+            }
+            else
+            {
+                ViewBag.LandPageDescription = pageById.meta_desc;
+            }
 
             return View(pageById);
             //return View(selectPage);

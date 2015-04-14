@@ -22,10 +22,7 @@
         $(".returnImage").click("click", function (e) {
             var urlImage = $(this).attr("data-url");
             //This takes the data value and id of the editor and sends the data(i.e.,image url) back to the caller page
-            //var ckImageField = $(".cke_dialog_ui_input_text")[1];
-            //window.opener.updateValue("cke_72_textInput", urlImage);
-            //window.opener.updateValue(ckImageField, urlImage);
-            window.opener.updateValue("cke_73_textInput", urlImage);
+             window.opener.updateValue("cke_73_textInput", urlImage);
             window.close();
         });
     });

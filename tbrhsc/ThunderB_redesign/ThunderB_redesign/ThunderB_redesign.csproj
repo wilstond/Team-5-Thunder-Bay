@@ -237,7 +237,6 @@
     <Compile Include="Controllers\NewsletterController.cs" />
     <Compile Include="Controllers\NewsPostPublicController.cs" />
     <Compile Include="Controllers\PageController.cs" />
-    <Compile Include="Controllers\SlugToIdAttribute.cs" />
     <Compile Include="Controllers\VolunteerShiftController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -884,6 +883,10 @@
     <Content Include="Views\Emails\NewsletterMail.cshtml" />
     <Content Include="Views\Emails\DonationThankYou.cshtml" />
     <Content Include="Views\Emails\NewsletterSubscription.cshtml" />
+    <Content Include="Views\Emails\Booking_Confirmation.cshtml" />
+    <Content Include="Views\Emails\Cancel_appointment.cshtml" />
+    <Content Include="Views\Newsletter\NewsletterForm.cshtml" />
+    <Content Include="Views\Newsletter\ProcessSubscription.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
