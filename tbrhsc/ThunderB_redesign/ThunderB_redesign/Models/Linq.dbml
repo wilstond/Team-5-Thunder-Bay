@@ -185,7 +185,6 @@
       <Column Name="phone" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="Volunteer_Shift" Member="Shifts" ThisKey="volunteer_id" OtherKey="volunteer_id" Type="Shift" />
-      <Association Name="UserProfile_Volunteer" Member="UserProfile" ThisKey="UserId" OtherKey="UserId" Type="UserProfile" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.pages" Member="pages">
@@ -232,16 +231,7 @@
     <Type Name="webpages_UsersInRole">
       <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="RoleId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Association Name="UserProfile_webpages_UsersInRole" Member="UserProfile" ThisKey="UserId" OtherKey="UserId" Type="UserProfile" IsForeignKey="true" />
       <Association Name="webpages_Role_webpages_UsersInRole" Member="webpages_Role" ThisKey="RoleId" OtherKey="RoleId" Type="webpages_Role" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="team5.UserProfile" Member="UserProfiles">
-    <Type Name="UserProfile">
-      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="UserName" Type="System.String" DbType="NVarChar(56) NOT NULL" CanBeNull="false" />
-      <Association Name="UserProfile_Volunteer" Member="Volunteers" ThisKey="UserId" OtherKey="UserId" Type="Volunteer" />
-      <Association Name="UserProfile_webpages_UsersInRole" Member="webpages_UsersInRoles" ThisKey="UserId" OtherKey="UserId" Type="webpages_UsersInRole" />
     </Type>
   </Table>
   <Table Name="team5.webpages_Roles" Member="webpages_Roles">
