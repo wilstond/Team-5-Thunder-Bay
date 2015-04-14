@@ -93,6 +93,15 @@ namespace ThunderB_redesign.Models
     partial void Insertdonor(donor instance);
     partial void Updatedonor(donor instance);
     partial void Deletedonor(donor instance);
+    partial void Insertwebpages_UsersInRole(webpages_UsersInRole instance);
+    partial void Updatewebpages_UsersInRole(webpages_UsersInRole instance);
+    partial void Deletewebpages_UsersInRole(webpages_UsersInRole instance);
+    partial void InsertUserProfile(UserProfile instance);
+    partial void UpdateUserProfile(UserProfile instance);
+    partial void DeleteUserProfile(UserProfile instance);
+    partial void Insertwebpages_Role(webpages_Role instance);
+    partial void Updatewebpages_Role(webpages_Role instance);
+    partial void Deletewebpages_Role(webpages_Role instance);
     #endregion
 		
 		public LinqDataContext() : 
@@ -290,6 +299,30 @@ namespace ThunderB_redesign.Models
 			get
 			{
 				return this.GetTable<donor>();
+			}
+		}
+		
+		public System.Data.Linq.Table<webpages_UsersInRole> webpages_UsersInRoles
+		{
+			get
+			{
+				return this.GetTable<webpages_UsersInRole>();
+			}
+		}
+		
+		public System.Data.Linq.Table<UserProfile> UserProfiles
+		{
+			get
+			{
+				return this.GetTable<UserProfile>();
+			}
+		}
+		
+		public System.Data.Linq.Table<webpages_Role> webpages_Roles
+		{
+			get
+			{
+				return this.GetTable<webpages_Role>();
 			}
 		}
 	}
@@ -3793,6 +3826,8 @@ namespace ThunderB_redesign.Models
 		
 		private EntitySet<Shift> _Shifts;
 		
+		private EntityRef<UserProfile> _UserProfile;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -3812,6 +3847,7 @@ namespace ThunderB_redesign.Models
 		public Volunteer()
 		{
 			this._Shifts = new EntitySet<Shift>(new Action<Shift>(this.attach_Shifts), new Action<Shift>(this.detach_Shifts));
+			this._UserProfile = default(EntityRef<UserProfile>);
 			OnCreated();
 		}
 		
@@ -3906,6 +3942,10 @@ namespace ThunderB_redesign.Models
 			{
 				if ((this._UserId != value))
 				{
+					if (this._UserProfile.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnUserIdChanging(value);
 					this.SendPropertyChanging();
 					this._UserId = value;
@@ -3925,6 +3965,40 @@ namespace ThunderB_redesign.Models
 			set
 			{
 				this._Shifts.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_Volunteer", Storage="_UserProfile", ThisKey="UserId", OtherKey="UserId", IsForeignKey=true)]
+		public UserProfile UserProfile
+		{
+			get
+			{
+				return this._UserProfile.Entity;
+			}
+			set
+			{
+				UserProfile previousValue = this._UserProfile.Entity;
+				if (((previousValue != value) 
+							|| (this._UserProfile.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._UserProfile.Entity = null;
+						previousValue.Volunteers.Remove(this);
+					}
+					this._UserProfile.Entity = value;
+					if ((value != null))
+					{
+						value.Volunteers.Add(this);
+						this._UserId = value.UserId;
+					}
+					else
+					{
+						this._UserId = default(int);
+					}
+					this.SendPropertyChanged("UserProfile");
+				}
 			}
 		}
 		
@@ -4782,6 +4856,430 @@ namespace ThunderB_redesign.Models
 		{
 			this.SendPropertyChanging();
 			entity.donor = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="team5.webpages_UsersInRoles")]
+	public partial class webpages_UsersInRole : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _UserId;
+		
+		private int _RoleId;
+		
+		private EntityRef<UserProfile> _UserProfile;
+		
+		private EntityRef<webpages_Role> _webpages_Role;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnUserIdChanging(int value);
+    partial void OnUserIdChanged();
+    partial void OnRoleIdChanging(int value);
+    partial void OnRoleIdChanged();
+    #endregion
+		
+		public webpages_UsersInRole()
+		{
+			this._UserProfile = default(EntityRef<UserProfile>);
+			this._webpages_Role = default(EntityRef<webpages_Role>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					if (this._UserProfile.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoleId", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int RoleId
+		{
+			get
+			{
+				return this._RoleId;
+			}
+			set
+			{
+				if ((this._RoleId != value))
+				{
+					if (this._webpages_Role.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnRoleIdChanging(value);
+					this.SendPropertyChanging();
+					this._RoleId = value;
+					this.SendPropertyChanged("RoleId");
+					this.OnRoleIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_webpages_UsersInRole", Storage="_UserProfile", ThisKey="UserId", OtherKey="UserId", IsForeignKey=true)]
+		public UserProfile UserProfile
+		{
+			get
+			{
+				return this._UserProfile.Entity;
+			}
+			set
+			{
+				UserProfile previousValue = this._UserProfile.Entity;
+				if (((previousValue != value) 
+							|| (this._UserProfile.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._UserProfile.Entity = null;
+						previousValue.webpages_UsersInRoles.Remove(this);
+					}
+					this._UserProfile.Entity = value;
+					if ((value != null))
+					{
+						value.webpages_UsersInRoles.Add(this);
+						this._UserId = value.UserId;
+					}
+					else
+					{
+						this._UserId = default(int);
+					}
+					this.SendPropertyChanged("UserProfile");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="webpages_Role_webpages_UsersInRole", Storage="_webpages_Role", ThisKey="RoleId", OtherKey="RoleId", IsForeignKey=true)]
+		public webpages_Role webpages_Role
+		{
+			get
+			{
+				return this._webpages_Role.Entity;
+			}
+			set
+			{
+				webpages_Role previousValue = this._webpages_Role.Entity;
+				if (((previousValue != value) 
+							|| (this._webpages_Role.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._webpages_Role.Entity = null;
+						previousValue.webpages_UsersInRoles.Remove(this);
+					}
+					this._webpages_Role.Entity = value;
+					if ((value != null))
+					{
+						value.webpages_UsersInRoles.Add(this);
+						this._RoleId = value.RoleId;
+					}
+					else
+					{
+						this._RoleId = default(int);
+					}
+					this.SendPropertyChanged("webpages_Role");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="team5.UserProfile")]
+	public partial class UserProfile : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _UserId;
+		
+		private string _UserName;
+		
+		private EntitySet<Volunteer> _Volunteers;
+		
+		private EntitySet<webpages_UsersInRole> _webpages_UsersInRoles;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnUserIdChanging(int value);
+    partial void OnUserIdChanged();
+    partial void OnUserNameChanging(string value);
+    partial void OnUserNameChanged();
+    #endregion
+		
+		public UserProfile()
+		{
+			this._Volunteers = new EntitySet<Volunteer>(new Action<Volunteer>(this.attach_Volunteers), new Action<Volunteer>(this.detach_Volunteers));
+			this._webpages_UsersInRoles = new EntitySet<webpages_UsersInRole>(new Action<webpages_UsersInRole>(this.attach_webpages_UsersInRoles), new Action<webpages_UsersInRole>(this.detach_webpages_UsersInRoles));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int UserId
+		{
+			get
+			{
+				return this._UserId;
+			}
+			set
+			{
+				if ((this._UserId != value))
+				{
+					this.OnUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UserId = value;
+					this.SendPropertyChanged("UserId");
+					this.OnUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="NVarChar(56) NOT NULL", CanBeNull=false)]
+		public string UserName
+		{
+			get
+			{
+				return this._UserName;
+			}
+			set
+			{
+				if ((this._UserName != value))
+				{
+					this.OnUserNameChanging(value);
+					this.SendPropertyChanging();
+					this._UserName = value;
+					this.SendPropertyChanged("UserName");
+					this.OnUserNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_Volunteer", Storage="_Volunteers", ThisKey="UserId", OtherKey="UserId")]
+		public EntitySet<Volunteer> Volunteers
+		{
+			get
+			{
+				return this._Volunteers;
+			}
+			set
+			{
+				this._Volunteers.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="UserProfile_webpages_UsersInRole", Storage="_webpages_UsersInRoles", ThisKey="UserId", OtherKey="UserId")]
+		public EntitySet<webpages_UsersInRole> webpages_UsersInRoles
+		{
+			get
+			{
+				return this._webpages_UsersInRoles;
+			}
+			set
+			{
+				this._webpages_UsersInRoles.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Volunteers(Volunteer entity)
+		{
+			this.SendPropertyChanging();
+			entity.UserProfile = this;
+		}
+		
+		private void detach_Volunteers(Volunteer entity)
+		{
+			this.SendPropertyChanging();
+			entity.UserProfile = null;
+		}
+		
+		private void attach_webpages_UsersInRoles(webpages_UsersInRole entity)
+		{
+			this.SendPropertyChanging();
+			entity.UserProfile = this;
+		}
+		
+		private void detach_webpages_UsersInRoles(webpages_UsersInRole entity)
+		{
+			this.SendPropertyChanging();
+			entity.UserProfile = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="team5.webpages_Roles")]
+	public partial class webpages_Role : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _RoleId;
+		
+		private string _RoleName;
+		
+		private EntitySet<webpages_UsersInRole> _webpages_UsersInRoles;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnRoleIdChanging(int value);
+    partial void OnRoleIdChanged();
+    partial void OnRoleNameChanging(string value);
+    partial void OnRoleNameChanged();
+    #endregion
+		
+		public webpages_Role()
+		{
+			this._webpages_UsersInRoles = new EntitySet<webpages_UsersInRole>(new Action<webpages_UsersInRole>(this.attach_webpages_UsersInRoles), new Action<webpages_UsersInRole>(this.detach_webpages_UsersInRoles));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoleId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int RoleId
+		{
+			get
+			{
+				return this._RoleId;
+			}
+			set
+			{
+				if ((this._RoleId != value))
+				{
+					this.OnRoleIdChanging(value);
+					this.SendPropertyChanging();
+					this._RoleId = value;
+					this.SendPropertyChanged("RoleId");
+					this.OnRoleIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoleName", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		public string RoleName
+		{
+			get
+			{
+				return this._RoleName;
+			}
+			set
+			{
+				if ((this._RoleName != value))
+				{
+					this.OnRoleNameChanging(value);
+					this.SendPropertyChanging();
+					this._RoleName = value;
+					this.SendPropertyChanged("RoleName");
+					this.OnRoleNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="webpages_Role_webpages_UsersInRole", Storage="_webpages_UsersInRoles", ThisKey="RoleId", OtherKey="RoleId")]
+		public EntitySet<webpages_UsersInRole> webpages_UsersInRoles
+		{
+			get
+			{
+				return this._webpages_UsersInRoles;
+			}
+			set
+			{
+				this._webpages_UsersInRoles.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_webpages_UsersInRoles(webpages_UsersInRole entity)
+		{
+			this.SendPropertyChanging();
+			entity.webpages_Role = this;
+		}
+		
+		private void detach_webpages_UsersInRoles(webpages_UsersInRole entity)
+		{
+			this.SendPropertyChanging();
+			entity.webpages_Role = null;
 		}
 	}
 }
