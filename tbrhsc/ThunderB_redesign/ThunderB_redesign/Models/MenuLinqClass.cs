@@ -21,6 +21,7 @@ namespace ThunderB_redesign.Models
             return subMenuItems;
         }
 
+        //----function to get menu categories for populating drop-down list of menu categories
         public List<menu_category> getMenuTree()
         {
             var allMenuItems = menuObj.menu_categories.Where(x => x.parent_id == 0 && x.menu_id != 0);
@@ -31,7 +32,6 @@ namespace ThunderB_redesign.Models
                 var subMenu = menuObj.menu_categories.
                     Where(x => x.parent_id == menuItem.menu_id && x.menu_slug == "Page");
 
-                //List<menu_category> subMenu = getSubMenuItemsByParentId(menuItem.menu_id).ToList();
                 foreach (menu_category submenuItem in subMenu)
                 {
                     menuTree.Add(submenuItem);
@@ -40,9 +40,12 @@ namespace ThunderB_redesign.Models
             return menuTree;
         }
 
+        //------function to create a breadcrumb navigation for dynamically created pages
         public Dictionary<int, string> getBreadcrumbList()
         {
             Dictionary<int, string> menuBreadcrumbList = new Dictionary<int, string>();
+            
+            //---query to select menu categories together with their parents
             var query = (from m in menuObj.menu_categories
                     join p in menuObj.menu_categories on m.parent_id equals p.menu_id
             select new 
@@ -58,10 +61,12 @@ namespace ThunderB_redesign.Models
             {
                 if (row.parentId == 0)
                 {
+                    //--if parent manu is "Home" we skip "Home" in breadcrumb, because it's hard-coded in the view
                     menuBreadcrumbList.Add(row.menuId, row.shortBreadcrumb);
                 }
                 else
                 {
+                    //--if parent is other than "Home" then we include parent menu link in the breadcrumb
                     menuBreadcrumbList.Add(row.menuId, row.fullBreadcrumb);
                 }
             }
@@ -69,6 +74,8 @@ namespace ThunderB_redesign.Models
 
         }
 
+        //---function to create headers for admin/PageAdmin section so we can display pages grouped by categories
+        //---similar to getBreadcrumbList function but without a link
         public Dictionary<int, string> getHeadersList()
         {
             Dictionary<int, string> menuHeaderList = new Dictionary<int, string>();

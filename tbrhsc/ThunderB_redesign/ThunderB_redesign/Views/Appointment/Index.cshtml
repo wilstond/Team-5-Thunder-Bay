@@ -37,9 +37,9 @@
             <header class="section-header">
                 <span class="page_breadcrumb">
 
-                    <a href="/">Home</a> > Patients > <a href="/Appointment/Index">Book an Appointment</a>
+                    <a href="/">Home</a> > <a href="/Page/Index?menu_id=1">Patients</a> > <a href="/Appointment/Index">Book an Appointment</a>
 
-                </span>
+</span>
                 <h1>Request an Appointment</h1>
             </header>
             <article>
@@ -51,7 +51,7 @@
                         <hr />
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         <div class="form-group">
-                            @Html.LabelFor(model => model.dr_id, htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.LabelFor(model => model.dr_id,"Select doctor", htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
                                 @Html.DropDownListFor(model => model.dr_id, new SelectList(ViewBag.docList, "dr_id", "dr_name"), "Select a doctor")
                                 @Html.ValidationMessageFor(model => model.dr_id, "", new { @class = "text-danger" })
@@ -94,12 +94,12 @@
 
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
+
                                 <input type="submit" value="Send request" class="btn btn-default" />
                             </div>
                         </div>
                     </div>
                 }
-
 
             </article>
         </section>

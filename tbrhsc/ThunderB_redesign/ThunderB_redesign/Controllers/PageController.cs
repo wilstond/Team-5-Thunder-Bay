@@ -65,20 +65,7 @@ namespace ThunderB_redesign.Controllers
                             
         }
 
-        //[SlugToId]
-        //public ActionResult Content(int id)
-        //{
-        //    var slug = RouteData.Values["slug"] as string;
-        //    ViewData["slug"] = slug;
-        //    ViewData["id"] = id;
-
-        //    var selectPage = objPage.getPageByID(id);
-
-
-        //    //Display Details of the Page
-        //    return View(selectPage);
-
-        //}
+        
         public ActionResult Detail(string page_slug)
         {
 
