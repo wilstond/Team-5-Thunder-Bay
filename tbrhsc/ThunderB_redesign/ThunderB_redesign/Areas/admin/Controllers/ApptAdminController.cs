@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Transactions;
 using System.Web;
+
+using Postal;
+
 using System.Web.Mvc;
 using System.Web.Security;
 using DotNetOpenAuth.AspNet;
@@ -101,6 +104,16 @@ namespace ThunderB_redesign.Areas.admin.Controllers
                     apptObject.commitUpdate(id, appt.dr_id, appt.date_req, appt.date_book, appt.time_book, appt.pat_name,
                         appt.pat_phone, appt.pat_email, appt.app_status);
 
+                    dynamic email = new Email("Booking_Confirmation");
+                    email.Doctor = db.doctors.Where(x => x.dr_id == appt.dr_id).SingleOrDefault().dr_name.ToString();
+                    email.Patient = appt.pat_name.ToString();
+                    email.To = appt.pat_email.ToString();
+                    email.BookDate = Convert.ToDateTime(appt.date_book).ToShortDateString();
+                    email.BookTime = Convert.ToDateTime(appt.date_book).ToShortTimeString();
+                    email.CancelDate = Convert.ToDateTime(appt.date_book).AddDays(-2).ToShortDateString().ToString();
+
+                    email.Send();
+
                     return RedirectToAction("Index");
                 }
                 catch (Exception ex)
@@ -114,7 +127,8 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         // GET: admin/ApptAdmin/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var delAppt = apptObject.getAppointmentById(id);
+            return View(delAppt);
         }
 
         // POST: admin/ApptAdmin/Delete/5
@@ -123,7 +137,19 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         {
             try
             {
+                var delAppt = apptObject.getAppointmentById(id);
+
+                dynamic email1 = new Email("Cancel_appointment");
+                email1.Doctor = db.doctors.Where(x => x.dr_id == delAppt.dr_id).SingleOrDefault().dr_name.ToString();
+                email1.Patient = delAppt.pat_name.ToString();
+                email1.To = delAppt.pat_email.ToString();
+                email1.BookDate = Convert.ToDateTime(delAppt.date_book).ToShortDateString();
+                email1.BookTime = Convert.ToDateTime(delAppt.date_book).ToShortTimeString();
+
                 apptObject.commitDelete(id);
+                email1.Send();
+               
+                
                 return RedirectToAction("Index");
             }
             catch
