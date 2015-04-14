@@ -12,63 +12,91 @@ It Loops through all the news posts in the database and displayes them with opti
 <p>
     @Html.ActionLink("Create New", "Insert", "NewsPost")
 </p>
-<table>
+
+
+<div id="all_news">
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                &nbsp;
-            </td>
-        </tr>
-    <tr>
-        <td>
-            &nbsp;
-        </td>
-    </tr>
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.headline)
-            </td>
-        </tr>
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.date)
-            </td>
-        </tr>
-        <tr>
-            <td>
-                &nbsp;
-            </td>
-        </tr>
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.stories)
-            </td>
-        </tr>
-        <tr>
-            <td>
-                &nbsp;
-            </td>
-        </tr>
-        <tr>
-            <td>
-                By: @Html.DisplayFor(modelItem => item.author)
-            </td>
-        </tr>
-        <tr>
-            <td>
-                &nbsp;
-            </td>
-        </tr>
-        <tr>
-            <td>
-                @Html.ActionLink("Update", "Update", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
-            
-        </tr>
+        <br />
+        <br />
+        <h1>@Html.DisplayFor(modelItem => item.headline)</h1>
+        <br />
+        <p>@Html.DisplayFor(modelItem => item.date)</p>
+        <br />
+        <p>@Html.DisplayFor(modelItem => item.stories)</p>
+        <br />
+        <p>By: @Html.DisplayFor(modelItem => item.author)</p>
+        <br />
+        <span>
+            @Html.ActionLink("Update", "Update", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </span>
+        <br />
+        <br />
+
     }
+</div>
+ 
 
-</table>
 
+@*<div id="all_news">
+    <table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.headline)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.date)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.stories)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    By: @Html.DisplayFor(modelItem => item.author)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    &nbsp;
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.ActionLink("Update", "Update", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+
+            </tr>
+        }
+
+    </table>
+</div>*@
 

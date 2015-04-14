@@ -12,7 +12,7 @@ namespace ThunderB_redesign.Controllers
     {
 
         
-        NewsPostPublic objNews = new NewsPostPublic();
+        NewsPostLinq objNews = new NewsPostLinq();
         MenuLinqClass menuObj = new MenuLinqClass();
 
 
@@ -31,7 +31,7 @@ namespace ThunderB_redesign.Controllers
 
         public ActionResult Index()
         {
-            var allNews = objNews.getNews();
+            var allNews = objNews.orderNews();
             if (allNews == null)
             {
                 return View("NotFound");

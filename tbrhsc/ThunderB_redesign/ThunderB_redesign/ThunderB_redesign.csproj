@@ -269,9 +269,8 @@
     <Compile Include="Models\MenuLinqClass.cs" />
     <Compile Include="Models\MenuModel.cs" />
     <Compile Include="Models\NewsletterModel.cs" />
-    <Compile Include="Models\NewsPostAdminModel.cs" />
     <Compile Include="Models\NewsPostLinq.cs" />
-    <Compile Include="Models\NewsPostPublic.cs" />
+    <Compile Include="Models\NewsPostModel.cs" />
     <Compile Include="Models\PageLinqClass.cs" />
     <Compile Include="Models\PageModel.cs" />
     <Compile Include="Models\SubscriberClass.cs" />

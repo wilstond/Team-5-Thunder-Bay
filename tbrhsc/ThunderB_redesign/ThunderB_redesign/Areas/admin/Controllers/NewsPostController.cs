@@ -20,7 +20,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         //////////////////////////////////////// ///////////////////
         public ActionResult Index()
         {
-            var allNews = objNews.getNews();
+            var allNews = objNews.orderNews();
             return View(allNews);
         }
 
@@ -126,6 +126,8 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         {
             return View();
         }
+
+       
     }
 
     

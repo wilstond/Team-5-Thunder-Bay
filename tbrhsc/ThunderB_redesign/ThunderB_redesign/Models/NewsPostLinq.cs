@@ -17,6 +17,31 @@ namespace ThunderB_redesign.Models
             return allNews;
         }
 
+        //public newsTable getNewsByID(int _id)
+        //{
+        //    var allNew = objNews.newsTables.SingleOrDefault(x => x.Id == _id);
+        //    return allNew;
+        //}
+
+        public IQueryable<newsTable> getTopNews()
+        {
+            var topNews = objNews.newsTables.OrderByDescending(x => x.Id).Take(5);
+            return topNews;
+        }
+
+        public IQueryable<newsTable> orderNews()
+        {
+            var orderNews = objNews.newsTables.OrderByDescending(x => x.Id);
+            return orderNews;
+        }
+
+        //public IQueryable<newsTable> getNews()
+        //{
+        //    //an anonymous variable that is the instance of the linq object
+        //    var allNews = objNews.newsTables.Select(x => x);
+        //    return allNews;
+        //}
+
         public newsTable getNewsByID(int _id)
         {
             var allNew = objNews.newsTables.SingleOrDefault(x => x.Id == _id);

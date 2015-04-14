@@ -170,6 +170,16 @@ div.action_link a{
     padding:10px;
 
 }
+
+#all_news h1{
+    font-size:26px;
+    font-weight: bold;
+}
+
+#all_news p{
+    line-height: 150%;
+}
+
 @media (min-width: 600px) {
   #nav {
 
