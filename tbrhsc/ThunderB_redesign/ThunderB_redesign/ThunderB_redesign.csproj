@@ -893,6 +893,7 @@
     <Content Include="Views\Newsletter\ProcessSubscription.cshtml" />
     <Content Include="Views\Donation\MonthlyReport" />
     <Content Include="ThunderB_redesign.idc" />
+    <Content Include="Views\Job\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

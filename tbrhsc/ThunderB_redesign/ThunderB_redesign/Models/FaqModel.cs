@@ -21,6 +21,7 @@ namespace ThunderB_redesign.Models
         [DisplayName("Question")]
         [Required(ErrorMessage = "Please enter a question")]
         public string question { get; set; }
+        [AllowHtml]
         [DisplayName("Answer")]
         [Required(ErrorMessage = "Please enter an answer")]
         public string answer { get; set; }

@@ -5,22 +5,27 @@
 
 <h2>Jobs</h2>
 
-<table>
+<table class="stripes">
+    <thead>
     <tr>
-        <td>@Html.DisplayNameFor(model => model.job_title)</td>
-        <td>@Html.DisplayNameFor(model => model.jobCategory.category)</td>
-        <td>Applications</td>
+        <th>@Html.DisplayNameFor(model => model.job_title)</th>
+        <th>@Html.DisplayNameFor(model => model.jobCategory.category)</th>
+        <th>Actions</th>
+        <th>Applications</th>
     </tr>
+    </thead>
+    <tbody> 
 
     @foreach (var x in Model)
     {
         <tr>
             <td>@x.job_title</td>
             <td>@x.jobCategory.category</td>
-            <td>@Html.ActionLink("Applications", "Index", "JobAppAdmin", new { id = x.Id }, null)</td>
+            <td>@Html.ActionLink("Edit", "Edit", new { id = x.Id }) &nbsp;&nbsp; @Html.ActionLink("Delete", "Delete", new { id = x.Id })</td>
+            <td>@Html.ActionLink("Applications", "Index", "JobAppAdmin", new {id = x.Id}, null)</td>
         </tr>
     }
-
+    </tbody>
 </table>
 
 
