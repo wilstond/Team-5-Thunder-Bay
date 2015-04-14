@@ -39,7 +39,5 @@ namespace ThunderB_redesign.Models
             [DisplayName("Category")]
             public string category_id { get; set; }
 
-           
-
         }
     }

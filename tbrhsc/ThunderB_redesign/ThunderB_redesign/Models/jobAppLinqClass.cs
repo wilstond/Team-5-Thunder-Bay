@@ -19,12 +19,6 @@ namespace ThunderB_redesign.Models
             }
         }
 
-        public IQueryable<jobApplication> GetJobApplicationsByJobId(int job_id)
-        {
-            var applications = objApp.jobApplications.Select(x => x).Where(x => x.job_id == job_id);
-            return applications;
-        }
-
 
     }
 }
