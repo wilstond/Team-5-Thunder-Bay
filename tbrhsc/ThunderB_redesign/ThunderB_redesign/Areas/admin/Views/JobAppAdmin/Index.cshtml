@@ -1,0 +1,16 @@
+﻿@model ThunderB_redesign.Models.Job
+
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Job Applications for @Model.job_title</h2>
+
+
+@Html.Partial("_jobApplications", Model.jobApplications)
+
+
+
+     
