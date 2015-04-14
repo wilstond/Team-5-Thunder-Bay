@@ -46,9 +46,13 @@ namespace ThunderB_redesign.Controllers
         }
 
 
-        public ActionResult Index(int menu_id)
+        public ActionResult Index(int menu_id = 0)
         {
-            
+            if (menu_id == 0)
+            {
+                // Redirect the user to the main page
+                return RedirectToAction("Index", "Home");
+            }
 
                 var AllPages = objPage.getPagesByMenu(menu_id);
                 
@@ -70,13 +74,14 @@ namespace ThunderB_redesign.Controllers
         {
 
             var selectPage = objPage.getPageBySlug(page_slug);
-            var relatedPages = objPage.getPagesByMenu(selectPage.menu_id);
-            ViewBag.relatedPages = relatedPages.ToList();
+            
             if(selectPage == null)
             {
                 // Redirect the user to the main page
                 return RedirectToAction("Index", "Home");
             }
+            var relatedPages = objPage.getPagesByMenu(selectPage.menu_id);
+            ViewBag.relatedPages = relatedPages.ToList();
             int user_id = selectPage.user_id;
             int page_id = selectPage.page_id;
             var pageById = objPage.getPageByID(page_id);
