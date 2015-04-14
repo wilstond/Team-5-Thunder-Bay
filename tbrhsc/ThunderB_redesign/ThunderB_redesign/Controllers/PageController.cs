@@ -56,9 +56,26 @@ namespace ThunderB_redesign.Controllers
 
                 var AllPages = objPage.getPagesByMenu(menu_id);
                 
+            //if there are any pages in the category, first one is displayed as a landing page for the category
                 if (AllPages.Any())
                 {
                     var LandPage = AllPages.First();
+                    if (LandPage.meta_title == null)
+                    {
+                        ViewBag.LandPageTitle = LandPage.page_title;
+                    }
+                    else
+                    {
+                        ViewBag.LandPageTitle = LandPage.meta_title;
+                    }
+                    if (LandPage.meta_desc == null)
+                    {
+                        ViewBag.LandPageDescription = "";
+                    }
+                    else
+                    {
+                        ViewBag.LandPageDescription = LandPage.meta_desc;
+                    }
                     ViewBag.ListOfPages = AllPages.ToList();
                     ViewBag.subMenuItems = menuObj.getSubMenuItemsByParentId(menu_id).ToList();
 
@@ -85,9 +102,22 @@ namespace ThunderB_redesign.Controllers
             int user_id = selectPage.user_id;
             int page_id = selectPage.page_id;
             var pageById = objPage.getPageByID(page_id);
-            //Display Details of the Page
-
-            //ViewData["author"] = user_id;
+            if (pageById.meta_title == null)
+            {
+                ViewBag.LandPageTitle = pageById.page_title;
+            }
+            else
+            {
+                ViewBag.LandPageTitle = pageById.meta_title;
+            }
+            if (pageById.meta_desc == null)
+            {
+                ViewBag.LandPageDescription = "";
+            }
+            else
+            {
+                ViewBag.LandPageDescription = pageById.meta_desc;
+            }
 
             return View(pageById);
             //return View(selectPage);
