@@ -10,13 +10,23 @@ namespace ThunderB_redesign.Areas.admin.Controllers
 {
     public class NewsPostController : Controller
     {
+        
+        //The link to the Database as an object
+        ////////////////////////////////////////
         NewsPostLinq objNews = new NewsPostLinq();
 
+  
+        //What happens when Index is called, fetches all news posts.
+        //////////////////////////////////////// ///////////////////
         public ActionResult Index()
         {
             var allNews = objNews.getNews();
             return View(allNews);
         }
+
+
+        // A possible details view functionality
+        ////////////////////////////////////////
 
         //public ActionResult Details(int id)
         //{
@@ -31,6 +41,9 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         //    }
         //}
 
+
+        //The Insert functionality 
+        ////////////////////////////////////////
         public ActionResult Insert()
         {
             return View();
@@ -55,6 +68,9 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             return View();
         }
 
+
+        //Update functionality. Updates all fields when update is posted.
+        ////////////////////////////////////////////////////////////////
         public ActionResult Update(int id)
         {
             var allNews = objNews.getNewsByID(id);
@@ -75,7 +91,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             {
                 try
                 {
-                    objNews.commitUpdate(Id, news.stories, news.headline);
+                    objNews.commitUpdate(Id, news.stories, news.headline, news.date, news.author);
                 }
                 catch
                 {
@@ -90,6 +106,9 @@ namespace ThunderB_redesign.Areas.admin.Controllers
 
         }
 
+
+        //Delete functionality. Deletes by ID
+        ////////////////////////////////////////
         public ActionResult Delete(int id)
         {
             try

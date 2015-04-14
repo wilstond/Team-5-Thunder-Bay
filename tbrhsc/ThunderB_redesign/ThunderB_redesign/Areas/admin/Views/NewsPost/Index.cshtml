@@ -4,6 +4,9 @@
     ViewBag.Title = "Index";
 }
 
+
+ @*The landing page for the News page for the CMS
+It Loops through all the news posts in the database and displayes them with options to Update or Delete*@
 <h2>News Stories</h2>
 <br />
 <p>
@@ -29,12 +32,22 @@
         </tr>
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.date)
+            </td>
+        </tr>
+        <tr>
+            <td>
                 &nbsp;
             </td>
         </tr>
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.stories)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.author)
             </td>
         </tr>
         <tr>

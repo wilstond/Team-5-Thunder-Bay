@@ -10,6 +10,8 @@ namespace ThunderB_redesign.Controllers
 {
     public class NewsPostPublicController : Controller
     {
+
+        
         NewsPostPublic objNews = new NewsPostPublic();
         MenuLinqClass menuObj = new MenuLinqClass();
 

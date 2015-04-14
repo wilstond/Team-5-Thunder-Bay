@@ -4,6 +4,8 @@
     ViewBag.Title = "Write a Story";
 }
 
+@*The view with forms to write a news post that will be submitted into the database*@
+
 <h2>Write a New Story</h2>
 
 @using (Html.BeginForm())
@@ -15,9 +17,19 @@
     @Html.ValidationMessageFor(model => model.headline, "*")
     <br />
     <br />
+    @Html.LabelFor(model => model.date)
+    @Html.TextBoxFor(model => model.date)
+    @Html.ValidationMessageFor(model => model.date, "*")
+    <br />
+    <br />
     @Html.LabelFor(model => model.stories)
     @Html.TextBoxFor(model => model.stories)
     @Html.ValidationMessageFor(model => model.stories, "*")
+    <br />
+    <br />
+    @Html.LabelFor(model => model.author)
+    @Html.TextBoxFor(model => model.author)
+    @Html.ValidationMessageFor(model => model.author, "*")
     <br />
     <br />
     <input type="submit" value="Publish" />

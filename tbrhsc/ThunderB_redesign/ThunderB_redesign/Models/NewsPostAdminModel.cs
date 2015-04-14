@@ -25,5 +25,11 @@ namespace ThunderB_redesign.Models
         [DisplayName("News Headline")]
         [Required]
         public string headline { get; set; }
+
+        [DisplayName("Date")]
+        public string date { get; set; }
+
+        [DisplayName("Author")]
+        public string author { get; set; }
     }
 }

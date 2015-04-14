@@ -763,7 +763,6 @@
     <Content Include="Areas\admin\Views\PageAdmin\uploadPartial.cshtml" />
     <Content Include="Areas\admin\Views\Alert\AlertPost.cshtml" />
     <Content Include="Areas\admin\Views\DonationAdmin\Index.cshtml" />
-    <Content Include="Areas\admin\Views\NewsPost\CreateNews.cshtml" />
     <Content Include="Areas\admin\Views\ApptAdmin\Details.cshtml" />
     <Content Include="Areas\admin\Views\ApptAdmin\Edit.cshtml" />
     <Content Include="Areas\admin\Views\ApptAdmin\Index.cshtml" />

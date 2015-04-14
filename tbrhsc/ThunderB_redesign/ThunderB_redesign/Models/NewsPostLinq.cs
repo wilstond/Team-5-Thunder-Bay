@@ -37,7 +37,9 @@ namespace ThunderB_redesign.Models
             }
         }
 
-        public bool commitUpdate(int _id, string _stories, string _headline)
+
+        //committing the update functionality
+        public bool commitUpdate(int _id, string _stories, string _headline, string _date, string _author)
         {
             using (objNews)
             {
@@ -45,12 +47,15 @@ namespace ThunderB_redesign.Models
                 //setting table columns to new values being passed
                 objUpdateNews.stories = _stories;
                 objUpdateNews.headline = _headline;
+                objUpdateNews.date = _date;
+                objUpdateNews.author = _author;
                 //commit against database
                 objNews.SubmitChanges();
                 return true;
             }
         }
 
+        //delete news post functionality
         public bool commitDelete(int _id)
         {
             using (objNews)
