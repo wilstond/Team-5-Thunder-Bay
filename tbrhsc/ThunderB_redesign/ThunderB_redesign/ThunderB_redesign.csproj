@@ -798,6 +798,7 @@
     <Content Include="Areas\admin\Views\DonationAdmin\Update.cshtml" />
     <Content Include="Areas\admin\Views\DonationAdmin\Details.cshtml" />
     <Content Include="Areas\admin\Views\DonationAdmin\List.cshtml" />
+    <Content Include="Areas\admin\Views\DonationAdmin\DonationGraphLine.cshtml" />
     <None Include="Properties\PublishProfiles\File System Deployment.pubxml" />
     <None Include="Properties\PublishProfiles\TBRHSC-redesign.pubxml" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
@@ -874,7 +875,7 @@
     <Content Include="Views\Shared\_Monitor.cshtml" />
     <Content Include="Views\AlertPublic\Index.cshtml" />
     <Content Include="Views\Page\PageNotFound.cshtml" />
-    <Content Include="Areas\admin\Views\DonationAdmin\DonationGraph.cshtml" />
+    <Content Include="Areas\admin\Views\DonationAdmin\DonationGraphPie.cshtml" />
     <Content Include="Views\Appointment\Details.cshtml" />
     <Content Include="Views\Emails\Web.config" />
     <Content Include="Views\Emails\_ViewStart.cshtml" />
