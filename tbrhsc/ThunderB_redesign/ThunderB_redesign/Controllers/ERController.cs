@@ -30,29 +30,7 @@ namespace ThunderB_redesign.Controllers
         }
 
 
-        //public TimeSpan CalcWaitTime()
-        //{
-        //    using (LinqDataContext db = new LinqDataContext())
-        //    {
-        //        TriageViewModel model = new TriageViewModel();
-        //        model.ERpatients = db.triages.OrderBy(x => x.case_id).ToList();
-
-        //        TimeSpan TotalWait = new TimeSpan();
-        //        foreach (triage item in model.ERpatients)
-        //        {
-        //            System.TimeSpan diff = item.discharge.Subtract(item.arrival);
-        //            TotalWait += diff;
-
-        //        }
-
-        //        var resWaitTime = new TimeSpan(TotalWait.Ticks / numDoctors);
-        //        return resWaitTime;
-        //    }
-
-        //}
-
-
-        public TimeSpan CalcWaitTime()
+        public string CalcWaitTime()
         {
             using (LinqDataContext db = new LinqDataContext())
             {
@@ -73,7 +51,7 @@ namespace ThunderB_redesign.Controllers
 
                 System.TimeSpan minWaitTime = docStats.OrderBy(x => x.Value).First().Value;
 
-                return minWaitTime;
+                return minWaitTime.ToString("%h'hr. '%m'min.'");
             }
 
         }

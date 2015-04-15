@@ -212,21 +212,6 @@
       <Association Name="Volunteer_Shift" Member="Volunteer" ThisKey="volunteer_id" OtherKey="volunteer_id" Type="Volunteer" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.donor" Member="donors">
-    <Type Name="donor">
-      <Column Name="dnr_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="dnr_email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="dnr_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="dnr_phone" Type="System.Decimal" DbType="Decimal(10,0) NOT NULL" CanBeNull="false" />
-      <Column Name="dnr_apt_no" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="dnr_street" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="dnr_city" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="dnr_province" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="dnr_country" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="dnr_postal_code" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
-      <Association Name="donor_donation" Member="donations" ThisKey="dnr_id" OtherKey="dtn_dnr_id" Type="donation" />
-    </Type>
-  </Table>
   <Table Name="team5.webpages_UsersInRoles" Member="webpages_UsersInRoles">
     <Type Name="webpages_UsersInRole">
       <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -239,6 +224,21 @@
       <Column Name="RoleId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="RoleName" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
       <Association Name="webpages_Role_webpages_UsersInRole" Member="webpages_UsersInRoles" ThisKey="RoleId" OtherKey="RoleId" Type="webpages_UsersInRole" />
+    </Type>
+  </Table>
+  <Table Name="dbo.donor" Member="donors">
+    <Type Name="donor">
+      <Column Name="dnr_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="dnr_email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="dnr_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="dnr_phone" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="dnr_apt_no" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="dnr_street" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="dnr_city" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="dnr_province" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="dnr_country" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="dnr_postal_code" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Association Name="donor_donation" Member="donations" ThisKey="dnr_id" OtherKey="dtn_dnr_id" Type="donation" />
     </Type>
   </Table>
 </Database>

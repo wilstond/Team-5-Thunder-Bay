@@ -90,15 +90,15 @@ namespace ThunderB_redesign.Models
     partial void InsertShift(Shift instance);
     partial void UpdateShift(Shift instance);
     partial void DeleteShift(Shift instance);
-    partial void Insertdonor(donor instance);
-    partial void Updatedonor(donor instance);
-    partial void Deletedonor(donor instance);
     partial void Insertwebpages_UsersInRole(webpages_UsersInRole instance);
     partial void Updatewebpages_UsersInRole(webpages_UsersInRole instance);
     partial void Deletewebpages_UsersInRole(webpages_UsersInRole instance);
     partial void Insertwebpages_Role(webpages_Role instance);
     partial void Updatewebpages_Role(webpages_Role instance);
     partial void Deletewebpages_Role(webpages_Role instance);
+    partial void Insertdonor(donor instance);
+    partial void Updatedonor(donor instance);
+    partial void Deletedonor(donor instance);
     #endregion
 		
 		public LinqDataContext() : 
@@ -291,14 +291,6 @@ namespace ThunderB_redesign.Models
 			}
 		}
 		
-		public System.Data.Linq.Table<donor> donors
-		{
-			get
-			{
-				return this.GetTable<donor>();
-			}
-		}
-		
 		public System.Data.Linq.Table<webpages_UsersInRole> webpages_UsersInRoles
 		{
 			get
@@ -312,6 +304,14 @@ namespace ThunderB_redesign.Models
 			get
 			{
 				return this.GetTable<webpages_Role>();
+			}
+		}
+		
+		public System.Data.Linq.Table<donor> donors
+		{
+			get
+			{
+				return this.GetTable<donor>();
 			}
 		}
 	}
@@ -4501,312 +4501,6 @@ namespace ThunderB_redesign.Models
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.donor")]
-	public partial class donor : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _dnr_id;
-		
-		private string _dnr_email;
-		
-		private string _dnr_name;
-		
-		private decimal _dnr_phone;
-		
-		private string _dnr_apt_no;
-		
-		private string _dnr_street;
-		
-		private string _dnr_city;
-		
-		private string _dnr_province;
-		
-		private string _dnr_country;
-		
-		private string _dnr_postal_code;
-		
-		private EntitySet<donation> _donations;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Ondnr_idChanging(int value);
-    partial void Ondnr_idChanged();
-    partial void Ondnr_emailChanging(string value);
-    partial void Ondnr_emailChanged();
-    partial void Ondnr_nameChanging(string value);
-    partial void Ondnr_nameChanged();
-    partial void Ondnr_phoneChanging(decimal value);
-    partial void Ondnr_phoneChanged();
-    partial void Ondnr_apt_noChanging(string value);
-    partial void Ondnr_apt_noChanged();
-    partial void Ondnr_streetChanging(string value);
-    partial void Ondnr_streetChanged();
-    partial void Ondnr_cityChanging(string value);
-    partial void Ondnr_cityChanged();
-    partial void Ondnr_provinceChanging(string value);
-    partial void Ondnr_provinceChanged();
-    partial void Ondnr_countryChanging(string value);
-    partial void Ondnr_countryChanged();
-    partial void Ondnr_postal_codeChanging(string value);
-    partial void Ondnr_postal_codeChanged();
-    #endregion
-		
-		public donor()
-		{
-			this._donations = new EntitySet<donation>(new Action<donation>(this.attach_donations), new Action<donation>(this.detach_donations));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dnr_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int dnr_id
-		{
-			get
-			{
-				return this._dnr_id;
-			}
-			set
-			{
-				if ((this._dnr_id != value))
-				{
-					this.Ondnr_idChanging(value);
-					this.SendPropertyChanging();
-					this._dnr_id = value;
-					this.SendPropertyChanged("dnr_id");
-					this.Ondnr_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dnr_email", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string dnr_email
-		{
-			get
-			{
-				return this._dnr_email;
-			}
-			set
-			{
-				if ((this._dnr_email != value))
-				{
-					this.Ondnr_emailChanging(value);
-					this.SendPropertyChanging();
-					this._dnr_email = value;
-					this.SendPropertyChanged("dnr_email");
-					this.Ondnr_emailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dnr_name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string dnr_name
-		{
-			get
-			{
-				return this._dnr_name;
-			}
-			set
-			{
-				if ((this._dnr_name != value))
-				{
-					this.Ondnr_nameChanging(value);
-					this.SendPropertyChanging();
-					this._dnr_name = value;
-					this.SendPropertyChanged("dnr_name");
-					this.Ondnr_nameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dnr_phone", DbType="Decimal(10,0) NOT NULL")]
-		public decimal dnr_phone
-		{
-			get
-			{
-				return this._dnr_phone;
-			}
-			set
-			{
-				if ((this._dnr_phone != value))
-				{
-					this.Ondnr_phoneChanging(value);
-					this.SendPropertyChanging();
-					this._dnr_phone = value;
-					this.SendPropertyChanged("dnr_phone");
-					this.Ondnr_phoneChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dnr_apt_no", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-		public string dnr_apt_no
-		{
-			get
-			{
-				return this._dnr_apt_no;
-			}
-			set
-			{
-				if ((this._dnr_apt_no != value))
-				{
-					this.Ondnr_apt_noChanging(value);
-					this.SendPropertyChanging();
-					this._dnr_apt_no = value;
-					this.SendPropertyChanged("dnr_apt_no");
-					this.Ondnr_apt_noChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dnr_street", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-		public string dnr_street
-		{
-			get
-			{
-				return this._dnr_street;
-			}
-			set
-			{
-				if ((this._dnr_street != value))
-				{
-					this.Ondnr_streetChanging(value);
-					this.SendPropertyChanging();
-					this._dnr_street = value;
-					this.SendPropertyChanged("dnr_street");
-					this.Ondnr_streetChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dnr_city", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-		public string dnr_city
-		{
-			get
-			{
-				return this._dnr_city;
-			}
-			set
-			{
-				if ((this._dnr_city != value))
-				{
-					this.Ondnr_cityChanging(value);
-					this.SendPropertyChanging();
-					this._dnr_city = value;
-					this.SendPropertyChanged("dnr_city");
-					this.Ondnr_cityChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dnr_province", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-		public string dnr_province
-		{
-			get
-			{
-				return this._dnr_province;
-			}
-			set
-			{
-				if ((this._dnr_province != value))
-				{
-					this.Ondnr_provinceChanging(value);
-					this.SendPropertyChanging();
-					this._dnr_province = value;
-					this.SendPropertyChanged("dnr_province");
-					this.Ondnr_provinceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dnr_country", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-		public string dnr_country
-		{
-			get
-			{
-				return this._dnr_country;
-			}
-			set
-			{
-				if ((this._dnr_country != value))
-				{
-					this.Ondnr_countryChanging(value);
-					this.SendPropertyChanging();
-					this._dnr_country = value;
-					this.SendPropertyChanged("dnr_country");
-					this.Ondnr_countryChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dnr_postal_code", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
-		public string dnr_postal_code
-		{
-			get
-			{
-				return this._dnr_postal_code;
-			}
-			set
-			{
-				if ((this._dnr_postal_code != value))
-				{
-					this.Ondnr_postal_codeChanging(value);
-					this.SendPropertyChanging();
-					this._dnr_postal_code = value;
-					this.SendPropertyChanged("dnr_postal_code");
-					this.Ondnr_postal_codeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="donor_donation", Storage="_donations", ThisKey="dnr_id", OtherKey="dtn_dnr_id")]
-		public EntitySet<donation> donations
-		{
-			get
-			{
-				return this._donations;
-			}
-			set
-			{
-				this._donations.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_donations(donation entity)
-		{
-			this.SendPropertyChanging();
-			entity.donor = this;
-		}
-		
-		private void detach_donations(donation entity)
-		{
-			this.SendPropertyChanging();
-			entity.donor = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="team5.webpages_UsersInRoles")]
 	public partial class webpages_UsersInRole : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -5045,6 +4739,312 @@ namespace ThunderB_redesign.Models
 		{
 			this.SendPropertyChanging();
 			entity.webpages_Role = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.donor")]
+	public partial class donor : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _dnr_id;
+		
+		private string _dnr_email;
+		
+		private string _dnr_name;
+		
+		private string _dnr_phone;
+		
+		private string _dnr_apt_no;
+		
+		private string _dnr_street;
+		
+		private string _dnr_city;
+		
+		private string _dnr_province;
+		
+		private string _dnr_country;
+		
+		private string _dnr_postal_code;
+		
+		private EntitySet<donation> _donations;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Ondnr_idChanging(int value);
+    partial void Ondnr_idChanged();
+    partial void Ondnr_emailChanging(string value);
+    partial void Ondnr_emailChanged();
+    partial void Ondnr_nameChanging(string value);
+    partial void Ondnr_nameChanged();
+    partial void Ondnr_phoneChanging(string value);
+    partial void Ondnr_phoneChanged();
+    partial void Ondnr_apt_noChanging(string value);
+    partial void Ondnr_apt_noChanged();
+    partial void Ondnr_streetChanging(string value);
+    partial void Ondnr_streetChanged();
+    partial void Ondnr_cityChanging(string value);
+    partial void Ondnr_cityChanged();
+    partial void Ondnr_provinceChanging(string value);
+    partial void Ondnr_provinceChanged();
+    partial void Ondnr_countryChanging(string value);
+    partial void Ondnr_countryChanged();
+    partial void Ondnr_postal_codeChanging(string value);
+    partial void Ondnr_postal_codeChanged();
+    #endregion
+		
+		public donor()
+		{
+			this._donations = new EntitySet<donation>(new Action<donation>(this.attach_donations), new Action<donation>(this.detach_donations));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dnr_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int dnr_id
+		{
+			get
+			{
+				return this._dnr_id;
+			}
+			set
+			{
+				if ((this._dnr_id != value))
+				{
+					this.Ondnr_idChanging(value);
+					this.SendPropertyChanging();
+					this._dnr_id = value;
+					this.SendPropertyChanged("dnr_id");
+					this.Ondnr_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dnr_email", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string dnr_email
+		{
+			get
+			{
+				return this._dnr_email;
+			}
+			set
+			{
+				if ((this._dnr_email != value))
+				{
+					this.Ondnr_emailChanging(value);
+					this.SendPropertyChanging();
+					this._dnr_email = value;
+					this.SendPropertyChanged("dnr_email");
+					this.Ondnr_emailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dnr_name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string dnr_name
+		{
+			get
+			{
+				return this._dnr_name;
+			}
+			set
+			{
+				if ((this._dnr_name != value))
+				{
+					this.Ondnr_nameChanging(value);
+					this.SendPropertyChanging();
+					this._dnr_name = value;
+					this.SendPropertyChanged("dnr_name");
+					this.Ondnr_nameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dnr_phone", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string dnr_phone
+		{
+			get
+			{
+				return this._dnr_phone;
+			}
+			set
+			{
+				if ((this._dnr_phone != value))
+				{
+					this.Ondnr_phoneChanging(value);
+					this.SendPropertyChanging();
+					this._dnr_phone = value;
+					this.SendPropertyChanged("dnr_phone");
+					this.Ondnr_phoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dnr_apt_no", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string dnr_apt_no
+		{
+			get
+			{
+				return this._dnr_apt_no;
+			}
+			set
+			{
+				if ((this._dnr_apt_no != value))
+				{
+					this.Ondnr_apt_noChanging(value);
+					this.SendPropertyChanging();
+					this._dnr_apt_no = value;
+					this.SendPropertyChanged("dnr_apt_no");
+					this.Ondnr_apt_noChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dnr_street", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string dnr_street
+		{
+			get
+			{
+				return this._dnr_street;
+			}
+			set
+			{
+				if ((this._dnr_street != value))
+				{
+					this.Ondnr_streetChanging(value);
+					this.SendPropertyChanging();
+					this._dnr_street = value;
+					this.SendPropertyChanged("dnr_street");
+					this.Ondnr_streetChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dnr_city", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string dnr_city
+		{
+			get
+			{
+				return this._dnr_city;
+			}
+			set
+			{
+				if ((this._dnr_city != value))
+				{
+					this.Ondnr_cityChanging(value);
+					this.SendPropertyChanging();
+					this._dnr_city = value;
+					this.SendPropertyChanged("dnr_city");
+					this.Ondnr_cityChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dnr_province", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string dnr_province
+		{
+			get
+			{
+				return this._dnr_province;
+			}
+			set
+			{
+				if ((this._dnr_province != value))
+				{
+					this.Ondnr_provinceChanging(value);
+					this.SendPropertyChanging();
+					this._dnr_province = value;
+					this.SendPropertyChanged("dnr_province");
+					this.Ondnr_provinceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dnr_country", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string dnr_country
+		{
+			get
+			{
+				return this._dnr_country;
+			}
+			set
+			{
+				if ((this._dnr_country != value))
+				{
+					this.Ondnr_countryChanging(value);
+					this.SendPropertyChanging();
+					this._dnr_country = value;
+					this.SendPropertyChanged("dnr_country");
+					this.Ondnr_countryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dnr_postal_code", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
+		public string dnr_postal_code
+		{
+			get
+			{
+				return this._dnr_postal_code;
+			}
+			set
+			{
+				if ((this._dnr_postal_code != value))
+				{
+					this.Ondnr_postal_codeChanging(value);
+					this.SendPropertyChanging();
+					this._dnr_postal_code = value;
+					this.SendPropertyChanged("dnr_postal_code");
+					this.Ondnr_postal_codeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="donor_donation", Storage="_donations", ThisKey="dnr_id", OtherKey="dtn_dnr_id")]
+		public EntitySet<donation> donations
+		{
+			get
+			{
+				return this._donations;
+			}
+			set
+			{
+				this._donations.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_donations(donation entity)
+		{
+			this.SendPropertyChanging();
+			entity.donor = this;
+		}
+		
+		private void detach_donations(donation entity)
+		{
+			this.SendPropertyChanging();
+			entity.donor = null;
 		}
 	}
 }

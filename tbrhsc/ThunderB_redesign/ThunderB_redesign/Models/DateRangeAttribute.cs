@@ -13,13 +13,13 @@ namespace ThunderB_redesign.Models
     public class DateRangeAttribute : ValidationAttribute
     {
 
-//---Custom validation attribute built using tutorial below
-//---http://www.codeproject.com/Articles/260177/Custom-Validation-Attribute-in-ASP-NET-MVC
+        //---Custom validation attribute built using tutorial below
+        //---http://www.codeproject.com/Articles/260177/Custom-Validation-Attribute-in-ASP-NET-MVC
 
-        protected override ValidationResult IsValid (object value, ValidationContext validationContext)
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             DateTime discharge = (DateTime)value;
-            if (discharge < DateTime.Now)
+            if (discharge < DateTime.UtcNow.AddHours(-4))
             {
                 string errorMessage = "Discharge could not accept past date/time. If case was discharged in the past, use Discharge button";
                 return new ValidationResult(errorMessage);
