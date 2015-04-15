@@ -795,18 +795,18 @@
     <Content Include="Areas\admin\Views\JobAppAdmin\Delete.cshtml" />
     <Content Include="Areas\admin\Views\JobAppAdmin\Details.cshtml" />
     <Content Include="Areas\admin\Views\JobAppAdmin\Index.cshtml" />
-<<<<<<< Updated upstream
+
     <Content Include="Areas\admin\Views\DonationAdmin\NotFound.cshtml" />
     <Content Include="Areas\admin\Views\DonationAdmin\Update.cshtml" />
     <Content Include="Areas\admin\Views\DonationAdmin\Details.cshtml" />
     <Content Include="Areas\admin\Views\DonationAdmin\List.cshtml" />
     <Content Include="Areas\admin\Views\DonationAdmin\DonationGraphLine.cshtml" />
-=======
+
     <Content Include="Areas\admin\Views\DoctorAdmin\Index.cshtml" />
     <Content Include="Areas\admin\Views\DoctorAdmin\Create.cshtml" />
     <Content Include="Areas\admin\Views\DoctorAdmin\Edit.cshtml" />
     <Content Include="Areas\admin\Views\DoctorAdmin\Delete.cshtml" />
->>>>>>> Stashed changes
+
     <None Include="Properties\PublishProfiles\File System Deployment.pubxml" />
     <None Include="Properties\PublishProfiles\TBRHSC-redesign.pubxml" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
