@@ -234,6 +234,7 @@
     <Compile Include="Controllers\ERController.cs" />
     <Compile Include="Controllers\FaqController.cs" />
     <Compile Include="Controllers\FeedbackController.cs" />
+    <Compile Include="Controllers\GiftShopController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\jobAppController.cs" />
     <Compile Include="Controllers\JobController.cs" />
@@ -917,6 +918,7 @@
     <Folder Include="Areas\admin\Models\" />
     <Folder Include="Images\uploads\" />
     <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="Views\GiftShop\" />
     <Folder Include="Views\GPlace\" />
     <Folder Include="Views\Locator\" />
   </ItemGroup>
