@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 
 using ThunderB_redesign.Models;
+using ThunderB_redesign.Controllers;
 
 namespace ThunderB_redesign.Areas.admin.Controllers
 {
@@ -42,6 +43,9 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         public ActionResult AlertPost(string alerts)
         {
             objAlert.activateAlert(Convert.ToInt32(alerts));
+            LinqDataContext objLinq = new LinqDataContext();
+            var alertDetails = objLinq.AlertTables.SingleOrDefault(x => x.Id == Convert.ToInt32(alerts));
+            NewsletterController.SendNewsAlerts("alert", alertDetails.alert);
             return View();
         }
 

@@ -39,5 +39,28 @@ namespace ThunderB_redesign.Controllers
             }
         }
 
+
+        //Method to send News and Alerts to subscribers
+        public static void SendNewsAlerts(string alertOrNews, string txt)
+        {
+            dynamic email = new Email("NewsOrAlertEmail");
+            
+            if(alertOrNews.Equals("alert"))
+                email.subject = "Thunder Bay Hospital - Alert";
+            else
+                email.subject = "Thunder Bay Hospital - News";
+            
+            email.message = txt;
+
+            //Get all subscribers
+            var objSubscriber = new SubscriberClass();
+            var allSubscribers = objSubscriber.getSubscribers();
+            foreach (var item in allSubscribers)
+            {
+                email.to = item.sub_email;
+                email.Send();
+            }
+        }
+
     }
 }

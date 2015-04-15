@@ -910,6 +910,7 @@
     <Content Include="Views\jobApp\Thanks.cshtml" />
     <Content Include="Views\doctor\Index.cshtml" />
     <Content Include="Views\doctor\SearchResults.cshtml" />
+    <Content Include="Views\Emails\NewsOrAlertEmail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

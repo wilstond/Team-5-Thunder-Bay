@@ -6,6 +6,8 @@ using System.Web.Mvc;
 
 using ThunderB_redesign.Models;
 
+using ThunderB_redesign.Controllers;
+
 namespace ThunderB_redesign.Areas.admin.Controllers
 {
     public class NewsPostController : Controller
@@ -57,6 +59,8 @@ namespace ThunderB_redesign.Areas.admin.Controllers
                 try
                 {
                     objNews.commitInsert(allnews);
+                    //Code to send news to subscribers
+                    NewsletterController.SendNewsAlerts("news", allnews.headline + "<br/><br/>" + allnews.stories);
                     return RedirectToAction("Index");
                 }
                 catch
