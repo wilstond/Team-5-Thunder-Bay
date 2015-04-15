@@ -24,7 +24,6 @@ namespace ThunderB_redesign.Controllers
             {
                 ViewData["SubMenuItems for " + menuItem.menu_id.ToString()] = menuObj.getSubMenuItemsByParentId(menuItem.menu_id);
             }
-
         }
 
         // GET: VolunteerShift
@@ -32,6 +31,7 @@ namespace ThunderB_redesign.Controllers
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult Index(string[]days)
         {

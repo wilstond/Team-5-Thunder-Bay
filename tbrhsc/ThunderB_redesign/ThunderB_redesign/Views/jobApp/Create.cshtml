@@ -1,10 +1,10 @@
 ﻿@model ThunderB_redesign.Models.jobApplication
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Job Application";
 }
 
-<h2>Create</h2>
+<h2>Job Application</h2>
 
 @using (Html.BeginForm())
 {
@@ -12,7 +12,7 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>jobApplication</legend>
+      
         @Html.HiddenFor(model => model.date_posted, new { @Value = DateTime.Now })
         <div class="editor-label">
             @Html.LabelFor(model => model.first_name)
@@ -65,23 +65,25 @@
 
         <div class="editor-label">
             @Html.LabelFor(model => model.cover_letter)
+            <p>Please copy and paste your cover letter here</p>
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.cover_letter)
+            @Html.TextAreaFor(model => model.cover_letter)
             @Html.ValidationMessageFor(model => model.cover_letter)
         </div>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.resume)
+            <p>Please copy and paste your resume here</p>
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.resume)
+            @Html.TextAreaFor(model => model.resume)
             @Html.ValidationMessageFor(model => model.resume)
         </div>
 
 
         <p>
-            <input type="submit" value="Insert" />
+            <input type="submit" value="Submit" />
         </p>
     </fieldset>
 }
@@ -94,6 +96,18 @@
     @Scripts.Render("~/bundles/jqueryval")
 }
 
+<script>
+    $(document).ready(function() {
 
+        CKEDITOR.replace('cover_letter', {
+            language: 'en'
+        });
+
+        CKEDITOR.replace('resume', {
+            language: 'en'
+        });
+    });
+
+</script>
 
 

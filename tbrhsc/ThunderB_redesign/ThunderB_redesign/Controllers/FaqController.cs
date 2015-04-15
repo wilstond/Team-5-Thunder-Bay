@@ -54,5 +54,15 @@ namespace ThunderB_redesign.Controllers
             return PartialView("_category", faq);
         }
 
+
+        public ActionResult _categories()
+        {
+
+            var faq = objFaq.GetFaqs().Select(x => x.category);
+            ViewBag.Categories = new SelectList(faq, "Category","Category","General");
+            return PartialView();
+        }
+
+
     }
 }

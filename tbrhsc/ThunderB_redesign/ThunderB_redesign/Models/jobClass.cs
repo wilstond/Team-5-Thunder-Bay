@@ -24,7 +24,6 @@ namespace ThunderB_redesign.Models
             [Required(ErrorMessage = "Please enter a closing date")]
             [DisplayName("Closing Date")]
             [DataType(DataType.Date)]
-            [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
             public DateTime closing_date { get; set; }
             [Required(ErrorMessage = "Please enter job description")]
             [DisplayName("Job Description")]

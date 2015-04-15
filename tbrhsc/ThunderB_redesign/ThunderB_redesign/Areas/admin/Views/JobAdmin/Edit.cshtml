@@ -1,10 +1,10 @@
 ﻿@model ThunderB_redesign.Models.Job
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edit a Job";
 }
 
-<h2>Edit</h2>
+<h2>Edit a Job</h2>
 
 @using (Html.BeginForm())
 {
@@ -12,10 +12,7 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Job</legend>
-
-        @Html.HiddenFor(model => model.Id)
-
+      
         <div class="editor-label">
             @Html.LabelFor(model => model.job_title)
         </div>
@@ -28,18 +25,9 @@
             @Html.LabelFor(model => model.category_id)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.category_id)
+            @Html.DropDownListFor(model => model.category_id, new SelectList(ViewBag.objCategories, "Id", "category", "Select a category"))
             @Html.ValidationMessageFor(model => model.category_id)
         </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.category_id)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.category_id)
-            @Html.ValidationMessageFor(model => model.category_id)
-        </div>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.closing_date)
         </div>
@@ -51,18 +39,9 @@
             @Html.LabelFor(model => model.job_description)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.job_description)
+            @Html.TextAreaFor(model => model.job_description)
             @Html.ValidationMessageFor(model => model.job_description)
         </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.date_posted)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.date_posted)
-            @Html.ValidationMessageFor(model => model.date_posted)
-        </div>
-
         <p>
             <input type="submit" value="Save" />
         </p>
@@ -77,4 +56,12 @@
     @Scripts.Render("~/bundles/jqueryval")
 }
 
+<script>
+    $(document).ready(function() {
 
+        CKEDITOR.replace('job_description', {
+            language: 'en'
+        });
+    });
+
+</script>

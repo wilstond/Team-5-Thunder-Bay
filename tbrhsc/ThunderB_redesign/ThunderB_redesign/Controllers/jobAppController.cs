@@ -11,7 +11,7 @@ namespace ThunderB_redesign.Controllers
     {
         //
         // GET: /jobApp/
-        jobAppLinqClass objJob = new jobAppLinqClass();
+        jobAppLinqClass objApp = new jobAppLinqClass();
         MenuLinqClass menuObj = new MenuLinqClass();
 
         public jobAppController()
@@ -39,13 +39,12 @@ namespace ThunderB_redesign.Controllers
         [HttpPost]
         public ActionResult Create(jobApplication app)
         {
-
             if (ModelState.IsValid)
             {
                 try
                 {
-                    objJob.commitInsert(app);
-                    return RedirectToAction("Index", "Job");
+                    objApp.commitInsert(app);
+                    return View("Thanks",app);
                 }
                 catch
                 {
@@ -54,5 +53,12 @@ namespace ThunderB_redesign.Controllers
             }
             return View();
         }
+
+        public ActionResult Thanks(jobApplication app)
+        {
+            return View(app);
+        }
+
+
     }
 }

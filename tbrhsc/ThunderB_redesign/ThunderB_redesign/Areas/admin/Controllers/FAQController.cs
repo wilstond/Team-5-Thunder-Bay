@@ -11,8 +11,19 @@ namespace ThunderB_redesign.Areas.admin.Controllers
     public class AdminFaqController : Controller
     {
         FaqClass objFaq = new FaqClass(); 
+        LinqDataContext db = new LinqDataContext();
 
-
+         public AdminFaqController()
+        {
+            List<faq> objCategories = new List<faq>();
+            IQueryable<faq> allCategories = db.faqs.GroupBy(x => x.category).Select(categories => categories.First());
+            foreach (faq cat in allCategories)
+            {
+                objCategories.Add(cat);   
+            }
+            ViewBag.objCategories = objCategories;
+        }        
+        
         public ActionResult Index()
         {
             var faq = objFaq.GetFaqs();
@@ -26,6 +37,12 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         {
             return View();
         }
+
+       /* public ActionResult _categories()
+        {
+            var faq = objFaq.GetFaqs();
+            return View(faq);
+        }*/
 
         // 
         // POST: /Admin/Create
@@ -53,7 +70,8 @@ namespace ThunderB_redesign.Areas.admin.Controllers
 
         public ActionResult Edit(int id)
         {
-            var faq = objFaq.getFaqByID(id); 
+            
+           var faq = objFaq.getFaqByID(id); 
             if (faq == null)
             {
                 return View("NotFound");

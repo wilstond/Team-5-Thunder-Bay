@@ -1,10 +1,10 @@
-﻿@model ThunderB_redesign.Models.jobApplication
+﻿@model ThunderB_redesign.Models.Job
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Insert";
 }
 
-<h2>Create</h2>
+<h2>Create a new Job</h2>
 
 @using (Html.BeginForm())
 {
@@ -12,86 +12,60 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>jobApplication</legend>
-        @Html.HiddenFor(model => model.date_posted, new { @Value = DateTime.Now })
         <div class="editor-label">
-            @Html.LabelFor(model => model.first_name)
+            @Html.LabelFor(model => model.job_title)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.first_name)
-            @Html.ValidationMessageFor(model => model.first_name)
+            @Html.EditorFor(model => model.job_title)
+            @Html.ValidationMessageFor(model => model.job_title)
         </div>
 
+       
         <div class="editor-label">
-            @Html.LabelFor(model => model.last_name)
+            @Html.LabelFor(model => model.closing_date)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.last_name)
-            @Html.ValidationMessageFor(model => model.last_name)
+            @Html.EditorFor(model => model.closing_date)
+            @Html.ValidationMessageFor(model => model.closing_date)
         </div>
-
-
         <div class="editor-label">
-            @Html.LabelFor(model => model.email)
+            @Html.LabelFor(model => model.job_description)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.email)
-            @Html.ValidationMessageFor(model => model.email)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.city)
+            @Html.TextAreaFor(model => model.job_description)
+            @Html.ValidationMessageFor(model => model.job_description)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.city)
-            @Html.ValidationMessageFor(model => model.city)
+            @Html.HiddenFor(model => model.date_posted, new { @Value = DateTime.Now })
         </div>
-
         <div class="editor-label">
-            @Html.LabelFor(model => model.phone)
+            @Html.LabelFor(model => model.category_id)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.phone)
-            @Html.ValidationMessageFor(model => model.phone)
+            @Html.DropDownListFor(model => model.category_id, new SelectList(ViewBag.objCategories, "Id", "category", "Select a category"))
         </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.address)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.address)
-            @Html.ValidationMessageFor(model => model.address)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.cover_letter)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.cover_letter)
-            @Html.ValidationMessageFor(model => model.cover_letter)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.resume)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.resume)
-            @Html.ValidationMessageFor(model => model.resume)
-        </div>
-
+       
 
         <p>
-            <input type="submit" value="Insert" />
+            <input type="submit" value="Create" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index", "Job")
+    @Html.ActionLink("Back to List", "Index")
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
 
+<script>
+    $(document).ready(function() {
 
+        CKEDITOR.replace('job_description', {
+            language: 'en'
+        });
+    });
+
+</script>

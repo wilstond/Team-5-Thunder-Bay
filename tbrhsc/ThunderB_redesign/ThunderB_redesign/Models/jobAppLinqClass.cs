@@ -25,6 +25,25 @@ namespace ThunderB_redesign.Models
             return applications;
         }
 
+        public jobApplication getAppByID(int id)
+        {
+            var application = objApp.jobApplications.SingleOrDefault(x => x.Id == id);
+            return application;
+        }
+
+        public bool commitDelete(int _id)
+        {
+            using (objApp)
+            {
+                var objDelApp = objApp.jobApplications.Single(x => x.Id == _id);
+                objApp.jobApplications.DeleteOnSubmit(objDelApp);
+                objApp.SubmitChanges();
+                return true;
+
+            }
+        }
+
+
 
     }
 }

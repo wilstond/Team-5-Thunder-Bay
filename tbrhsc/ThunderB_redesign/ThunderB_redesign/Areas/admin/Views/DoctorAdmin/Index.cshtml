@@ -1,0 +1,75 @@
+﻿@model IEnumerable<ThunderB_redesign.Models.doctor>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.dr_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dr_specialty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dr_office_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dr_office_address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dr_office_phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dr_photo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.user_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dept_id)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.dr_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dr_specialty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dr_office_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dr_office_address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dr_office_phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dr_photo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dept_id)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.dr_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.dr_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.dr_id })
+        </td>
+    </tr>
+}
+
+</table>

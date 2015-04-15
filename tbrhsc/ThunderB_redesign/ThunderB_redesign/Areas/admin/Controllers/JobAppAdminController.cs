@@ -39,18 +39,22 @@ namespace ThunderB_redesign.Areas.admin.Controllers
 
         public ActionResult Delete(int id)
         {
-            return View();
+            var app = objJobApp.getAppByID(id);
+            if (app == null)
+            {
+                return View("NotFound");
+            }
+            return View(app);
         }
 
         // POST: admin/JobApp/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, jobApplication app)
         {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                objJobApp.commitDelete(id);
+                return RedirectToAction("Index","JobAdmin");
             }
             catch
             {

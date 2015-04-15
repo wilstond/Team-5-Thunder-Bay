@@ -22,6 +22,14 @@ namespace ThunderB_redesign.Models
             
         }
 
+
+        public IQueryable GetCategoryGroupedFaqs()
+        {
+            var allFaqs = objFaq.faqs.Select(x => x).GroupBy(x => x.category);
+            return allFaqs;
+        }
+
+
         public IQueryable<faq> GetFaqsByCategory(string _category = "general")
         {
             var selectedFAQs = objFaq.faqs.Where(x => x.category == _category);

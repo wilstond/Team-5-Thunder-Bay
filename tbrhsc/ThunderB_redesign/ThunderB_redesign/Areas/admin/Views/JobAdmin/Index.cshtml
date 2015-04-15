@@ -2,14 +2,16 @@
 @{
     ViewBag.Title = "Index";
 }
-
+<a href="@Url.Action("Create")">Add a Job</a>
 <h2>Jobs</h2>
 
 <table class="stripes">
     <thead>
     <tr>
-        <th>@Html.DisplayNameFor(model => model.job_title)</th>
-        <th>@Html.DisplayNameFor(model => model.jobCategory.category)</th>
+        <th>Job Title</th>
+        <th>Job Category</th>
+        <th>Date Posted</th>
+        <th>Closing Date</th>
         <th>Actions</th>
         <th>Applications</th>
     </tr>
@@ -21,6 +23,8 @@
         <tr>
             <td>@x.job_title</td>
             <td>@x.jobCategory.category</td>
+            <td>@x.date_posted</td>
+            <td>@x.closing_date</td>
             <td>@Html.ActionLink("Edit", "Edit", new { id = x.Id }) &nbsp;&nbsp; @Html.ActionLink("Delete", "Delete", new { id = x.Id })</td>
             <td>@Html.ActionLink("Applications", "Index", "JobAppAdmin", new {id = x.Id}, null)</td>
         </tr>

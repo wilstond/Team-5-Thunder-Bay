@@ -5,8 +5,6 @@
 }
 
 
-
-
 <h2>Add Faq </h2>
 @*this forms adds a new concert, can only be inserted if data is valid*@
 @using (Html.BeginForm())
@@ -15,26 +13,26 @@
     @Html.ValidationSummary(true)
 
     <div class="editor-label">
-        @Html.LabelFor(model => model.question)
+        @Html.LabelFor(model => model.question):
     </div>
     <div class="editor-field">
-        @Html.EditorFor(model => model.question)
+        @Html.TextBoxFor(model => model.question, new { style = "width: 100%;" })
         @Html.ValidationMessageFor(model => model.question)
     </div>
 
     <div class="editor-label">
-        @Html.LabelFor(model => model.answer)
+        @Html.LabelFor(model => model.answer):
     </div>
     <div class="editor-field">
-        @Html.EditorFor(model => model.answer)
+        <textarea class="ckeditor" id="ckeditor" rows="10" name="answer"></textarea>
         @Html.ValidationMessageFor(model => model.answer)
     </div>
 
     <div class="editor-label">
-        @Html.LabelFor(model => model.category)
+        @Html.LabelFor(model => model.category):
     </div>
     <div class="editor-field">
-        @Html.EditorFor(model => model.category)
+        @Html.DropDownListFor(model => model.category, new SelectList(ViewBag.objCategories, "category", "category", "Select a category"))
         @Html.ValidationMessageFor(model => model.category)
     </div>
 
@@ -50,7 +48,15 @@
     @Scripts.Render("~/bundles/jqueryval")
 
 
+<script>
+    $(document).ready(function() {
+        
+        CKEDITOR.replace('answer', {
+            language: 'en'
+        });
+    });
 
+</script>
 
 
 
