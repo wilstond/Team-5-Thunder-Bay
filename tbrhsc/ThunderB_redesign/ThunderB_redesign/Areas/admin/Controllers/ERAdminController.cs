@@ -174,20 +174,23 @@ namespace ThunderB_redesign.Areas.admin.Controllers
                 DateTime arrival = DateTime.UtcNow.AddHours(-4);
                 obj.arrival = arrival;
 
+                //--doctor id is assigned automatically based on calculation in the TriageViewModel
+                // of the doctor with shortes wait time
+
+                obj.dr_id = model.getShortQueu().Key;
+
                 //discharge time is estimated based on the time of arrival added to the time recorded in the 
                 //emergency_levels table for the selected type of emergency
 
-                obj.discharge = arrival.AddHours(Convert.ToDouble(selectedEmLevel.em_duration_hrs));
+                var estDischarge = Convert.ToDouble(selectedEmLevel.em_duration_hrs) + model.getShortQueu().Value.TotalHours;
+                obj.discharge = arrival.AddHours(estDischarge);
 
                 //--field patient_name is filled with the short description of emergency rather than actual patient name which is far
                 //more informative for our case
 
                 obj.patient_name = selectedEmLevel.em_description;
 
-                //--doctor id is assigned automatically based on calculation in the TriageViewModel
-                // of the doctor with shortes wait time
-
-                obj.dr_id = model.getShortQueu();
+                
 
                 db.triages.InsertOnSubmit(obj);
                 db.SubmitChanges();
@@ -280,9 +283,12 @@ namespace ThunderB_redesign.Areas.admin.Controllers
                 using (LinqDataContext db = new LinqDataContext())
                 {
                     var pat_upd = db.triages.Single(x => x.case_id == case_id);
+                    int dr_id = pat_upd.dr_id;
+                    var dischargeTimeDiff = new TimeSpan(0);
                     if (pat_upd.discharge != Convert.ToDateTime(obj.discharge))
                     {
-                        pat_upd.patient_name = obj.patient_name + " (modified)";
+                        dischargeTimeDiff = Convert.ToDateTime(obj.discharge).Subtract(pat_upd.discharge);
+                        pat_upd.patient_name = obj.patient_name + "*";
                     }
                     else
                     {
@@ -293,6 +299,15 @@ namespace ThunderB_redesign.Areas.admin.Controllers
                     db.SubmitChanges();
 
                     TriageViewModel model = new TriageViewModel();
+
+                    var subseqPatients = db.triages.Where(x => x.case_id > case_id && x.dr_id == dr_id).Select(x => x);
+                    foreach (triage patient in subseqPatients)
+                    {
+                        patient.discharge = patient.discharge.AddHours(dischargeTimeDiff.TotalHours);
+                        db.SubmitChanges();
+                    }
+
+
                     model.ERpatients = db.triages.OrderBy(x => x.case_id).ToList();
 
                     model.SelectedERpatient = pat_upd;
@@ -337,9 +352,23 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         {
             using (LinqDataContext db = new LinqDataContext())
             {
-                triage pat_delete = db.triages.Single(x => x.case_id == id);
+                var pat_delete = db.triages.Single(x => x.case_id == id);
+                int dr_id = pat_delete.dr_id;
+                var dischargeTimeDiff = new TimeSpan(0);
+
+                if (pat_delete.discharge > DateTime.UtcNow.AddHours(-4))
+                {
+                    dischargeTimeDiff = DateTime.UtcNow.AddHours(-4).Subtract(pat_delete.discharge);
+                }
                 db.triages.DeleteOnSubmit(pat_delete);
                 db.SubmitChanges();
+
+                var subseqPatients = db.triages.Where(x => x.case_id > id && x.dr_id == dr_id).Select(x => x);
+                foreach (triage patient in subseqPatients)
+                {
+                    patient.discharge = patient.discharge.AddHours(dischargeTimeDiff.TotalHours);
+                    db.SubmitChanges();
+                }
 
                 TriageViewModel model = new TriageViewModel();
                 model.ERpatients = db.triages.OrderBy(x => x.case_id).ToList();
