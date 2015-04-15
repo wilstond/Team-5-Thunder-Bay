@@ -5,14 +5,15 @@
     ViewBag.Title = "Index";
 }
 
-<h2>List of Feedback</h2>
-
-
+<h1>List of Feedback</h1>
+<br />
+<br />
 
 <ul>
     @foreach (var x in Model)
     {
         <li>@Html.ActionLink(x.topic, "Details", new { id = x.Id })</li>
+        <li>&nbsp;</li>
     }
 </ul>
 
