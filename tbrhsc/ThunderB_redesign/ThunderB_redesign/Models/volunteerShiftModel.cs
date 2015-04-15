@@ -28,9 +28,9 @@ namespace ThunderB_redesign.Models
         public string email { get; set; }
 
        
-       // [DisplayName("day")]
-      // [Required(ErrorMessage = "Please enter your Free Day")]
-       // public string shiftday { get; set; }
+       [DisplayName("day")]
+      [Required(ErrorMessage = "Please enter your Free Day")]
+       public string shiftday { get; set; }
     }
     
 }

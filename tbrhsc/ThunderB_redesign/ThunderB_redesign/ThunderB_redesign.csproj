@@ -916,6 +916,7 @@
     <Content Include="Views\doctor\SearchResults.cshtml" />
     <Content Include="Views\Emails\NewsOrAlertEmail.cshtml" />
     <Content Include="Views\Shift\Index.cshtml" />
+    <Content Include="Views\Shift\Thanks.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
