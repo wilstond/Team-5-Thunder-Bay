@@ -7,6 +7,21 @@
 <h2>SearchResults</h2>
 
 
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+
+
+
+}
+
+
+@*
+
+
+
 <table class="table">
     <tr>
         <th>
@@ -27,7 +42,6 @@
         <th>
             @Html.DisplayNameFor(model => model.dr_photo)
         </th>
-      
         <th>
             @Html.DisplayNameFor(model => model.dept_id)
         </th>
@@ -66,3 +80,4 @@
 </table>
 
 
+*@

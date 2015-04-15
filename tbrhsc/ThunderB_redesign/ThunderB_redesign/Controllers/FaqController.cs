@@ -11,7 +11,6 @@ namespace ThunderB_redesign.Controllers
     public class FaqController : Controller
     {
         MenuLinqClass menuObj = new MenuLinqClass();
-
         FaqClass objFaq = new FaqClass(); 
 
 

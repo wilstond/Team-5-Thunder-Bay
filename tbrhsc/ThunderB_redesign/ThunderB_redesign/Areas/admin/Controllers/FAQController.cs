@@ -14,7 +14,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         LinqDataContext db = new LinqDataContext();
 
          public AdminFaqController()
-        {
+         {
             List<faq> objCategories = new List<faq>();
             IQueryable<faq> allCategories = db.faqs.GroupBy(x => x.category).Select(categories => categories.First());
             foreach (faq cat in allCategories)
@@ -22,7 +22,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
                 objCategories.Add(cat);   
             }
             ViewBag.objCategories = objCategories;
-        }        
+         }        
         
         public ActionResult Index()
         {
@@ -38,13 +38,6 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             return View();
         }
 
-       /* public ActionResult _categories()
-        {
-            var faq = objFaq.GetFaqs();
-            return View(faq);
-        }*/
-
-        // 
         // POST: /Admin/Create
 
         [HttpPost] //filter this action so that it only does post requests
