@@ -19,6 +19,7 @@ namespace ThunderB_redesign.Models
         {
 
             [DisplayName("Job Title")]
+            [StringLength(50, ErrorMessage = "title should be under 50 chatacters long")]
             [Required(ErrorMessage = "Please enter job title")]
             public string job_title { get; set; }
             [Required(ErrorMessage = "Please enter a closing date")]
@@ -32,7 +33,6 @@ namespace ThunderB_redesign.Models
             [Required(ErrorMessage = "Please enter a date")]
             [DisplayName("Date Posted")]
             [DataType(DataType.Date)]
-            [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
             public DateTime date_posted { get; set; }
             [Required(ErrorMessage = "Please enter category")]
             [DisplayName("Category")]

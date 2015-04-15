@@ -1,7 +1,68 @@
-﻿
+﻿@model IEnumerable<ThunderB_redesign.Models.doctor>
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "SearchResults";
 }
 
-<h2>Index</h2>
+<h2>SearchResults</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.dr_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dr_specialty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dr_office_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dr_office_address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dr_office_phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dr_photo)
+        </th>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.dept_id)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.dr_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dr_specialty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dr_office_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dr_office_address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dr_office_phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dr_photo)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.dept_id)
+            </td>
+         
+        </tr>
+    }
+
+</table>
+
 
