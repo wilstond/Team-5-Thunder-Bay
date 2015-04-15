@@ -5136,7 +5136,7 @@ namespace ThunderB_redesign.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="NChar(10)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(50)")]
 		public string name
 		{
 			get
@@ -5156,7 +5156,7 @@ namespace ThunderB_redesign.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email", DbType="NChar(10)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email", DbType="VarChar(50)")]
 		public string email
 		{
 			get
@@ -5176,7 +5176,7 @@ namespace ThunderB_redesign.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_shiftday", DbType="NChar(10)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_shiftday", DbType="VarChar(50)")]
 		public string shiftday
 		{
 			get

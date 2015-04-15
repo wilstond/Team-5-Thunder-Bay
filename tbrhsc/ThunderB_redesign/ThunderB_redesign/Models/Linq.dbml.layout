@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.375, 11.625" name="Linq">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.375, 12.75" name="Linq">
   <DataContextMoniker Name="/LinqDataContext" />
   <nestedChildShapes>
     <classShape Id="efb9903a-ee34-4ada-b8c0-63fc244bcb2a" isExpanded="false" absoluteBounds="3.5, 4.75, 2, 0.45">
@@ -238,10 +238,10 @@
         <classShapeMoniker Id="bd00ad77-1611-4f30-a439-e0d4ff61a154" />
       </nodes>
     </associationConnector>
-    <classShape Id="220411f7-31cb-4994-ae29-ce04cd137192" absoluteBounds="1.75, 9.75, 2, 1.5785953776041666">
+    <classShape Id="474cf66d-c1b0-472c-a35e-8d236540863f" absoluteBounds="3.75, 10.875, 2, 1.5785953776041666">
       <DataClassMoniker Name="/LinqDataContext/volshift" />
       <nestedChildShapes>
-        <elementListCompartment Id="f5dae4c2-06a8-4639-9a74-4f8314b6f13b" absoluteBounds="1.7650000000000001, 10.21, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="22dee749-e668-4360-915b-e968893876e0" absoluteBounds="3.765, 11.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

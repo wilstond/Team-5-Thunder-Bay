@@ -245,9 +245,9 @@
   <Table Name="dbo.volshift" Member="volshifts">
     <Type Name="volshift">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="name" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="email" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
-      <Column Name="shiftday" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="shiftday" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>
