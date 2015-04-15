@@ -3,7 +3,7 @@
     ViewBag.Title = "Feedback";
 }
 
-<h2>Submit Feedback</h2>
+<h1>Submit Feedback</h1>
 <p>In compliance with the Excellent Care for All Act, Thunder Bay Regional Health Sciences Centre would like to ensure ease of access for the public to share their concerns, compliments and feedback. Thunder Bay Regional Health Sciences Centre values the input of our patients and families as well as our external partners. </p>
 
 <p>Compliments and concerns can be submitted electronically or in writing.</p>
@@ -19,27 +19,33 @@
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary()
+    <br />
 
     @Html.LabelFor(model => model.name)
-    @Html.TextBoxFor(model => model.name)
+    <br />
+    @Html.TextBoxFor(model => model.name, new { style = "width: 600px;"})
     @Html.ValidationMessageFor(model => model.name, "*")
     <br />
     <br />
     @Html.LabelFor(model => model.email)
-    @Html.TextBoxFor(model => model.email)
+    <br />
+    @Html.TextBoxFor(model => model.email, new { style = "width: 600px;" })
     @Html.ValidationMessageFor(model => model.email, "*")
     <br />
     <br />
     @Html.LabelFor(model => model.topic)
-    @Html.TextBoxFor(model => model.topic)
+    <br />
+    @Html.TextBoxFor(model => model.topic, new { style = "width: 600px;" })
     @Html.ValidationMessageFor(model => model.topic, "*")
     <br />
     <br />
     @Html.LabelFor(model => model.fbcontent)
-    @Html.TextAreaFor(model => model.fbcontent, new { maxlength = "250" })
+    <br />
+    @Html.TextAreaFor(model => model.fbcontent, new { maxlength = "250", style = "width: 600px; height: 300px;" })
     @Html.ValidationMessageFor(model => model.fbcontent, "*")
     <br />
     <br />
     <input type="submit" value="Submit" />
+    <br />
 
 }
