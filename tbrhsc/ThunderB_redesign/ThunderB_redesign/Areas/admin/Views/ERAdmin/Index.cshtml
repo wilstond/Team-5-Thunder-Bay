@@ -5,23 +5,40 @@
 }
 
 <h1>Emergency Room Status</h1>
-<h2>Doctors on duty : @ViewBag.numDoctors  &nbsp; &nbsp; Minimum wait time : @ViewBag.TotalWait</h2>
-<ul>
-@{
-    foreach (var doc in ViewBag.docOutput)
-    {
+<h2>Doctors on duty : @ViewBag.numDoctors</h2>
 
-        <li>
-            Dr.  @doc.Key : @doc.Value
-            @if (@doc.Value == @ViewBag.TotalWait)
-            { 
-                @: <i class="fa fa-arrow-right"></i>
+<div id="er_stats">
+    @ViewBag.TotalWait.ToString("%h'hr. '%m'min.'")
+
+    <ul>
+        @{
+            foreach (var doc in ViewBag.docOutput)
+            {
+
+                <li>
+                    Dr.  @doc.Key : @doc.Value.ToString("%h'hr. '%m'min.'")
+                    @if (doc.Value.ToString("%h'hr. '%m'min.'") == ViewBag.TotalWait.ToString("%h'hr. '%m'min.'"))
+                    {
+                        @: <i class="fa fa-arrow-right"></i>
             }
-        </li>
+                </li>
 
-    }
-}
-</ul>
+            }
+        }
+    </ul>
+
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        setInterval(function () {
+            $('#er_stats').load('/admin/ERAdmin/AdminMonitor');
+        }, 3000); // every 3 sec
+    });
+
+</script>
+
 <form method="post">
 
     <table class="stripes">
@@ -41,42 +58,51 @@
                 {
                     if (item.case_id == Model.SelectedERpatient.case_id)
                     {
-
                         @:<tr class="selected_item" style="font-weight:bold;">
-                            }
+                    }
                     else
                     {
                         @:<tr>
-                            }
+                    }
                 }
                 else
                 {
-                    @:<tr>
-                            }
-                            <td>@item.case_id</td>
-                            <td>@item.patient_name</td>
-                            <td>@item.arrival</td>
-                            <td>@item.discharge</td>
-                            <td>
-                                @{foreach (var doc in ViewBag.docList)
-                                  {
-                                      if (item.dr_id == doc.Key) {
-                                          @: Dr.
-                                           @doc.Value }
-                                  }
-                                      
-                                  }
-                                
-                            </td>
-                            <td>
-                                <input type="submit" formaction="~/admin/ERAdmin/Select/@item.case_id"
-                                       value="Select" />
-                            </td>
-                            <td>
-                                <input type="submit" formaction="~/admin/ERAdmin/Delete/@item.case_id"
-                                       value="Discharge" />
-                            </td>
-                            @:</tr>
+                    if (item.discharge < DateTime.UtcNow.AddHours(-4))
+                    {
+                        @:<tr style="color:red">
+                    }
+                    else
+                    {
+                        @:<tr>
+                    }
+                }
+                <td>@item.case_id</td>
+                <td>@item.patient_name</td>
+                <td>@item.arrival</td>
+                <td>@item.discharge</td>
+                <td>
+                    @{foreach (var doc in ViewBag.docList)
+                    {
+                        if (item.dr_id == doc.Key)
+                        {
+                            @: Dr.
+                            @doc.Value }
+                    }
+
+                    }
+
+                </td>
+                <td>
+                    <input type="submit" formaction="~/admin/ERAdmin/Select/@item.case_id"
+                           value="Select" />
+                </td>
+                <td>
+                    <input type="submit" formaction="~/admin/ERAdmin/Delete/@item.case_id"
+                           value="Discharge" />
+                </td>
+                @:</tr>
+
+
 
 
             }

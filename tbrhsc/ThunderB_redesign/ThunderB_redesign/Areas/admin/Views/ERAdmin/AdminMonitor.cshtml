@@ -1,0 +1,19 @@
+﻿
+Min. waiting time : @ViewBag.TotalWait.ToString("%h'hr. '%m'min.'")
+
+<ul>
+    @{
+        foreach (var doc in ViewBag.docOutput)
+        {
+
+            <li>
+                Dr.  @doc.Key : @doc.Value.ToString("%h'hr. '%m'min.'")
+                @if (doc.Value.ToString("%h'hr. '%m'min.'") == ViewBag.TotalWait.ToString("%h'hr. '%m'min.'"))
+                {
+                    @: <i class="fa fa-arrow-right"></i>
+            }
+            </li>
+
+        }
+    }
+</ul>
