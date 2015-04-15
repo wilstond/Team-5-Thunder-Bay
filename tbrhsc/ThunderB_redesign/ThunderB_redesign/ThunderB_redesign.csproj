@@ -20,7 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
-    <NuGetPackageImportStamp>398bebeb</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>1f9a1fdb</NuGetPackageImportStamp>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
@@ -795,18 +795,16 @@
     <Content Include="Areas\admin\Views\JobAppAdmin\Delete.cshtml" />
     <Content Include="Areas\admin\Views\JobAppAdmin\Details.cshtml" />
     <Content Include="Areas\admin\Views\JobAppAdmin\Index.cshtml" />
-
     <Content Include="Areas\admin\Views\DonationAdmin\NotFound.cshtml" />
     <Content Include="Areas\admin\Views\DonationAdmin\Update.cshtml" />
     <Content Include="Areas\admin\Views\DonationAdmin\Details.cshtml" />
     <Content Include="Areas\admin\Views\DonationAdmin\List.cshtml" />
     <Content Include="Areas\admin\Views\DonationAdmin\DonationGraphLine.cshtml" />
-
     <Content Include="Areas\admin\Views\DoctorAdmin\Index.cshtml" />
     <Content Include="Areas\admin\Views\DoctorAdmin\Create.cshtml" />
     <Content Include="Areas\admin\Views\DoctorAdmin\Edit.cshtml" />
     <Content Include="Areas\admin\Views\DoctorAdmin\Delete.cshtml" />
-
+    <Content Include="Areas\admin\Views\VolunteerAdmin\View.cshtml" />
     <None Include="Properties\PublishProfiles\File System Deployment.pubxml" />
     <None Include="Properties\PublishProfiles\TBRHSC-redesign.pubxml" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />
@@ -964,8 +962,8 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets'))" />
   </Target>
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

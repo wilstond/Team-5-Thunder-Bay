@@ -46,13 +46,55 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             using (LinqDataContext db = new LinqDataContext())
             {
                VolunteerViewModel model = new VolunteerViewModel();
+               var volshift = from p in db.Shifts
+                              group p by p.volunteer_id into g
+                              select new { Key = g.Key, Values = g };
 
-                model.shifList = db.Shifts.OrderBy(x => x.volunteer_id).ToList();
+               return View(volshift.ToList());
+              
 
-                model.SelectedVolunteer = null;
+                //model.shifList = db.Shifts.OrderBy(x => x.volunteer_id).ToList();
 
-                return View(model);
+                //model.SelectedVolunteer = null;
+
+                //return View(model);
             }
-        }       
+        }
+        [HttpPost]
+        public ActionResult Insert(string[] days)
+        {
+
+
+            if (ModelState.IsValid)
+            {
+                Shift objShift = new Shift();
+
+                try
+                {
+                    for (var i = 0; i <= 6; i++)
+                    {
+                        if (days[i] != "None")
+                        {
+                            objShift.volunteer_id = 1;
+                            objShift.day = i.ToString();
+                            objShift.shifts = days[i];
+                            db.Shifts.InsertOnSubmit(objShift);
+                            db.SubmitChanges();
+
+                            //objVolunteer.commitInsert(objShift);
+                        }
+
+                    }
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+                    return View();
+                }
+            }
+
+            return View();
+        }
+
     }
 }
