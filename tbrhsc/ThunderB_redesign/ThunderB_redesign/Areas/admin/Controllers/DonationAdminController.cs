@@ -40,6 +40,62 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             return View();
         }
 
+        public ActionResult List()
+        {
+            var objDonor = new DonorClass();
+            var allDonors = objDonor.getDonors();
+            return View(allDonors);
+        }
+
+        public ActionResult Update(int id)
+        {
+            var objDonor = new DonorClass();
+            var donorDetails = objDonor.getDonorById(id);
+            if (donorDetails == null)
+            {
+                return View("NotFound");
+            }
+            return View(donorDetails);
+        }
+
+        [HttpPost]
+        public ActionResult Update(int dnr_id, donor donorUpd)
+        {
+            
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var objDonor = new DonorClass();
+                    objDonor.commitUpdate(dnr_id, donorUpd);
+                    return RedirectToAction("Details", new { id = dnr_id});
+                }
+                catch
+                {
+                    return View();
+                }
+            }
+
+            return View();
+
+        }
+
+        public ActionResult Details(int id)
+        {
+            var objDonor = new DonorClass();
+            var donorDetails = objDonor.getDonorById(id);
+            if (donorDetails == null)
+            {
+                return View("NotFound");
+            }
+            return View(donorDetails);
+        }
+
+        public ActionResult NotFound()
+        {
+            return View();
+        }
+
         public ActionResult DonationGraph()
         {
             var myChart = new Chart(width: 600, height: 400)

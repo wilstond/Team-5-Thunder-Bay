@@ -250,6 +250,8 @@
     <Compile Include="Models\AppointmentModel.cs" />
     <Compile Include="Models\DateRangeAttribute.cs" />
     <Compile Include="Models\DonationVM.cs" />
+    <Compile Include="Models\DonorClass.cs" />
+    <Compile Include="Models\DonorModel.cs" />
     <Compile Include="Models\FaqClass.cs" />
     <Compile Include="Models\FaqModel.cs" />
     <Compile Include="Models\FeedbackLinqClass.cs" />
@@ -792,6 +794,10 @@
     <Content Include="Areas\admin\Views\JobAppAdmin\Delete.cshtml" />
     <Content Include="Areas\admin\Views\JobAppAdmin\Details.cshtml" />
     <Content Include="Areas\admin\Views\JobAppAdmin\Index.cshtml" />
+    <Content Include="Areas\admin\Views\DonationAdmin\NotFound.cshtml" />
+    <Content Include="Areas\admin\Views\DonationAdmin\Update.cshtml" />
+    <Content Include="Areas\admin\Views\DonationAdmin\Details.cshtml" />
+    <Content Include="Areas\admin\Views\DonationAdmin\List.cshtml" />
     <None Include="Properties\PublishProfiles\File System Deployment.pubxml" />
     <None Include="Properties\PublishProfiles\TBRHSC-redesign.pubxml" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />

@@ -77,7 +77,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Delete(int id, product prod)
+        public ActionResult Delete(int id, subscriber sub)
         {
             try
             {

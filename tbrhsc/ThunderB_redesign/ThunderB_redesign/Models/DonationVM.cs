@@ -26,7 +26,7 @@ namespace ThunderB_redesign.Models
         [DisplayName("Donor Phone")]
         [Required(ErrorMessage="Please enter your phone number")]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Enter a valid phone number")]
-        public decimal dnr_phone { get; set; }
+        public string dnr_phone { get; set; }
 
 
         [DisplayName("Donor Apartment Number")]

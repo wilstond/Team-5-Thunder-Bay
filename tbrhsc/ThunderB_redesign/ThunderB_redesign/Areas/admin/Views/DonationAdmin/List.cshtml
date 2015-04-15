@@ -1,0 +1,77 @@
+﻿@model IEnumerable<ThunderB_redesign.Models.donor>
+
+<div class="donation-admin">
+    <h2>All donors</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.Label("Name")
+            </th>
+            <th>
+                @Html.Label("Email")
+            </th>
+            <th>
+                @Html.Label("Phone")
+            </th>
+            <th>
+                @Html.Label("Apartment No.")
+            </th>
+            <th>
+                @Html.Label("Street")
+            </th>
+            <th>
+                @Html.Label("City")
+            </th>
+            <th>
+                @Html.Label("Province")
+            </th>
+            <th>
+                @Html.Label("Country")
+            </th>
+            <th>
+                @Html.Label("Postal Code")
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dnr_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dnr_email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dnr_phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dnr_apt_no)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dnr_street)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dnr_city)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dnr_province)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dnr_country)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dnr_postal_code)
+                </td>
+                <td>
+                    @Html.ActionLink("Update", "Update", new { id = item.dnr_id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.dnr_id }) 
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>

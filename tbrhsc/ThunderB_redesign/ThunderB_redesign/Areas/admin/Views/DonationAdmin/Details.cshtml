@@ -1,0 +1,88 @@
+﻿@model ThunderB_redesign.Models.donor
+
+<div class="donation-admin">
+    <h2>Donor Details</h2>
+
+    <div>
+        <h4>donor</h4>
+        <hr />
+        <table>
+            <tr>
+                <td>
+                    @Html.Label("Name")
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.dnr_name)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Email")
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.dnr_email)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Phone")
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.dnr_phone)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Apartment No.")
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.dnr_apt_no)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Street")
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.dnr_street)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("City")
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.dnr_city)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Province")
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.dnr_province)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Country")
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.dnr_country)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Postal Code")
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.dnr_postal_code)
+                </td>
+            </tr>
+        </table>
+    </div>
+    <p>
+        @Html.ActionLink("Update", "Update", new { id = Model.dnr_id }) |
+        @Html.ActionLink("Back to List", "List")
+    </p>
+</div>
