@@ -4,6 +4,7 @@ using System.Linq;
 using System.Transactions;
 using System.Web;
 using System.Web.Mvc;
+using Postal;
 using System.Web.Security;
 using DotNetOpenAuth.AspNet;
 using Microsoft.Web.WebPages.OAuth;
@@ -16,6 +17,7 @@ using System.IO;
 
 namespace ThunderB_redesign.Areas.admin.Controllers
 {
+    //  this controller is restricted to Admin or Doctor users
     [Authorize(Roles="Doctor, Admin")]
     [InitializeSimpleMembership]
     public class ApptAdminController : Controller
@@ -26,29 +28,31 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         static int user_id;
         static int dr_id;
 
-        public ApptAdminController()
-        {
-
-            //user_id = WebSecurity.CurrentUserId;
-
-            // db.DeferredLoadingEnabled = false;
-
-
-        }
+        
 
         // GET: admin/ApptAdmin
         //List all appointments by doctor Id
         public ActionResult Index()
         {
+            // pulling logged-in user_id from WebSecurity object
+
             user_id = WebSecurity.GetUserId(User.Identity.Name);
 
+            // selecting  a doctor with logged-in user id
+
             var selDoctor = apptObject.getDoctorByUserId(user_id);
+
+            // if no doctor has this user_id we return NotFound view, saying that the user is likely not a doctor and therefore
+            // can not view doctor's appointments
+
             if (selDoctor == null)
             {
                 return View("NotFound");
             }
             else
             {
+                // selecting appointments by doctor id
+
                 dr_id = selDoctor.dr_id;
                 ViewBag.dr_id = dr_id;
                 var appts = apptObject.getAppointmentsbyDr(dr_id);
@@ -98,8 +102,19 @@ namespace ThunderB_redesign.Areas.admin.Controllers
                     }
 
                     // Update is committed
-                    apptObject.commitUpdate(id, appt.dr_id, appt.date_req, appt.date_book, appt.time_book, appt.pat_name,
+                        apptObject.commitUpdate(id, appt.dr_id, appt.date_req, appt.date_book, appt.time_book, appt.pat_name,
                         appt.pat_phone, appt.pat_email, appt.app_status);
+
+                        dynamic email = new Email("Booking_Confirmation");
+                        email.Doctor = db.doctors.Where(x => x.dr_id == appt.dr_id).SingleOrDefault().dr_name.ToString();
+                        email.Patient = appt.pat_name.ToString();
+                        email.To = appt.pat_email.ToString();
+                        email.Phone = appt.pat_phone.ToString();
+                        email.BookDate = Convert.ToDateTime(appt.date_book).ToShortDateString();
+                        email.BookTime = Convert.ToDateTime(appt.date_book).ToShortTimeString();
+                        email.CancelDate = Convert.ToDateTime(appt.date_book).AddDays(-2).ToShortDateString();
+
+                        email.Send();
 
                     return RedirectToAction("Index");
                 }
@@ -114,7 +129,9 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         // GET: admin/ApptAdmin/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var delAppt = apptObject.getAppointmentById(id);
+
+            return View(delAppt);
         }
 
         // POST: admin/ApptAdmin/Delete/5
@@ -123,7 +140,28 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         {
             try
             {
+                // delete appointment based on appointment id
+
+                var delAppt = apptObject.getAppointmentById(id);
+
                 apptObject.commitDelete(id);
+
+                // send an email with cancellation notice 
+                // Email sending is using a Nuget package Postal.Mvc5
+                // I found it using this tutorial --http://aboutcode.net/postal/--
+
+                dynamic email = new Email("Cancel_appointment");
+
+                // Email function is using templates found at the Views/Emails folder
+                // this particular email is using Cancel_appointment.cshtml template
+
+                email.Doctor = db.doctors.Where(x => x.dr_id == delAppt.dr_id).SingleOrDefault().dr_name.ToString();
+                email.Patient = delAppt.pat_name.ToString();
+                email.To = delAppt.pat_email.ToString();
+                email.BookDate = Convert.ToDateTime(delAppt.date_book).ToShortDateString();
+                email.BookTime = Convert.ToDateTime(delAppt.date_book).ToShortTimeString();
+
+                email.Send();
                 return RedirectToAction("Index");
             }
             catch

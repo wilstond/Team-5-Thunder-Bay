@@ -132,6 +132,9 @@
     <input type="submit" value="Add new patient" formaction="~/admin/ERAdmin/New" />
 </form>
 <br /><br />
+
+@* depending on whether any case is selected in the controller and displayMode, partial view is displaying
+EditPAtient, ShowPatient or InsertPatient  *@
 @{
     if (Model.SelectedERpatient != null)
     {

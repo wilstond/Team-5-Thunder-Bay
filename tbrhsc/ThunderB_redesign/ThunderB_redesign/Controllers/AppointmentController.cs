@@ -98,14 +98,14 @@ namespace ThunderB_redesign.Controllers
             return View();
         }
 
-        public ActionResult SendEmail()
-        {
-            dynamic email = new Email("Request_Confirmation");
-            email.To = "ilecoche@acn.net";
+        //public ActionResult SendEmail()
+        //{
+        //    dynamic email = new Email("Request_Confirmation");
+        //    email.To = "ilecoche@acn.net";
 
-            email.Send();
-            return View();
-        }
+        //    email.Send();
+        //    return View();
+        //}
 
 
 
