@@ -42,6 +42,7 @@
                 </script>
                 <br/>
                 @Html.ValidationMessageFor(x => x.discharge, "", new { @class = "text-danger" })
+                @Html.ValidationMessage("ErrorDischarge", new { @class = "text-danger" })
             </td>
             
             <td>

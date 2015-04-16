@@ -27,7 +27,9 @@ namespace ThunderB_redesign.Areas.admin.Controllers
 
             ViewBag.emergencyList = triageObj.getEmergencyList();
 
-            triageObj.ERdoctors = db.doctors.Where(X => X.dept_id == 2).Select(x => x);
+
+            //triageObj.ERdoctors = db.doctors.Where(X => X.dept_id == 2).Select(x => x);
+            triageObj.ERdoctors = triageObj.getERdoctors();
             Dictionary<int, string> docList = new Dictionary<int, string>();
 
             foreach (doctor doc in triageObj.ERdoctors)
@@ -44,17 +46,19 @@ namespace ThunderB_redesign.Areas.admin.Controllers
 
         public TimeSpan CalcWaitTime()
         {
-            using (LinqDataContext db = new LinqDataContext())
-            {
-                TriageViewModel model = new TriageViewModel();
+            //using (LinqDataContext db = new LinqDataContext())
+            //{
+            //    TriageViewModel model = new TriageViewModel();
 
                 // get all current er cases
 
-                model.ERpatients = db.triages.OrderBy(x => x.case_id).ToList();
+                //model.ERpatients = db.triages.OrderBy(x => x.case_id).ToList();
+                triageObj.ERpatients = triageObj.getERPatients().ToList();
 
                 // get doctors assigned to ER from doctors table
 
-                model.ERdoctors = db.doctors.Where(X => X.dept_id == 2).Select(x => x);
+                //model.ERdoctors = db.doctors.Where(X => X.dept_id == 2).Select(x => x);
+                triageObj.ERdoctors = triageObj.getERdoctors();
 
                 // docStats contains an associative array ("doc_id" => "wait time for this dr_id") 
                 // used to select minimum wait time and dr_id associated with it
@@ -65,13 +69,13 @@ namespace ThunderB_redesign.Areas.admin.Controllers
                 // used to display doctor list and their respective wait times in the header of the page
 
                 Dictionary<string, TimeSpan> docOutput = new Dictionary<string, TimeSpan>();
-                numDoctors = model.ERdoctors.Count();
+                numDoctors = triageObj.ERdoctors.Count();
                 ViewBag.numDoctors = numDoctors;
 
-                foreach (doctor doc in model.ERdoctors)
+                foreach (doctor doc in triageObj.ERdoctors)
                 {
-                    docStats.Add(doc.dr_id, model.getWaitTimes(doc.dr_id));
-                    docOutput.Add(doc.dr_name, model.getWaitTimes(doc.dr_id));
+                    docStats.Add(doc.dr_id, triageObj.getWaitTimes(doc.dr_id));
+                    docOutput.Add(doc.dr_name, triageObj.getWaitTimes(doc.dr_id));
                 }
 
                 ViewBag.docOutput = docOutput;
@@ -81,7 +85,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
                 System.TimeSpan minWaitTime = docStats.OrderBy(x => x.Value).First().Value;
 
                 return minWaitTime;
-            }
+            
 
         }
 
@@ -94,18 +98,18 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         [OutputCache(NoStore = true, Duration = 3)] // every 3 sec
         public ActionResult Index()
         {
-            using (LinqDataContext db = new LinqDataContext())
-            {
-                TriageViewModel model = new TriageViewModel();
+            //using (LinqDataContext db = new LinqDataContext())
+            //{
+               TriageViewModel model = new TriageViewModel();
 
-                model.ERpatients = db.triages.OrderBy(x => x.case_id).ToList();
+                model.ERpatients = model.getERPatients().ToList();
 
                 model.SelectedERpatient = null;
 
                 ViewBag.TotalWait = CalcWaitTime();
 
                 return View(model);
-            }
+            //}
         }
 
         //--prevents typing /admin/ERAdmin/Select 
@@ -134,7 +138,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             using (LinqDataContext db = new LinqDataContext())
             {
                 TriageViewModel model = new TriageViewModel();
-                model.ERpatients = db.triages.OrderBy(x => x.case_id).ToList();
+                model.ERpatients = model.getERPatients().ToList();
 
                 model.SelectedERpatient = null;
                 model.DisplayMode = "Write";
@@ -167,7 +171,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
 
                 //--pull up emergency description from emergency levels table to match with id selected  by user
 
-                emergency_level selectedEmLevel = db.emergency_levels.Single(e => e.em_id == obj.em_id);
+                emergency_level selectedEmLevel = model.getEmergencyById(obj.em_id);
 
                 //--arrival time is registered automatically based on timezone of the hospital location (Utc - 4hrs)
 
@@ -179,7 +183,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
 
                 obj.dr_id = model.getShortQueu().Key;
 
-                //discharge time is estimated based on the time of arrival added to the time recorded in the 
+                //discharge time is estimated based on the time of last patient discharge time added to the time recorded in the 
                 //emergency_levels table for the selected type of emergency
 
                 var estDischarge = Convert.ToDouble(selectedEmLevel.em_duration_hrs) + model.getShortQueu().Value.TotalHours;
@@ -190,16 +194,17 @@ namespace ThunderB_redesign.Areas.admin.Controllers
 
                 obj.patient_name = selectedEmLevel.em_description;
 
+                //--insert is performed against ViewModel
+
+                model.commitInsert(obj);
+
                 
-
-                db.triages.InsertOnSubmit(obj);
-                db.SubmitChanges();
-
                 //--after insert patient list is formed again for display
 
-                model.ERpatients = db.triages.OrderBy(x => x.case_id).ToList();
+                model.ERpatients = model.getERPatients().ToList();
 
-                model.SelectedERpatient = db.triages.Single(x => x.case_id == obj.case_id);
+                model.SelectedERpatient = model.getERPatientById(obj.case_id);
+
                 model.DisplayMode = "Read";
 
                 ViewBag.TotalWait = CalcWaitTime();
@@ -218,9 +223,10 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             using (LinqDataContext db = new LinqDataContext())
             {
                 TriageViewModel model = new TriageViewModel();
-                model.ERpatients = db.triages.OrderBy(x => x.case_id).ToList();
+                model.ERpatients = model.getERPatients().ToList();
 
-                model.SelectedERpatient = db.triages.Single(x => x.case_id == id);
+                model.SelectedERpatient = model.getERPatientById(id);
+
                 model.DisplayMode = "Read";
 
                 ViewBag.TotalWait = CalcWaitTime();
@@ -252,9 +258,10 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             using (LinqDataContext db = new LinqDataContext())
             {
                 TriageViewModel model = new TriageViewModel();
-                model.ERpatients = db.triages.OrderBy(x => x.case_id).ToList();
+                model.ERpatients = model.getERPatients().ToList();
 
-                model.SelectedERpatient = db.triages.Single(x => x.case_id == id);
+                model.SelectedERpatient = model.getERPatientById(id);
+
                 model.DisplayMode = "ReadWrite";
 
                 ViewBag.TotalWait = CalcWaitTime();
@@ -278,6 +285,22 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         [HttpPost]
         public ActionResult Update(int case_id, triage obj)
         {
+            //--Custome server side validation to make sure that updated discharge time is not earliear than previous 
+            //--patients. I cannot change discharge date for patient # 2 for a particular doctor if patient # 1 is being discherged later
+
+            using (LinqDataContext db = new LinqDataContext())
+            {
+                var prevPatients = db.triages.Where(x => x.case_id < case_id
+                                                    && x.dr_id == obj.dr_id
+                                                    && x.discharge > obj.discharge).FirstOrDefault();
+                if (prevPatients != null)
+                {
+                    // if previous patients with later discharge time than validation fails, and new error is added to the model
+
+                    ModelState.AddModelError("ErrorDischarge", "There are previous patients with later discharge date");
+                }
+            }
+
             if (ModelState.IsValid)
             {
                 using (LinqDataContext db = new LinqDataContext())
@@ -285,6 +308,12 @@ namespace ThunderB_redesign.Areas.admin.Controllers
                     var pat_upd = db.triages.Single(x => x.case_id == case_id);
                     int dr_id = pat_upd.dr_id;
                     var dischargeTimeDiff = new TimeSpan(0);
+
+                    //checking if discharge time was actually changed and saving difference
+                    // between original and updated value in dischargeTimeDiff variable
+                    // it will be used later to update subsequent cases discharge time
+                    // "*" is added to case type showing that discharge time has been modified
+                    
                     if (pat_upd.discharge != Convert.ToDateTime(obj.discharge))
                     {
                         dischargeTimeDiff = Convert.ToDateTime(obj.discharge).Subtract(pat_upd.discharge);
@@ -307,31 +336,33 @@ namespace ThunderB_redesign.Areas.admin.Controllers
                         db.SubmitChanges();
                     }
 
-
-                    model.ERpatients = db.triages.OrderBy(x => x.case_id).ToList();
+                    // reload patient list
+                    model.ERpatients = model.getERPatients().ToList();
 
                     model.SelectedERpatient = pat_upd;
                     model.DisplayMode = "Read";
 
                     ViewBag.TotalWait = CalcWaitTime();
-                    ViewBag.numDoctors = numDoctors;
 
                     return View("Index", model);
                 }
             }
             else
             {
+
+                // if validation failed, the form remaines displayed with error messages
                 using (LinqDataContext db = new LinqDataContext())
                 {
                     TriageViewModel model = new TriageViewModel();
-                    model.ERpatients = db.triages.OrderBy(x => x.case_id).ToList();
+                    // reload patient list
+                    model.ERpatients = model.getERPatients().ToList(); 
+                    
                     var pat_upd = db.triages.Single(x => x.case_id == case_id);
 
                     model.SelectedERpatient = pat_upd;
                     model.DisplayMode = "ReadWrite";
 
                     ViewBag.TotalWait = CalcWaitTime();
-                    ViewBag.numDoctors = numDoctors;
                     return View("Index", model);
                 }
             }
@@ -356,6 +387,13 @@ namespace ThunderB_redesign.Areas.admin.Controllers
                 int dr_id = pat_delete.dr_id;
                 var dischargeTimeDiff = new TimeSpan(0);
 
+                //checking if discharge time is later than current time
+                // if not, deleting this case will not affect subsequent cases
+                // if yes, difference between current time and estimated discharge time is
+                // stored in variable dischargeTimeDiff
+                // it will be used later to update subsequent cases discharge time
+
+
                 if (pat_delete.discharge > DateTime.UtcNow.AddHours(-4))
                 {
                     dischargeTimeDiff = DateTime.UtcNow.AddHours(-4).Subtract(pat_delete.discharge);
@@ -371,14 +409,13 @@ namespace ThunderB_redesign.Areas.admin.Controllers
                 }
 
                 TriageViewModel model = new TriageViewModel();
-                model.ERpatients = db.triages.OrderBy(x => x.case_id).ToList();
-
+                // reload patient list
+                model.ERpatients = model.getERPatients().ToList();
                 model.SelectedERpatient = null;
 
                 model.DisplayMode = "";
 
                 ViewBag.TotalWait = CalcWaitTime();
-                ViewBag.numDoctors = numDoctors;
 
                 return View("Index", model);
             }
@@ -401,20 +438,22 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             using (LinqDataContext db = new LinqDataContext())
             {
                 TriageViewModel model = new TriageViewModel();
-                model.ERpatients = db.triages.OrderBy(x => x.case_id).ToList();
+
+                //reload list of patients
+                model.ERpatients = model.getERPatients().ToList();
                 model.SelectedERpatient = db.triages.Single(x => x.case_id == id);
 
                 model.DisplayMode = "Read";
 
                 ViewBag.TotalWait = CalcWaitTime();
-                ViewBag.numDoctors = numDoctors;
 
                 return View("Index", model);
             }
         }
 
-
-        [OutputCache(NoStore = true, Duration = 3)] // every 3 sec
+        // this action creats a partial view of admin-side monitor
+        // OutputCacheAttribute tells browser to NOT use total wait time cached value
+        [OutputCache(NoStore = true, Duration = 0)] // every 3 sec
         public ActionResult AdminMonitor()
         {
             ViewBag.TotalWait = CalcWaitTime();
