@@ -808,14 +808,15 @@
     <Content Include="Areas\admin\Views\DoctorAdmin\Edit.cshtml" />
     <Content Include="Areas\admin\Views\DoctorAdmin\Delete.cshtml" />
     <Content Include="Areas\admin\Views\VolunteerAdmin\View.cshtml" />
-	<Content Include="Areas\admin\Views\ShiftAdmin\Index.cshtml" />
+    <Content Include="Areas\admin\Views\ShiftAdmin\Index.cshtml" />
     <Content Include="Areas\admin\Views\ShiftAdmin\Edit.cshtml" />
     <Content Include="Areas\admin\Views\ShiftAdmin\Delete.cshtml" />
     <Content Include="Areas\admin\Views\ShiftAdmin\Insert.cshtml" />
-	<Content Include="Areas\admin\Views\GiftShopAdmin\Index.cshtml" />
+    <Content Include="Areas\admin\Views\GiftShopAdmin\Index.cshtml" />
     <Content Include="Areas\admin\Views\GiftShopAdmin\Details.cshtml" />
     <Content Include="Areas\admin\Views\GiftShopAdmin\Update.cshtml" />
     <Content Include="Areas\admin\Views\GiftShopAdmin\Create.cshtml" />
+    <Content Include="Areas\admin\Views\ERAdmin\AdminMonitor.cshtml" />
     <None Include="Properties\PublishProfiles\File System Deployment.pubxml" />
     <None Include="Properties\PublishProfiles\TBRHSC-redesign.pubxml" />
     <None Include="Scripts\jquery-2.1.3.intellisense.js" />

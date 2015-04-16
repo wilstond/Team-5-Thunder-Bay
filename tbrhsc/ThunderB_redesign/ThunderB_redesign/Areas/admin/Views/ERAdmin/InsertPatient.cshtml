@@ -1,6 +1,6 @@
 ﻿@model ThunderB_redesign.Models.triage
 
-
+@* displaying a form to insert new patient  *@
 
 <div class="timed">
     @using (Html.BeginForm("Insert", "ERAdmin", FormMethod.Post))
@@ -15,22 +15,25 @@
             </tr>
             <tr>
                 <td>
+
                     @Html.Hidden("patient_name", "Case Type")
 
-                @Html.DropDownListFor(model => model.em_id, new SelectList(ViewBag.emergencyList, "em_id", "em_description"), "Select an emergency")
-                <br />@Html.ValidationMessageFor(model => model.em_id, "", new { @class = "text-danger" })
+                    @* dropdown list of emergencies is populated from the viewbag.emergencyList created in the controller *@
 
-            </td>
+                    @Html.DropDownListFor(model => model.em_id, new SelectList(ViewBag.emergencyList, "em_id", "em_description"), "Select an emergency")
+                    <br />@Html.ValidationMessageFor(model => model.em_id, "", new { @class = "text-danger" })
 
-            <td>
-                <input type="submit" value="Save"
-                       formaction="~/admin/ERAdmin/Insert" />
-                &nbsp;&nbsp;
-                <input type="reset" value="Cancel"
-                       formaction="~/admin/ERAdmin/Index" />
-            </td>
-        </tr>
-    </table>
+                </td>
+
+                <td>
+                    <input type="submit" value="Save"
+                           formaction="~/admin/ERAdmin/Insert" />
+                    &nbsp;&nbsp;
+                    <input type="reset" value="Cancel"
+                           formaction="~/admin/ERAdmin/Index" />
+                </td>
+            </tr>
+        </table>
     }
 
 </div>

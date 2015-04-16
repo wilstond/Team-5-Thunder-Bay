@@ -1,12 +1,15 @@
 ﻿@model ThunderB_redesign.Models.triage
 
+@* this form displays selected patient without actual editing option. Need to click on the Edit button for
+    editing. Prevents accidental changing of discharge time. *@
+
 @using (Html.BeginForm("Edit", "ERAdmin", FormMethod.Post))
 {
     <table class="stripes">
 
         <tr>
             <th>Case Id</th>
-            
+
             <th>Case type</th>
 
             <th>Arrival</th>

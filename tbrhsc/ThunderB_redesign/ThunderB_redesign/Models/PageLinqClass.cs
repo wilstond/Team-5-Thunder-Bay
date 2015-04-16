@@ -10,6 +10,39 @@ namespace ThunderB_redesign.Models
     {
         LinqDataContext objPage = new LinqDataContext(); //see line 26 in linq.designer.cs
 
+        public string getBreadcrumb(int menu_id)
+        {
+            string breadCrumb;
+            //---query to select menu categories together with their parents
+            var query = (from m in objPage.menu_categories
+                         join p in objPage.menu_categories on m.parent_id equals p.menu_id
+                         where m.menu_id == menu_id
+                         select new
+                         {
+                             menuId = m.menu_id,
+                             menuText = m.menu_text,
+                             parentId = p.menu_id,
+                             shortBreadcrumb = " <a href='/Page/Index?menu_id=" + m.menu_id + "'>" + m.menu_text + "</a> ",
+                             fullBreadcrumb = " <a href='/Page/Index?menu_id=" + p.menu_id + "'>" + p.menu_text + "</a> > <a href='/Page/Index?menu_id=" + m.menu_id + "'>" + m.menu_text + "</a> "
+                         }).SingleOrDefault();
+
+
+            if (query.parentId == 0)
+            {
+                //--if parent manu is "Home" we skip "Home" in breadcrumb, because it's hard-coded in the view
+                breadCrumb = query.shortBreadcrumb;
+            }
+            else
+            {
+                //--if parent is other than "Home" then we include parent menu link in the breadcrumb
+                breadCrumb = query.fullBreadcrumb;
+            }
+
+            return breadCrumb;
+
+
+        }
+
         //returns list of all visible Pages from Pages table
 
 
@@ -74,9 +107,9 @@ namespace ThunderB_redesign.Models
             }
         }
 
-        public bool commitUpdate(int _page_id, string _page_title, int _user_id, 
-            string _page_content, DateTime _page_created, int _menu_id, 
-            char _page_visibility, string _page_slug, 
+        public bool commitUpdate(int _page_id, string _page_title, int _user_id,
+            string _page_content, DateTime _page_created, int _menu_id,
+            char _page_visibility, string _page_slug,
             string _meta_title, string _meta_desc)
         {
             using (objPage)

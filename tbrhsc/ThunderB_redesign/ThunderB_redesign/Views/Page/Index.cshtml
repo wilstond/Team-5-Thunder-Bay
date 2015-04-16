@@ -5,6 +5,8 @@
     ViewBag.Description = ViewBag.LandPageDescription;
 }
 
+@* this view displays a landing page for a category in the main content,
+    plus submenu_items and sibling pages*@
 
 <div class="middle clearfix">
     <div class="sidebar_right clearfix">
@@ -17,43 +19,42 @@
                 List<ThunderB_redesign.Models.menu_category> submenuList = ViewBag.subMenuItems;
             }
             @if (submenuList.Count > 0)
-            { 
-            <header>Sub-categories</header>
-            <div class="news_title">
+            {
+                <header>Sub-categories</header>
+                <div class="news_title">
 
-                <ul>
+                    <ul>
 
-                    @{foreach (var item in ViewBag.subMenuItems)
-                    {
+                        @{foreach (var item in ViewBag.subMenuItems)
+                        {
 
-                        <li>
-                            <a href="~/@item.menu_slug/Index?menu_id=@item.menu_id">@item.menu_text</a>
+                            <li>
+                                <a href="~/@item.menu_slug/Index?menu_id=@item.menu_id">@item.menu_text</a>
 
 
-                        </li>
-                    }
-                    }
-                </ul>
-            </div>
+                            </li>
+                        }
+                        }
+                    </ul>
+                </div>
             }
             <header>List of pages</header>
             <div class="news_title">
 
                 <ul>
 
-                @{foreach (var item in ViewBag.ListOfPages)
-
-                   { 
+                    @{foreach (var item in ViewBag.ListOfPages)
+                    {
 
                         <li>
                             <a href="@Url.Action("Detail", "Page", new {item.page_slug })">@item.page_title</a>
 
                         </li>
                     }
-                }
-                    </ul>
+                    }
+                </ul>
             </div>
-           
+
 
         </section>
 
@@ -80,19 +81,13 @@
         <section class="top_section clearfix top">
             <header class="section-header">
                 <span class="page_breadcrumb">
-                    @{
-                        foreach (var menu_item in ViewBag.breadCrumbs)
-                        {
-                            if (menu_item.Key == Model.menu_id)
-                            {
-                                @:<a href="/">Home</a> > @Html.Raw(menu_item.Value)
+                    @* display breadcrumb navigation *@
+                    <a href="/">Home</a> > @Html.Raw(ViewBag.breadCrumb)
 
-                            }
-                        }
-                    }
                 </span>
                 <h1>@Model.page_title</h1>
             </header>
+            @* display date that page was created *@
             <span class="date">@Model.page_created.DayOfWeek, @Model.page_created.Date.ToLongDateString()</span>
             <article>
                 @Html.Raw(Model.page_content)
@@ -110,5 +105,3 @@
 
     </div>
 </div>
-
-

@@ -1,5 +1,7 @@
 ﻿@model ThunderB_redesign.Models.triage
 
+@* displaying a form to edit patient discharge time *@
+
 @using (Html.BeginForm("Update", "ERAdmin", FormMethod.Post))
 {
     <table class="stripes">
@@ -19,54 +21,61 @@
             <th>Actions</th>
         </tr>
         <tr>
-            <td>@Html.DisplayFor(x => x.case_id)
-                @Html.HiddenFor(x => x.case_id)
-            </td>
             <td>
-                @Html.DisplayFor(x => x.patient_name)
-                @Html.HiddenFor(x => x.patient_name)          
-
-                @*@Html.DropDownListFor(model => model.em_id, new SelectList(ViewBag.emergencyList, "em_id", "em_description"), Model.em_id)*@
-                @*<br />@Html.ValidationMessageFor(model => model.em_id, "", new { @class = "text-danger" })*@
+                @Html.DisplayFor(x => x.case_id)
+            @Html.HiddenFor(x => x.case_id)
         </td>
-            <td>@Html.DisplayFor(x => x.arrival)
-                @Html.HiddenFor(x => x.arrival)
-            </td>
-            <td>@Html.TextBoxFor(x => x.discharge, new { @id = "datetimepicker" })
-                <script type="text/javascript">
-                     $(document).ready(function () {
-                         jQuery("#datetimepicker").datetimepicker({
-                             format: 'Y-m-d h:i:s A'
-                         });
-                     });
-                </script>
-                <br/>
-                @Html.ValidationMessageFor(x => x.discharge, "", new { @class = "text-danger" })
-                @Html.ValidationMessage("ErrorDischarge", new { @class = "text-danger" })
-            </td>
-            
-            <td>
-                @Html.HiddenFor(x => x.dr_id)
-                @{foreach (var doc in ViewBag.docList)
-                {
-                    if (
-                        @Model.dr_id == doc.Key
-                        )
-                    {
-                        @: Dr.
-                        @doc.Value }
-                }
 
-                }
+        <td>
+            @Html.DisplayFor(x => x.patient_name)
+            @Html.HiddenFor(x => x.patient_name)
+        </td>
 
-            </td>
-            <td>
-                <input type="submit" value="Save"
-                       formaction="~/admin/ERAdmin/Update/" />
-                &nbsp;&nbsp;
-                <input type="submit" value="Cancel"
-                       formaction="~/admin/ERAdmin/Cancel/@Model.case_id" />
-            </td>
-        </tr>
-    </table>
+        <td>
+            @Html.DisplayFor(x => x.arrival)
+        @Html.HiddenFor(x => x.arrival)
+    </td>
+
+    @*this field uses jquery datetimepicker to edit dates and times*@
+
+    <td>
+        @Html.TextBoxFor(x => x.discharge, new { @id = "datetimepicker" })
+    <script type="text/javascript">
+        $(document).ready(function () {
+            jQuery("#datetimepicker").datetimepicker({
+                format: 'Y-m-d h:i:s A'
+            });
+        });
+    </script>
+    <br />
+    @Html.ValidationMessageFor(x => x.discharge, "", new { @class = "text-danger" })
+    @Html.ValidationMessage("ErrorDischarge", new { @class = "text-danger" })
+</td>
+
+<td>
+    @Html.HiddenFor(x => x.dr_id)
+    @{foreach (var doc in ViewBag.docList)
+    {
+        if (
+            @Model.dr_id == doc.Key
+            )
+        {
+            // displaying doctor's name instead of id
+
+            @: Dr.
+            @doc.Value }
+    }
+
+    }
+
+</td>
+<td>
+    <input type="submit" value="Save"
+           formaction="~/admin/ERAdmin/Update/" />
+    &nbsp;&nbsp;
+    <input type="submit" value="Cancel"
+           formaction="~/admin/ERAdmin/Cancel/@Model.case_id" />
+</td>
+</tr>
+</table>
 }

@@ -16,6 +16,7 @@ namespace ThunderB_redesign.Controllers
 
         public ERController()
         {
+            //create main menu
             ViewData["MenuItems"] = menuObj.getMenuItems();
 
             var menuItems = (IEnumerable<ThunderB_redesign.Models.menu_category>)ViewData["MenuItems"];
@@ -25,7 +26,7 @@ namespace ThunderB_redesign.Controllers
                 ViewData["SubMenuItems for " + menuItem.menu_id.ToString()] = menuObj.getSubMenuItemsByParentId(menuItem.menu_id);
             }
 
-            ViewBag.emergencyList = triageObj.getEmergencyList();
+            // ViewBag.emergencyList = triageObj.getEmergencyList();
 
         }
 
@@ -35,19 +36,27 @@ namespace ThunderB_redesign.Controllers
             using (LinqDataContext db = new LinqDataContext())
             {
                 TriageViewModel model = new TriageViewModel();
-                model.ERpatients = db.triages.OrderBy(x => x.case_id).ToList();
-                model.ERdoctors = db.doctors.Where(X => X.dept_id == 2).Select(x => x);
+                // get all current er cases
+
+                model.ERpatients = model.getERPatients().ToList();
+
+                // get doctors assigned to ER from doctors table
+
+                model.ERdoctors = model.getERdoctors();
+
+                // docStats contains an associative array ("doc_id" => "wait time for this dr_id") 
+                // used to select minimum wait time and dr_id associated with it
+
                 Dictionary<int, TimeSpan> docStats = new Dictionary<int, TimeSpan>();
-                Dictionary<string, TimeSpan> docOutput = new Dictionary<string, TimeSpan>();
+
                 numDoctors = model.ERdoctors.Count();
 
                 foreach (doctor doc in model.ERdoctors)
                 {
                     docStats.Add(doc.dr_id, model.getWaitTimes(doc.dr_id));
-                    docOutput.Add(doc.dr_name, model.getWaitTimes(doc.dr_id));
                 }
 
-                ViewBag.docOutput = docOutput;
+                // now selecting minimum waiting time for displaying in the ER Monitor
 
                 System.TimeSpan minWaitTime = docStats.OrderBy(x => x.Value).First().Value;
 
@@ -62,11 +71,11 @@ namespace ThunderB_redesign.Controllers
             return View();
         }
 
-        [OutputCache(NoStore = true, Duration = 3)] // every 3 sec
+        [OutputCache(NoStore = true, Duration = 0)] // this attribute prevents browser from using cached value for wait time
         public ActionResult Monitor()
         {
             ViewBag.TotalWait = CalcWaitTime();
-            ViewBag.numDoctors = numDoctors;
+
             return PartialView("Monitor");
         }
     }

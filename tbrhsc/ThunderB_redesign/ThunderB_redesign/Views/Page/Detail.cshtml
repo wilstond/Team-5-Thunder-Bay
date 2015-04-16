@@ -5,7 +5,9 @@
     ViewBag.Description = ViewBag.LandPageDescription;
 }
 
-   
+@* this view displays dynamically created pages in the main content
+    and a list of related (sibling pages, children of the same menu_category) in the sidebar *@
+
 <div class="middle clearfix">
     <div class="sidebar_right clearfix">
         <div class="donate clearfix">
@@ -17,7 +19,7 @@
             <div class="news_title">
 
                 <ul>
-
+                    @* list of related pages (children of the same parent menu category) *@
                     @{foreach (var item in ViewBag.relatedPages)
                     {
 
@@ -45,7 +47,7 @@
                 </ul>
             </div>
             <div id="erm_holder">
-                
+
             </div>
         </section>
 
@@ -55,33 +57,25 @@
         <section class="top_section clearfix top">
             <header class="section-header">
                 <span class="page_breadcrumb">
+                    <a href="/">Home</a> > @Html.Raw(ViewBag.breadCrumb)
 
-                    @{
-                        foreach (var menu_item in ViewBag.breadCrumbs)
-                        {
-                            if (menu_item.Key == Model.menu_id)
-                            {
-                                @:<a href="/">Home</a> > @Html.Raw(menu_item.Value)
-                            }
-                        }
-                    }
                 </span>
                 <h1>@Model.page_title</h1>
             </header>
             <span class="date">@Model.page_created.DayOfWeek, @Model.page_created.Date.ToLongDateString()</span>
             <article>
-            @Html.Raw(Model.page_content)
+                @Html.Raw(Model.page_content)
 
 
-            @*<dt>
-                    @Html.DisplayNameFor(model => model.menu_id)
-                </dt>
+                @*<dt>
+                        @Html.DisplayNameFor(model => model.menu_id)
+                    </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.menu_id)
-                </dd>*@
+                    <dd>
+                        @Html.DisplayFor(model => model.menu_id)
+                    </dd>*@
             </article>
         </section>
 
     </div>
- </div>
+</div>

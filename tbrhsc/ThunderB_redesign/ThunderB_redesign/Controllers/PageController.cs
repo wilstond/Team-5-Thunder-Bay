@@ -13,9 +13,9 @@ namespace ThunderB_redesign.Controllers
     {
         PageLinqClass objPage = new PageLinqClass();
 
-        
 
-        
+
+
         MenuLinqClass menuObj = new MenuLinqClass();
 
         public PageController()
@@ -54,45 +54,46 @@ namespace ThunderB_redesign.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-                var AllPages = objPage.getPagesByMenu(menu_id);
-                
+            var AllPages = objPage.getPagesByMenu(menu_id);
+
             //if there are any pages in the category, first one is displayed as a landing page for the category
-                if (AllPages.Any())
+            if (AllPages.Any())
+            {
+                var LandPage = AllPages.First();
+                if (LandPage.meta_title == null)
                 {
-                    var LandPage = AllPages.First();
-                    if (LandPage.meta_title == null)
-                    {
-                        ViewBag.LandPageTitle = LandPage.page_title;
-                    }
-                    else
-                    {
-                        ViewBag.LandPageTitle = LandPage.meta_title;
-                    }
-                    if (LandPage.meta_desc == null)
-                    {
-                        ViewBag.LandPageDescription = "";
-                    }
-                    else
-                    {
-                        ViewBag.LandPageDescription = LandPage.meta_desc;
-                    }
-                    ViewBag.ListOfPages = AllPages.ToList();
-                    ViewBag.subMenuItems = menuObj.getSubMenuItemsByParentId(menu_id).ToList();
-
-                    return View(LandPage);
+                    ViewBag.LandPageTitle = LandPage.page_title;
                 }
+                else
+                {
+                    ViewBag.LandPageTitle = LandPage.meta_title;
+                }
+                if (LandPage.meta_desc == null)
+                {
+                    ViewBag.LandPageDescription = "";
+                }
+                else
+                {
+                    ViewBag.LandPageDescription = LandPage.meta_desc;
+                }
+                ViewBag.breadCrumb = objPage.getBreadcrumb(LandPage.menu_id);
+                ViewBag.ListOfPages = AllPages.ToList();
+                ViewBag.subMenuItems = menuObj.getSubMenuItemsByParentId(menu_id).ToList();
 
-                return View("PageNotFound");
-                            
+                return View(LandPage);
+            }
+
+            return View("PageNotFound");
+
         }
 
-        
+
         public ActionResult Detail(string page_slug)
         {
 
             var selectPage = objPage.getPageBySlug(page_slug);
-            
-            if(selectPage == null)
+
+            if (selectPage == null)
             {
                 // Redirect the user to the main page
                 return RedirectToAction("Index", "Home");
@@ -119,6 +120,8 @@ namespace ThunderB_redesign.Controllers
                 ViewBag.LandPageDescription = pageById.meta_desc;
             }
 
+            ViewBag.breadCrumb = objPage.getBreadcrumb(pageById.menu_id);
+
             return View(pageById);
             //return View(selectPage);
 
@@ -129,7 +132,7 @@ namespace ThunderB_redesign.Controllers
             return View();
         }
 
-        
+
 
     }
 }

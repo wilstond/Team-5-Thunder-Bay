@@ -6,12 +6,16 @@
 
 <h1>Emergency Room Status</h1>
 <h2>Doctors on duty : @ViewBag.numDoctors</h2>
-
+<p>&nbsp;</p>
 <div id="er_stats">
-    @ViewBag.TotalWait.ToString("%h'hr. '%m'min.'")
+    Min. waiting time : @ViewBag.TotalWait.ToString("%h'hr. '%m'min.'")
 
     <ul>
         @{
+
+            //here we go through the list of the doctors in the ER and display doctor's name and waiting time
+            // also arrow indicates the doctor with the shortest waiting time (up to a minute accuracy, seconds don't count)
+
             foreach (var doc in ViewBag.docOutput)
             {
 
@@ -29,6 +33,8 @@
 
 </div>
 
+@* this function reloads monitor every 3 seconds*@
+
 <script type="text/javascript">
 
     $(document).ready(function () {
@@ -39,6 +45,7 @@
 
 </script>
 
+@* displaying a list of all patient currently in the ER *@
 <form method="post">
 
     <table class="stripes">
@@ -56,17 +63,30 @@
             {
                 if (Model.SelectedERpatient != null)
                 {
+                    //if curent case has just been inserted  or being updated it is diplayed in bold
+
                     if (item.case_id == Model.SelectedERpatient.case_id)
                     {
                         @:<tr class="selected_item" style="font-weight:bold;">
                     }
                     else
                     {
-                        @:<tr>
+                        // if discharge time hass passed the case is highlighted in red
+
+                        if (item.discharge < DateTime.UtcNow.AddHours(-4))
+                        {
+                            @:<tr style="color:red">
+                        }
+                        else
+                        {
+                            @:<tr>
+                       }
                     }
                 }
                 else
                 {
+                    // if discharge time hass passed the case is highlighted in red
+
                     if (item.discharge < DateTime.UtcNow.AddHours(-4))
                     {
                         @:<tr style="color:red">
@@ -85,6 +105,8 @@
                     {
                         if (item.dr_id == doc.Key)
                         {
+                            // displaying doctor name instead of doctor id
+
                             @: Dr.
                             @doc.Value }
                     }
@@ -101,9 +123,6 @@
                            value="Discharge" />
                 </td>
                 @:</tr>
-
-
-
 
             }
 
