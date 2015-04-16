@@ -51,7 +51,7 @@ namespace ThunderB_redesign.Models
 
 
         [DisplayName("Product Image URL")]
-        [Required(ErrorMessage = "Please add an image")]
+        //[Required(ErrorMessage = "Please add an image")]
         public string prd_img_url { get; set; }
 
 
