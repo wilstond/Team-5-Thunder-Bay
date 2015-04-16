@@ -15,6 +15,12 @@ namespace ThunderB_redesign.Models
         public string DisplayMode { get; set; }
 
 
+        public emergency_level getEmergencyById(int em_id){
+
+            emergency_level selectedEmLevel = db.emergency_levels.Single(e => e.em_id == em_id);
+            return selectedEmLevel;
+        }
+
 
         public List<emergency_level> getEmergencyList()
         {
@@ -38,47 +44,43 @@ namespace ThunderB_redesign.Models
         // -- get alist of ER doctors
         public IQueryable<doctor> getERdoctors()
         {
-            using (LinqDataContext db = new LinqDataContext())
-            {
+            //using (LinqDataContext db = new LinqDataContext())
+            //{
                 //--get a list of all docors assigned to ER
                 var ERdoctors = db.doctors.Where(X => X.dept_id == 2).Select(x => x);
                 return ERdoctors;
-            }
+            //}
         }
 
+
+        //--get a list of patients in the ER
         public IQueryable<triage> getERPatients()
         {
-            using (LinqDataContext db = new LinqDataContext())
-            {
+            //using (LinqDataContext db = new LinqDataContext())
+            //{
                 var Patients = db.triages.OrderBy(x => x.case_id);
                 return Patients;
-            }
+            //}
+        }
+
+        //--get a selected patient by case_id
+        public triage getERPatientById(int case_id)
+        {
+            var selPatient = db.triages.Single(x => x.case_id == case_id);
+            return selPatient;
         }
 
         // --get a waiting time for the doctor based on doctor_id parameter
-        // --returns 0 if doctor has no patients at th moment
+        // --returns 0 if doctor has no patients at the moment 
 
         public TimeSpan getWaitTimes(int doctor_id)
         {
             using (LinqDataContext db = new LinqDataContext())
             {
-                //var doctWaitTime = (from x in db.triages
-                //                    where x.dr_id == doctor_id
-                //                    select (x.discharge - x.arrival).Ticks); 
-                //var doctWaitTime = (from x in db.triages
-                //                    where x.dr_id == doctor_id && x.discharge > DateTime.UtcNow.AddHours(-4)
-                //                    select (x.discharge - DateTime.UtcNow.AddHours(-4)).Ticks);
-                //if (doctWaitTime.Count() > 0)
-                //{
-                //    var tt = doctWaitTime.Sum();
-                //    return new TimeSpan(tt);
-                //}
-                //else
-                //{
-                //    return new TimeSpan(0);
-                //}
-
-                var lastPatient = db.triages.Where(x => x.dr_id == doctor_id).OrderByDescending(x => x.discharge).FirstOrDefault();
+                var lastPatient = db.triages.Where(x => x.dr_id == doctor_id 
+                                                && x.discharge > DateTime.UtcNow.AddHours(-4))
+                                                .OrderByDescending(x => x.case_id)
+                                                .FirstOrDefault();
                 if (lastPatient == null)
                 {
                     return new TimeSpan(0);
@@ -87,9 +89,6 @@ namespace ThunderB_redesign.Models
                 {
                     return lastPatient.discharge - DateTime.UtcNow.AddHours(-4);
                 }
-                
-
-
             }
         }
 
@@ -99,7 +98,6 @@ namespace ThunderB_redesign.Models
             var current_case = db.triages.Where(x => x.dr_id == dr_id).OrderBy(x => x.case_id).FirstOrDefault();
             return current_case;
         }
-
 
 
         //--function to find the next available doctor to assign an ER patient to
@@ -145,19 +143,29 @@ namespace ThunderB_redesign.Models
                 }
                 else
                 {
+                    //--if there are more patients in the ER than in doctors
                     Dictionary<int, TimeSpan> docList = new Dictionary<int, TimeSpan>();
                     KeyValuePair<int, TimeSpan> docQueue = new KeyValuePair<int, TimeSpan>();
 
                     foreach (doctor doc in ERdoctors)
                     {
+                        //--chaecking for the case if there are several patients in the ER, but they are assigned to one doctor, and another 
+                        // doctor is still unoccupied. In this case next case goes to this "free" doctor
+
                         if (!Allcases.Any(x => x.dr_id == doc.dr_id))
                         {
                             docQueue = new KeyValuePair<int, TimeSpan>(doc.dr_id, new TimeSpan(0));
                             return docQueue;
                         }
-                        var lastPatient = db.triages.Where(x => x.dr_id == doc.dr_id).OrderByDescending(x => x.discharge).FirstOrDefault();
+
+                        //--for each doctor we pick the last patient in the qeueu and add them to the list containing dr_id property and wait time for that doctor)
+
+                        var lastPatient = db.triages.Where(x => x.dr_id == doc.dr_id && x.discharge > DateTime.UtcNow.AddHours(-4)).OrderByDescending(x => x.case_id).FirstOrDefault();
                         docList.Add(doc.dr_id, (lastPatient.discharge - DateTime.UtcNow.AddHours(-4)));
                     }
+
+                    //--after the list is completed, we sort through it and pick the member(doctor) with the shortes wait tme
+
                     var shortestQeueu = docList.OrderBy(Key => Key.Value).FirstOrDefault();
                     docQueue = new KeyValuePair<int, TimeSpan>(shortestQeueu.Key, shortestQeueu.Value);
 
@@ -167,5 +175,38 @@ namespace ThunderB_redesign.Models
             }
         }
 
+        //--function to pull triage patient based on dynamic Where clause
+
+        public triage getSinglePatientOnCondition(Func<triage, bool> whereClause)
+        {
+
+                var Patient = db.triages.Where(whereClause).FirstOrDefault();
+                return Patient;
+            
+        }
+
+        //--function to pull a collection of triage patients based on dynamic Where clause
+
+        public IEnumerable<triage> getPatientsOnCondition(Func<triage, bool> whereClause)
+        {
+            
+                var Patients = db.triages.Where(whereClause).Select(x => x);
+                return Patients;
+           
+        }
+
+        //--function to commit insert
+
+        public bool commitInsert(triage obj)
+        {
+         using (LinqDataContext db = new LinqDataContext())
+            {
+                db.triages.InsertOnSubmit(obj);
+                db.SubmitChanges();
+                return true;
+            }
+        }
+
+        
     }
 }
