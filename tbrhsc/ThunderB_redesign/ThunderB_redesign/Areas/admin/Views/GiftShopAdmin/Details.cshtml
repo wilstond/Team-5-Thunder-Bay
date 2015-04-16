@@ -1,0 +1,90 @@
+﻿@model ThunderB_redesign.Models.GiftShopVM
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>GiftShopVM</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cat_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cat_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cat_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cat_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prd_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prd_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prd_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prd_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prd_description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prd_description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prd_price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prd_price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prd_count)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prd_count)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prd_cat_id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prd_cat_id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prd_img_url)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prd_img_url)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.prd_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
