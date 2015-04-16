@@ -242,4 +242,12 @@
       <Association Name="product_category_product" Member="product_category" ThisKey="prd_cat_id" OtherKey="prd_cat_id" Type="product_category" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.volshift" Member="volshifts">
+    <Type Name="volshift">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="shiftday" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
 </Database>

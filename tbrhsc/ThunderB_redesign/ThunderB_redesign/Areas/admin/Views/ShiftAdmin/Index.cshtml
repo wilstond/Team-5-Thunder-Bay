@@ -1,0 +1,35 @@
+﻿@model IEnumerable<ThunderB_redesign.Models.volshift>
+
+
+    @{
+        ViewBag.Title = "Index";
+    }
+
+    <h2>Volunteers</h2>
+
+    <table class="stripes">
+    <thead>
+        <tr>
+            <th>Volunteer Name</th>
+            <th>Email</th>
+            <th>Day for shift</th>
+            <th colspan="2">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.name
+                </td>
+                <td>@item.email</td>
+                <td>@item.shiftday</td>
+                <td>@Html.ActionLink("Edit", "Edit", new { id = item.Id}) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

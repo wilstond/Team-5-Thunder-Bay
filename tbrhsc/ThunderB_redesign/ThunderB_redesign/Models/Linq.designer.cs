@@ -99,6 +99,9 @@ namespace ThunderB_redesign.Models
     partial void Insertproduct(product instance);
     partial void Updateproduct(product instance);
     partial void Deleteproduct(product instance);
+    partial void Insertvolshift(volshift instance);
+    partial void Updatevolshift(volshift instance);
+    partial void Deletevolshift(volshift instance);
     #endregion
 		
 		public LinqDataContext() : 
@@ -312,6 +315,14 @@ namespace ThunderB_redesign.Models
 			get
 			{
 				return this.GetTable<product>();
+			}
+		}
+		
+		public System.Data.Linq.Table<volshift> volshifts
+		{
+			get
+			{
+				return this.GetTable<volshift>();
 			}
 		}
 	}
@@ -5047,6 +5058,140 @@ namespace ThunderB_redesign.Models
 						this._prd_cat_id = default(int);
 					}
 					this.SendPropertyChanged("product_category");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.volshift")]
+	public partial class volshift : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _name;
+		
+		private string _email;
+		
+		private string _shiftday;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnnameChanging(string value);
+    partial void OnnameChanged();
+    partial void OnemailChanging(string value);
+    partial void OnemailChanged();
+    partial void OnshiftdayChanging(string value);
+    partial void OnshiftdayChanged();
+    #endregion
+		
+		public volshift()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_name", DbType="VarChar(50)")]
+		public string name
+		{
+			get
+			{
+				return this._name;
+			}
+			set
+			{
+				if ((this._name != value))
+				{
+					this.OnnameChanging(value);
+					this.SendPropertyChanging();
+					this._name = value;
+					this.SendPropertyChanged("name");
+					this.OnnameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email", DbType="VarChar(50)")]
+		public string email
+		{
+			get
+			{
+				return this._email;
+			}
+			set
+			{
+				if ((this._email != value))
+				{
+					this.OnemailChanging(value);
+					this.SendPropertyChanging();
+					this._email = value;
+					this.SendPropertyChanged("email");
+					this.OnemailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_shiftday", DbType="VarChar(50)")]
+		public string shiftday
+		{
+			get
+			{
+				return this._shiftday;
+			}
+			set
+			{
+				if ((this._shiftday != value))
+				{
+					this.OnshiftdayChanging(value);
+					this.SendPropertyChanging();
+					this._shiftday = value;
+					this.SendPropertyChanged("shiftday");
+					this.OnshiftdayChanged();
 				}
 			}
 		}
