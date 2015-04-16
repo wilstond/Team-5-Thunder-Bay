@@ -459,3 +459,22 @@ ul.pagination li a {display: block; width: 25px; height: 25px; border:#1a2f38 so
         font-size: 20px;
         font-weight: bolder;
     }
+
+    /*Volunteer Insert Button*/
+    .buttonstyle {
+    border: 0px;
+    color: #fff;
+    background-color: #335f7d;
+    cursor: pointer;
+    padding: 10px 20px;
+    margin-left:10px;
+    font-family: sans-serif;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1em;
+}
+
+.buttonstyle:hover {
+    color: #fff;
+    text-decoration: none;
+}

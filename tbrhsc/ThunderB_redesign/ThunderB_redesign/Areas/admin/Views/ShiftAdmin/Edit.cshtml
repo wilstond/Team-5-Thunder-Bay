@@ -1,0 +1,49 @@
+﻿@model ThunderB_redesign.Models.volshift
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    //Show the Validation summay
+    @Html.ValidationSummary(true)
+
+
+    @Html.HiddenFor(model => model.Id)
+    <div >
+        @Html.LabelFor(model => model.name) &nbsp; &nbsp;
+        @Html.EditorFor(model => model.name)
+        @Html.ValidationMessageFor(model => model.name, "*")
+    </div>
+    <br/>
+    <div>
+        @Html.LabelFor(model => model.email) &nbsp; &nbsp;
+        @Html.EditorFor(model => model.email)
+        @Html.ValidationMessageFor(model => model.email, "*")
+    </div>
+    <br/>
+    <div>
+        @Html.LabelFor(model => model.shiftday) &nbsp; &nbsp;
+        
+                <select id="shiftday" name="shiftday">
+            <option value="monday">Monday</option>
+            <option value="tuesday">Tuesday</option>
+            <option value="wednesday">Wednesday</option>
+            <option value="thursday">Thursday</option>
+            <option value="friday">Friday</option>
+            <option value="saturday">Saturday</option>
+            <option value="sunday">Saturday</option>
+        </select>
+        @Html.ValidationMessageFor(model => model.shiftday, "*")
+    </div>
+    <br/>
+    <br/>
+    <input type="submit" value="Update"  />
+    <br/>
+    <p>@Html.ActionLink("Back to list","Index")</p>
+}
+

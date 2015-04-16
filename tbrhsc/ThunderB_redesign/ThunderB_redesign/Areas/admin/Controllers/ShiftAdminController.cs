@@ -18,47 +18,59 @@ namespace ThunderB_redesign.Areas.admin.Controllers
                 return View(shift);
             }
 
-            public ActionResult Details(int id)
+            public ActionResult Edit(int Id)
             {
-                var feedback = objShift.getShiftbyID(id);
-                if (feedback == null)
+
+                var editvolunteer = objShift.getShiftbyID(Id);
+                if (editvolunteer == null)
                 {
-                    return View("NotFound");
+                    return View("Error");
                 }
-                else
-                {
-                    return View(feedback);
-                }
+                return View(editvolunteer);
             }
 
-            public ActionResult Delete(int id)
+            // POST: /Update
+            [HttpPost]
+            public ActionResult Edit(int Id, volshift shift)
             {
-                try
+                //If all the input were valid , then database will be updated
+                if (ModelState.IsValid)
                 {
-                    objShift.commitDelete(id);
-                    return RedirectToAction("Index");
+                    
+                    try
+                    {
+                       
+                        objShift.commitUpdate(Id,shift.name, shift.email,shift.shiftday);
+                        return RedirectToAction("Index");
+                    }
+                    catch
+                    {
+                        return View();
+                    }
                 }
-                catch
+                return View();
+            }
+
+            // GET: /Delete
+            public ActionResult Delete(int Id)
+            {
+
+                //It shows Delete view according to the selected id
+                var voldel = objShift.getShiftbyID(Id);
+                if (voldel == null)
                 {
-                    return RedirectToAction("Index");
+                    return View("Error");
                 }
-                //var feedback = objFeedback.getFeedbackbyID(id);
-                //if (feedback == null)
-                //{
-                //    return View("NotFound");
-                //}
-                //else
-                //{
-                //    return View(feedback);
-                //}
+                return View(voldel);
             }
 
             [HttpPost]
-            public ActionResult Delete(int id, feedback feedback)
+            public ActionResult Delete(int Id,volshift shift)
             {
+                //Selected value will be deleted from the database
                 try
                 {
-                    objShift.commitDelete(id);
+                    objShift.commitDelete(Id);
                     return RedirectToAction("Index");
                 }
                 catch
@@ -67,6 +79,30 @@ namespace ThunderB_redesign.Areas.admin.Controllers
                 }
             }
 
+            public ActionResult Insert()
+            {
+
+                return View();
+            }
+            [HttpPost]
+            public ActionResult Insert(volshift shift)
+            {
+                if (ModelState.IsValid)
+                {
+
+                    objShift.commitInsert(shift);
+                    return RedirectToAction("Thanks");
+
+                    //return View();
+
+                }
+
+                return View();
+            }
+        public ActionResult Thanks()
+            {
+                return View();
+            }
 
         }
 

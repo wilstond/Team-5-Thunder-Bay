@@ -1,0 +1,27 @@
+﻿@model ThunderB_redesign.Models.volshift
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+
+<h3>Volunteer Delete</h3>
+<br/>
+<h2>
+    Are you sure you want to delete <em>@Model.name?</em>
+</h2>
+<br/>
+@using (Html.BeginForm())
+{
+    <div>
+        <input type="submit" value="Delete" />
+
+    </div>
+}
+<br/>
+<br/>
+<div class="back">
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
