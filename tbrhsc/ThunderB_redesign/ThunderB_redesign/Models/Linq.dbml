@@ -219,18 +219,6 @@
       <Column Name="shiftday" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.product" Member="products">
-    <Type Name="product">
-      <Column Name="prd_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="prd_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="prd_description" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
-      <Column Name="prd_price" Type="System.Decimal" DbType="Decimal(9,2) NOT NULL" CanBeNull="false" />
-      <Column Name="prd_count" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="prd_cat_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="prd_img_url" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
-      <Association Name="product_category_product" Member="product_category" ThisKey="prd_cat_id" OtherKey="prd_cat_id" Type="product_category" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.doctors" Member="doctors">
     <Type Name="doctor">
       <Column Name="dr_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -247,6 +235,18 @@
       <Association Name="doctor_appointment1" Member="appointments1" ThisKey="dr_id" OtherKey="dr_id" Type="appointment" />
       <Association Name="department_doctor" Member="department" ThisKey="dept_id" OtherKey="id" Type="department" IsForeignKey="true" />
       <Association Name="department_doctor1" Member="department1" ThisKey="dept_id" OtherKey="id" Type="department" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.product" Member="products">
+    <Type Name="product">
+      <Column Name="prd_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="prd_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="prd_description" Type="System.String" DbType="VarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="prd_price" Type="System.Decimal" DbType="Decimal(9,2) NOT NULL" CanBeNull="false" />
+      <Column Name="prd_count" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="prd_cat_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="prd_img_url" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="product_category_product" Member="product_category" ThisKey="prd_cat_id" OtherKey="prd_cat_id" Type="product_category" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
