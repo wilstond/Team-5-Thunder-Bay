@@ -4,13 +4,15 @@
     ViewBag.Title = "Details";
 }
 
+
+@*------------------View holding page preview-----------------------*@
 <h2>Page Preview</h2>
 
 <div class="page_preview">
     
     <hr />
         
-
+    @*----------------Page title------------------------------------*@
    
             <h1>@Model.page_title</h1>
             <p>     
@@ -18,6 +20,8 @@
             </p>
     <p>&nbsp;</p>
             <article>
+    @*--------------------Page content------------------*@
+                
                 @Html.Raw(Model.page_content)
             </article>
     <p>&nbsp;</p>
@@ -28,13 +32,17 @@
     <h4>Additional Information</h4>
     <table class="page_editor">
         <tr>
+            @*---------------Page menu category-----------------------*@
             <td>
                 @Html.DisplayNameFor(model => model.menu_id)
             </td>
 
             <td>
                 @Html.DisplayFor(model => model.menu_id) - 
-                @{
+                @Html.Raw(ViewBag.menu_header)
+
+
+                @*@{
                     foreach (var menu_item in ViewBag.breadCrumbs)
                     {
                         if(menu_item.Key == Model.menu_id)
@@ -42,10 +50,11 @@
                             @Html.Raw(menu_item.Value);
                         }
                     }
-                }
+                }*@
             </td>
         </tr>
         <tr>
+            @*---------------Page visibility--------------------*@
             <td>
                 @Html.DisplayNameFor(model => model.page_visibility)
             </td>
@@ -64,6 +73,7 @@
             </td>
         </tr>
         <tr>
+            @*---------------------Page slug------------------------*@
             <td>
                 @Html.DisplayNameFor(model => model.page_slug)
             </td>
@@ -73,6 +83,7 @@
             </td>
         </tr>
         <tr>
+            @*-----------------Page meta title----------------------*@
             <td>
                 @Html.DisplayNameFor(model => model.meta_title)
             </td>
@@ -82,6 +93,7 @@
             </td>
         </tr>
         <tr>
+            @*------------------Page Meta Description-------------------*@
             <td>
                 @Html.DisplayNameFor(model => model.meta_desc)
             </td>

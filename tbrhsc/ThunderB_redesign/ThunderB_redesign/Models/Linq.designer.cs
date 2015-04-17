@@ -39,9 +39,6 @@ namespace ThunderB_redesign.Models
     partial void Insertproduct_category(product_category instance);
     partial void Updateproduct_category(product_category instance);
     partial void Deleteproduct_category(product_category instance);
-    partial void Insertdoctor(doctor instance);
-    partial void Updatedoctor(doctor instance);
-    partial void Deletedoctor(doctor instance);
     partial void Insertmenu_category(menu_category instance);
     partial void Updatemenu_category(menu_category instance);
     partial void Deletemenu_category(menu_category instance);
@@ -102,6 +99,9 @@ namespace ThunderB_redesign.Models
     partial void Insertproduct(product instance);
     partial void Updateproduct(product instance);
     partial void Deleteproduct(product instance);
+    partial void Insertdoctor(doctor instance);
+    partial void Updatedoctor(doctor instance);
+    partial void Deletedoctor(doctor instance);
     #endregion
 		
 		public LinqDataContext() : 
@@ -155,14 +155,6 @@ namespace ThunderB_redesign.Models
 			get
 			{
 				return this.GetTable<product_category>();
-			}
-		}
-		
-		public System.Data.Linq.Table<doctor> doctors
-		{
-			get
-			{
-				return this.GetTable<doctor>();
 			}
 		}
 		
@@ -323,6 +315,14 @@ namespace ThunderB_redesign.Models
 			get
 			{
 				return this.GetTable<product>();
+			}
+		}
+		
+		public System.Data.Linq.Table<doctor> doctors
+		{
+			get
+			{
+				return this.GetTable<doctor>();
 			}
 		}
 	}
@@ -855,450 +855,6 @@ namespace ThunderB_redesign.Models
 		{
 			this.SendPropertyChanging();
 			entity.product_category = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.doctors")]
-	public partial class doctor : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _dr_id;
-		
-		private string _dr_name;
-		
-		private string _dr_specialty;
-		
-		private string _dr_office_name;
-		
-		private string _dr_office_address;
-		
-		private string _dr_office_phone;
-		
-		private string _dr_photo;
-		
-		private int _user_id;
-		
-		private int _dept_id;
-		
-		private EntitySet<triage> _triages;
-		
-		private EntitySet<triage> _triages1;
-		
-		private EntitySet<appointment> _appointments;
-		
-		private EntitySet<appointment> _appointments1;
-		
-		private EntityRef<department> _department;
-		
-		private EntityRef<department> _department1;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Ondr_idChanging(int value);
-    partial void Ondr_idChanged();
-    partial void Ondr_nameChanging(string value);
-    partial void Ondr_nameChanged();
-    partial void Ondr_specialtyChanging(string value);
-    partial void Ondr_specialtyChanged();
-    partial void Ondr_office_nameChanging(string value);
-    partial void Ondr_office_nameChanged();
-    partial void Ondr_office_addressChanging(string value);
-    partial void Ondr_office_addressChanged();
-    partial void Ondr_office_phoneChanging(string value);
-    partial void Ondr_office_phoneChanged();
-    partial void Ondr_photoChanging(string value);
-    partial void Ondr_photoChanged();
-    partial void Onuser_idChanging(int value);
-    partial void Onuser_idChanged();
-    partial void Ondept_idChanging(int value);
-    partial void Ondept_idChanged();
-    #endregion
-		
-		public doctor()
-		{
-			this._triages = new EntitySet<triage>(new Action<triage>(this.attach_triages), new Action<triage>(this.detach_triages));
-			this._triages1 = new EntitySet<triage>(new Action<triage>(this.attach_triages1), new Action<triage>(this.detach_triages1));
-			this._appointments = new EntitySet<appointment>(new Action<appointment>(this.attach_appointments), new Action<appointment>(this.detach_appointments));
-			this._appointments1 = new EntitySet<appointment>(new Action<appointment>(this.attach_appointments1), new Action<appointment>(this.detach_appointments1));
-			this._department = default(EntityRef<department>);
-			this._department1 = default(EntityRef<department>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dr_id", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int dr_id
-		{
-			get
-			{
-				return this._dr_id;
-			}
-			set
-			{
-				if ((this._dr_id != value))
-				{
-					this.Ondr_idChanging(value);
-					this.SendPropertyChanging();
-					this._dr_id = value;
-					this.SendPropertyChanged("dr_id");
-					this.Ondr_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dr_name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string dr_name
-		{
-			get
-			{
-				return this._dr_name;
-			}
-			set
-			{
-				if ((this._dr_name != value))
-				{
-					this.Ondr_nameChanging(value);
-					this.SendPropertyChanging();
-					this._dr_name = value;
-					this.SendPropertyChanged("dr_name");
-					this.Ondr_nameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dr_specialty", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string dr_specialty
-		{
-			get
-			{
-				return this._dr_specialty;
-			}
-			set
-			{
-				if ((this._dr_specialty != value))
-				{
-					this.Ondr_specialtyChanging(value);
-					this.SendPropertyChanging();
-					this._dr_specialty = value;
-					this.SendPropertyChanged("dr_specialty");
-					this.Ondr_specialtyChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dr_office_name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string dr_office_name
-		{
-			get
-			{
-				return this._dr_office_name;
-			}
-			set
-			{
-				if ((this._dr_office_name != value))
-				{
-					this.Ondr_office_nameChanging(value);
-					this.SendPropertyChanging();
-					this._dr_office_name = value;
-					this.SendPropertyChanged("dr_office_name");
-					this.Ondr_office_nameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dr_office_address", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
-		public string dr_office_address
-		{
-			get
-			{
-				return this._dr_office_address;
-			}
-			set
-			{
-				if ((this._dr_office_address != value))
-				{
-					this.Ondr_office_addressChanging(value);
-					this.SendPropertyChanging();
-					this._dr_office_address = value;
-					this.SendPropertyChanged("dr_office_address");
-					this.Ondr_office_addressChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dr_office_phone", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
-		public string dr_office_phone
-		{
-			get
-			{
-				return this._dr_office_phone;
-			}
-			set
-			{
-				if ((this._dr_office_phone != value))
-				{
-					this.Ondr_office_phoneChanging(value);
-					this.SendPropertyChanging();
-					this._dr_office_phone = value;
-					this.SendPropertyChanged("dr_office_phone");
-					this.Ondr_office_phoneChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dr_photo", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string dr_photo
-		{
-			get
-			{
-				return this._dr_photo;
-			}
-			set
-			{
-				if ((this._dr_photo != value))
-				{
-					this.Ondr_photoChanging(value);
-					this.SendPropertyChanging();
-					this._dr_photo = value;
-					this.SendPropertyChanged("dr_photo");
-					this.Ondr_photoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", DbType="Int NOT NULL")]
-		public int user_id
-		{
-			get
-			{
-				return this._user_id;
-			}
-			set
-			{
-				if ((this._user_id != value))
-				{
-					this.Onuser_idChanging(value);
-					this.SendPropertyChanging();
-					this._user_id = value;
-					this.SendPropertyChanged("user_id");
-					this.Onuser_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dept_id", DbType="Int NOT NULL")]
-		public int dept_id
-		{
-			get
-			{
-				return this._dept_id;
-			}
-			set
-			{
-				if ((this._dept_id != value))
-				{
-					if ((this._department.HasLoadedOrAssignedValue || this._department1.HasLoadedOrAssignedValue))
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Ondept_idChanging(value);
-					this.SendPropertyChanging();
-					this._dept_id = value;
-					this.SendPropertyChanged("dept_id");
-					this.Ondept_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="doctor_triage", Storage="_triages", ThisKey="dr_id", OtherKey="dr_id")]
-		public EntitySet<triage> triages
-		{
-			get
-			{
-				return this._triages;
-			}
-			set
-			{
-				this._triages.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="doctor_triage1", Storage="_triages1", ThisKey="dr_id", OtherKey="dr_id")]
-		public EntitySet<triage> triages1
-		{
-			get
-			{
-				return this._triages1;
-			}
-			set
-			{
-				this._triages1.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="doctor_appointment", Storage="_appointments", ThisKey="dr_id", OtherKey="dr_id")]
-		public EntitySet<appointment> appointments
-		{
-			get
-			{
-				return this._appointments;
-			}
-			set
-			{
-				this._appointments.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="doctor_appointment1", Storage="_appointments1", ThisKey="dr_id", OtherKey="dr_id")]
-		public EntitySet<appointment> appointments1
-		{
-			get
-			{
-				return this._appointments1;
-			}
-			set
-			{
-				this._appointments1.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="department_doctor", Storage="_department", ThisKey="dept_id", OtherKey="id", IsForeignKey=true)]
-		public department department
-		{
-			get
-			{
-				return this._department.Entity;
-			}
-			set
-			{
-				department previousValue = this._department.Entity;
-				if (((previousValue != value) 
-							|| (this._department.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._department.Entity = null;
-						previousValue.doctors.Remove(this);
-					}
-					this._department.Entity = value;
-					if ((value != null))
-					{
-						value.doctors.Add(this);
-						this._dept_id = value.id;
-					}
-					else
-					{
-						this._dept_id = default(int);
-					}
-					this.SendPropertyChanged("department");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="department_doctor1", Storage="_department1", ThisKey="dept_id", OtherKey="id", IsForeignKey=true)]
-		public department department1
-		{
-			get
-			{
-				return this._department1.Entity;
-			}
-			set
-			{
-				department previousValue = this._department1.Entity;
-				if (((previousValue != value) 
-							|| (this._department1.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._department1.Entity = null;
-						previousValue.doctors1.Remove(this);
-					}
-					this._department1.Entity = value;
-					if ((value != null))
-					{
-						value.doctors1.Add(this);
-						this._dept_id = value.id;
-					}
-					else
-					{
-						this._dept_id = default(int);
-					}
-					this.SendPropertyChanged("department1");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_triages(triage entity)
-		{
-			this.SendPropertyChanging();
-			entity.doctor = this;
-		}
-		
-		private void detach_triages(triage entity)
-		{
-			this.SendPropertyChanging();
-			entity.doctor = null;
-		}
-		
-		private void attach_triages1(triage entity)
-		{
-			this.SendPropertyChanging();
-			entity.doctor1 = this;
-		}
-		
-		private void detach_triages1(triage entity)
-		{
-			this.SendPropertyChanging();
-			entity.doctor1 = null;
-		}
-		
-		private void attach_appointments(appointment entity)
-		{
-			this.SendPropertyChanging();
-			entity.doctor = this;
-		}
-		
-		private void detach_appointments(appointment entity)
-		{
-			this.SendPropertyChanging();
-			entity.doctor = null;
-		}
-		
-		private void attach_appointments1(appointment entity)
-		{
-			this.SendPropertyChanging();
-			entity.doctor1 = this;
-		}
-		
-		private void detach_appointments1(appointment entity)
-		{
-			this.SendPropertyChanging();
-			entity.doctor1 = null;
 		}
 	}
 	
@@ -5214,6 +4770,426 @@ namespace ThunderB_redesign.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.doctors")]
+	public partial class doctor : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _dr_id;
+		
+		private string _dr_name;
+		
+		private string _dr_specialty;
+		
+		private string _dr_office_name;
+		
+		private string _dr_office_address;
+		
+		private string _dr_office_phone;
+		
+		private int _user_id;
+		
+		private int _dept_id;
+		
+		private EntitySet<triage> _triages;
+		
+		private EntitySet<triage> _triages1;
+		
+		private EntitySet<appointment> _appointments;
+		
+		private EntitySet<appointment> _appointments1;
+		
+		private EntityRef<department> _department;
+		
+		private EntityRef<department> _department1;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Ondr_idChanging(int value);
+    partial void Ondr_idChanged();
+    partial void Ondr_nameChanging(string value);
+    partial void Ondr_nameChanged();
+    partial void Ondr_specialtyChanging(string value);
+    partial void Ondr_specialtyChanged();
+    partial void Ondr_office_nameChanging(string value);
+    partial void Ondr_office_nameChanged();
+    partial void Ondr_office_addressChanging(string value);
+    partial void Ondr_office_addressChanged();
+    partial void Ondr_office_phoneChanging(string value);
+    partial void Ondr_office_phoneChanged();
+    partial void Onuser_idChanging(int value);
+    partial void Onuser_idChanged();
+    partial void Ondept_idChanging(int value);
+    partial void Ondept_idChanged();
+    #endregion
+		
+		public doctor()
+		{
+			this._triages = new EntitySet<triage>(new Action<triage>(this.attach_triages), new Action<triage>(this.detach_triages));
+			this._triages1 = new EntitySet<triage>(new Action<triage>(this.attach_triages1), new Action<triage>(this.detach_triages1));
+			this._appointments = new EntitySet<appointment>(new Action<appointment>(this.attach_appointments), new Action<appointment>(this.detach_appointments));
+			this._appointments1 = new EntitySet<appointment>(new Action<appointment>(this.attach_appointments1), new Action<appointment>(this.detach_appointments1));
+			this._department = default(EntityRef<department>);
+			this._department1 = default(EntityRef<department>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dr_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int dr_id
+		{
+			get
+			{
+				return this._dr_id;
+			}
+			set
+			{
+				if ((this._dr_id != value))
+				{
+					this.Ondr_idChanging(value);
+					this.SendPropertyChanging();
+					this._dr_id = value;
+					this.SendPropertyChanged("dr_id");
+					this.Ondr_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dr_name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string dr_name
+		{
+			get
+			{
+				return this._dr_name;
+			}
+			set
+			{
+				if ((this._dr_name != value))
+				{
+					this.Ondr_nameChanging(value);
+					this.SendPropertyChanging();
+					this._dr_name = value;
+					this.SendPropertyChanged("dr_name");
+					this.Ondr_nameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dr_specialty", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string dr_specialty
+		{
+			get
+			{
+				return this._dr_specialty;
+			}
+			set
+			{
+				if ((this._dr_specialty != value))
+				{
+					this.Ondr_specialtyChanging(value);
+					this.SendPropertyChanging();
+					this._dr_specialty = value;
+					this.SendPropertyChanged("dr_specialty");
+					this.Ondr_specialtyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dr_office_name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string dr_office_name
+		{
+			get
+			{
+				return this._dr_office_name;
+			}
+			set
+			{
+				if ((this._dr_office_name != value))
+				{
+					this.Ondr_office_nameChanging(value);
+					this.SendPropertyChanging();
+					this._dr_office_name = value;
+					this.SendPropertyChanged("dr_office_name");
+					this.Ondr_office_nameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dr_office_address", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
+		public string dr_office_address
+		{
+			get
+			{
+				return this._dr_office_address;
+			}
+			set
+			{
+				if ((this._dr_office_address != value))
+				{
+					this.Ondr_office_addressChanging(value);
+					this.SendPropertyChanging();
+					this._dr_office_address = value;
+					this.SendPropertyChanged("dr_office_address");
+					this.Ondr_office_addressChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dr_office_phone", DbType="VarChar(10) NOT NULL", CanBeNull=false)]
+		public string dr_office_phone
+		{
+			get
+			{
+				return this._dr_office_phone;
+			}
+			set
+			{
+				if ((this._dr_office_phone != value))
+				{
+					this.Ondr_office_phoneChanging(value);
+					this.SendPropertyChanging();
+					this._dr_office_phone = value;
+					this.SendPropertyChanged("dr_office_phone");
+					this.Ondr_office_phoneChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", DbType="Int NOT NULL")]
+		public int user_id
+		{
+			get
+			{
+				return this._user_id;
+			}
+			set
+			{
+				if ((this._user_id != value))
+				{
+					this.Onuser_idChanging(value);
+					this.SendPropertyChanging();
+					this._user_id = value;
+					this.SendPropertyChanged("user_id");
+					this.Onuser_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_dept_id", DbType="Int NOT NULL")]
+		public int dept_id
+		{
+			get
+			{
+				return this._dept_id;
+			}
+			set
+			{
+				if ((this._dept_id != value))
+				{
+					if ((this._department.HasLoadedOrAssignedValue || this._department1.HasLoadedOrAssignedValue))
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Ondept_idChanging(value);
+					this.SendPropertyChanging();
+					this._dept_id = value;
+					this.SendPropertyChanged("dept_id");
+					this.Ondept_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="doctor_triage", Storage="_triages", ThisKey="dr_id", OtherKey="dr_id")]
+		public EntitySet<triage> triages
+		{
+			get
+			{
+				return this._triages;
+			}
+			set
+			{
+				this._triages.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="doctor_triage1", Storage="_triages1", ThisKey="dr_id", OtherKey="dr_id")]
+		public EntitySet<triage> triages1
+		{
+			get
+			{
+				return this._triages1;
+			}
+			set
+			{
+				this._triages1.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="doctor_appointment", Storage="_appointments", ThisKey="dr_id", OtherKey="dr_id")]
+		public EntitySet<appointment> appointments
+		{
+			get
+			{
+				return this._appointments;
+			}
+			set
+			{
+				this._appointments.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="doctor_appointment1", Storage="_appointments1", ThisKey="dr_id", OtherKey="dr_id")]
+		public EntitySet<appointment> appointments1
+		{
+			get
+			{
+				return this._appointments1;
+			}
+			set
+			{
+				this._appointments1.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="department_doctor", Storage="_department", ThisKey="dept_id", OtherKey="id", IsForeignKey=true)]
+		public department department
+		{
+			get
+			{
+				return this._department.Entity;
+			}
+			set
+			{
+				department previousValue = this._department.Entity;
+				if (((previousValue != value) 
+							|| (this._department.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._department.Entity = null;
+						previousValue.doctors.Remove(this);
+					}
+					this._department.Entity = value;
+					if ((value != null))
+					{
+						value.doctors.Add(this);
+						this._dept_id = value.id;
+					}
+					else
+					{
+						this._dept_id = default(int);
+					}
+					this.SendPropertyChanged("department");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="department_doctor1", Storage="_department1", ThisKey="dept_id", OtherKey="id", IsForeignKey=true)]
+		public department department1
+		{
+			get
+			{
+				return this._department1.Entity;
+			}
+			set
+			{
+				department previousValue = this._department1.Entity;
+				if (((previousValue != value) 
+							|| (this._department1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._department1.Entity = null;
+						previousValue.doctors1.Remove(this);
+					}
+					this._department1.Entity = value;
+					if ((value != null))
+					{
+						value.doctors1.Add(this);
+						this._dept_id = value.id;
+					}
+					else
+					{
+						this._dept_id = default(int);
+					}
+					this.SendPropertyChanged("department1");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_triages(triage entity)
+		{
+			this.SendPropertyChanging();
+			entity.doctor = this;
+		}
+		
+		private void detach_triages(triage entity)
+		{
+			this.SendPropertyChanging();
+			entity.doctor = null;
+		}
+		
+		private void attach_triages1(triage entity)
+		{
+			this.SendPropertyChanging();
+			entity.doctor1 = this;
+		}
+		
+		private void detach_triages1(triage entity)
+		{
+			this.SendPropertyChanging();
+			entity.doctor1 = null;
+		}
+		
+		private void attach_appointments(appointment entity)
+		{
+			this.SendPropertyChanging();
+			entity.doctor = this;
+		}
+		
+		private void detach_appointments(appointment entity)
+		{
+			this.SendPropertyChanging();
+			entity.doctor = null;
+		}
+		
+		private void attach_appointments1(appointment entity)
+		{
+			this.SendPropertyChanging();
+			entity.doctor1 = this;
+		}
+		
+		private void detach_appointments1(appointment entity)
+		{
+			this.SendPropertyChanging();
+			entity.doctor1 = null;
 		}
 	}
 }

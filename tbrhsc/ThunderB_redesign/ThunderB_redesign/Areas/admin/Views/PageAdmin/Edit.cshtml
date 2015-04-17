@@ -4,6 +4,8 @@
     ViewBag.Title = "Edit";
 }
 
+@*----------Page editing form-----------------*@
+
 <h2>Edit page</h2>
 
 @using (Html.BeginForm())
@@ -12,6 +14,8 @@
 
     <div class="form-horizontal">
         <hr />
+
+        @*-----------------Hidden fields to store un-editable values-----------*@
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.page_id)
@@ -23,6 +27,7 @@
 
         <table class="page_editor">
             <tr>
+                @*-------------------Page title----------------------------*@
                 <td>
                
                     @Html.LabelFor(model => model.page_title, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -34,6 +39,9 @@
             </tr> 
             <tr>
                 <td colspan="2">
+
+                    @*CK Editor instructions are found here --https://www.youtube.com/watch?v=uJ_BeZUO0rg*@
+                    @*Tutorial to upload and embed images using CK editor was found here --http://amitraya.blogspot.ca/2014/09/ck-editor-implement-your-own-image.html*@
 
                         <textarea id="page_content" name="page_content">@Model.page_content</textarea>
                         <script type="text/javascript">

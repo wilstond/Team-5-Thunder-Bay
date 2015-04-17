@@ -27,8 +27,8 @@ namespace ThunderB_redesign.Models
         public string dr_office_address { get; set; }
         [DisplayName("Phone Number")]
         public string dr_office_phone { get; set; }
-        [DisplayName("Photo")]
-        public string dr_photo { get; set; }
+    //    [DisplayName("Photo")]
+     //   public string dr_photo { get; set; }
         [DisplayName("User Id")]
         public int user_id { get; set; }
         [DisplayName("Department")]

@@ -40,7 +40,6 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             ViewBag.menuTree = menuObj.getMenuTree();
             ViewBag.breadCrumbs = menuObj.getBreadcrumbList();
             ViewBag.headerList = menuObj.getHeadersList();
-            //user_id = WebSecurity.CurrentUserId;
             
             
 
@@ -110,6 +109,8 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             }
             else
             {
+                // get menu breadcrumb instead of just an id to display in the form
+                ViewBag.menu_header = menuObj.getBreadcrumbList().Single(x => x.Key == selectPage.menu_id).Value;
                 //Display Details of the Page
                 return View(selectPage);
             }
@@ -124,6 +125,9 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             newPage.page_created = DateTime.Now.ToLocalTime();
             newPage.user_id = user_id;
             newPage.menu_id = menu_id;
+
+            // get menu breadcrumb instead of just an id to display in the form
+            ViewBag.menu_header = menuObj.getBreadcrumbList().Single(x => x.Key == newPage.menu_id).Value;
             return View(newPage);
         }
 
@@ -135,7 +139,6 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             {
                 try
                 {
-                   // page.page_content = "<div class='content'>" + page.page_content + "</div>";
                     objPage.commitInsert(page); // insert is committed and user is redirected to home page
                     return RedirectToAction("Main");
                 }
@@ -162,6 +165,9 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             }
             else
             {
+                // get menu breadcrumb instead of just an id to display in the form
+                ViewBag.menu_header = menuObj.getBreadcrumbList().Single(x => x.Key == selPage.menu_id).Value;
+            
                 return View(selPage); //displays update form for selected Page
             }
         }
@@ -199,6 +205,8 @@ page.menu_id, page.page_visibility, page.page_slug, page.meta_title, page.meta_d
             }
             else
             {
+                // get menu breadcrumb instead of just an id to display in the form
+                ViewBag.menu_header = menuObj.getBreadcrumbList().Single(x => x.Key == selPage.menu_id).Value;
                 return View(selPage); //confirmation to delete page for selected Page
             }
         }

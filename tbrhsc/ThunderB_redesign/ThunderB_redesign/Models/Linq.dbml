@@ -28,25 +28,6 @@
       <Association Name="product_category_product" Member="products" ThisKey="prd_cat_id" OtherKey="prd_cat_id" Type="product" />
     </Type>
   </Table>
-  <Table Name="dbo.doctors" Member="doctors">
-    <Type Name="doctor">
-      <Column Name="dr_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="dr_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="dr_specialty" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="dr_office_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="dr_office_address" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
-      <Column Name="dr_office_phone" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
-      <Column Name="dr_photo" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="dept_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="doctor_triage" Member="triages" ThisKey="dr_id" OtherKey="dr_id" Type="triage" />
-      <Association Name="doctor_triage1" Member="triages1" ThisKey="dr_id" OtherKey="dr_id" Type="triage" />
-      <Association Name="doctor_appointment" Member="appointments" ThisKey="dr_id" OtherKey="dr_id" Type="appointment" />
-      <Association Name="doctor_appointment1" Member="appointments1" ThisKey="dr_id" OtherKey="dr_id" Type="appointment" />
-      <Association Name="department_doctor" Member="department" ThisKey="dept_id" OtherKey="id" Type="department" IsForeignKey="true" />
-      <Association Name="department_doctor1" Member="department1" ThisKey="dept_id" OtherKey="id" Type="department" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="team5.menu_categories" Member="menu_categories">
     <Type Name="menu_category">
       <Column Name="menu_id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -248,6 +229,24 @@
       <Column Name="prd_cat_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="prd_img_url" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
       <Association Name="product_category_product" Member="product_category" ThisKey="prd_cat_id" OtherKey="prd_cat_id" Type="product_category" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.doctors" Member="doctors">
+    <Type Name="doctor">
+      <Column Name="dr_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="dr_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="dr_specialty" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="dr_office_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="dr_office_address" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="dr_office_phone" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="dept_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="doctor_triage" Member="triages" ThisKey="dr_id" OtherKey="dr_id" Type="triage" />
+      <Association Name="doctor_triage1" Member="triages1" ThisKey="dr_id" OtherKey="dr_id" Type="triage" />
+      <Association Name="doctor_appointment" Member="appointments" ThisKey="dr_id" OtherKey="dr_id" Type="appointment" />
+      <Association Name="doctor_appointment1" Member="appointments1" ThisKey="dr_id" OtherKey="dr_id" Type="appointment" />
+      <Association Name="department_doctor" Member="department" ThisKey="dept_id" OtherKey="id" Type="department" IsForeignKey="true" />
+      <Association Name="department_doctor1" Member="department1" ThisKey="dept_id" OtherKey="id" Type="department" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
