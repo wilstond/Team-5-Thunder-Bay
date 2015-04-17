@@ -36,9 +36,7 @@
     <div class="main_content clearfix">
         <section class="top_section clearfix top">
             <header class="section-header">
-                <h1>New Website for Thunder Bay</h1>
             </header>
-            <span class="date">@DateTime.Now.Date.ToLongDateString()</span>
             <figure>
 
                 @* Responsive image for the home page - allows to load small image for phone screen
@@ -52,18 +50,13 @@
                      alt="TBRHSC main building">
             </figure>
             <article>
-                <div class="one-half first">
-                    <p>
-                        Over the recent months Thunder Bay Regional Health Sciences Centre’s website, www.tbrhsc.net, was redesigned by the web extrordinaires over at Peregrine, which is a web studio based out of Toronto. Along with the lovely website redesign, THRHSC had it’s branding redesigned to elevate it’s identity into the advanced web friendly future.
-                        Lorem ipsum dolor sit amet, quo ei eirmod animal, an sea oratio mandamus disputationi. Eos enim minimum atomorum ei, vel an odio dicit. Ne sit fabulas persecuti mediocritatem. Eos errem vulputate an. Et cibo mundi periculis pro, ne mentitum deserunt ius.
-                    </p>
+
+                    <h1>@Model.headline</h1>
+                <span class="date">@Model.date</span>
+                <div>
+                    @Model.stories
                 </div>
-                <div class="one-half last">
-                    <p>
-                        Over the recent months Thunder Bay Regional Health Sciences Centre’s website, www.tbrhsc.net, was redesigned by the web extrordinaires over at Peregrine, which is a web studio based out of Toronto. Along with the lovely website redesign, THRHSC had it’s branding redesigned to elevate it’s identity into the advanced web friendly future.
-                        Lorem ipsum dolor sit amet, quo ei eirmod animal, an sea oratio mandamus disputationi. Eos enim minimum atomorum ei, vel an odio dicit. Ne sit fabulas persecuti mediocritatem. Eos errem vulputate an. Et cibo mundi periculis pro, ne mentitum deserunt ius.
-                    </p>
-                </div>
+               
             </article>
         </section>
 
@@ -81,7 +74,7 @@
                         </li>
 
                         <li>
-                            <a href="#">Volunteers</a>
+                            <a href="~/GiftShop/Index">Volunteers</a>
                         </li>
 
                         <li>

@@ -12,6 +12,7 @@ namespace ThunderB_redesign.Controllers
     {
 
         MenuLinqClass menuObj = new MenuLinqClass();
+        NewsPostLinq newsObj = new NewsPostLinq();
 
         public HomeController()
         {
@@ -28,7 +29,8 @@ namespace ThunderB_redesign.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var lastNews = newsObj.getTopNews().First();
+            return View(lastNews);
         }
 
 
