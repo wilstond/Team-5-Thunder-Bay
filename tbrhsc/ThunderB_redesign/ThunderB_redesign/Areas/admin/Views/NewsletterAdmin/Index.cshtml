@@ -1,16 +1,25 @@
 ﻿@model IEnumerable<ThunderB_redesign.Models.subscriber>
 
+@{
+    ViewBag.Title = "tbrhsc | Newsletter Control Panel";
+}
+
 <div id="newsletter-admin">
 
-   
-     @Html.ActionLink("Compose a Newsletter", "SendNewsletter")
-    
     <br />
+    <br/>
+   
+      @Html.ActionLink("Compose a Newsletter", "SendNewsletter")
+    
+    <br/>
+    <br/>
+    <br/>
+    <hr/>
     <br/>
 
     <h2>Newsletter Subscribers</h2>
 
-    <table class="stripes">
+    <table class="stripes margin-0-auto">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.sub_name)
@@ -31,7 +40,7 @@
                     @Html.DisplayFor(modelItem => item.sub_email)
                 </td>
                 <td>
-                    @Html.ActionLink("Update", "Update", new { id = item.sub_id }) |
+                    @Html.ActionLink("Update", "Update", new { id = item.sub_id })
                     @Html.ActionLink("Delete", "Delete", new { id = item.sub_id })
                 </td>
             </tr>

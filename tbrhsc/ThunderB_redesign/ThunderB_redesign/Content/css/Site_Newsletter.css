@@ -40,19 +40,74 @@
 }
 
 
+@media only screen and (max-width: 70em) {
+    #subscribefrm {
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 66em) {
+    #subscribefrm {
+        text-align: left;
+    }
+}
+
+@media only screen and (max-width: 44em) {
+    #subscribefrm h4 {
+        font-size: 12px;
+    }
+
+    #subscribefrm form .form-group {
+        width: inherit;
+    }
+}
+
+
+
+
 /* Admin Style */
 
 #newsletter-admin {
-
+    text-align: center;
 }
 
-#newsletter-admin a {
-    border: 1px solid white;
-    background-color: #1a2f38;    
-    color: white;
-    padding: 5px 10px;
-}
+    #newsletter-admin a {
+        border: 1px solid white;
+        background-color: #1a2f38;    
+        color: white;
+        padding: 5px 10px;
+    }
 
     #newsletter-admin h2 {
         color: black;
+        font-size: 20px;
+        font-weight: bolder;
+    }
+
+    #newsletter-admin strong {
+        font-weight: bolder;
+    }
+
+    #newsletter-admin input[type="submit"] {
+        border: 1px solid white;
+        background-color: #1a2f38;    
+        color: white;
+        padding: 5px 10px;
+    }
+
+#form-newsletter-mail {
+
+}
+
+    #form-newsletter-mail input {
+        width: 100%;
+    }
+
+    #form-newsletter-mail textarea {
+        width: 100%;
+        height: 300px;
+    }
+
+    #form-newsletter-mail input[type="submit"] {
+        width: inherit;
     }

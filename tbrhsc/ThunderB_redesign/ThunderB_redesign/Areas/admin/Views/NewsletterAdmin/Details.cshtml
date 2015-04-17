@@ -1,34 +1,36 @@
 ﻿@model ThunderB_redesign.Models.subscriber
 
-@{
-    ViewBag.Title = "Details";
-}
 
-<h2>Details</h2>
+<div id="newsletter-admin">
+    <br/>
+    <h2>Subscriber Details</h2>
+    <br/>
+    <div class="width-30 margin-0-auto">
+        <div class="float-left">
+            <strong>@Html.DisplayNameFor(model => model.sub_name)</strong>
+        </div>
 
-<div>
-    <h4>subscriber</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.sub_name)
-        </dt>
-
-        <dd>
+        <div class="float-right">
             @Html.DisplayFor(model => model.sub_name)
-        </dd>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.sub_email)
-        </dt>
+        <div class="clear-both"></div>
+        <br/>
+        <div class="float-left">
+            <strong>@Html.DisplayNameFor(model => model.sub_email)</strong>
+        </div>
 
-        <dd>
+        <div class="float-right">
             @Html.DisplayFor(model => model.sub_email)
-        </dd>
+        </div>
 
-    </dl>
+        <div class="clear-both"></div>
+
+    </div>
+    <br/><br/>
+    <p>
+        @Html.ActionLink("Edit", "Update", new { id = Model.sub_id })
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.sub_id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+

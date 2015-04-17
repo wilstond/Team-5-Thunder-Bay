@@ -111,6 +111,19 @@
             border-radius: 5px;
         }
 
+@media only screen and (max-width: 70em) {
+
+}
+
+@media only screen and (max-width: 66em) {
+
+}
+
+@media only screen and (max-width: 44em) {
+
+}
+
+
 
 /* Donation Admin Side Styling */
 
@@ -123,6 +136,7 @@
         font-size: 20px;
         font-weight: bolder;
     }    
+
 
 
 /* Helper Classes */
@@ -143,10 +157,17 @@
     width: 40%;
 }
 
+.width-30 {
+    width: 30%;
+}
+
 .text-danger {
     color: red;
 }
 
+.text-center {
+    text-align: center;
+}
 .margin-0-auto {
     margin: 0 auto;
 }
