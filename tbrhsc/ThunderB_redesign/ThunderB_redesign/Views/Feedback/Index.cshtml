@@ -2,52 +2,59 @@
 @{
     ViewBag.Title = "Feedback";
 }
+<div class="middle clearfix white" >
+    <section class="clearfix">
+        <article>
+            @*The Submit Feedback Public page*@
+            <h1>Submit Feedback</h1>
+            <p>In compliance with the Excellent Care for All Act, Thunder Bay Regional Health Sciences Centre would like to ensure ease of access for the public to share their concerns, compliments and feedback. Thunder Bay Regional Health Sciences Centre values the input of our patients and families as well as our external partners. </p>
 
-@*The Submit Feedback Public page*@
-<h1>Submit Feedback</h1>
-<p>In compliance with the Excellent Care for All Act, Thunder Bay Regional Health Sciences Centre would like to ensure ease of access for the public to share their concerns, compliments and feedback. Thunder Bay Regional Health Sciences Centre values the input of our patients and families as well as our external partners. </p>
+            <p>Compliments and concerns can be submitted electronically or in writing.</p>
 
-<p>Compliments and concerns can be submitted electronically or in writing.</p>
+            <p>If you wish to express a concern or compliment about anything that has happened to you while a patient of Thunder Bay Regional Health Sciences Centre, there are several options to submit your feedback; the preferred method is to deal directly with staff:</p>
 
-<p>If you wish to express a concern or compliment about anything that has happened to you while a patient of Thunder Bay Regional Health Sciences Centre, there are several options to submit your feedback; the preferred method is to deal directly with staff:</p>
+            <p>
+                1. Tell a staff member who is with you and ask for a response<br />
+                2. Ask to speak with a Department Manager<br />
+                3. Ask to speak with the Director of Patient Care Services or VP Clinical<br />
+                4. Submit your comments online via the form below:
+            </p>
 
-<p>
-1. Tell a staff member who is with you and ask for a response<br />
-2. Ask to speak with a Department Manager<br />
-3. Ask to speak with the Director of Patient Care Services or VP Clinical<br />
-4. Submit your comments online via the form below:</p>
+            @*The Fields for the feedback form*@
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary()
+                <br />
 
-@*The Fields for the feedback form*@
-@using (Html.BeginForm())
-{
-    @Html.ValidationSummary()
-    <br />
+                @Html.LabelFor(model => model.name)
+                <br />
+                @Html.TextBoxFor(model => model.name, new { style = "width: 600px;" })
+                @Html.ValidationMessageFor(model => model.name, "*")
+                <br />
+                <br />
+                @Html.LabelFor(model => model.email)
+                <br />
+                @Html.TextBoxFor(model => model.email, new { style = "width: 600px;" })
+                @Html.ValidationMessageFor(model => model.email, "*")
+                <br />
+                <br />
+                @Html.LabelFor(model => model.topic)
+                <br />
+                @Html.TextBoxFor(model => model.topic, new { style = "width: 600px;" })
+                @Html.ValidationMessageFor(model => model.topic, "*")
+                <br />
+                <br />
+                @Html.LabelFor(model => model.fbcontent)
+                <br />
+                @Html.TextAreaFor(model => model.fbcontent, new { maxlength = "250", style = "width: 600px; height: 300px;" })
+                @Html.ValidationMessageFor(model => model.fbcontent, "*")
+                <br />
+                <br />
+                <input type="submit" value="Submit" />
+                <br />
+                <br />
 
-    @Html.LabelFor(model => model.name)
-    <br />
-    @Html.TextBoxFor(model => model.name, new { style = "width: 600px;"})
-    @Html.ValidationMessageFor(model => model.name, "*")
-    <br />
-    <br />
-    @Html.LabelFor(model => model.email)
-    <br />
-    @Html.TextBoxFor(model => model.email, new { style = "width: 600px;" })
-    @Html.ValidationMessageFor(model => model.email, "*")
-    <br />
-    <br />
-    @Html.LabelFor(model => model.topic)
-    <br />
-    @Html.TextBoxFor(model => model.topic, new { style = "width: 600px;" })
-    @Html.ValidationMessageFor(model => model.topic, "*")
-    <br />
-    <br />
-    @Html.LabelFor(model => model.fbcontent)
-    <br />
-    @Html.TextAreaFor(model => model.fbcontent, new { maxlength = "250", style = "width: 600px; height: 300px;" })
-    @Html.ValidationMessageFor(model => model.fbcontent, "*")
-    <br />
-    <br />
-    <input type="submit" value="Submit" />
-    <br />
-
-}
+            }
+        </article>
+    </section>
+</div>
