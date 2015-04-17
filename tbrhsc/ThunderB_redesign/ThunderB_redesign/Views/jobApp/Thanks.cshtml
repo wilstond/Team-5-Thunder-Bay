@@ -1,5 +1,7 @@
 ﻿@model ThunderB_redesign.Models.jobApplication
 
+<h1>Application Summary</h1>
+
 <div>
     <p>Thanks @Model.first_name, your applications has been submitted</p>
 
@@ -65,7 +67,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.cover_letter)
+            @Html.Raw(Model.cover_letter)
         </dd>
 
         <dt>
@@ -73,7 +75,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.resume)
+            @Html.Raw(Model.resume)
         </dd>
 
         <dt>
@@ -88,5 +90,5 @@
 </div>
 <p>
     
-    @Html.ActionLink("Back to Job Postings","Job", "Index")
+    @Html.ActionLink("Back to Job Postings","Index", "Job")
 </p>

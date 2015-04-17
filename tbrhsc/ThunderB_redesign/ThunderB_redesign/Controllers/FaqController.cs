@@ -28,17 +28,20 @@ namespace ThunderB_redesign.Controllers
 
         public ActionResult Index()
         {
+            //getting all general faqs
             var faq = objFaq.GetFaqsByCategory();
             return View(faq);
         }
 
+        // action result for patient FAQs
         public PartialViewResult Patient()
         {
             string patient ="patient";
             var faq = objFaq.GetFaqsByCategory(patient);
             return PartialView("_category",faq);
         }
-
+        
+        //action result for visitor FAQs 
         public PartialViewResult Visitor()
         {
             string visitor = "visitor";
@@ -46,6 +49,7 @@ namespace ThunderB_redesign.Controllers
             return PartialView("_category", faq);
         }
 
+        // action result for health professional FAQs 
         public PartialViewResult HealthProfessional()
         {
             string healthpro = "health professional";
@@ -53,7 +57,7 @@ namespace ThunderB_redesign.Controllers
             return PartialView("_category", faq);
         }
 
-
+        //partial view that show faqs based on categories
         public ActionResult _categories()
         {
 

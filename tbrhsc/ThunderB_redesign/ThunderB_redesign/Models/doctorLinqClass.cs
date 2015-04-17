@@ -32,18 +32,22 @@ namespace ThunderB_redesign.Models
             }
         }
 
-/*        public bool commitUpdate(int _FaqId, string _question, string _answer, string _category) //Update method that takes one instance of all the fields of the Faq table and also returns a boolean depending in success of update
+       public bool commitUpdate(int _DocId, string _name, string _specialty, string _office_name, string _dr_office_address, string _dr_office_phone, int _user_id, int _dept_id) //Update method that takes one instance of all the fields of the Faq table and also returns a boolean depending in success of update
         {
-            using (objFaq)
+            using (objDoc)
             {
-                var objUpFaq = objFaq.faqs.Single(x => x.id == _FaqId);//linq method that returns the one instance of the table that has the same id as the parameter
-                objUpFaq.answer = _answer;//setting the new value 
-                objUpFaq.question = _question;
-                objUpFaq.category = _category;
-                objFaq.SubmitChanges();
+                var objUpDoc = objDoc.doctors.Single(x => x.dr_id == _DocId);//linq method that returns the one instance of the table that has the same id as the parameter
+                objUpDoc.dr_name = _name;//setting the new value 
+                objUpDoc.dr_specialty = _specialty;
+                objUpDoc.dr_office_name = _office_name;
+                objUpDoc.dr_specialty = _dr_office_address;
+                objUpDoc.dr_office_phone = _dr_office_phone;
+                objUpDoc.user_id = _user_id;
+                objUpDoc.dept_id = _dept_id;
+                objDoc.SubmitChanges();
                 return true;
             }
-        }*/
+        }
 
         public bool commitDelete(int _DocId) //delete method that returns true if successful
         {

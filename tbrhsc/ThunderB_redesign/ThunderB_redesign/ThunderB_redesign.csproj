@@ -725,21 +725,6 @@
     <Content Include="Areas\admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\admin\Views\Dashboard\Index.cshtml" />
-    <Content Include="Images\uploads\doctors\defaultdoctor.jpg" />
-    <Content Include="Images\uploads\doctors\doctor10_male.jpg" />
-    <Content Include="Images\uploads\doctors\doctor11_male.jpg" />
-    <Content Include="Images\uploads\doctors\doctor12_male.jpg" />
-    <Content Include="Images\uploads\doctors\doctor13_female.jpg" />
-    <Content Include="Images\uploads\doctors\doctor14_female.jpg" />
-    <Content Include="Images\uploads\doctors\doctor1_male.jpg" />
-    <Content Include="Images\uploads\doctors\doctor2_female.jpg" />
-    <Content Include="Images\uploads\doctors\doctor3_male.jpg" />
-    <Content Include="Images\uploads\doctors\doctor4_female.jpg" />
-    <Content Include="Images\uploads\doctors\doctor5_male.jpg" />
-    <Content Include="Images\uploads\doctors\doctor6_male.jpg" />
-    <Content Include="Images\uploads\doctors\doctor7_female.jpg" />
-    <Content Include="Images\uploads\doctors\doctor8_female.jpg" />
-    <Content Include="Images\uploads\doctors\doctor9_female.jpg" />
     <Content Include="img\donation.jpg" />
     <Content Include="img\hamburger.png" />
     <Content Include="img\hamburger_menu.png" />
@@ -941,19 +926,14 @@
     <Content Include="Views\jobApp\Thanks.cshtml" />
     <Content Include="Views\doctor\Index.cshtml" />
     <Content Include="Views\Emails\NewsOrAlertEmail.cshtml" />
-
     <Content Include="Views\GiftShop\Index.cshtml" />
-
     <Content Include="Views\doctor\SearchResults.cshtml" />
-
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\admin\Models\" />
-
     <Folder Include="Images\GiftShop\" />
     <Folder Include="Images\uploads\" />
-
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="Views\GPlace\" />
     <Folder Include="Views\Locator\" />

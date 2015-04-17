@@ -25,12 +25,15 @@ namespace ThunderB_redesign.Controllers
             }
         }
 
+        //getting the list of jobs
         public ActionResult Index()
         {
             var allJobs = objJob.GetJobs();
             return View(allJobs);
         }
 
+
+        //detail view of the selected job
         public ActionResult Details(int id)
         {
             var job = objJob.getJobByID(id);

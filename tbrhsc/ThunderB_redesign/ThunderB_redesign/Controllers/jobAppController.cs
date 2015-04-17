@@ -35,7 +35,7 @@ namespace ThunderB_redesign.Controllers
 
         //
         // POST: /jobApplication/Create
-
+        //handles the newly created job applications and inserts it into the database
         [HttpPost]
         public ActionResult Create(jobApplication app)
         {
@@ -54,6 +54,7 @@ namespace ThunderB_redesign.Controllers
             return View();
         }
 
+        //thank you screen after user has completed the application
         public ActionResult Thanks(jobApplication app)
         {
             return View(app);

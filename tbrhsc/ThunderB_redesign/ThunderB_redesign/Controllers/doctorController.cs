@@ -16,11 +16,13 @@ namespace ThunderB_redesign.Controllers
 
         public ActionResult Autocomplete(string term)
         {
+            //querying the database and projecting the value to a field called label for jquery to handle autocompletion
             var model = db.doctors
                 .Where(x => x.dr_name.StartsWith(term)).Take(10).Select(x => new
                 {
                     label = x.dr_name
                 });
+            //returning the data as a json file
             return Json(model, JsonRequestBehavior.AllowGet);
         }
 
@@ -39,8 +41,10 @@ namespace ThunderB_redesign.Controllers
       
         public ActionResult Index(string searchTerm = null, int page = 1)
         {
+            //querying the database based on the search term entered and paging the values
             var model = db.doctors.Where(x => searchTerm == null || x.dr_name.StartsWith(searchTerm)).Select(x => x).ToPagedList(page, 10);
 
+            //handling get ajax request and showing search results
             if (Request.IsAjaxRequest())
             {
                 return PartialView("SearchResults", model);

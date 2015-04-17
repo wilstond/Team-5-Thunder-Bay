@@ -12,6 +12,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         JobLinqClass objJob = new JobLinqClass();
         LinqDataContext db = new LinqDataContext();
 
+        //getting job categories to the viewbag
         public JobAdminController()
         {
             List<jobCategory> objCategories = new List<jobCategory>();

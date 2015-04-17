@@ -14,6 +14,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         JobLinqClass objJob = new JobLinqClass();
 
 
+        //getting Job id
         public ActionResult Index([Bind(Prefix = "id")] int jobId)
         {
 
@@ -21,7 +22,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             return View(job);
         }
 
-
+        //gettting job applications by job_id
         public ActionResult _jobApplications(int job_id)
         {
             var applications = objJobApp.GetJobApplicationsByJobId(job_id);

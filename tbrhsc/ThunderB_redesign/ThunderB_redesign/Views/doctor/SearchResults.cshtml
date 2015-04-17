@@ -28,9 +28,6 @@
             <th>
                 Phone Number
             </th>
-            <th>
-                Photo
-            </th>
             <th>Department
             </th>
 
@@ -62,10 +59,6 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.dr_office_phone)
                     </td>
-                    <td>
-                        <img height="100" src="~/Images/uploads/doctors/@item.dr_photo" alt="doctor photo"/>
-                    </td>
-
                     <td>
                         @Html.DisplayFor(modelItem => item.department.dept_name)
                     </td>
