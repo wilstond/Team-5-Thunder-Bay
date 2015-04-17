@@ -1,15 +1,23 @@
 ﻿@model ThunderB_redesign.Models.donor
 
+@{
+    ViewBag.Title = "tbrhsc | Donation Control Panel";
+}
+
 <div class="donation-admin">
+
+    <br/>
     <h2>Donor Details</h2>
+    <br/>
 
     <div>
         
         <hr />
-        <table>
+        <br/>
+        <table class="stripes margin-0-auto">
             <tr>
                 <td>
-                    @Html.Label("Name")
+                    <strong>@Html.Label("Name")</strong>
                 </td>
                 <td>
                     @Html.DisplayFor(model => model.dnr_name)
@@ -17,7 +25,7 @@
             </tr>
             <tr>
                 <td>
-                    @Html.Label("Email")
+                    <strong>@Html.Label("Email")</strong>
                 </td>
                 <td>
                     @Html.DisplayFor(model => model.dnr_email)
@@ -25,7 +33,7 @@
             </tr>
             <tr>
                 <td>
-                    @Html.Label("Phone")
+                    <strong>@Html.Label("Phone")</strong>
                 </td>
                 <td>
                     @Html.DisplayFor(model => model.dnr_phone)
@@ -33,7 +41,7 @@
             </tr>
             <tr>
                 <td>
-                    @Html.Label("Apartment No")
+                    <strong>@Html.Label("Apartment No")</strong>
                 </td>
                 <td>
                     @Html.DisplayFor(model => model.dnr_apt_no)
@@ -41,7 +49,7 @@
             </tr>
             <tr>
                 <td>
-                    @Html.Label("Street")
+                    <strong>@Html.Label("Street")</strong>
                 </td>
                 <td>
                     @Html.DisplayFor(model => model.dnr_street)
@@ -49,7 +57,7 @@
             </tr>
             <tr>
                 <td>
-                    @Html.Label("City")
+                    <strong>@Html.Label("City")</strong>
                 </td>
                 <td>
                     @Html.DisplayFor(model => model.dnr_city)
@@ -57,7 +65,7 @@
             </tr>
             <tr>
                 <td>
-                    @Html.Label("Province")
+                    <strong>@Html.Label("Province")</strong>
                 </td>
                 <td>
                     @Html.DisplayFor(model => model.dnr_province)
@@ -65,7 +73,7 @@
             </tr>
             <tr>
                 <td>
-                    @Html.Label("Country")
+                    <strong>@Html.Label("Country")</strong>
                 </td>
                 <td>
                     @Html.DisplayFor(model => model.dnr_country)
@@ -73,7 +81,7 @@
             </tr>
             <tr>
                 <td>
-                    @Html.Label("Postal Code")
+                    <strong>@Html.Label("Postal Code")</strong>
                 </td>
                 <td>
                     @Html.DisplayFor(model => model.dnr_postal_code)
@@ -81,8 +89,9 @@
             </tr>
         </table>
     </div>
+    <br/>
     <p>
-        @Html.ActionLink("Update", "Update", new { id = Model.dnr_id }) |
+        @Html.ActionLink("Update", "Update", new { id = Model.dnr_id })
         @Html.ActionLink("Back to List", "List")
     </p>
 </div>

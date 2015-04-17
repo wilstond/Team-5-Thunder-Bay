@@ -1,9 +1,14 @@
 ﻿@model IEnumerable<ThunderB_redesign.Models.donor>
 
-<div class="donation-admin">
-    <h2>All donors</h2>
+@{
+    ViewBag.Title = "tbrhsc | Donation Control Panel";
+}
 
-    <table class="table">
+<div class="donation-admin">
+    <br/>
+    <h2>Donor Information</h2>
+    <br/>
+    <table class="stripes">
         <tr>
             <th>
                 @Html.Label("Name")
@@ -66,12 +71,16 @@
                     @Html.DisplayFor(modelItem => item.dnr_postal_code)
                 </td>
                 <td>
-                    @Html.ActionLink("Update", "Update", new { id = item.dnr_id }) |
+                    @Html.ActionLink("Update", "Update", new { id = item.dnr_id })
                     @Html.ActionLink("Details", "Details", new { id = item.dnr_id }) 
                 </td>
             </tr>
         }
 
     </table>
+
+    <br/><br/>
+
+    @Html.ActionLink("Back to control panel", "Index")
 
 </div>

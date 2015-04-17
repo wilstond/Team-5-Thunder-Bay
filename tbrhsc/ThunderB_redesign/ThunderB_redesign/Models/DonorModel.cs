@@ -21,6 +21,7 @@ namespace ThunderB_redesign.Models
     {
         [DisplayName("Donor Email")]
         [Required(ErrorMessage = "Please enter your email")]
+        [RegularExpression(".+\\@.+\\..+", ErrorMessage = "Please enter a valid email")]
         public string dnr_email { get; set; }
 
         [DisplayName("Donor Name")]
@@ -59,6 +60,7 @@ namespace ThunderB_redesign.Models
 
         [DisplayName("Donor Postal Code")]
         [Required(ErrorMessage = "Please enter your postal code")]
+        [RegularExpression(@"[ABCEGHJKLMNPRSTVXY][0-9][ABCEGHJKLMNPRSTVWXYZ] ?[0-9][ABCEGHJKLMNPRSTVWXYZ][0-9]", ErrorMessage="Please enter a valid postal code")]
         public string dnr_postal_code { get; set; }
     }
 }

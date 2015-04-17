@@ -1,5 +1,6 @@
 ﻿.donation-container {
     padding: 20px;
+    font-size: 0.9rem;
 }
 
     .donation-container .top-left {
@@ -22,6 +23,10 @@
         text-align: center;
         
     }
+
+        .donation-container .top-right p {
+            font-size: 1rem;
+        }
 
         .donation-container .top-right h2 {
 
@@ -112,17 +117,48 @@
         }
 
 @media only screen and (max-width: 70em) {
+    .donation-container .top-right {
+        margin-top: 20px;
+    }
+
+    .donation-container .bottom form {
+        text-align: center;
+    }
+
+    .donation-container .bottom form .form-group .float-left,
+    .donation-container .bottom form .form-group .float-right {
+       float: none;
+    }
 
 }
 
 @media only screen and (max-width: 66em) {
+    
+    .donation-container .top-left {
+        float: none;
+        width: 80%;
+        margin: 0 auto;
+    }
+    
+    .donation-container .top-right {
+        float: none;
+        width: 80%;
+        margin: 0 auto;
+    }
 
+    .donation-container .top-right {
+        font-size: 12px;
+    }
+
+    .donation-container .bottom form {
+    
+    }
+    
 }
 
 @media only screen and (max-width: 44em) {
 
 }
-
 
 
 /* Donation Admin Side Styling */
@@ -136,6 +172,24 @@
         font-size: 20px;
         font-weight: bolder;
     }    
+
+
+    .donation-admin a,
+    .donation-admin input[type="submit"]{
+        border: 1px solid white;
+        background-color: #1a2f38;    
+        color: white;
+        padding: 5px 10px;
+        display: inline-block;  
+    }
+
+    .donation-admin img {
+        width: 49%;
+    }
+
+    .donation-admin strong {
+        font-weight: bold;
+    }
 
 
 

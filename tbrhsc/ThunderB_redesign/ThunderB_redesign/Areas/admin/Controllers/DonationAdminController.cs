@@ -70,6 +70,11 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             return View();
         }
 
+        public ActionResult MonthlyDonationAnalytics()
+        {
+            return View();
+        }
+
         public ActionResult List()
         {
             var objDonor = new DonorClass();
@@ -128,7 +133,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
 
         public ActionResult DonationGraphPie()
         {
-            var myChart = new Chart(width: 450, height: 300, theme: ChartTheme.Green)
+            var myChart = new Chart(width: 600, height: 400, theme: ChartTheme.Green)
                             .AddTitle("2015 Monthly Comparison")
                             .AddSeries(chartType: "Doughnut",
                             xValue: (IEnumerable<string>)@ViewData["xValuesPie"],
@@ -140,7 +145,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
 
         public ActionResult DonationGraphLine()
         {
-            var myChart = new Chart(width: 450, height: 300, theme: ChartTheme.Green)
+            var myChart = new Chart(width: 600, height: 400, theme: ChartTheme.Green)
                             .AddTitle("Monthly Donation Graph")
                             .AddSeries(chartType: "Column",
                             xValue: (IEnumerable<string>)@ViewData["xValuesLine"],

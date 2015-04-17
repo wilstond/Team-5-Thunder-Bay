@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "tbrhsc | Donation Control Panel";
+}
+
+<div class="donation-admin">
+    
+    <br/>
+    <h2>Monthly Donation Analytics</h2>
+    <br/>
+    <br/>
+    <img src="@Url.Action("DonationGraphPie", "DonationAdmin")" />
+    <img src="@Url.Action("DonationGraphLine", "DonationAdmin")" />
+    
+    <br /><br /><br/>
+    
+    @Html.ActionLink("Back to control panel", "Index")
+
+</div>
+
+
+
