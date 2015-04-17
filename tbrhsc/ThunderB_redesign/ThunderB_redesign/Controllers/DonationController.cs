@@ -7,6 +7,9 @@ using System.Web.Mvc;
 using ThunderB_redesign.Models;
 using Postal;
 
+//Author: Wilston Dsouza
+//Purpose: Mobile Development Final Project
+
 namespace ThunderB_redesign.Controllers
 {
     public class DonationController : Controller
@@ -15,6 +18,8 @@ namespace ThunderB_redesign.Controllers
 
         public DonationController()
         {
+            //Add menu items to view data
+
             ViewData["MenuItems"] = menuObj.getMenuItems();
 
             var menuItems = (IEnumerable<ThunderB_redesign.Models.menu_category>)ViewData["MenuItems"];
@@ -79,7 +84,6 @@ namespace ThunderB_redesign.Controllers
             string description = "Donation towards Thunder Bay Hospital"; // '%20' represents a space. remember HTML!
             string country = "CA";                  // AU, US, etc.
             string currency = "CAD";                 // AUD, USD, etc.
-            //decimal amount = 10;
 
             url += "https://www.sandbox.paypal.com/cgi-bin/webscr" +
                 "?cmd=" + "_donations" +

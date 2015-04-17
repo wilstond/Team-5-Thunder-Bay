@@ -6,8 +6,13 @@ using System.Web.Helpers;
 using System.Web.Mvc;
 using ThunderB_redesign.Models;
 
+//Author: Wilston Dsouza
+//Purpose: Mobile Development Final Project
+
 namespace ThunderB_redesign.Areas.admin.Controllers
 {
+    [Authorize]
+    //Controller for Donation Admin Feature
     public class DonationAdminController : Controller
     {
 
@@ -133,6 +138,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
 
         public ActionResult DonationGraphPie()
         {
+            //Code that creates the Pie chart
             var myChart = new Chart(width: 600, height: 400, theme: ChartTheme.Green)
                             .AddTitle("2015 Monthly Comparison")
                             .AddSeries(chartType: "Doughnut",
@@ -145,6 +151,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
 
         public ActionResult DonationGraphLine()
         {
+            //Code that creates Bar chart
             var myChart = new Chart(width: 600, height: 400, theme: ChartTheme.Green)
                             .AddTitle("Monthly Donation Graph")
                             .AddSeries(chartType: "Column",

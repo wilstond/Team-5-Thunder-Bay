@@ -8,8 +8,12 @@ using ThunderB_redesign.Models;
 
 using Postal;
 
+//Author: Wilston Dsouza
+//Purpose: Mobile Development Final Project
+
 namespace ThunderB_redesign.Areas.admin.Controllers
 {
+    [Authorize]
     public class NewsletterAdminController : Controller
     {
 
@@ -110,7 +114,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             email.subject = newsletter.subject;
             email.message = newsletter.message;
 
-            //Get all subscribers
+            //Get all subscribers and send newsletter to each of them
 
             var allSubscribers = objSubscriber.getSubscribers();
             foreach (var item in allSubscribers)

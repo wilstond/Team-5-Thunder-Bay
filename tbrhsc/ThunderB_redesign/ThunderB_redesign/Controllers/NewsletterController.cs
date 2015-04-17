@@ -8,6 +8,9 @@ using Postal;
 
 using ThunderB_redesign.Models;
 
+//Author: Wilston Dsouza
+//Purpose: Mobile Development Final Project
+
 namespace ThunderB_redesign.Controllers
 {
     public class NewsletterController : Controller

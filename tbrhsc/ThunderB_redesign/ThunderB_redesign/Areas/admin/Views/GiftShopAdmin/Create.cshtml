@@ -1,5 +1,8 @@
 ﻿@model ThunderB_redesign.Models.product
 
+@*Author: Wilston Dsouza
+Purpose: Mobile Development Final Project*@
+
 @{
     ViewBag.Title = "tbrhsc | Gift Shop Inventory Management";
 }
@@ -73,7 +76,22 @@
                         @Html.Label("Category")
                     </td>
                     <td>
-                        @Html.EditorFor(model => model.prd_cat_id, new { htmlAttributes = new { @class = "form-control" } })
+                        @{
+                            var categories = (IEnumerable<ThunderB_redesign.Models.product_category>)ViewData["categories"];
+                            List<SelectListItem> categoryList = new List<SelectListItem>();
+                            foreach (var x in categories)
+                            {
+                                categoryList.Add(
+                                    new SelectListItem()
+                                    {
+                                        Text = x.prd_cat_name,
+                                        Value = x.prd_cat_id.ToString()
+                                    }
+
+                                );
+                            }
+                        }
+                        @Html.DropDownListFor(model=>model.prd_cat_id, categoryList)
                     </td>
                     <td>
                         @Html.ValidationMessageFor(model => model.prd_cat_id, "", new { @class = "text-danger" })

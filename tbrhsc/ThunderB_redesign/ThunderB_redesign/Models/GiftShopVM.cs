@@ -6,6 +6,9 @@ using System.Web;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
+//Author: Wilston Dsouza
+//Purpose: Mobile Development Final Project
+
 namespace ThunderB_redesign.Models
 {
     public class GiftShopVM

@@ -6,13 +6,18 @@ using System.Web;
 using System.Web.Mvc;
 using ThunderB_redesign.Models;
 
+//Author: Wilston Dsouza
+//Purpose: Mobile Development Final Project
+
 namespace ThunderB_redesign.Areas.admin.Controllers
 {
+    [Authorize]
     public class GiftShopAdminController : Controller
     {
 
         public GiftShopAdminController()
         {
+            //Values populated for the dropdown list of categories
             GiftShopVM objGiftShop = new GiftShopVM();
             var allCategories = objGiftShop.getCategories();
             ViewData["categories"] = allCategories;
@@ -74,6 +79,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             return View();
         }
 
+        //View to display details of products
         public ActionResult Details(int id)
         {
             GiftShopVM objGiftShopVM = new GiftShopVM();

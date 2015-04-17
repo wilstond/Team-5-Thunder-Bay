@@ -6,6 +6,9 @@ using System.Web.Mvc;
 
 using ThunderB_redesign.Models;
 
+//Author: Wilston Dsouza
+//Purpose: Mobile Development Final Project
+
 namespace ThunderB_redesign.Controllers
 {
     public class GiftShopController : Controller
@@ -14,6 +17,8 @@ namespace ThunderB_redesign.Controllers
 
         public GiftShopController()
         {
+
+            //Add menu Items to View data
             ViewData["MenuItems"] = menuObj.getMenuItems();
 
             var menuItems = (IEnumerable<ThunderB_redesign.Models.menu_category>)ViewData["MenuItems"];
