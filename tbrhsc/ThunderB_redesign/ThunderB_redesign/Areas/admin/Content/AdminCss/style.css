@@ -180,12 +180,12 @@ div.action_link a{
     line-height: 150%;
 }
 
-#feedback_details {
+#feedback_header {
     font-size: 26px;
     font-weight: bold;
 }
 
-#feedback_details p{
+#feedback_details {
     line-height: 135%;
     font-size: 16px;
     font-weight: normal;

@@ -7,15 +7,17 @@
 @*This page lists all information about the selected feedback*@
 
 <div id="feedback_details">
-    <h1>Feedback Details</h1>
+    <div id="feedback_header">
+        <h1>Feedback Details</h1>
+    </div>
     <br />
-    <br />
-    <p>@Html.DisplayFor(x => x.topic)</p>
     <br />
     <p><span>Name: </span>@Html.DisplayFor(x => x.name)</p>
     <p><span>Email: </span>@Html.DisplayFor(x => x.email)</p>
     <br />
-    <p><span>Feedback: </span>@Html.DisplayFor(x => x.fbcontent)</p>
+    <p>@Html.DisplayFor(x => x.topic)</p>
+    <br />
+    <p>@Html.DisplayFor(x => x.fbcontent)</p>
     <br />
 
 
