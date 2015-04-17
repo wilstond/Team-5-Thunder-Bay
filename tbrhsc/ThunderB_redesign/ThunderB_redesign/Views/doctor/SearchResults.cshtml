@@ -1,75 +1,84 @@
-﻿@model System.Collections.Generic.IEnumerable<ThunderB_redesign.Models.doctor>
+﻿<script src="~/Scripts/otf.js"></script>
+@model PagedList.IPagedList<ThunderB_redesign.Models.doctor>
+@using System.Linq
+@using PagedList.Mvc
+<div id="doctorList">
 
-@{
-    ViewBag.Title = "SearchResults";
-}
+    <div class="pagination pagination-large" data-otf-target="#restaurantList">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new {page}),
+        PagedListRenderOptions.MinimalWithItemCountText)
 
-<h2>SearchResults</h2>
+    </div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.dr_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.dr_specialty)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.dr_office_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.dr_office_address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.dr_office_phone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.dr_photo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.user_id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.dept_id)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.dr_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dr_specialty)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dr_office_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dr_office_address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dr_office_phone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dr_photo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.user_id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dept_id)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.dr_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.dr_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.dr_id })
-        </td>
-    </tr>
-}
+    <table>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Specialty
+            </th>
+            <th>
+                Office Name
+            </th>
+            <th>
+                Office Address
+            </th>
+            <th>
+                Phone Number
+            </th>
+            <th>
+                Photo
+            </th>
+            <th>Department
+            </th>
 
-</table>
+        </tr>
+
+
+        @if (!Model.Any())
+        {
+            <tr><td>No doctors found</td></tr>
+        }
+        else
+        {
+
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        Dr. @Html.DisplayFor(modelItem => item.dr_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.dr_specialty)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.dr_office_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.dr_office_address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.dr_office_phone)
+                    </td>
+                    <td>
+                        <img height="100" src="~/Images/uploads/doctors/@item.dr_photo" alt="doctor photo"/>
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.department.dept_name)
+                    </td>
+
+                </tr>
+            }
+        }
+
+    </table>
+
+    <div class="pagination pagination-large" data-otf-target="#restaurantList">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
+        PagedListRenderOptions.MinimalWithItemCountText)
+    </div>
+
+</div>

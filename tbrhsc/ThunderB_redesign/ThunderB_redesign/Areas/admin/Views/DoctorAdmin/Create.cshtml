@@ -1,4 +1,5 @@
-﻿@model ThunderB_redesign.Models.doctor
+﻿<link rel="stylesheet" type="text/css" href="~/Areas/admin/Content/AdminCss/defaultStyle.css" />
+@model ThunderB_redesign.Models.doctor
 
 @{
     ViewBag.Title = "View";
@@ -6,7 +7,7 @@
 
 <h2>View</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm(new { enctype = "multipart/form-data"})) 
 {
     @Html.AntiForgeryToken()
     
@@ -57,8 +58,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.dr_photo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.dr_photo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.dr_photo, "", new { @class = "text-danger" })
+              <input type="file" name="file" id="file"/>
             </div>
         </div>
 
@@ -73,8 +73,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.dept_id, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.dept_id, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.dept_id, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(model => model.dept_id, new SelectList(ViewBag.objDepartments, "id", "dept_name", "Select a department"))
+                @Html.ValidationMessageFor(model => model.dept_id)
             </div>
         </div>
 

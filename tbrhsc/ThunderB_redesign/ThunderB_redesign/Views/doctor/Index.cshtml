@@ -1,83 +1,32 @@
-﻿@model IEnumerable<ThunderB_redesign.Models.doctor>
+﻿<script src="~/Scripts/otf.js" ></script>
+<link rel="stylesheet" type="text/css" href="~/Content/themes/base/all.css"/>
+<link rel="stylesheet" type="text/css" href="~/Content/css/PagedList.css" />
+@model PagedList.IPagedList<ThunderB_redesign.Models.doctor>
 
 @{
-    ViewBag.Title = "SearchResults";
-}
-
-<h2>SearchResults</h2>
-
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-
-
-
-
+    ViewBag.Title = "Find a Doctor";
 }
 
 
-@*
+
+    <h1>Find a Doctor</h1>
+
+
+    <p>Find a doctor by Name:</p>
+
+    <form method="get" action="@Url.Action("Index")" data-otf-ajax="true" data-otf-target="#doctorList">
+        <input type="search" name="searchTerm" data-otf-autocomplete="@Url.Action("Autocomplete")" />
+
+        <input type="submit" value="Find" />
+
+    </form>
+
+
+    <h2>List of Doctors</h2>
+    @Html.Partial("SearchResults", Model)
 
 
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.dr_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.dr_specialty)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.dr_office_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.dr_office_address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.dr_office_phone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.dr_photo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.dept_id)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.dr_name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.dr_specialty)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.dr_office_name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.dr_office_address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.dr_office_phone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.dr_photo)
-            </td>
-           
-            <td>
-                @Html.DisplayFor(modelItem => item.dept_id)
-            </td>
-         
-        </tr>
-    }
-
-</table>
 
 
-*@
+

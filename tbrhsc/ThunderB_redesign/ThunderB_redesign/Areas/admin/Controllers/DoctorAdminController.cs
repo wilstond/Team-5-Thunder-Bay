@@ -1,17 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ThunderB_redesign.Models;
 
 namespace ThunderB_redesign.Areas.admin.Controllers
 {
     public class DoctorAdminController : Controller
     {
+
+        LinqDataContext db = new LinqDataContext();
+        doctorLinqClass objDoc = new doctorLinqClass();
+
+
+        public DoctorAdminController()
+        {
+            List<department> objDepartments = new List<department>();
+            IQueryable<department> allDepartments  = db.departments.Select(x => x);
+            foreach (department dept in allDepartments)
+            {
+                objDepartments.Add(dept);
+            }
+            ViewBag.objDepartments = objDepartments;
+
+         
+        }
+
+
         // GET: admin/DoctorAdmin
         public ActionResult Index()
         {
-            return View();
+            var allDoctors = objDoc.GetDoctors();
+            return View(allDoctors);
         }
 
         // GET: admin/DoctorAdmin/Details/5
@@ -28,18 +50,30 @@ namespace ThunderB_redesign.Areas.admin.Controllers
 
         // POST: admin/DoctorAdmin/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(doctor doc)
         {
-            try
-            {
-                // TODO: Add insert logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
+            HttpPostedFileBase image = Request.Files["file"];
+
+            var fileName = Path.GetFileName(image.FileName);
+        
+
+                if (ModelState.IsValid && image != null && image.ContentLength > 0)
+                {
+            
+                
+                    try
+                    {
+                    
+                        objDoc.commitInsert(doc);
+                        return RedirectToAction("Index");
+                    }
+                    catch
+                    {
+                        return View();
+                    }
+                }
                 return View();
-            }
         }
 
         // GET: admin/DoctorAdmin/Edit/5

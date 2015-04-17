@@ -52,8 +52,8 @@ namespace ThunderB_redesign
                 "~/Fonts/SourceSansPro-Regular.ttf",
                 "~/Fonts/SourceSansPro-Semibold.ttf",
                 "~/Fonts/SourceSansPro-SemiboldItalic.ttf"));
-/*
-            bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
+
+     /*       bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",
                         "~/Content/themes/base/jquery.ui.resizable.css",
                         "~/Content/themes/base/jquery.ui.selectable.css",
