@@ -45,7 +45,8 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             objAlert.activateAlert(Convert.ToInt32(alerts));
             LinqDataContext objLinq = new LinqDataContext();
             var alertDetails = objLinq.AlertTables.SingleOrDefault(x => x.Id == Convert.ToInt32(alerts));
-            NewsletterController.SendNewsAlerts("alert", alertDetails.alert);
+            if(alertDetails != null)
+                NewsletterController.SendNewsAlerts("alert", alertDetails.alert);
             return View();
         }
 
