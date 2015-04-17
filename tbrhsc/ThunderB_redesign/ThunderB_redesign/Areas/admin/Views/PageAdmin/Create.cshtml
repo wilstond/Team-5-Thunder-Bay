@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Create";
 }
-@* this view is holding a form to create new page *@
+@*--------------- this view is holding a form to create new page -------------*@
 <h2>Create New Page</h2>
 
 @using (Html.BeginForm()) 
@@ -14,7 +14,7 @@
 
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        @*Hidden fields values are set in the controller.*@
+        @*-------------Hidden fields values are set in the controller.---------------------*@
 
             @Html.HiddenFor(model => model.page_created)
             @Html.HiddenFor(model => model.user_id)
@@ -22,7 +22,7 @@
 
         <table class="page_editor">
             <tr>
-                @*Page creator user id*@
+                @*-----------------Page creator user id------------------------------*@
                 <td>
                     @Html.LabelFor(model => model.user_id, htmlAttributes: new { @class = "control-label col-md-2" })
                 </td>
@@ -31,7 +31,7 @@
                 </td>
             </tr>
             <tr>
-                @*Page title*@
+                @*----------------------------Page title------------------------------*@
                 <td>
                     @Html.LabelFor(model => model.page_title, htmlAttributes: new { @class = "control-label col-md-2" })
                 </td>
@@ -43,7 +43,7 @@
             <tr>
             <td colspan="2">
                
-                @*CK Editor instructions are found here --https://www.youtube.com/watch?v=uJ_BeZUO0rg*@
+                @*-------------------CK Editor instructions are found here --https://www.youtube.com/watch?v=uJ_BeZUO0rg-----------------------------------*@
                 @*Tutorial to upload and embed images using CK editor was found here --http://amitraya.blogspot.ca/2014/09/ck-editor-implement-your-own-image.html*@
                
                  <textarea id="page_content" name="page_content">
@@ -59,16 +59,17 @@
                         });
 
                         function updateValue(id, value) {
-                            // this gets called from the popup window and updates the field with a new value
-                            document.getElementById(id).value = value;
 
+                            // ---------------this gets called from the popup window and updates the field with a new value
+
+                            document.getElementById(id).value = value;
                         }
                     </script>
                 </td>
             </tr>
 
             <tr>
-                @*Page menu id*@
+                @*--------------Page menu id---------------------*@
                 <td>
                     @Html.LabelFor(model => model.menu_id, htmlAttributes: new { @class = "control-label col-md-2" })
                 </td>
@@ -96,7 +97,7 @@
 
             <tr>
 
-                @*// Page visibility*@
+                @*------------------------ Page visibility--------------------------*@
                 <td>
                     @Html.LabelFor(model => model.page_visibility, htmlAttributes: new { @class = "control-label col-md-2" })
                 </td>
@@ -108,7 +109,7 @@
             </tr>
 
             <tr>
-                @*Page slug*@
+                @*---------------------Page slug----------------------------*@
                 <td>
                     @Html.LabelFor(model => model.page_slug, htmlAttributes: new { @class = "control-label col-md-2" })
                 </td>
@@ -119,7 +120,7 @@
             </tr>
 
             <tr>
-                @*Page meta title*@
+                @*---------------------Page meta title---------------------*@
                 <td>
                     @Html.LabelFor(model => model.meta_title, htmlAttributes: new { @class = "control-label col-md-2" })
                 </td>
@@ -130,7 +131,7 @@
             </tr>
 
             <tr>
-                @*Page meta description*@
+                @*---------------------Page meta description-----------------------*@
                 <td>
                     @Html.LabelFor(model => model.meta_desc, htmlAttributes: new { @class = "control-label col-md-2" })
                 </td>

@@ -4,6 +4,8 @@
     ViewBag.Title = "Index";
 }
 
+@*-----------View displays a list of appointments for logged in doctor--------------*@
+
 <h2>List of appointments</h2>
 
 <p>
@@ -36,9 +38,15 @@
             <td>
                 @Html.DisplayFor(modelItem => item.pat_name)
             </td>
+
+            @*-------------appointment date of request-----------------*@
+
             <td>
                 @item.date_req.ToShortDateString()
             </td>
+
+            @*-------------appointment booking date. Empty if appointment is still pending-------------------------*@
+
             <td>
                 @{
         if (item.date_book != null)
@@ -47,6 +55,9 @@
         }
                 }
             </td>
+
+            @*---------------appointment booking time. ---------------------*@
+
             <td>
                 @{
         if (item.date_book != null)

@@ -60,9 +60,7 @@ namespace ThunderB_redesign.Controllers
                 {
                     apptObject.commitInsert(_apt); // insert is committed and user is redirected to home page
                     var last_id = _apt.apt_id;
-                    // Uncomment to send email confirmation to the customer
-                    //var smtp = new SmtpClient();
-                    //smtp.EnableSsl = true;
+                    
 
                     dynamic email = new Email("Request_Confirmation");
                     email.Doctor = db.doctors.Where(x => x.dr_id == _apt.dr_id).SingleOrDefault().dr_name.ToString();

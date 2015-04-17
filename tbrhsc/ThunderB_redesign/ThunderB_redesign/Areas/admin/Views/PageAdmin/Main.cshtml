@@ -5,10 +5,13 @@
     ViewBag.Title = "Pages Grouped by categories";
 }
 
+@*----------this view displays pages grouped by categories for more visible navigation structure------------*@
+
 <h2>Add, Edit or Delete Pages</h2>
 <p>&nbsp;</p>
 <div class="page-list">
    
+@*-----------------ViewBag.headerList contains a Key->Value list of all menu items where pages can be updated dynamically--------------*@
         @{
             
           foreach (var menu_item in ViewBag.headerList)
@@ -18,11 +21,18 @@
                         @menu_item.Value
                     </span>
                     <div class="page-list-header-button">
+
+ @*----------------------Add page button for every category -------------------------------*@
+
                         <i class="fa fa-plus"></i>
                             @Html.ActionLink("Add New page", "Create", new { menu_id = menu_item.Key })
                     </div>
                     </div>
 
+  @*------------------------group is a Key, Value list of pages that belong to this particular category---------------------
+  --------------group.Key is menu_id, group.Values is a list of pages belonging in this group (menu_category)---------------*@ 
+             
+                    
                     foreach (var group in Model)
                     {
                         if (menu_item.Key == group.Key)
@@ -52,6 +62,9 @@
             
         }
 </div>
+<hr/>
 
-<p><a href="~/admin/PageAdmin/Index.cshtml">Full list of pages without breaking up by menu categories</a></p>
+@*---------Link to another list view displaying pages in paginated list instead of categoriezed list----------*@
+
+<p><a href="~/admin/PageAdmin/Index">Full list of pages without breaking up by menu categories</a></p>
 
