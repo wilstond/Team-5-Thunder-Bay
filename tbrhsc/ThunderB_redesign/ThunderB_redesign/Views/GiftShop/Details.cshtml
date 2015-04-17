@@ -1,18 +1,18 @@
 ﻿@model ThunderB_redesign.Models.product
 
 @{
-    ViewBag.Title = "tbrhsc | Gift Shop Inventory Management";
+    ViewBag.Title = "tbrhsc | Gift Shop";
 }
 
 <div id="gift-shop-container">
+    
+    <br />
+
+    <h2>Gift Shop</h2>
 
     <br />
 
-    <h2>Gift Shop Inventory Management</h2>
-
-    <br />
-
-    <hr />
+    <hr/>
 
     <div class="product-details">
         <div class="float-left width-49">
@@ -20,24 +20,22 @@
         </div>
         <div class="float-right width-49">
             <h2>@Html.DisplayFor(model => model.prd_name)</h2>
-            <br />
+            <br/>
             <strong>Price:</strong> $@Html.DisplayFor(model => model.prd_price)
-            <br />
-            <br />
+            <br/>
+            <br/>
             <strong>Description</strong>
-            <br />
+            <br/>
             @Html.DisplayFor(model => model.prd_description)
-            <br /><br />
+            <br/><br/>
             <strong>Available quantity: </strong>@Html.DisplayFor(model => model.prd_count)
         </div>
         <div class="clear-both"></div>
     </div>
-    <br />
-    <hr />
-    <br />
+    <br/>
+    <hr/>
+    <br/>
     <p>
-        @Html.ActionLink("Edit", "Update", new { id = Model.prd_id })
         @Html.ActionLink("Back to List", "Index")
     </p>
 </div>
-

@@ -36,6 +36,7 @@ namespace ThunderB_redesign
                         .Include("~/Content/css/site.css")
                         .Include("~/Content/css/font-awesome.css")
                         .Include("~/Content/css/Site_Donation.css")
+                        .Include("~/Content/css/Site_GiftShop.css")
                         .Include("~/Content/css/Site_Newsletter.css"));
 
             
@@ -71,6 +72,7 @@ namespace ThunderB_redesign
             bundles.Add(new StyleBundle("~/Areas/admin/Content/AdminCss").Include("~/Areas/admin/Content/AdminCss/style.css")
                 .Include("~/Content/css/font-awesome.css")
                 .Include("~/Content/css/Site_Donation.css")
+                .Include("~/Content/css/Site_GiftShop.css")
                 .Include("~/Content/css/Site_Newsletter.css")
                 );
 

@@ -51,7 +51,6 @@ namespace ThunderB_redesign.Models
 
 
         [DisplayName("Product Image URL")]
-        //[Required(ErrorMessage = "Please add an image")]
         public string prd_img_url { get; set; }
 
 
@@ -164,6 +163,7 @@ namespace ThunderB_redesign.Models
             {
                 var productUpd = objDataContext.products.SingleOrDefault(x => x.prd_id == _id);
                 productUpd.prd_name = objProduct.prd_name;
+                productUpd.prd_price = objProduct.prd_price;
                 productUpd.prd_description = objProduct.prd_description;
                 productUpd.prd_count = objProduct.prd_count;
                 productUpd.prd_img_url = objProduct.prd_img_url;

@@ -1,73 +1,36 @@
 ﻿@model IEnumerable<ThunderB_redesign.Models.GiftShopVM>
 
-<h2>Gift Shop</h2>
-
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.cat_id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cat_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.prd_id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.prd_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.prd_description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.prd_price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.prd_count)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.prd_cat_id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.prd_img_url)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.cat_id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cat_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.prd_id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.prd_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.prd_description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.prd_price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.prd_count)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.prd_cat_id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.prd_img_url)
-        </td>
-        <td>
-            @Html.ActionLink("Details", "Details", new { id=item.prd_id })
-        </td>
-    </tr>
+@{
+    ViewBag.Title = "tbrhsc | Gift Shop";
 }
 
-</table>
+<div id="gift-shop-container">
+    
+    <br/>
+    
+    <h2>Gift Shop</h2>
+
+    <br/>
+
+    <hr/>
+
+    <ul>
+        
+        @foreach (var item in Model)
+        {
+            <li>
+                <a href="/GiftShop/Details/@item.prd_id">
+                    <img src="~/Images/GiftShop/@item.prd_img_url" />
+                    <br /><br/>
+                    <strong>@Html.DisplayFor(modelItem => item.prd_name)</strong>
+                    <br />
+                    $@Html.DisplayFor(modelItem => item.prd_price)
+                </a>
+            </li>
+        }
+
+    </ul>
+
+    <hr/>
+
+</div>

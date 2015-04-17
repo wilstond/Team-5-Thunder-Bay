@@ -1,2 +1,77 @@
 ﻿body {
 }
+
+#gift-shop-container {
+    text-align: center;
+}
+
+    #gift-shop-container h2 {
+        font-size: 32px;
+        font-weight: 600;
+        color: #1a2f38;
+    }
+
+    #gift-shop-container ul {
+        margin-bottom: 20px;
+    }
+
+        #gift-shop-container ul li {
+            display: inline-block;
+            width: 18%;
+        }
+
+            #gift-shop-container ul li a {
+                display: block;
+                padding: 10px;
+                text-decoration: none;
+                color: white;
+                background-color: #f68b22; 
+            }
+
+            #gift-shop-container ul li img {
+                width: 50%;
+                height: 50%;
+            }
+
+    #gift-shop-container a,
+    #gift-shop-container input[type="submit"]{
+        border: 1px solid white;
+        background-color: #1a2f38;    
+        color: white;
+        padding: 5px 10px;
+        display: inline-block;  
+    }
+
+/* Gift Admin Styling */    
+
+.giftshop-admin {
+    margin: 0 auto;
+    text-align: center;
+}
+
+    .giftshop-admin h2 {
+        font-size: 20px;
+        font-weight: bolder;
+    }    
+
+
+    .giftshop-admin a,
+    .giftshop-admin input[type="submit"]{
+        border: 1px solid white;
+        background-color: #1a2f38;    
+        color: white;
+        padding: 5px 10px;
+        display: inline-block;  
+    }
+
+    .giftshop-admin table img {
+        width: 75px;
+        height: 75px;
+    }
+
+
+/* Helper Classes */
+
+.width-49 {
+    width: 49%;
+}

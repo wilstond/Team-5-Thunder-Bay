@@ -1,0 +1,29 @@
+﻿@model ThunderB_redesign.Models.product
+
+@{
+    ViewBag.Title = "tbrhsc | Gift Shop Inventory Management";
+}
+
+
+<div class="giftshop-admin">
+    <br />
+
+    <h2>Gift Shop Inventory Management</h2>
+
+    <br />
+    <hr />
+    <br />
+    <h2>Are you sure you want to delete <strong>@Model.prd_name</strong>?</h2>
+    <br />
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" />
+            <br/><br/><br/>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,75 +1,110 @@
 ﻿@model ThunderB_redesign.Models.product
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "tbrhsc | Gift Shop Inventory Management";
 }
 
-<h2>Create</h2>
 
-@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" })) 
-{
-    @Html.AntiForgeryToken()
+<div class="giftshop-admin">
+    <br />
+
+    <h2>Gift Shop Inventory Management</h2>
+
+    <br />
+    <hr />
+    <br />
     
-    <div class="form-horizontal">
-        <h4>product</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.prd_name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.prd_name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.prd_name, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.prd_description, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.prd_description, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.prd_description, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        <div class="form-horizontal">
+            <h2>Add a new product</h2>
+            <br/>
+            <hr />
+            
+            <table class="stripes margin-0-auto">
+                <tr>
+                    <td>
+                        @Html.Label("Product Name")
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.prd_name, new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(model => model.prd_name, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Description")
+                    </td>
+                    <td>
+                        @Html.TextAreaFor(model => model.prd_description, new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(model => model.prd_description, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Price")
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.prd_price, new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(model => model.prd_price, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Available Units")
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.prd_count, new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(model => model.prd_count, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Category")
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.prd_cat_id, new { htmlAttributes = new { @class = "form-control" } })
+                    </td>
+                    <td>
+                        @Html.ValidationMessageFor(model => model.prd_cat_id, "", new { @class = "text-danger" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.Label("Product Image")
+                    </td>
+                    <td>
+                        <input type="file" name="file" id="file" style="width: 100%;" class="form-control" />
+                    </td>
+                    <td>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.prd_price, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.prd_price, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.prd_price, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    </td>
+                </tr>
+                
+            </table>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.prd_count, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.prd_count, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.prd_count, "", new { @class = "text-danger" })
-            </div>
+            <br/>
+            
+            <input type="submit" value="Create" class="btn btn-default" />
+            
         </div>
+    }
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.prd_cat_id, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.prd_cat_id, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.prd_cat_id, "", new { @class = "text-danger" })
-            </div>
-        </div>
+    <br /><br/><br/>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.prd_img_url, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input type="file" name="file" id="file" style="width: 100%;" class="form-control" />
-                @*@Html.ValidationMessageFor(model => model.prd_img_url, "", new { @class = "text-danger" })*@
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
+    <div>
+        @Html.ActionLink("Back to List", "Index")
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
+
+
