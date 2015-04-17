@@ -11,6 +11,7 @@ namespace ThunderB_redesign.Controllers
     public class FeedbackController : Controller
     {
 
+        //linking to the feedback table in the database
         FeedbackLinqClass objFeedback = new FeedbackLinqClass();
 
         MenuLinqClass menuObj = new MenuLinqClass();
@@ -28,12 +29,14 @@ namespace ThunderB_redesign.Controllers
 
         }
 
-        // GET: Feedback
+        // the index view for the feedback public
         public ActionResult Index()
         {
             return View();
         }
 
+
+        //when the submit button on the feedback page is posted, the data is committed into the database
         [HttpPost]
         public ActionResult Index(feedback feedback)
         {

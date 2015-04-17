@@ -6,7 +6,7 @@
 
 
  @*The landing page for the News page for the CMS
-It Loops through all the news posts in the database and displayes them with options to Update or Delete*@
+It Loops through all the news posts in the database and displays them with options to Update or Delete*@
 <h2>News Stories</h2>
 <br />
 <p>
@@ -38,65 +38,4 @@ It Loops through all the news posts in the database and displayes them with opti
 </div>
  
 
-
-@*<div id="all_news">
-    <table>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    &nbsp;
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    &nbsp;
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.headline)
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.date)
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    &nbsp;
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.stories)
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    &nbsp;
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    By: @Html.DisplayFor(modelItem => item.author)
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    &nbsp;
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    @Html.ActionLink("Update", "Update", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                </td>
-
-            </tr>
-        }
-
-    </table>
-</div>*@
 

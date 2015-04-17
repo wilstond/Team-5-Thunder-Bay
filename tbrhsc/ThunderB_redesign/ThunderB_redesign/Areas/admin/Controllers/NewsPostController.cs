@@ -14,12 +14,10 @@ namespace ThunderB_redesign.Areas.admin.Controllers
     {
         
         //The link to the Database as an object
-        ////////////////////////////////////////
         NewsPostLinq objNews = new NewsPostLinq();
 
   
         //What happens when Index is called, fetches all news posts.
-        //////////////////////////////////////// ///////////////////
         public ActionResult Index()
         {
             var allNews = objNews.orderNews();
@@ -27,30 +25,13 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         }
 
 
-        // A possible details view functionality
-        ////////////////////////////////////////
-
-        //public ActionResult Details(int id)
-        //{
-        //    var allNews = objNews.getNewsByID(id);
-        //    if (allNews == null)
-        //    {
-        //        return View("NotFound");
-        //    }
-        //    else
-        //    {
-        //        return View(allNews);
-        //    }
-        //}
-
-
-        //The Insert functionality 
-        ////////////////////////////////////////
+        //when Insert (creating a new News Post) is hit, the user is redirected to the original index page which lists all the news posts.
         public ActionResult Insert()
         {
             return View();
         }
 
+        //when the insert (publish) button is posted, the information is committed to the database and also sent to the newsletter functionality
         [HttpPost]
         public ActionResult Insert(newsTable allnews)
         {
@@ -73,8 +54,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
         }
 
 
-        //Update functionality. Updates all fields when update is posted.
-        ////////////////////////////////////////////////////////////////
+        //returning to the index page of the News Post when update button is pressed
         public ActionResult Update(int id)
         {
             var allNews = objNews.getNewsByID(id);
@@ -88,6 +68,7 @@ namespace ThunderB_redesign.Areas.admin.Controllers
             }
         }
 
+        //committing all fields into the database to update the selected News Post
         [HttpPost]
         public ActionResult Update(int Id, newsTable news)
         {
@@ -112,7 +93,6 @@ namespace ThunderB_redesign.Areas.admin.Controllers
 
 
         //Delete functionality. Deletes by ID
-        ////////////////////////////////////////
         public ActionResult Delete(int id)
         {
             try

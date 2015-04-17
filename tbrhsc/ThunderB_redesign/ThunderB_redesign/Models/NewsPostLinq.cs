@@ -17,31 +17,21 @@ namespace ThunderB_redesign.Models
             return allNews;
         }
 
-        //public newsTable getNewsByID(int _id)
-        //{
-        //    var allNew = objNews.newsTables.SingleOrDefault(x => x.Id == _id);
-        //    return allNew;
-        //}
-
+        //the top news function which orders the news by most recent, and selects the top 5
         public IQueryable<newsTable> getTopNews()
         {
             var topNews = objNews.newsTables.OrderByDescending(x => x.Id).Take(5);
             return topNews;
         }
 
+        //The top news function for the News page, it orders the news by most recent
         public IQueryable<newsTable> orderNews()
         {
             var orderNews = objNews.newsTables.OrderByDescending(x => x.Id);
             return orderNews;
         }
 
-        //public IQueryable<newsTable> getNews()
-        //{
-        //    //an anonymous variable that is the instance of the linq object
-        //    var allNews = objNews.newsTables.Select(x => x);
-        //    return allNews;
-        //}
-
+        //getting the news specifically by ID
         public newsTable getNewsByID(int _id)
         {
             var allNew = objNews.newsTables.SingleOrDefault(x => x.Id == _id);
@@ -63,7 +53,7 @@ namespace ThunderB_redesign.Models
         }
 
 
-        //committing the update functionality
+        //passing the values to be updated
         public bool commitUpdate(int _id, string _stories, string _headline, string _date, string _author)
         {
             using (objNews)

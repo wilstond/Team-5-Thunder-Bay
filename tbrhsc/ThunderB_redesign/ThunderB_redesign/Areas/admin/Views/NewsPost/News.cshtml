@@ -9,8 +9,10 @@
 
 <h1>TBRHSC News</h1>
 
+@*The link to write a new News Post, directs to the insert view*@
 <p>@Html.ActionLink("Write a News Story", "Insert", "Linq")</p>
 
+@*Listing all currect posted news by their headlines*@
 <ul>
     @foreach (var x in Model)
     {

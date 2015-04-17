@@ -11,7 +11,7 @@ namespace ThunderB_redesign.Controllers
     public class NewsPostPublicController : Controller
     {
 
-        
+        //connecting to the news table in the database
         NewsPostLinq objNews = new NewsPostLinq();
         MenuLinqClass menuObj = new MenuLinqClass();
 
@@ -29,6 +29,7 @@ namespace ThunderB_redesign.Controllers
 
         }
 
+        //When arriving on the news page, all news posts are listed
         public ActionResult Index()
         {
             var allNews = objNews.orderNews();
@@ -42,13 +43,14 @@ namespace ThunderB_redesign.Controllers
             }
         }
 
+        //the control for the News Sidebar on the front page
         public PartialViewResult topNews()
         {
             var topNews = objNews.getTopNews();
             return PartialView(topNews);
         }
 
-
+        //when a news post is not found the Not Found view is returned
         public ActionResult NotFound()
         {
             return View();

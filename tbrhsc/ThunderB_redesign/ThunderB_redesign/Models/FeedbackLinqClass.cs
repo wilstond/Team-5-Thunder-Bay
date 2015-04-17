@@ -7,8 +7,10 @@ namespace ThunderB_redesign.Models
 {
     public class FeedbackLinqClass
     {
+        //connecting to the feedback table in the database
         LinqDataContext objFeedback = new LinqDataContext();
 
+        //getting all submitted feedback
         public IQueryable<feedback> getfeedback()
         {
             //creating an anonymous variable with its value being the instance of the LINQ class
@@ -17,13 +19,14 @@ namespace ThunderB_redesign.Models
             return allFeedbacks;
         }
 
+        //getting specific feedback when selected by ID
         public feedback getFeedbackbyID(int _id)
         {
             var allfeedback = objFeedback.feedbacks.SingleOrDefault(x => x.Id == _id);
             return allfeedback;
         }
 
-
+        //When the feedback is submitted by the user it is committed to the database
         public bool commitInsert(feedback feedback)//instance of Table Model
         {
             using (objFeedback)
@@ -36,7 +39,7 @@ namespace ThunderB_redesign.Models
             }
         }
 
-
+        //when updating the feedback
         public bool commitUpdate(int _id, string _name, string _email, string _topic, string _feedback)
         {
             using (objFeedback)
@@ -53,6 +56,7 @@ namespace ThunderB_redesign.Models
             }
         }
 
+        //deleting the feedback, deletes by ID
         public bool commitDelete(int _id)
         {
             using (objFeedback)

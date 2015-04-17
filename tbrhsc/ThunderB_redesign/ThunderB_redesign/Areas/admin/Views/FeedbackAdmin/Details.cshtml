@@ -4,6 +4,8 @@
     ViewBag.Title = "Feedback Details: " + @Model.topic;
 }
 
+@*This page lists all information about the selected feedback*@
+
 <h2>Feedback Details</h2>
 
 <p><strong>Topic: </strong>@Html.DisplayFor(x => x.topic)</p>
@@ -15,5 +17,6 @@
 <p>
     @Html.ActionLink("Back", "Index") |
 
+    @*the delete button*@
     @Html.ActionLink("Delete", "Delete", new { id = Model.Id })
 </p>

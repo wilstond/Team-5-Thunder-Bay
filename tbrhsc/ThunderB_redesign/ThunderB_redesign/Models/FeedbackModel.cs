@@ -16,6 +16,7 @@ namespace ThunderB_redesign.Models
 
     }
 
+    //Validation for the feedback fields
     [Bind(Exclude = "id")]
     public class FeedbackModel
     {
