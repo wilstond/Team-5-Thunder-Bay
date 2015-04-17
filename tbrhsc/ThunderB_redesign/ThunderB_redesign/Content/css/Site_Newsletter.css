@@ -38,3 +38,21 @@
 .text-danger {
     color: red;
 }
+
+
+/* Admin Style */
+
+#newsletter-admin {
+
+}
+
+#newsletter-admin a {
+    border: 1px solid white;
+    background-color: #1a2f38;    
+    color: white;
+    padding: 5px 10px;
+}
+
+    #newsletter-admin h2 {
+        color: black;
+    }

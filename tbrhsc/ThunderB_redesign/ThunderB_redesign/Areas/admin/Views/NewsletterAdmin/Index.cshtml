@@ -1,25 +1,16 @@
 ﻿@model IEnumerable<ThunderB_redesign.Models.subscriber>
 
-@{
-    ViewBag.Title = "Index";
-}
-
 <div id="newsletter-admin">
 
-    <hr/>
-    <br/>
-    <p>
-        @Html.ActionLink("Compose a Newsletter", "SendNewsletter")
-    </p>
-    <br/>
-    <hr/>
+   
+     @Html.ActionLink("Compose a Newsletter", "SendNewsletter")
     
     <br />
     <br/>
 
     <h2>Newsletter Subscribers</h2>
 
-    <table class="table">
+    <table class="stripes">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.sub_name)
