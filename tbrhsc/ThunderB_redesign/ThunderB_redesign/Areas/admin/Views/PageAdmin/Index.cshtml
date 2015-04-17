@@ -5,11 +5,13 @@
     ViewBag.Title = "Index";
 }
 
+@*----------this view displays pages in paginated list instead of breaking it up by categories-----------*@
+
 @using PagedList.Mvc; @*//import this so we get our HTML Helper*@
 @using PagedList; @*//import this so we can cast our list to IPagedList (only necessary because ViewBag is dynamic)*@
-
+<br/>
 <p><a href="~/admin/PageAdmin/Main">View pages listed by categories</a></p>
-
+<hr />
 
 <div class="action_link">
     @Html.ActionLink("Add New page", "Create")
@@ -80,6 +82,9 @@
 }
 
 </table>
+
+@*-----------Pagination Helper-----------------------*@
+
 <br />
 Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 <br/>

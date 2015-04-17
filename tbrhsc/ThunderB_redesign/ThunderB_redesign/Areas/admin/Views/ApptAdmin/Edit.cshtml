@@ -10,6 +10,9 @@
 </head>
 <body>
     <h2>Book Appointment</h2>
+
+    @*-----------view to book appointment-----------------*@
+
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
@@ -31,6 +34,8 @@
 
 
             <tr>
+
+                @*------------doctr id----------------------------*@
                 <td>
                     @Html.LabelFor(model => model.dr_id, htmlAttributes: new { @class = "control-label col-md-2" })
                 </td>
@@ -40,6 +45,7 @@
             </tr>
 
             <tr>
+                @*--------------------date of request------------------*@
                 <td>
                     @Html.LabelFor(model => model.date_req, htmlAttributes: new { @class = "control-label col-md-2" })
                 </td>
@@ -49,6 +55,7 @@
             </tr>
 
             <tr>
+                @*---------------------date of booking. Displays previously booked date, or empty if hasn't been booked yet-----------------*@
                 <td>
                     @Html.LabelFor(model => model.date_book, htmlAttributes: new { @class = "control-label col-md-2" })
                 </td>
@@ -66,7 +73,8 @@
         }
                     }
 
-                    @*@Html.TextBoxFor(model => model.date_book, new { @id = "datetimepicker" })*@
+                    @*-----------Date time picker allows to pick only future dates and times between 8am and 3:30pm------------*@
+
                     <script type="text/javascript">
                         $(document).ready(function () {
                             jQuery("#datetimepicker").datetimepicker({
@@ -84,20 +92,20 @@
                 </td>
             </tr>
 
-
-
             <tr>
+                @*----------------patient name, phone number and email-------------------*@
                 <td>Patient Details</td>
                 <td>
                     <h4>@Html.DisplayFor(model => model.pat_name)</h4>
                     <br />
                     @Html.DisplayFor(model => model.pat_phone)
                     <br />
-                    <a href="mailto:@Html.DisplayFor(model => model.pat_email)">@Html.DisplayFor(model => model.pat_email)</a>
+                    <a href="mailto:@Html.DisplayFor(model => model.pat_email)"> @Html.DisplayFor(model => model.pat_email)</a>
                 </td>
             </tr>
 
             <tr>
+                @*------------------appointment status--------------------------------*@
                 <td>
                     @Html.LabelFor(model => model.app_status)
                 </td>
@@ -112,6 +120,7 @@
         </div>
     }
 
+<hr/>
     <div>
         @Html.ActionLink("Back to List", "Index")
     </div>

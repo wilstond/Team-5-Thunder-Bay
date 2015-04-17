@@ -24,7 +24,7 @@ namespace ThunderB_redesign.Models
         //----function to get menu categories for populating drop-down list of menu categories
         public List<menu_category> getMenuTree()
         {
-            var allMenuItems = menuObj.menu_categories.Where(x => x.parent_id == 0 && x.menu_id != 0);
+            var allMenuItems = menuObj.menu_categories.Where(x => x.parent_id == 0 && x.menu_id != 0 && x.menu_slug == "Page");
             List<menu_category> menuTree = new List<menu_category>();
             foreach (menu_category menuItem in allMenuItems)
             {

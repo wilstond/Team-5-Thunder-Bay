@@ -40,7 +40,7 @@
             <tr>
                 <td colspan="2">
 
-                    @*CK Editor instructions are found here --https://www.youtube.com/watch?v=uJ_BeZUO0rg*@
+                    @*----------------CK Editor instructions are found here --https://www.youtube.com/watch?v=uJ_BeZUO0rg--------------------------*@
                     @*Tutorial to upload and embed images using CK editor was found here --http://amitraya.blogspot.ca/2014/09/ck-editor-implement-your-own-image.html*@
 
                         <textarea id="page_content" name="page_content">@Model.page_content</textarea>
@@ -61,6 +61,8 @@
                
 
                 <tr>
+                    @*---------------page menu id---------------------------*@
+
                     <td>
                         @Html.LabelFor(model => model.menu_id, htmlAttributes: new { @class = "control-label col-md-2" })
                     </td>
@@ -71,6 +73,7 @@
                 </tr>
 
                 <tr>
+                    @*----------------page visibility--------------------*@
                     <td>
                         @Html.LabelFor(model => model.page_visibility, htmlAttributes: new { @class = "control-label col-md-2" })
                     </td>

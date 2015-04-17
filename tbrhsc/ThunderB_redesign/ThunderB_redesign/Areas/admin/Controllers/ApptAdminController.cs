@@ -102,8 +102,13 @@ namespace ThunderB_redesign.Areas.admin.Controllers
                     }
 
                     // Update is committed
+
                         apptObject.commitUpdate(id, appt.dr_id, appt.date_req, appt.date_book, appt.time_book, appt.pat_name,
                         appt.pat_phone, appt.pat_email, appt.app_status);
+
+                    // After appointment is booked patient gets an email notification
+                    // Email function is using templates found at the Views/Emails folder. Booking_Confirmation.cshtml
+
 
                         dynamic email = new Email("Booking_Confirmation");
                         email.Doctor = db.doctors.Where(x => x.dr_id == appt.dr_id).SingleOrDefault().dr_name.ToString();
