@@ -448,17 +448,7 @@ ul.pagination li.active {
 ul.pagination li a {display: block; width: 25px; height: 25px; border:#1a2f38 solid 1px; text-align:center; 
                     padding-top: 3px;}
 
-/* Donation Admin Side Styling */
 
-.donation-admin {
-    margin: 0 auto;
-    text-align: center;
-}
-
-    .donation-admin h2 {
-        font-size: 20px;
-        font-weight: bolder;
-    }
 
     /*Volunteer Insert Button*/
     .buttonstyle {
