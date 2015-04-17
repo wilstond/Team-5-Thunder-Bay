@@ -941,20 +941,19 @@
     <Content Include="Views\jobApp\Thanks.cshtml" />
     <Content Include="Views\doctor\Index.cshtml" />
     <Content Include="Views\Emails\NewsOrAlertEmail.cshtml" />
-<<<<<<< Updated upstream
+
     <Content Include="Views\GiftShop\Index.cshtml" />
-=======
+
     <Content Include="Views\doctor\SearchResults.cshtml" />
->>>>>>> Stashed changes
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\admin\Models\" />
-<<<<<<< Updated upstream
+
     <Folder Include="Images\GiftShop\" />
     <Folder Include="Images\uploads\" />
-=======
->>>>>>> Stashed changes
+
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="Views\GPlace\" />
     <Folder Include="Views\Locator\" />
