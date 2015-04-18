@@ -11,6 +11,8 @@ namespace ThunderB_redesign.Models
     {
         LinqDataContext db = new LinqDataContext();
 
+        //---get doctor by user id---------------
+
         public doctor getDoctorByUserId(int user_id)
         {
             var selDoctor = db.doctors.Where(x => x.user_id == user_id).SingleOrDefault();
@@ -18,11 +20,15 @@ namespace ThunderB_redesign.Models
 
         }
 
+        //-------get all appointments----------------
+
         public IQueryable<appointment> getAllAppointments()
         {
             var AllAppointments = db.appointments.Select(x => x);
             return AllAppointments;
         }
+
+        //----------get appointments by doctor id--------------
 
         public IQueryable<appointment> getAppointmentsbyDr(int _dr_id)
         {
@@ -31,11 +37,15 @@ namespace ThunderB_redesign.Models
             return ApptByDoctor;
         }
 
+        //----------get appointment by appointment id------------
+
         public appointment getAppointmentById(int _apt_id)
         {
             var selAppt = db.appointments.Where(x => x.apt_id == _apt_id).SingleOrDefault();
             return selAppt;
         }
+
+        //------------insert new appointment ------------
 
         public bool commitInsert(appointment _apt)
         {
@@ -43,6 +53,8 @@ namespace ThunderB_redesign.Models
             db.SubmitChanges();
             return true;
         }
+
+        //------------update appointment-----------------------
 
         public bool commitUpdate(int _apt_id, int _dr_id, DateTime _date_req,
             DateTime? _date_book, string _time_book, string _pat_name, string _pat_phone, string _pat_email,
@@ -63,6 +75,8 @@ namespace ThunderB_redesign.Models
             return true;
 
         }
+
+        //-----------delete appointement--------------------------
 
         public bool commitDelete(int _apt_id)
         {

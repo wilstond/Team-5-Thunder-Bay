@@ -85,15 +85,8 @@ namespace ThunderB_redesign.Models
             return AllPages;
         }
 
-        public string getSlug(string _slug)
-        {
-            var sel_page = objPage.pages.SingleOrDefault(x => x.page_slug == _slug);
-            string slug = sel_page.page_slug;
-
-            return slug;
-        }
-
-
+        // inserting new page
+        
         public bool commitInsert(page _page)
         {
             using (objPage)
@@ -107,6 +100,8 @@ namespace ThunderB_redesign.Models
             }
         }
 
+        // updating page
+
         public bool commitUpdate(int _page_id, string _page_title, int _user_id,
             string _page_content, DateTime _page_created, int _menu_id,
             char _page_visibility, string _page_slug,
@@ -115,7 +110,8 @@ namespace ThunderB_redesign.Models
             using (objPage)
             {
                 var pageUpd = objPage.pages.Single(x => x.page_id == _page_id);
-                //Single = Select where
+                
+                // assigning new property values to selected page
 
                 pageUpd.page_title = _page_title;
                 pageUpd.user_id = _user_id;
@@ -127,12 +123,16 @@ namespace ThunderB_redesign.Models
                 pageUpd.meta_title = _meta_title;
                 pageUpd.meta_desc = _meta_desc;
 
+                // committing changes
+
                 objPage.SubmitChanges();
                 //executes update
                 return true;
 
             }
         }
+
+        //committing delete
 
         public bool commitDelete(int _page_id)
         {

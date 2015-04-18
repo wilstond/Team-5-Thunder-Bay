@@ -5,13 +5,18 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@*--------------------View to display confirmation page with details of the request-----------------*@
+
 <div class="middle clearfix">
+
+    @*----------------Right sidebar---------------------------------*@
+
     <div class="sidebar_right clearfix">
         <div class="donate clearfix">
             <h2>Help Make a Difference Donate to TBRHSC</h2>
         </div>
 
-
+    @*-------------links to ER page sections-------------------*@
 
         <section class="emergency_info">
             <h2>Emergency Room</h2>
@@ -24,6 +29,9 @@
                     <li><a href="~/ER/Index#er-plan">ER Plan</a></li>
                 </ul>
             </div>
+
+      @*-----------------ER Monitor is diplayed in the div "erm_holder" through Ajax call-------------*@
+
             <div id="erm_holder">
 
             </div>
@@ -31,20 +39,27 @@
 
     </div>
 
+    @*--------------------Main content is an appointment request form---------------------*@
+
     <div class="main_content clearfix">
         <section class="top_section clearfix top">
+
+            @*--------------Breadcrumb navigation--------------------------------*@
+
             <header class="section-header">
                 <span class="page_breadcrumb">
 
                     <a href="/">Home</a> > <a href="/Page/Index?menu_id=1">Patients</a> > <a href="/Appointment/Index">Book an Appointment</a>
 
                 </span>
-                <h1>Request an Appointment</h1>
+                <h1>Thank you for your request.</h1>
+                <h4>We will be in touch soon. Please check your email.</h4>
             </header>
             <article>
 
                 <hr />
-             
+
+             @*----------------Appointment details: Patient name, Email (To), Phone, Doctor, and Follow-up date------------------*@
 
                 <p>
                     Hello @ViewBag.Patient,
@@ -60,7 +75,7 @@
                     Phone: @ViewBag.Phone
                 </p>
                 <p>
-                    We will get back to provide you with your appointment date and time within 7 days.
+                    We will get back to you and provide you with your appointment date and time within 7 days.
                     If you don't hear from us by @ViewBag.FollowUpDate please contact our office at (905)999-9999
                 </p>
                 <p>
@@ -68,10 +83,10 @@
                     Dr. @ViewBag.Doctor
                 </p>
 
+                @*-------------Link to return to form page--------------------*@
     
     <p>
         <a href="~/Appointment/Index">Request another appointment</a>
-        
     </p>
     </article>
     </section>

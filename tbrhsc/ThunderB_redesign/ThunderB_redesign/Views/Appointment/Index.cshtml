@@ -5,15 +5,19 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@*--------------------this view contains an appointment request form---------------------*@
 
 <div class="middle clearfix">
+
+    @*--------------------Right sidebar------------------------------*@
+
     <div class="sidebar_right clearfix">
         <div class="donate clearfix">
             <h2><a href="/Donation/Index">Help Make a Difference Donate to TBRHSC</a></h2>
         </div>
 
 
-
+@*--------------------Emergency room links and wait time monitor----------------*@
         <section class="emergency_info">
             <h2>Emergency Room</h2>
             <div class="emergency_content">
@@ -25,6 +29,9 @@
                     <li><a href="~/ER/Index#er-plan">ER Plan</a></li>
                 </ul>
             </div>
+
+  @*-----------------ER Monitor is diplayed in the div "erm_holder" through Ajax call------------*@
+
             <div id="erm_holder">
 
             </div>
@@ -32,14 +39,19 @@
 
     </div>
 
+    @*-------------Main content hold the actual form------------------*@
+
     <div class="main_content clearfix">
         <section class="top_section clearfix top">
+
+            @*------------Breadcrumb navigation--------------------*@
+
             <header class="section-header">
                 <span class="page_breadcrumb">
 
                     <a href="/">Home</a> > <a href="/Page/Index?menu_id=1">Patients</a> > <a href="/Appointment/Index">Book an Appointment</a>
 
-</span>
+                </span>
                 <h1>Request an Appointment</h1>
             </header>
             <article>
@@ -51,6 +63,9 @@
                         <hr />
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         <div class="form-group">
+
+                            @*------------------Doctor list is populated from database--------------------*@
+
                             @Html.LabelFor(model => model.dr_id,"Select doctor", htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
                                 @Html.DropDownListFor(model => model.dr_id, new SelectList(ViewBag.docList, "dr_id", "dr_name"), "Select a doctor")
@@ -58,14 +73,15 @@
                             </div>
                         </div>
 
+                        @*-----------------Hidden fields are preset ----------------------------*@
 
-                        @Html.Hidden("date_req", DateTime.Now.ToShortDateString())
+                        @Html.Hidden("date_req", DateTime.UtcNow.AddHours(-4).ToShortDateString())
                         @Html.Hidden("date_book", DBNull.Value)
                         @Html.Hidden("time_book", "")
                         @Html.Hidden("app_status", "Pending")
 
 
-
+                        @*----------------Patient name------------------------------------------*@
 
                         <div class="form-group">
                             @Html.LabelFor(model => model.pat_name, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -75,6 +91,8 @@
                             </div>
                         </div>
 
+                        @*----------------Patient phone (masked input)------------------------------------------*@
+
                         <div class="form-group">
                             @Html.LabelFor(model => model.pat_phone, htmlAttributes: new { @class = "control-label col-md-2" })
                             <div class="col-md-10">
@@ -83,6 +101,8 @@
 
                             </div>
                         </div>
+
+                        @*----------------Patient email------------------------------------------*@
 
                         <div class="form-group">
                             @Html.LabelFor(model => model.pat_email, htmlAttributes: new { @class = "control-label col-md-2" })

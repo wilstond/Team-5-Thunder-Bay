@@ -61,6 +61,7 @@ namespace ThunderB_redesign.Controllers
                     apptObject.commitInsert(_apt); // insert is committed and user is redirected to home page
                     var last_id = _apt.apt_id;
                     
+                    // sending an email after request is entered in the database
 
                     dynamic email = new Email("Request_Confirmation");
                     email.Doctor = db.doctors.Where(x => x.dr_id == _apt.dr_id).SingleOrDefault().dr_name.ToString();
@@ -70,6 +71,8 @@ namespace ThunderB_redesign.Controllers
                     email.FollowUpDate = _apt.date_req.AddDays(7).ToShortDateString().ToString();
 
                     email.Send();
+
+                    //  values in the viewbag are displayed in the details page
 
                     ViewBag.Doctor = email.Doctor;
                     ViewBag.Patient = email.Patient;
@@ -96,18 +99,7 @@ namespace ThunderB_redesign.Controllers
             return View();
         }
 
-        //public ActionResult SendEmail()
-        //{
-        //    dynamic email = new Email("Request_Confirmation");
-        //    email.To = "ilecoche@acn.net";
-
-        //    email.Send();
-        //    return View();
-        //}
-
-
-
-
+        
         public ActionResult NotFound()
         {
             return View();

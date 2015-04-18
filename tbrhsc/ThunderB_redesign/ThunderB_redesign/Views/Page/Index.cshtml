@@ -15,6 +15,9 @@
         </div>
 
         <section class="news_feed clearfix">
+
+            @*-----------------Displaying a list of subcategories of the current category----------------------*@
+
             @{
                 List<ThunderB_redesign.Models.menu_category> submenuList = ViewBag.subMenuItems;
             }
@@ -38,6 +41,9 @@
                     </ul>
                 </div>
             }
+            
+            @*----------------------Displaying a list of pages of the current category----------------------------*@
+
             <header>List of pages</header>
             <div class="news_title">
 
@@ -58,6 +64,8 @@
 
         </section>
 
+        @*---------------------Emergency Room links and ER Monitor------------------------------*@
+
         <section class="emergency_info">
             <h2>Emergency Room</h2>
             <div class="emergency_content">
@@ -69,37 +77,39 @@
                     <li><a href="~/ER/Index#er-plan">ER Plan</a></li>
                 </ul>
             </div>
+
+        @*-------------Emergency room wait time monitor gets inserted here and refreshes every 3 seconds--------------*@
+
             <div id="erm_holder">
 
-                @*Emergency room wait time monitor gets inserted here and refreshes every 3 seconds*@
             </div>
         </section>
 
     </div>
 
+        @*-----------------Main content displays dynamically created landing page for the category. It's the first page of the category *@
+
     <div class="main_content clearfix">
         <section class="top_section clearfix top">
-            <header class="section-header">
+ 
+        @*------------------display breadcrumb navigation------------------ *@
+
+             <header class="section-header">
                 <span class="page_breadcrumb">
-                    @* display breadcrumb navigation *@
+
                     <a href="/">Home</a> > @Html.Raw(ViewBag.breadCrumb)
 
                 </span>
+
+         @*------------------------Page title-----------------------------*@
+
                 <h1>@Model.page_title</h1>
             </header>
-            @* display date that page was created *@
+        @*------------- display date that page was created------------------ *@
             <span class="date">@Model.page_created.DayOfWeek, @Model.page_created.Date.ToLongDateString()</span>
             <article>
                 @Html.Raw(Model.page_content)
 
-
-                @*<dt>
-                        @Html.DisplayNameFor(model => model.menu_id)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.menu_id)
-                    </dd>*@
             </article>
         </section>
 

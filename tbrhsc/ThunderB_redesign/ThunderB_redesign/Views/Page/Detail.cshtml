@@ -9,6 +9,9 @@
     and a list of related (sibling pages, children of the same menu_category) in the sidebar *@
 
 <div class="middle clearfix">
+
+    @*---------right sidebar--------------------------*@
+
     <div class="sidebar_right clearfix">
         <div class="donate clearfix">
             <h2><a href="/Donation/Index">Help Make a Difference Donate to TBRHSC</a></h2>
@@ -19,7 +22,8 @@
             <div class="news_title">
 
                 <ul>
-                    @* list of related pages (children of the same parent menu category) *@
+       @*---------------- list of related pages (children of the same parent menu category) -----------*@
+
                     @{foreach (var item in ViewBag.relatedPages)
                     {
 
@@ -35,9 +39,12 @@
 
         </section>
 
+        @*-------------links to ER page sections-------------------*@
+
         <section class="emergency_info">
             <h2>Emergency Room</h2>
             <div class="emergency_content">
+                                
                 <ul>
                     <li><a href="~/ER/Index#how-to-get">Trip to ER</a></li>
                     <li><a href="~/ER/Index#visitors">Visitors</a></li>
@@ -46,34 +53,43 @@
                     <li><a href="~/ER/Index#er-plan">ER Plan</a></li>
                 </ul>
             </div>
+            
+                @*-----------------ER Monitor is diplayed in the div "erm_holder" through Ajax call-------------*@
+            
             <div id="erm_holder">
 
             </div>
-        </section>
 
+        </section>
     </div>
 
     <div class="main_content clearfix">
         <section class="top_section clearfix top">
             <header class="section-header">
+
+                @*--------------Breadcrumb navigation--------------------------------*@
+
                 <span class="page_breadcrumb">
                     <a href="/">Home</a> > @Html.Raw(ViewBag.breadCrumb)
 
                 </span>
+
+                @*----------------Page title----------------------------------------*@
+
                 <h1>@Model.page_title</h1>
             </header>
+
+                @*-----------Page date----------------------------------------------*@
+
             <span class="date">@Model.page_created.DayOfWeek, @Model.page_created.Date.ToLongDateString()</span>
             <article>
+
+                @*----------------Page Content---------------------------------------*@
+
                 @Html.Raw(Model.page_content)
 
 
-                @*<dt>
-                        @Html.DisplayNameFor(model => model.menu_id)
-                    </dt>
-
-                    <dd>
-                        @Html.DisplayFor(model => model.menu_id)
-                    </dd>*@
+               
             </article>
         </section>
 

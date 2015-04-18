@@ -19,28 +19,44 @@ namespace ThunderB_redesign.Models
     [Bind(Exclude = "page_id")]
     public class PageModel
     {
+        //---------user id------------
+
         [DisplayName("User Id")]
         [Required]
         public int user_id { get; set; }
+
+        //----------page title------------
 
         [DisplayName("Page Title")]
         [Required]
         public string page_title { get; set; } //property names have to match column names
 
+        //------------page content---------------
+
         [DisplayName("Page Content")]
-        [UIHint("tinymce_jquery_full"), AllowHtml]
+        [AllowHtml]
         public MvcHtmlString page_content { get; set; }
+
+        //------------page created date-----------
 
         [DisplayName("Page Created")]
         [Required]
         public DateTime page_created { get; set; }
 
+        //-----------menu id ----------------------
+
         [DisplayName("Menu")]
         public int menu_id { get; set; }
+
+        //------------page visibility----------------
 
         [DisplayName("Published or Draft")]
         [Required]
         public char page_visibility { get; set; }
+
+        //------------page slug-------------------------
+        //validated to allow only numbers letters or hyphens
+        //also validated to prevent duplicate slugs using json
 
         [Key]
         [Required]
@@ -49,8 +65,12 @@ namespace ThunderB_redesign.Models
         [Remote("IsSlugAvailable", "PageAdmin", HttpMethod = "POST", ErrorMessage = "Slug Already Exist.")]
         public string page_slug { get; set; }
 
+        //------------meta title-------------------------
+
         [DisplayName("Meta Title")]
         public string meta_title { get; set; }
+
+        //------------meta description-------------------
 
         [DisplayName("Meta Description")]
         public string meta_desc { get; set; }

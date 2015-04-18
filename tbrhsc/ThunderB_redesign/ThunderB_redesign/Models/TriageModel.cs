@@ -20,9 +20,13 @@ namespace ThunderB_redesign.Models
     public class TriageModel
     {
         
+        //------patient name----------------
+
         [DisplayName("Patient/Case Name")]
         [Required(ErrorMessage = "Please enter patient/case name")]
         public string patient_name { get; set; }
+
+        //------arrival datetime----------------
 
         [DisplayName("Arrival")]
         [Required(ErrorMessage = "Arrival date & time are required")]
@@ -37,10 +41,13 @@ namespace ThunderB_redesign.Models
         [DateRange]
         public System.DateTime discharge { get; set; }
 
+        //-------type of emergency--------------------------
+
         [DisplayName("Complaint")]
         [Required(ErrorMessage = "Select type of complaint")]
         public int em_id { get; set; }
 
+        //-------doctor id of the doctor assigned to the case---------------
 
         public Nullable<int> dr_id { get; set; }
 

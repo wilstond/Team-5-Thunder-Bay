@@ -80,6 +80,8 @@ namespace ThunderB_redesign.Models
         {
             Dictionary<int, string> menuHeaderList = new Dictionary<int, string>();
 
+            //------------query to self-join menu_categories to create list of headers-------
+
             var query = (from m in menuObj.menu_categories
                          join p in menuObj.menu_categories on m.parent_id equals p.menu_id
                          where m.menu_slug == "Page"
@@ -93,6 +95,8 @@ namespace ThunderB_redesign.Models
                          }
                          
                          ).ToList();
+
+            //---------if parent menu is "Home" we don't include it in the header-----
 
             foreach (var row in query)
             {
