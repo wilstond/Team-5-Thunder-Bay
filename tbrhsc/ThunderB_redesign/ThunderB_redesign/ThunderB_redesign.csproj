@@ -242,6 +242,7 @@
     <Compile Include="Controllers\NewsletterController.cs" />
     <Compile Include="Controllers\NewsPostPublicController.cs" />
     <Compile Include="Controllers\PageController.cs" />
+    <Compile Include="Controllers\ShiftController.cs" />
     <Compile Include="Controllers\VolunteerShiftController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -284,12 +285,14 @@
     <Compile Include="Models\NewsPostModel.cs" />
     <Compile Include="Models\PageLinqClass.cs" />
     <Compile Include="Models\PageModel.cs" />
+    <Compile Include="Models\ShiftLinqClass.cs" />
     <Compile Include="Models\SubscriberClass.cs" />
     <Compile Include="Models\SubscriberModel.cs" />
     <Compile Include="Models\TriageModel.cs" />
     <Compile Include="Models\TriageViewModel.cs" />
     <Compile Include="Models\VolunteerLinqClass.cs" />
     <Compile Include="Models\VolunteerModel.cs" />
+    <Compile Include="Models\volunteerShiftModel.cs" />
     <Compile Include="Models\VolunteerViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -387,6 +390,7 @@
     <Content Include="bin\System.Web.WebPages.Razor.xml" />
     <Content Include="bin\System.Web.WebPages.xml" />
     <Content Include="bin\ThunderB_redesign.dll" />
+    <Content Include="bin\ThunderB_redesign.dll.config" />
     <Content Include="bin\ThunderB_redesign.pdb" />
     <Content Include="bin\WebActivatorEx.dll" />
     <Content Include="bin\WebGrease.dll" />
@@ -778,7 +782,6 @@
     <Content Include="Areas\admin\Views\ApptAdmin\Index.cshtml" />
     <Content Include="Content\MonthlyReport" />
     <Content Include="Areas\admin\Views\VolunteerAdmin\Index.cshtml" />
-    <Content Include="bin\ThunderB_redesign.dll.config" />
     <Content Include="Areas\admin\Views\NewsPost\Delete.cshtml" />
     <Content Include="Areas\admin\Views\NewsPost\Index.cshtml" />
     <Content Include="Areas\admin\Views\NewsPost\Insert.cshtml" />
@@ -935,6 +938,8 @@
     <Content Include="Views\GiftShop\Index.cshtml" />
     <Content Include="Views\doctor\SearchResults.cshtml" />
     <Content Include="Views\GiftShop\Details.cshtml" />
+    <Content Include="Views\Shift\Index.cshtml" />
+    <Content Include="Views\Shift\Thanks.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

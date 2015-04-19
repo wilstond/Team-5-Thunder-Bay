@@ -7,15 +7,18 @@ using System.Web.Mvc;
 using ThunderB_redesign.Models;
 using Postal;
 
+using System.Diagnostics;
+
 //Author: Wilston Dsouza
 //Purpose: Mobile Development Final Project
 
 namespace ThunderB_redesign.Controllers
 {
+    
     public class DonationController : Controller
     {
         MenuLinqClass menuObj = new MenuLinqClass();
-
+        
         public DonationController()
         {
             //Add menu items to view data
@@ -46,6 +49,8 @@ namespace ThunderB_redesign.Controllers
                     //Add donation to database
                     objDonationVM.addDonationInfo();
 
+                    
+
                     //Proceed to paypal for payment
                     proceedToPaypal(objDonationVM.dtn_amount);
 
@@ -56,7 +61,7 @@ namespace ThunderB_redesign.Controllers
                     email.Send();
                 
                     //Display thank you message
-                    return RedirectToAction("Success", objDonationVM);
+                    //return RedirectToAction("Success", objDonationVM);
 
                 }
                 catch
@@ -69,9 +74,9 @@ namespace ThunderB_redesign.Controllers
 
         }
 
-        public ActionResult Success(DonationVM objDonation)
+        public ActionResult Success()
         {
-            return View(objDonation);
+            return View();
         }
         
         //Method to process info and redirect to paypal
@@ -94,7 +99,10 @@ namespace ThunderB_redesign.Controllers
                 "&currency_code=" + currency +
                 "&bn=" + "PP%2dDonationsBF";
 
-            System.Diagnostics.Process.Start(url);
+            //Process.Start(url);
+
+            Response.Redirect(@url);
+            
         }
 
     }
