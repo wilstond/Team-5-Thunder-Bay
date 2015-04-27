@@ -27,7 +27,7 @@ Purpose: Mobile Development Final Project*@
                   
                     <div class="form-group">
                         <div class="float-left">@Html.Label("Name")</div>
-                        <div class="float-right">@Html.TextBoxFor(model => model.dnr_name)</div>
+                        <div class="float-right">@Html.TextBoxFor(model => model.dnr_name) *</div>
                         <div class="clear-both"></div>
                         @Html.ValidationMessageFor(model => model.dnr_name, "", new { @class = "text-danger" })
                     </div>
@@ -36,7 +36,7 @@ Purpose: Mobile Development Final Project*@
 
                     <div class="form-group">
                         <div class="float-left">@Html.Label("Phone")</div>
-                        <div class="float-right">@Html.TextBoxFor(model => model.dnr_phone)</div>
+                        <div class="float-right">@Html.TextBoxFor(model => model.dnr_phone) *</div>
                         <div class="clear-both"></div>
                         @Html.ValidationMessageFor(model => model.dnr_phone, "", new { @class = "text-danger" })
                     </div>
@@ -45,7 +45,7 @@ Purpose: Mobile Development Final Project*@
 
                     <div class="form-group">
                         <div class="float-left">@Html.Label("Street")</div>
-                        <div class="float-right">@Html.TextBoxFor(model => model.dnr_street)</div>
+                        <div class="float-right">@Html.TextBoxFor(model => model.dnr_street) *</div>
                         <div class="clear-both"></div>
                         @Html.ValidationMessageFor(model => model.dnr_street, "", new { @class = "text-danger" })
                     </div>
@@ -54,7 +54,7 @@ Purpose: Mobile Development Final Project*@
 
                     <div class="form-group">
                         <div class="float-left">@Html.Label("Province")</div>
-                        <div class="float-right">@Html.TextBoxFor(model => model.dnr_province)</div>
+                        <div class="float-right">@Html.TextBoxFor(model => model.dnr_province) *</div>
                         <div class="clear-both"></div>
                         @Html.ValidationMessageFor(model => model.dnr_province, "", new { @class = "text-danger" })
                     </div>
@@ -63,7 +63,7 @@ Purpose: Mobile Development Final Project*@
 
                     <div class="form-group">
                         <div class="float-left">@Html.Label("Postal Code")</div>
-                        <div class="float-right">@Html.TextBoxFor(model => model.dnr_postal_code)</div>
+                        <div class="float-right">@Html.TextBoxFor(model => model.dnr_postal_code) *</div>
                         <div class="clear-both"></div>
                         @Html.ValidationMessageFor(model => model.dnr_postal_code, "", new { @class = "text-danger" })
                     </div>
@@ -76,14 +76,14 @@ Purpose: Mobile Development Final Project*@
 
                     <div class="form-group">
                         <div class="float-left">@Html.Label("Email")</div>
-                        <div class="float-right">@Html.TextBoxFor(model => model.dnr_email)</div>
+                        <div class="float-right">@Html.TextBoxFor(model => model.dnr_email) *</div>
                         <div class="clear-both"></div>
                         @Html.ValidationMessageFor(model => model.dnr_email, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="form-group">
                         <div class="float-left">@Html.Label("Apartment No")</div>
-                        <div class="float-right">@Html.TextBoxFor(model => model.dnr_apt_no)</div>
+                        <div class="float-right">@Html.TextBoxFor(model => model.dnr_apt_no) *</div>
                         <div class="clear-both"></div>
                         @Html.ValidationMessageFor(model => model.dnr_apt_no, "", new { @class = "text-danger" })
                     </div>
@@ -92,7 +92,7 @@ Purpose: Mobile Development Final Project*@
 
                     <div class="form-group">
                         <div class="float-left">@Html.Label("City")</div>
-                        <div class="float-right">@Html.TextBoxFor(model => model.dnr_city)</div>
+                        <div class="float-right">@Html.TextBoxFor(model => model.dnr_city) *</div>
                         <div class="clear-both"></div>
                         @Html.ValidationMessageFor(model => model.dnr_city, "", new { @class = "text-danger" })
                     </div>
@@ -101,7 +101,7 @@ Purpose: Mobile Development Final Project*@
 
                     <div class="form-group">
                         <div class="float-left">@Html.Label("Country")</div>
-                        <div class="float-right">@Html.TextBoxFor(model => model.dnr_country)</div>
+                        <div class="float-right">@Html.TextBoxFor(model => model.dnr_country) *</div>
                         <div class="clear-both"></div>
                         @Html.ValidationMessageFor(model => model.dnr_country, "", new { @class = "text-danger" })
                     </div>
@@ -110,7 +110,7 @@ Purpose: Mobile Development Final Project*@
 
                     <div class="form-group">
                         <div class="float-left">@Html.Label("Amount")</div>
-                        <div class="float-right">@Html.TextBoxFor(model => model.dtn_amount)</div>
+                        <div class="float-right">@Html.TextBoxFor(model => model.dtn_amount) *</div>
                         <div class="clear-both"></div>
                         @Html.ValidationMessageFor(model => model.dtn_amount, "", new { @class = "text-danger" })
                     </div>
@@ -118,7 +118,9 @@ Purpose: Mobile Development Final Project*@
                 </div>
                 
                 <div class="clear-both"></div>
-
+                <br/>
+                <div>* Required</div>
+                <br />
                 <button type="submit" class="paypal-button large">Donate</button>
 
                 <div class="clear-both"></div>
