@@ -1,94 +1,86 @@
 ﻿@model ThunderB_redesign.Models.jobApplication
 
-<h1>Application Summary</h1>
+<div class="thanks">
+    <div class="back">
+        @Html.ActionLink("Back to Job Postings", "Index", "Job")
+    </div>
 
-<div>
-    <p>Thanks @Model.first_name, your applications has been submitted</p>
+    <div class="summary">
 
-    <dl>
-        <dt>
-            @Html.DisplayNameFor(model => model.first_name)
-        </dt>
+        <h2>Application Summary</h2>
 
-        <dd>
-            @Html.DisplayFor(model => model.first_name)
-        </dd>
+      
+            <div class="thank-you">Thanks @Model.first_name, your application has been submitted.</div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.last_name)
-        </dt>
+            <dl>
+                <dt>
+                    @Html.DisplayNameFor(model => model.first_name):
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.last_name)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.first_name)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.job_id)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.last_name):
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.job_id)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.last_name)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.email)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.email):
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.email)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.email)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.city)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.city):
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.city)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.city)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.phone)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.phone):
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.phone)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.phone)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.address)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.address):
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.address)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.address)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.cover_letter)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.cover_letter):
+                </dt>
 
-        <dd>
-            @Html.Raw(Model.cover_letter)
-        </dd>
+                <dd>
+                    @Html.Raw(Model.cover_letter)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.resume)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.resume):
+                </dt>
 
-        <dd>
-            @Html.Raw(Model.resume)
-        </dd>
+                <dd>
+                    @Html.Raw(Model.resume)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.date_posted)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.date_posted)
-        </dd>
-
-    </dl>
+            </dl>
+       
+    </div>
+    <div class="back">
+        @Html.ActionLink("Back to Job Postings", "Index", "Job")
+    </div>
 </div>
-<p>
-    
-    @Html.ActionLink("Back to Job Postings","Index", "Job")
-</p>

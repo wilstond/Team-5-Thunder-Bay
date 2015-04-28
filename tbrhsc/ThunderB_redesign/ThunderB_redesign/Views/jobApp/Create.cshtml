@@ -3,93 +3,108 @@
 @{
     ViewBag.Title = "Job Application";
 }
-
-<h2>Job Application</h2>
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
-
-    <fieldset>
-      
-        @Html.HiddenFor(model => model.date_posted, new { @Value = DateTime.Now })
-        <div class="editor-label">
-            @Html.LabelFor(model => model.first_name)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.first_name)
-            @Html.ValidationMessageFor(model => model.first_name)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.last_name)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.last_name)
-            @Html.ValidationMessageFor(model => model.last_name)
-        </div>
+<div class="application">
+    <div class="back">
+        @Html.ActionLink("Back to Job Board", "Index", "Job")
+    </div>
 
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.email)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.email)
-            @Html.ValidationMessageFor(model => model.email)
-        </div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.city)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.city)
-            @Html.ValidationMessageFor(model => model.city)
-        </div>
+        <fieldset>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.phone)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.phone)
-            @Html.ValidationMessageFor(model => model.phone)
-        </div>
+            <h2>Job Application</h2>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.address)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.address)
-            @Html.ValidationMessageFor(model => model.address)
-        </div>
+            @Html.HiddenFor(model => model.date_posted, new {@Value = DateTime.Now})
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.cover_letter)
-            <p>Please copy and paste your cover letter here</p>
-        </div>
-        <div class="editor-field">
-            @Html.TextAreaFor(model => model.cover_letter)
-            @Html.ValidationMessageFor(model => model.cover_letter)
-        </div>
+            <div class="col-1">
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.first_name):
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.first_name, new { @placeholder = "Enter name here" })<span> *</span>
+                    @Html.ValidationMessageFor(model => model.first_name)
+                </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.resume)
-            <p>Please copy and paste your resume here</p>
-        </div>
-        <div class="editor-field">
-            @Html.TextAreaFor(model => model.resume)
-            @Html.ValidationMessageFor(model => model.resume)
-        </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.last_name):
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.last_name, new { @placeholder = "Enter last name here" })<span> *</span>
+                    @Html.ValidationMessageFor(model => model.last_name)
+                </div>
 
 
-        <p>
-            <input type="submit" value="Submit" />
-        </p>
-    </fieldset>
-}
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.email):
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.email, new { @placeholder = "Enter email here" })<span> *</span>
+                    @Html.ValidationMessageFor(model => model.email)
+                </div>
+            </div>
 
-<div>
-    @Html.ActionLink("Back to List", "Index", "Job")
+            <div class="col-2">
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.phone):
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.phone, new { @placeholder = "Enter phone here" })<span> *</span>
+                    @Html.ValidationMessageFor(model => model.phone)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.address):
+                </div>
+                <div class="editor-field">
+                    @Html.TextAreaFor(model => model.address, new { @placeholder = "Enter address here", @cols = 23, @rows = 3 })<span> *</span>
+                    @Html.ValidationMessageFor(model => model.address)
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.city):
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.city, new { @placeholder = "Enter city here" })<span> *</span>
+                    @Html.ValidationMessageFor(model => model.city)
+                </div>
+            </div>
+
+            <div class="text">
+
+            <div class="cover-letter">
+                    @Html.LabelFor(model => model.cover_letter):
+                    <p>Please copy and paste your cover letter here</p>
+                </div>
+                <div class="editor-field">
+                    @Html.TextAreaFor(model => model.cover_letter)<span>*Required</span>
+                    @Html.ValidationMessageFor(model => model.cover_letter)
+                </div>
+
+                <div class="resume">
+                    @Html.LabelFor(model => model.resume):
+                    <p>Please copy and paste your resume here</p>
+                </div>
+                <div class="editor-field">
+                    @Html.TextAreaFor(model => model.resume)<span>*Required</span>
+                    @Html.ValidationMessageFor(model => model.resume)
+                </div>
+    
+                </div>
+                <div class="apply">
+                    <input id="submit" type="submit" value="Submit" />
+                </div>
+</fieldset>
+    }
+
+    <div class="back">
+        @Html.ActionLink("Back to Job Board", "Index", "Job")
+    </div>
+
 </div>
 
 @section Scripts {

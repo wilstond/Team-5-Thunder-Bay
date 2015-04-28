@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.UI.WebControls;
 
 namespace ThunderB_redesign.Models
 {
@@ -12,7 +13,7 @@ namespace ThunderB_redesign.Models
 
         public IQueryable<Job> GetJobs()
         {
-            var allJobs = objJob.Jobs.Select(x => x);
+            var allJobs = objJob.Jobs.Select(x => x).OrderByDescending(x => x.closing_date);
             return allJobs;
         }
 

@@ -1,53 +1,57 @@
 ﻿@model ThunderB_redesign.Models.Job
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Job Details";
 }
 
-<h2>Details</h2>
-
-<fieldset>
-    <legend>Job</legend>
-
-    <div class="display-label">
-        @Html.DisplayNameFor(model => model.job_title)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.job_title)
+<div class="job-details">
+    <div class="back">
+        @Html.ActionLink("Back to Job Board", "Index")
+    
     </div>
 
-    <div class="display-label">
-        @Html.DisplayNameFor(model => model.jobCategory.category)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.jobCategory.category)
+    <fieldset>
+        <h2>@Model.job_title</h2>
+
+        <div class="apply">
+            @Html.ActionLink("Apply Now", "Create", "jobApp", new { job_id = Model.Id }, null)
+        </div>
+
+        <div class="small">
+            <div class="left">
+                @Html.DisplayNameFor(model => model.jobCategory.category):
+            </div>
+            <div class="right">
+                @Html.DisplayFor(model => model.jobCategory.category)
+            </div>
+
+            <div class="left">
+                @Html.DisplayNameFor(model => model.closing_date):
+            </div>
+            <div class="right">
+                 @Model.closing_date.ToString("D")
+            </div>
+            <div class="left">
+                @Html.DisplayNameFor(model => model.date_posted):
+            </div>
+            <div class="right">
+                 @Model.date_posted.ToString("D")
+            </div>
+        </div>
+       
+        <div class="display-field">
+            @Html.Raw(Model.job_description)
+        </div>
+
+        <div class="apply">
+            @Html.ActionLink("Apply Now", "Create", "jobApp", new { job_id = Model.Id }, null)
+        </div>
+
+
+    </fieldset>
+    <div class="back">
+        @Html.ActionLink("Back to Job Board", "Index")
+      
     </div>
 
-    <div class="display-label">
-        @Html.DisplayNameFor(model => model.closing_date)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.closing_date)
-    </div>
-
-    <div class="display-label">
-        @Html.DisplayNameFor(model => model.job_description)
-    </div>
-    <div class="display-field">
-        @Html.Raw(Model.job_description)
-    </div>
-
-    <div class="display-label">
-        @Html.DisplayNameFor(model => model.date_posted)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.date_posted)
-    </div>
-
-
-</fieldset>
-<p>
-    @Html.ActionLink("Back to List", "Index")
-    @Html.ActionLink("Apply", "Create", "jobApp", new { job_id = Model.Id }, null)
-</p>
-
+</div>

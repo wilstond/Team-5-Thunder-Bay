@@ -2,27 +2,46 @@
 @{
     ViewBag.Title = "Index";
 }
+<div class="job-board">
+    <h2>Recruitment Page</h2>
 
-<h2>Thunder Bay Regional Health Science Centre Job Board</h2>
+    <article>
 
+        <p>Established by the Medical Planning Committee of the Thunder Bay Regional Health Sciences Centre, our current Human Resource Plan support the below listed positions.</p>
 
-<p>Please click on the job title to get more details</p>
+        <p>Applicants must be eligible for licensing with the College of Physicians and Surgeons of Ontario (www.cpso.on.ca) and/or certified in their specialty/sub-specialty or eligible for certification with the Royal College of Physicians and Surgeons of Canada (www.rcpsc.medical.org).</p>
 
-<table>
-    <tr>
-        <td>@Html.DisplayNameFor(model => model.job_title)</td>
-        <td>@Html.DisplayNameFor(model => model.jobCategory.category)</td>
-        <td>@Html.DisplayNameFor(model => model.closing_date)</td>
-    </tr>
+        <p>Family Practitioners must be certified with the Canadian College of Family Practice.</p>
+    </article>
 
-    @foreach (var x in Model)
-    {
+    <h2>Job Board</h2>
+    
+    <p>Click on the position title for a full-length description and to apply online.</p>
+
+    <table class="job-list">
         <tr>
-            <td>@Html.ActionLink(x.job_title, "Details", new { id = x.Id })</td>
-            <td>@x.jobCategory.category</td>
-            <td>@x.closing_date</td>
+            <th>@Html.DisplayNameFor(model => model.job_title)</th>
+            <th>@Html.DisplayNameFor(model => model.jobCategory.category)</th>
+            <th>@Html.DisplayNameFor(model => model.closing_date)</th>
         </tr>
-    }
 
-</table>
+        @foreach (var x in Model)
+        {
+            <tr>
 
+                @if ((DateTime.Now - x.date_posted).TotalDays < 3)
+                {
+                    <td>@Html.ActionLink(x.job_title, "Details", new {id = x.Id}) <span>- New</span></td>
+                }
+                else
+                {
+                    <td>@Html.ActionLink(x.job_title, "Details", new { id = x.Id })</td>
+                }
+                <td>@x.jobCategory.category</td>
+                <td>@x.closing_date.ToString("D")</td>
+            </tr>
+        }
+
+    </table>
+
+</div>
