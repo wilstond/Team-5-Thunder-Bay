@@ -1,0 +1,72 @@
+﻿@color: white;
+@purple: #1a2f38;
+@orange: #f68b22;
+@blue: #1f5e79;
+@red: #9e0b0f;
+
+
+.jobs {
+    font-family:'Source Sans Pro', sans-serif;
+    color: @purple;
+
+    th {
+        text-align:left;
+    }
+
+    h2 {
+        font-size: 20px;
+        padding: 10px 0;
+        font-weight: 700;
+         border-bottom: 1px solid @orange;
+    }
+
+    .add {       
+         margin-bottom:10px;   
+         width:100%;
+         padding: 20px 0;         
+     }
+
+     .add a {
+         padding: 8px 25px;      
+         color: @color;
+         background: @purple;
+     }
+     .add a:hover {
+          background: lighten(@purple, 10%);
+     }
+     
+     .delete {
+         padding: 3px 13px;      
+         color: @color;
+         background: @red;
+     }
+     .delete:hover {
+         background: lighten(@red, 10%);
+     }
+     .edit{
+         padding: 3px 13px;      
+         color: @color;
+         background: @blue;
+     }
+     .edit:hover {
+         background: lighten(@blue, 10%);
+     }
+     
+     .applications {
+         padding: 3px 13px;      
+         color: @color;
+         background: @orange;
+     }    
+      .applications:hover {
+          background: lighten(@orange, 10%);
+     }
+
+      .applications span {
+          padding: 1px 8px;
+          margin-right: 5px;
+         background:lighten(@orange, 20%);
+         border-radius: 50px;
+         color: @color;
+      }
+  
+}

@@ -72,7 +72,7 @@ namespace ThunderB_redesign
                 .Include("~/Content/css/Site_Donation.css")
                 .Include("~/Content/css/Site_GiftShop.css")
                 .Include("~/Content/css/Site_Newsletter.css")
-                );
+                .Include("~/Areas/admin/Content/AdminCss/jobAdmin.less"));
 
             bundles.Add(new ScriptBundle("~/Areas/admin/Content/AdminJS").Include("~/Areas/admin/Content/AdminJS/admin.js"));
 

@@ -1,35 +1,47 @@
-﻿@model IEnumerable<ThunderB_redesign.Models.Job>
+﻿@using System.Drawing.Printing
+@model IEnumerable<ThunderB_redesign.Models.Job>
 @{
     ViewBag.Title = "Index";
 }
-<a href="@Url.Action("Create")">Add a Job</a>
-<h2>Jobs</h2>
+<div class="jobs">
+    <h2>List of Jobs</h2>
 
-<table class="stripes">
-    <thead>
-    <tr>
-        <th>Job Title</th>
-        <th>Job Category</th>
-        <th>Date Posted</th>
-        <th>Closing Date</th>
-        <th>Actions</th>
-        <th>Applications</th>
-    </tr>
-    </thead>
-    <tbody> 
+    <div class="add">
+        <a href="@Url.Action("Create")">+ Add a Job</a>
+    </div>
 
-    @foreach (var x in Model)
-    {
-        <tr>
-            <td>@x.job_title</td>
-            <td>@x.jobCategory.category</td>
-            <td>@x.date_posted</td>
-            <td>@x.closing_date</td>
-            <td>@Html.ActionLink("Edit", "Edit", new { id = x.Id }) &nbsp;&nbsp; @Html.ActionLink("Delete", "Delete", new { id = x.Id })</td>
-            <td>@Html.ActionLink("Applications", "Index", "JobAppAdmin", new {id = x.Id}, null)</td>
-        </tr>
-    }
-    </tbody>
-</table>
+    <table class="stripes">
+        <thead>
+            <tr>
+                <th>Job Title</th>
+                <th>Job Category</th>
+                <th>Date Posted</th>
+                <th>Closing Date</th>
+                <th>Actions</th>
+                <th>Applications</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var x in Model)
+            {
+                <tr>
+                    <td>@x.job_title</td>
+                    <td>@x.jobCategory.category</td>
+                    <td>@x.date_posted.ToString("D")</td>
+                    <td>@x.closing_date.ToString("D")</td>
+                    <td>@Html.ActionLink("Edit", "Edit", new {id = x.Id}, new {@class = "edit"}) &nbsp;&nbsp; @Html.ActionLink("Delete", "Delete", new {id = x.Id}, new {@class = "delete"})</td>
+                    <td><a href="@Url.Action("Index", "JobAppAdmin", new {id = x.Id}, null)" class="applications"><span>
+
+    @x.jobApplications.Count().ToString()
 
 
+</span>Applications </a></td>
+
+                    @*<td>@Html.ActionLink("Applications", "Index", "JobAppAdmin", new { id = x.Id }, null)</td>*@
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

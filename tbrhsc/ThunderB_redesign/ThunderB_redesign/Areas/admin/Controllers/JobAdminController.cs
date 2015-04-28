@@ -7,6 +7,7 @@ using ThunderB_redesign.Models;
 
 namespace ThunderB_redesign.Areas.admin.Controllers
 {
+     [Authorize]
     public class JobAdminController : Controller
     {
         JobLinqClass objJob = new JobLinqClass();

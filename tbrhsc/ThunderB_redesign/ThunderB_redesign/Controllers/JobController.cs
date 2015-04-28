@@ -24,7 +24,7 @@ namespace ThunderB_redesign.Controllers
                 ViewData["SubMenuItems for " + menuItem.menu_id.ToString()] = menuObj.getSubMenuItemsByParentId(menuItem.menu_id);
             }
         }
-
+      
         //getting the list of jobs
         public ActionResult Index()
         {
